@@ -19,6 +19,7 @@ import content from './content';
 import error from './error';
 import verifypass from './verifypass'
 import forgotpass from './forgotpass'
+import changepassword from'./changepassword'
 
 export default {
 
@@ -28,12 +29,12 @@ export default {
     home,
     contact,
     login,
-    forgotpass,
     verifypass,
+    forgotpass,
+    changepassword,
     register,
     content,
-    error,
-    forgotpass  
+    error
   ],
 
   async action({ next, render, context }) {

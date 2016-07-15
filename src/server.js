@@ -143,6 +143,8 @@ var db;
 
   if ( !err )
     console.log("Listening on port 27107");
+  else
+  console.log(" Database Server not running")
 });*/
 
 

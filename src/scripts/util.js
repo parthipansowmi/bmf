@@ -7,3 +7,20 @@ export function randomPassword(length) {
     }
     return pass;
 }
+export function getConnection(url) {
+    var db;
+
+    // Initialize DB connection once
+    MongoClient.connect(url, function (err, database) {
+        db = database;
+
+        if (!err) {
+            console.log("Listening on port 27107");
+            return db;
+        }
+
+        else
+            console.log(" Database Server not running")
+            return err;
+    });
+}

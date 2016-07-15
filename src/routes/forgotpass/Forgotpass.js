@@ -17,41 +17,31 @@ const title = 'Changing Password';
  
 
 function Forgotpass(props, context) {
-  //console.log(props);
+  console.log(props);
   context.setTitle(title);
   return (
     <div className={s.root}>
       <div className={s.container}>
         <h1>{title}</h1>
    
-        <form name="form1" method="get" action="login" >
+        <form name="form1" method="get" action="forgotpass" >
+          
           <div className={s.formGroup}>
-            <label className={s.label} htmlFor="password">
-              New Password:
+            <label className={s.label} htmlFor="email">
+              Email:
             </label>
             <input
               className={s.input}
-              id="newpass"
-              type="password"
-              name="newpass"
-              autoFocus              
-            />
-          </div>
-          <div className={s.formGroup}>
-            <label className={s.label} htmlFor="password">
-              Confirm Password:
-            </label>
-            <input
-              className={s.input}
-              id="confirmpass"
-              type="password"
-              name="confirmpass"              
+              id="email"
+              type="email"
+              name="email"
+              required="required"             
             />
        
           </div>
           <div className={s.formGroup}>
-            <button className={s.button}    value="submit" type="submit" >
-              Log in
+            <button className={s.button}   type="submit" >
+              Send Reset Email
             </button>
             
           </div>
