@@ -134,22 +134,6 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   }));
 });
 
-/*var MongoClient = require('mongodb').MongoClient;
-var db;
-
-// Initialize DB connection once
- MongoClient.connect(mongodbUrl, function(err, database) {
-   db = database;
-
-  if ( !err )
-    console.log("Listening on port 27107");
-  else
-  console.log(" Database Server not running")
-});*/
-
-
-
-//
 // Launch the server
 // -----------------------------------------------------------------------------
 /* eslint-disable no-console */

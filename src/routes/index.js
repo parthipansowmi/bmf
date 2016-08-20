@@ -15,11 +15,13 @@ import home from './home';
 import contact from './contact';
 import login from './login';
 import register from './register';
+import savecustomer from './savecustomer'
 import content from './content';
 import error from './error';
 import verifypass from './verifypass'
 import forgotpass from './forgotpass'
-import changepassword from'./changepassword'
+import changepassword from './changepassword'
+import updatepass from './updatepass'
 
 export default {
 
@@ -32,16 +34,16 @@ export default {
     verifypass,
     forgotpass,
     changepassword,
+    updatepass,
     register,
+    savecustomer,
     content,
     error
   ],
 
   async action({ next, render, context }) {
     const component = await next();
-    /*console.log("inside the routes index.js");
-    console.log("What Component");
-    console.log(render);*/
+    
     if (component === undefined) return component;
     return render(
       <App context={context}>{component}</App>

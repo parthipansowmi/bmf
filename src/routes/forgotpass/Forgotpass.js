@@ -24,7 +24,7 @@ function Forgotpass(props, context) {
       <div className={s.container}>
         <h1>{title}</h1>
    
-        <form name="form1" method="get" action="forgotpass" >
+        <form name="form1" method="put" action="forgotpass" >
           
           <div className={s.formGroup}>
             <label className={s.label} htmlFor="email">
@@ -35,6 +35,7 @@ function Forgotpass(props, context) {
               id="email"
               type="email"
               name="email"
+              placeholder="Enter E-mail"
               required="required"             
             />
        
@@ -56,4 +57,3 @@ function Forgotpass(props, context) {
 Forgotpass.contextTypes = { setTitle: PropTypes.func.isRequired };
 
 export default withStyles(s)(Forgotpass);
-//export  { verifypass};

@@ -112,7 +112,7 @@ module.exports =
   
   var _routes2 = _interopRequireDefault(_routes);
   
-  var _assets = __webpack_require__(123);
+  var _assets = __webpack_require__(140);
   
   var _assets2 = _interopRequireDefault(_assets);
   
@@ -120,7 +120,7 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var mongodb = __webpack_require__(109); // eslint-disable-line import/no-unresolved
+  var mongodb = __webpack_require__(161); // eslint-disable-line import/no-unresolved
   /**
    * React Starter Kit (https://www.reactstarterkit.com/)
    *
@@ -199,7 +199,7 @@ module.exports =
                       case 0:
                         css = [];
                         statusCode = 200;
-                        template = __webpack_require__(144); // eslint-disable-line global-require
+                        template = __webpack_require__(162); // eslint-disable-line global-require
   
                         data = { title: '', description: '', css: '', body: '', entry: 'assets.main.js' }; //assets.main.js
   
@@ -278,7 +278,7 @@ module.exports =
   app.use(function (err, req, res, next) {
     // eslint-disable-line no-unused-vars
     console.log(pe.render(err)); // eslint-disable-line no-console
-    var template = __webpack_require__(146); // eslint-disable-line global-require
+    var template = __webpack_require__(164); // eslint-disable-line global-require
     var statusCode = err.status || 500;
     res.status(statusCode);
     res.send(template({
@@ -287,20 +287,6 @@ module.exports =
     }));
   });
   
-  /*var MongoClient = require('mongodb').MongoClient;
-  var db;
-  
-  // Initialize DB connection once
-   MongoClient.connect(mongodbUrl, function(err, database) {
-     db = database;
-  
-    if ( !err )
-      console.log("Listening on port 27107");
-    else
-    console.log(" Database Server not running")
-  });*/
-  
-  //
   // Launch the server
   // -----------------------------------------------------------------------------
   /* eslint-disable no-console */
@@ -727,20 +713,11 @@ module.exports =
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  /**
-   * React Starter Kit (https://www.reactstarterkit.com/)
-   *
-   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE.txt file in the root directory of this source tree.
-   */
-  
-  /* eslint-disable max-len */
-  /* jscs:disable maximumLineLength */
-  
   var port = exports.port = process.env.PORT || 3006;
   var host = exports.host = process.env.WEBSITE_HOSTNAME || 'localhost:' + port;
+  
+  var apiport = exports.apiport = process.env.PORT || 3002;
+  var apihost = exports.apihost = process.env.WEBSITE_HOSTNAME || 'localhost:' + apiport;
   
   var databaseUrl = exports.databaseUrl = process.env.DATABASE_URL || 'sqlite:database.sqlite';
   var mongodbUrl = exports.mongodbUrl = process.env.mongo_URL || 'mongodb://localhost:27017/bmf';
@@ -1644,41 +1621,49 @@ module.exports =
   
   var _App2 = _interopRequireDefault(_App);
   
-  var _home = __webpack_require__(79);
+  var _home = __webpack_require__(82);
   
   var _home2 = _interopRequireDefault(_home);
   
-  var _contact = __webpack_require__(83);
+  var _contact = __webpack_require__(86);
   
   var _contact2 = _interopRequireDefault(_contact);
   
-  var _login = __webpack_require__(87);
+  var _login = __webpack_require__(90);
   
   var _login2 = _interopRequireDefault(_login);
   
-  var _register = __webpack_require__(93);
+  var _register = __webpack_require__(96);
   
   var _register2 = _interopRequireDefault(_register);
   
-  var _content = __webpack_require__(97);
+  var _savecustomer = __webpack_require__(100);
+  
+  var _savecustomer2 = _interopRequireDefault(_savecustomer);
+  
+  var _content = __webpack_require__(105);
   
   var _content2 = _interopRequireDefault(_content);
   
-  var _error = __webpack_require__(101);
+  var _error = __webpack_require__(109);
   
   var _error2 = _interopRequireDefault(_error);
   
-  var _verifypass = __webpack_require__(105);
+  var _verifypass = __webpack_require__(113);
   
   var _verifypass2 = _interopRequireDefault(_verifypass);
   
-  var _forgotpass = __webpack_require__(110);
+  var _forgotpass = __webpack_require__(119);
   
   var _forgotpass2 = _interopRequireDefault(_forgotpass);
   
-  var _changepassword = __webpack_require__(119);
+  var _changepassword = __webpack_require__(128);
   
   var _changepassword2 = _interopRequireDefault(_changepassword);
+  
+  var _updatepass = __webpack_require__(132);
+  
+  var _updatepass2 = _interopRequireDefault(_updatepass);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
@@ -1686,7 +1671,7 @@ module.exports =
   
     path: '/',
   
-    children: [_home2.default, _contact2.default, _login2.default, _verifypass2.default, _forgotpass2.default, _changepassword2.default, _register2.default, _content2.default, _error2.default],
+    children: [_home2.default, _contact2.default, _login2.default, _verifypass2.default, _forgotpass2.default, _changepassword2.default, _updatepass2.default, _register2.default, _savecustomer2.default, _content2.default, _error2.default],
   
     action: function action(_ref) {
       var _this = this;
@@ -2805,15 +2790,15 @@ module.exports =
   
   var _Link2 = _interopRequireDefault(_Link);
   
-  var _fb = __webpack_require__(147);
+  var _fb = __webpack_require__(79);
   
   var _fb2 = _interopRequireDefault(_fb);
   
-  var _twitter = __webpack_require__(148);
+  var _twitter = __webpack_require__(80);
   
   var _twitter2 = _interopRequireDefault(_twitter);
   
-  var _linkedin = __webpack_require__(149);
+  var _linkedin = __webpack_require__(81);
   
   var _linkedin2 = _interopRequireDefault(_linkedin);
   
@@ -2948,7 +2933,7 @@ module.exports =
   
   
   // module
-  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.Footer_root_3mW {\n  background: #333;\n  color: #fff;\n  \n}\n\n.Footer_container_3k8 {\n  margin: 0 auto;\n  padding: 20px 15px;\n  max-width: 1000px;\n  text-align: center;\n}\n\n.Footer_text_jeh {\n  color: rgba(255, 255, 255, 0.5);\n}\n\n.Footer_textMuted_1yA {\n  color: rgba(255, 255, 255, 0.3);\n}\n\n.Footer_spacer_2ei {\n  color: rgba(255, 255, 255, 0.3);\n}\n\n.Footer_text_jeh,\n.Footer_link_2Cg {\n  padding: 2px 5px;\n  font-size: 1em;\n}\n\n.Footer_link_2Cg,\n.Footer_link_2Cg:active,\n.Footer_link_2Cg:visited {\n  color: rgba(255, 255, 255, 0.6);\n  text-decoration: none;\n}\n\n.Footer_link_2Cg:hover {\n  color: rgba(255, 255, 255, 1);\n}\n\n.Footer_brand_17U {\n  color: rgb(146, 229, 252);\n  text-decoration: none;\n  font-size: 1.75em; /* ~28px */\n}", "", {"version":3,"sources":["/./components/Footer/Footer.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;;ACPH;;;;;;;GAOG;;AAEH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ADnBD;EACE,iBAAiB;EACjB,YAAY;;CAEb;;AAMD;EACE,eAAe;EACf,mBAAmB;EACnB,kBAAoC;EACpC,mBAAmB;CACpB;;AAED;EACE,gCAAgC;CACjC;;AAED;EAEE,gCAAgC;CACjC;;AAED;EACE,gCAAgC;CACjC;;AAED;;EAEE,iBAAiB;EACjB,eAAe;CAChB;;AAED;;;EAGE,gCAAgC;EAChC,sBAAsB;CACvB;;AAED;EACE,8BAA8B;CAC/B;;AACD;EACE,0BAAiD;EACjD,sBAAsB;EACtB,kBAAkB,CAAC,WAAW;CAC/B","file":"Footer.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n@import '../variables.css';\n\n.root {\n  background: #333;\n  color: #fff;\n  \n}\n\n:root {\n  --brand-color: #61dafb;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 20px 15px;\n  max-width: var(--max-content-width);\n  text-align: center;\n}\n\n.text {\n  color: rgba(255, 255, 255, 0.5);\n}\n\n.textMuted {\n  composes: text;\n  color: rgba(255, 255, 255, 0.3);\n}\n\n.spacer {\n  color: rgba(255, 255, 255, 0.3);\n}\n\n.text,\n.link {\n  padding: 2px 5px;\n  font-size: 1em;\n}\n\n.link,\n.link:active,\n.link:visited {\n  color: rgba(255, 255, 255, 0.6);\n  text-decoration: none;\n}\n\n.link:hover {\n  color: rgba(255, 255, 255, 1);\n}\n.brand {\n  color: color(var(--brand-color) lightness(+10%));\n  text-decoration: none;\n  font-size: 1.75em; /* ~28px */\n}","/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
+  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.Footer_root_3mW {\n  background: #446;\n  color: #fff;\n  \n}\n\n.Footer_container_3k8 {\n  margin: 0 auto;\n  padding: 20px 15px;\n  max-width: 1000px;\n  text-align: center;\n}\n\n.Footer_text_jeh {\n  color: rgba(255, 255, 255, 0.5);\n}\n\n.Footer_textMuted_1yA {\n  color: rgba(255, 255, 255, 0.3);\n}\n\n.Footer_spacer_2ei {\n  color: rgba(255, 255, 255, 0.3);\n}\n\n.Footer_text_jeh,\n.Footer_link_2Cg {\n  padding: 2px 5px;\n  font-size: 1em;\n}\n\n.Footer_link_2Cg,\n.Footer_link_2Cg:active,\n.Footer_link_2Cg:visited {\n  color: rgba(255, 255, 255, 0.6);\n  text-decoration: none;\n}\n\n.Footer_link_2Cg:hover {\n  color: rgba(255, 255, 255, 1);\n}\n\n.Footer_brand_17U {\n  color: rgb(146, 229, 252);\n  text-decoration: none;\n  font-size: 1.75em; /* ~28px */\n}", "", {"version":3,"sources":["/./components/Footer/Footer.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;;ACPH;;;;;;;GAOG;;AAEH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ADnBD;EACE,iBAAiB;EACjB,YAAY;;CAEb;;AAMD;EACE,eAAe;EACf,mBAAmB;EACnB,kBAAoC;EACpC,mBAAmB;CACpB;;AAED;EACE,gCAAgC;CACjC;;AAED;EAEE,gCAAgC;CACjC;;AAED;EACE,gCAAgC;CACjC;;AAED;;EAEE,iBAAiB;EACjB,eAAe;CAChB;;AAED;;;EAGE,gCAAgC;EAChC,sBAAsB;CACvB;;AAED;EACE,8BAA8B;CAC/B;;AACD;EACE,0BAAiD;EACjD,sBAAsB;EACtB,kBAAkB,CAAC,WAAW;CAC/B","file":"Footer.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n@import '../variables.css';\n\n.root {\n  background: #446;\n  color: #fff;\n  \n}\n\n:root {\n  --brand-color: #61dafb;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 20px 15px;\n  max-width: var(--max-content-width);\n  text-align: center;\n}\n\n.text {\n  color: rgba(255, 255, 255, 0.5);\n}\n\n.textMuted {\n  composes: text;\n  color: rgba(255, 255, 255, 0.3);\n}\n\n.spacer {\n  color: rgba(255, 255, 255, 0.3);\n}\n\n.text,\n.link {\n  padding: 2px 5px;\n  font-size: 1em;\n}\n\n.link,\n.link:active,\n.link:visited {\n  color: rgba(255, 255, 255, 0.6);\n  text-decoration: none;\n}\n\n.link:hover {\n  color: rgba(255, 255, 255, 1);\n}\n.brand {\n  color: color(var(--brand-color) lightness(+10%));\n  text-decoration: none;\n  font-size: 1.75em; /* ~28px */\n}","/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
   
   // exports
   exports.locals = {
@@ -2963,6 +2948,24 @@ module.exports =
 
 /***/ },
 /* 79 */
+/***/ function(module, exports, __webpack_require__) {
+
+  module.exports = __webpack_require__.p + "public/fb.png?637b9a59e490ef651505c74a03122958";
+
+/***/ },
+/* 80 */
+/***/ function(module, exports) {
+
+  module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExOTk0Q0JDNjhBREQ3QkU0OSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFODYxM0VGQUFGMkExMUUxOTBFOUZEM0JFQjVCNTNBRCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFODYxM0VGOUFGMkExMUUxOTBFOUZEM0JFQjVCNTNBRCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgTWFjaW50b3NoIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDM4MDExNzQwNzIwNjgxMThDMTRDQkRDMUUyOEQ1OEQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTk5NENCQzY4QUREN0JFNDkiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5d82l2AAACE0lEQVR42mL8//8/AyWAiYFCwHLgwAEGx0OfBfbb8X7ApgAkB6TqgdgAiB8AcSNQ7QOonAIjQ+MmA0ZmlgX///5xQDcEpBkod+C/qJw+Awc3A8PvnwyMrx59/P/7x3ygtAM/D08bk7yYsOR/BV19oMILQA0GKM5jZU0CyTEISzEwcPMzMAiIMfxXNuBnkFAqYFYxVP7LxhXEpC/B/xRk+n9lQ3kgfR5oyHyQ00AGiEpIyYBtRgbMLAwgA1UEubZ/zjFvZBSbcMBNRMsw9dqnvyFgBR9eMTC8egR07o8HLOLyLH9EZGWwhc3/YEFVYPjdYVEQ4ft+6v7jELAzQQDoTDD+/VPhD46Q52NlvAPSDI7Gk9GG57UUZddgqGJlh2AsQPT/j9NwHzk4OPzi5Bd89ZWJjfH1z/8q/xgY2AjFfY7s/1zFX68fwhPSxQfPbly588D0z58/PIQ0K3Iz7WgyETsJjykQsTHE4C2Qivc5+iXk2ue/+ve//vPA5feJWsx1QP//QDEAKPAHGHV/xCRlWD6wcOsy8Ili1bzJgjPNXoz9/IF7SGkFqLEBSOcD41vg1R+gj3j5UNM6I8MXfQHmtb067AuBmg+DLEOWZwTmRoXjb39rTLn7y+Tml78qz7//V2ZnZvgixMb4Up2H+U6OMtsZS2HWG0C1T9A1wwyAeQWUaXigGKQQ5M8voKQF5WMFAAEGAPZkw8s7EntAAAAAAElFTkSuQmCC"
+
+/***/ },
+/* 81 */
+/***/ function(module, exports) {
+
+  module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAIFSURBVEhLzZY9SCNREMcnkQQ9cn4gWiiC5AqPEwUjWKhgYadWWlkodpYHOTitTkUEc8WW19gIYquFiCCIHhIxigqCXgQbPdKchXAqfkSzzsxO4kvc1S184A/+vHkzs++/b78STywWMyOLUZjbPQIddIdqYKizBTzdPwyTTMLfh6X0thg/J9nMA12DJpkYO3+l9LaEG6vYzEsTY/sEIJXSIl4bYSNIPegVYhk93D9X4hhgb9USxXY9boU47mik9ROYs+Msiu16XAtx3NFoTzuXCI5telwLcTZai3OJ4Nimx7UQfryh4ensVSoDfh4Tl3c8wuGmNRLFZQD+AoB/p5JAqmsBPnyUicLeihjVt0lGIb4lAfK5iQdzopdHYmo5ComLm6xL/OVrBP4k8wFKyiUj7P8Wo9oWyTxhTvZJhNsenuFRzTnREZmGpfM8mQkHUblH98nnUrHLOfBroCt7HTnO+T1CbpLWo6nmVIzVfVYa6vfl+bLXkePECF1zpWKTG13ahm/z6yyKs1DXkePk0qFrrlSUHJ01aWxhI5OnOLN7It2fFvLqjniBnByj9rqovXiPMryUc1l7H0b5PnkflFwGtVeplRYFbGvWC1uInxOd/D+THaXQVacQMZLfDV1C5B7hRKcQb3NFEcDtFX4x8c+EDuHa5OHtDwWhLuABuLvWIlq7PxSER722NIzBJCouAAAAAElFTkSuQmCC"
+
+/***/ },
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -2983,7 +2986,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Home = __webpack_require__(80);
+  var _Home = __webpack_require__(83);
   
   var _Home2 = _interopRequireDefault(_Home);
   
@@ -3025,7 +3028,7 @@ module.exports =
       */
 
 /***/ },
-/* 80 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3042,7 +3045,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Home = __webpack_require__(81);
+  var _Home = __webpack_require__(84);
   
   var _Home2 = _interopRequireDefault(_Home);
   
@@ -3107,11 +3110,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Home2.default)(Home);
 
 /***/ },
-/* 81 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(82);
+      var content = __webpack_require__(85);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -3141,7 +3144,7 @@ module.exports =
     
 
 /***/ },
-/* 82 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -3161,7 +3164,7 @@ module.exports =
   };
 
 /***/ },
-/* 83 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3174,7 +3177,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Contact = __webpack_require__(84);
+  var _Contact = __webpack_require__(87);
   
   var _Contact2 = _interopRequireDefault(_Contact);
   
@@ -3199,7 +3202,7 @@ module.exports =
   };
 
 /***/ },
-/* 84 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3216,7 +3219,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Contact = __webpack_require__(85);
+  var _Contact = __webpack_require__(88);
   
   var _Contact2 = _interopRequireDefault(_Contact);
   
@@ -3258,11 +3261,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Contact2.default)(Contact);
 
 /***/ },
-/* 85 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(86);
+      var content = __webpack_require__(89);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -3292,7 +3295,7 @@ module.exports =
     
 
 /***/ },
-/* 86 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -3309,7 +3312,7 @@ module.exports =
   };
 
 /***/ },
-/* 87 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3322,7 +3325,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Login = __webpack_require__(88);
+  var _Login = __webpack_require__(91);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -3338,7 +3341,7 @@ module.exports =
   };
 
 /***/ },
-/* 88 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3351,7 +3354,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactDom = __webpack_require__(89);
+  var _reactDom = __webpack_require__(92);
   
   var _reactDom2 = _interopRequireDefault(_reactDom);
   
@@ -3359,7 +3362,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Login = __webpack_require__(90);
+  var _Login = __webpack_require__(93);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -3367,7 +3370,7 @@ module.exports =
   
   var _Link2 = _interopRequireDefault(_Link);
   
-  var _formsyReact = __webpack_require__(92);
+  var _formsyReact = __webpack_require__(95);
   
   var _formsyReact2 = _interopRequireDefault(_formsyReact);
   
@@ -3557,17 +3560,17 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Login2.default)(Login);
 
 /***/ },
-/* 89 */
+/* 92 */
 /***/ function(module, exports) {
 
   module.exports = require("react-dom");
 
 /***/ },
-/* 90 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(91);
+      var content = __webpack_require__(94);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -3597,7 +3600,7 @@ module.exports =
     
 
 /***/ },
-/* 91 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -3625,13 +3628,13 @@ module.exports =
   };
 
 /***/ },
-/* 92 */
+/* 95 */
 /***/ function(module, exports) {
 
   module.exports = require("formsy-react");
 
 /***/ },
-/* 93 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3644,7 +3647,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Register = __webpack_require__(94);
+  var _Register = __webpack_require__(97);
   
   var _Register2 = _interopRequireDefault(_Register);
   
@@ -3669,7 +3672,7 @@ module.exports =
   };
 
 /***/ },
-/* 94 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3686,7 +3689,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Register = __webpack_require__(95);
+  var _Register = __webpack_require__(98);
   
   var _Register2 = _interopRequireDefault(_Register);
   
@@ -3716,10 +3719,10 @@ module.exports =
         ),
         _react2.default.createElement(
           'form',
-          { name: 'form1', method: 'get', action: 'login' },
+          { name: 'form1', method: 'put', action: 'savecustomer' },
           _react2.default.createElement(
             'div',
-            { className: _Register2.default.formGroup },
+            { classname: _Register2.default.leftContainer },
             _react2.default.createElement(
               'label',
               { className: _Register2.default.label, htmlFor: 'firstname' },
@@ -3730,11 +3733,16 @@ module.exports =
               id: 'firstname',
               type: 'text',
               name: 'firstname',
-              autoFocus: true
-            }),
+              autoFocus: true,
+              required: true
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { classname: _Register2.default.rightContainer },
             _react2.default.createElement(
               'label',
-              { className: _Register2.default.label, htmlFor: 'email' },
+              { className: _Register2.default.label, htmlFor: 'Last Name' },
               _react2.default.createElement(
                 'span',
                 null,
@@ -3743,10 +3751,46 @@ module.exports =
             ),
             _react2.default.createElement('input', {
               className: _Register2.default.input,
-              id: 'email',
+              id: 'lname',
               type: 'text',
-              name: 'email'
-  
+              name: 'lname',
+              required: true
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'label',
+              { className: _Register2.default.label, htmlFor: 'address' },
+              _react2.default.createElement(
+                'span',
+                null,
+                'User Address: '
+              )
+            ),
+            _react2.default.createElement('input', {
+              className: _Register2.default.input,
+              id: 'address',
+              type: 'text',
+              name: 'address',
+              required: true
+            }),
+            _react2.default.createElement(
+              'label',
+              { className: _Register2.default.label, htmlFor: 'zipcode' },
+              _react2.default.createElement(
+                'span',
+                null,
+                'Zipcode: '
+              )
+            ),
+            _react2.default.createElement('input', {
+              className: _Register2.default.input,
+              id: 'zipcode',
+              type: 'number',
+              name: 'zipcode',
+              required: true
             })
           ),
           _react2.default.createElement(
@@ -3760,24 +3804,21 @@ module.exports =
             _react2.default.createElement('input', {
               className: _Register2.default.input,
               id: 'email',
-              type: 'text',
+              type: 'email',
               name: 'email',
-              autoFocus: true
+              required: true
             }),
             _react2.default.createElement(
               'label',
-              { className: _Register2.default.label, htmlFor: 'address' },
-              _react2.default.createElement(
-                'span',
-                null,
-                'User Address: '
-              )
+              { className: _Register2.default.label, htmlFor: 'Phone' },
+              'phone:'
             ),
             _react2.default.createElement('input', {
               className: _Register2.default.input,
-              id: 'email',
+              id: 'phone',
               type: 'text',
-              name: 'email'
+              name: 'phone',
+              required: true
             })
           ),
           _react2.default.createElement(
@@ -3786,7 +3827,7 @@ module.exports =
             _react2.default.createElement(
               'button',
               { className: _Register2.default.button, value: 'submit', type: 'submit' },
-              'Log in'
+              'Register'
             )
           )
         )
@@ -3799,11 +3840,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Register2.default)(Register);
 
 /***/ },
-/* 95 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(96);
+      var content = __webpack_require__(99);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -3833,7 +3874,7 @@ module.exports =
     
 
 /***/ },
-/* 96 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -3841,7 +3882,7 @@ module.exports =
   
   
   // module
-  exports.push([module.id, " .Register_root_3RB {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Register_container_1Lf {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Register_lead_2sJ {\n  font-size: 1.25em;\n}\n\n.Register_formGroup_1Ge {\n  margin-bottom: 20px;\n  \n}\n\n.Register_label_sr8 {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.Register_input_3So {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.Register_input_3So:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Register_button_3Si {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Register_button_3Si:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Register_button_3Si:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Register_facebook_3Fl {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n\n.Register_facebook_3Fl:hover {\n  background: #2d4373;\n}\n\n.Register_google_3QP {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n\n.Register_google_3QP:hover {\n  background: #c23321;\n}\n\n.Register_twitter_uxx {\n  border-color: #55acee;\n  background: #55acee;\n}\n\n.Register_twitter_uxx:hover {\n  background: #2795e9;\n}\n\n.Register_icon_3KC {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Register_lineThrough_2IJ {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Register_lineThrough_2IJ::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Register_lineThrough_2IJ::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n#Register_lastname_27Z{\n    max-width:100px;\n    float:left;\n}\n\n.Register_div_17d {\n  float:right;\n}", "", {"version":3,"sources":["/./routes/register/Register.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb;;AACD;IACI,gBAAgB;IAChB,WAAW;CACd;;AAED;EACE,YAAY;CACb","file":"Register.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n#lastname{\n    max-width:100px;\n    float:left;\n}\n\n.div {\n  float:right;\n}"],"sourceRoot":"webpack://"}]);
+  exports.push([module.id, " .Register_root_3RB {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Register_container_1Lf {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Register_lead_2sJ {\n  font-size: 1.25em;\n}\n\n.Register_formGroup_1Ge {\n  margin-bottom: 20px;\n  \n}\n\n.Register_label_sr8 {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.Register_input_3So {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n}\n\n.Register_input_3So:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Register_button_3Si {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Register_button_3Si:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Register_button_3Si:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Register_leftContainer_3EI {\n   float:left;\n}\n\n.Register_rightContainer_25i {\n   float:right;\n}\n\n.Register_icon_3KC {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Register_lineThrough_2IJ {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Register_lineThrough_2IJ::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Register_lineThrough_2IJ::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n#Register_lastname_27Z{\n    max-width:100px;\n    float:left;\n}\n\n.Register_div_17d {\n  float:right;\n}", "", {"version":3,"sources":["/./routes/register/Register.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;EACzE,SAAS;EACT,cAAc;CACf;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;GACG,WAAW;CACb;;AAED;GACG,YAAY;CACd;;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb;;AACD;IACI,gBAAgB;IAChB,WAAW;CACd;;AAED;EACE,YAAY;CACb","file":"Register.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.leftContainer {\n   float:left;\n}\n\n.rightContainer {\n   float:right;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n#lastname{\n    max-width:100px;\n    float:left;\n}\n\n.div {\n  float:right;\n}"],"sourceRoot":"webpack://"}]);
   
   // exports
   exports.locals = {
@@ -3852,9 +3893,8 @@ module.exports =
   	"label": "Register_label_sr8",
   	"input": "Register_input_3So",
   	"button": "Register_button_3Si",
-  	"facebook": "Register_facebook_3Fl Register_button_3Si",
-  	"google": "Register_google_3QP Register_button_3Si",
-  	"twitter": "Register_twitter_uxx Register_button_3Si",
+  	"leftContainer": "Register_leftContainer_3EI",
+  	"rightContainer": "Register_rightContainer_25i",
   	"icon": "Register_icon_3KC",
   	"lineThrough": "Register_lineThrough_2IJ",
   	"lastname": "Register_lastname_27Z",
@@ -3862,7 +3902,216 @@ module.exports =
   };
 
 /***/ },
-/* 97 */
+/* 100 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Savecustomer = __webpack_require__(101);
+  
+  var _Savecustomer2 = _interopRequireDefault(_Savecustomer);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var message = 'Sucessfully Registered'; /**
+                                           * React Starter Kit (https://www.reactstarterkit.com/)
+                                           *
+                                           * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+                                           *
+                                           * This source code is licensed under the MIT license found in the
+                                           * LICENSE.txt file in the root directory of this source tree.
+                                           */
+  
+  var status = true;
+  var fn;
+  var ln;
+  var address;
+  var email;
+  var phone;
+  var zipcode;
+  
+  exports.default = {
+  
+    path: '/savecustomer',
+  
+    action: function action(_ref, _ref2) {
+      var query = _ref.query;
+      var path = _ref2.path;
+  
+      console.log("Query String: " + query);
+      fn = query.firstname;
+      console.log(fn);
+      ln = query.lname;
+      address = query.address;
+      zipcode = query.zipcode;
+      phone = query.phone;
+      email = query.email;
+      saveCustomerData();
+      if (!status) {
+        message = 'Error in Saving Customer Data';
+      }
+      return _react2.default.createElement(_Savecustomer2.default, { message: message });
+    }
+  };
+  
+  
+  function saveCustomerData() {
+    var request = __webpack_require__(104);
+    //console.log("Inside storePasscode method email: " + email);
+    // console.log("Inside storePasscode method Code: " + code);
+    console.log('calling API');
+    var url = 'http://' + _config.apihost + '/addNewCustomer';
+    console.log("URL: " + url);
+    request.post({ url: url, form: { firstname: firstname, lastname: ln, address: address, phone: phone, email: email, zipcode: zipcode } }, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('Inside saveCustomerData Response from API (body)' + body);
+  
+        if (body == 'true') status = true;
+      } else {
+        console.log("Error in storing customer data");
+        status = false;
+      }
+    });
+    console.log('returning');
+  }
+
+/***/ },
+/* 101 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Savecustomer = __webpack_require__(102);
+  
+  var _Savecustomer2 = _interopRequireDefault(_Savecustomer);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'New User Registration'; /**
+                                        * React Starter Kit (https://www.reactstarterkit.com/)
+                                        *
+                                        * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+                                        *
+                                        * This source code is licensed under the MIT license found in the
+                                        * LICENSE.txt file in the root directory of this source tree.
+                                        */
+  
+  function Savecustomer(message, context) {
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      { className: _Savecustomer2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Savecustomer2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          message
+        )
+      )
+    );
+  }
+  
+  Savecustomer.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Savecustomer2.default)(Savecustomer);
+
+/***/ },
+/* 102 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(103);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Savecustomer.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Savecustomer.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 103 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, " .Savecustomer_root_1nS {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Savecustomer_container_lBN {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Savecustomer_lead_EIt {\n  font-size: 1.25em;\n}\n\n.Savecustomer_formGroup_3qk {\n  margin-bottom: 20px;\n  \n}\n\n.Savecustomer_label_2Fo {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.Savecustomer_input_2C9 {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.Savecustomer_input_2C9:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Savecustomer_button_1Za {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Savecustomer_button_1Za:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Savecustomer_button_1Za:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.\n\n.Savecustomer_icon_2t6 {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Savecustomer_lineThrough_1yJ {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Savecustomer_lineThrough_1yJ::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Savecustomer_lineThrough_1yJ::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n#Savecustomer_lastname_3YE{\n    max-width:100px;\n    float:left;\n}\n\n.Savecustomer_div_3UG {\n  float:right;\n}", "", {"version":3,"sources":["/./routes/savecustomer/Savecustomer.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;;;EAGE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb;;AACD;IACI,gBAAgB;IAChB,WAAW;CACd;;AAED;EACE,YAAY;CACb","file":"Savecustomer.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n#lastname{\n    max-width:100px;\n    float:left;\n}\n\n.div {\n  float:right;\n}"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Savecustomer_root_1nS",
+  	"container": "Savecustomer_container_lBN",
+  	"lead": "Savecustomer_lead_EIt",
+  	"formGroup": "Savecustomer_formGroup_3qk",
+  	"label": "Savecustomer_label_2Fo",
+  	"input": "Savecustomer_input_2C9",
+  	"button": "Savecustomer_button_1Za",
+  	"icon": "Savecustomer_icon_2t6",
+  	"lineThrough": "Savecustomer_lineThrough_1yJ",
+  	"lastname": "Savecustomer_lastname_3YE",
+  	"div": "Savecustomer_div_3UG"
+  };
+
+/***/ },
+/* 104 */
+/***/ function(module, exports) {
+
+  module.exports = require("request");
+
+/***/ },
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3887,7 +4136,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Content = __webpack_require__(98);
+  var _Content = __webpack_require__(106);
   
   var _Content2 = _interopRequireDefault(_Content);
   
@@ -3971,7 +4220,7 @@ module.exports =
       */
 
 /***/ },
-/* 98 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4008,7 +4257,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Content = __webpack_require__(99);
+  var _Content = __webpack_require__(107);
   
   var _Content2 = _interopRequireDefault(_Content);
   
@@ -4067,11 +4316,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Content2.default)(Content);
 
 /***/ },
-/* 99 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(100);
+      var content = __webpack_require__(108);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -4101,7 +4350,7 @@ module.exports =
     
 
 /***/ },
-/* 100 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -4118,7 +4367,7 @@ module.exports =
   };
 
 /***/ },
-/* 101 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4135,7 +4384,7 @@ module.exports =
   
   var _App2 = _interopRequireDefault(_App);
   
-  var _ErrorPage = __webpack_require__(102);
+  var _ErrorPage = __webpack_require__(110);
   
   var _ErrorPage2 = _interopRequireDefault(_ErrorPage);
   
@@ -4166,7 +4415,7 @@ module.exports =
       */
 
 /***/ },
-/* 102 */
+/* 110 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4183,7 +4432,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _ErrorPage = __webpack_require__(103);
+  var _ErrorPage = __webpack_require__(111);
   
   var _ErrorPage2 = _interopRequireDefault(_ErrorPage);
   
@@ -4239,11 +4488,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_ErrorPage2.default)(ErrorPage);
 
 /***/ },
-/* 103 */
+/* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(104);
+      var content = __webpack_require__(112);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -4273,7 +4522,7 @@ module.exports =
     
 
 /***/ },
-/* 104 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -4287,7 +4536,7 @@ module.exports =
 
 
 /***/ },
-/* 105 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4300,42 +4549,36 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Verifypass = __webpack_require__(106);
+  var _Verifypass = __webpack_require__(114);
   
   var _Verifypass2 = _interopRequireDefault(_Verifypass);
   
-  var _Login = __webpack_require__(88);
+  var _Login = __webpack_require__(91);
   
   var _Login2 = _interopRequireDefault(_Login);
   
-  var _ErrorPage = __webpack_require__(102);
+  var _ErrorPage = __webpack_require__(110);
   
   var _ErrorPage2 = _interopRequireDefault(_ErrorPage);
   
-  var _Home = __webpack_require__(80);
+  var _Home = __webpack_require__(83);
   
   var _Home2 = _interopRequireDefault(_Home);
   
   var _config = __webpack_require__(20);
   
-  var _bluebird = __webpack_require__(33);
-  
-  var _bluebird2 = _interopRequireDefault(_bluebird);
-  
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  //import MongoClient from 'mongodb';
-  
-  var validEmail = false;
-  //import getConnection from '../../scripts/util.js'
-  
+  var request = __webpack_require__(104);
+  var Fiber = __webpack_require__(117);
+  var Future = __webpack_require__(118);
+  var req = Future.wrap(__webpack_require__(104));
+  var res;
   var userEmail;
   var password;
-  var validLogin = true;
-  var dbError = false;
-  var errorMessage;
-  var component;
-  
+  var validLogin;
+  var url;
+  var page;
   exports.default = {
   
     path: '/verifypass',
@@ -4346,86 +4589,50 @@ module.exports =
   
   
       console.log("inside the verifypass");
+      //console.log(JSON.stringify(query));
       userEmail = query.usernameOrEmail;
       password = query.password;
       console.log(userEmail);
       console.log(password);
-      getConnection();
-      // return <Home />;
+      url = 'http://' + _config.apihost + '/checklogin?usernameOrEmail=' + userEmail + '&password=' + password;
+      console.log(url);
+      //console.log('calling API');
+  
+      // var checkLoginWithFuture = Future.wrap(checkLogin);
+  
+      var doFutureWork = function () {
+  
+        console.log("Inside the doFutureWork");
+        //validLogin = body;
+        var results = req(url, function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+            console.log('Response from API' + body);
+            validLogin = body;
+          } else {
+            console.log("Server not responding");
+            validLogin = false;
+          }
+        }).wait();
+  
+        console.log("ValidLogin status: " + validLogin);
+      }.future();
+  
+      console.log('calling checkLogin');
+      doFutureWork();
+      //Fiber.yield();
+      console.log("Done");
+      if (validLogin) {
+        console.log(" Going to Home Page");
+        return _react2.default.createElement(_Home2.default, null);
+      } else {
+        console.log(" Invalid Credential return to Login Page");
+        return _react2.default.createElement(_Login2.default, null);
+      }
     }
   };
-  
-  
-  function getConnection() {
-    var user;
-    var pass;
-    console.log("Inside init() Email: ", userEmail);
-    console.log("Password: ", password);
-    var url = _config.mongodbUrl;
-  
-    var MongoClient = __webpack_require__(109).MongoClient;
-    console.log("DB URL: " + url);
-    // Use connect method to connect to the Server
-    console.log("Trying Connecting to DB");
-    MongoClient.connect(url, function (err, db) {
-      if (err) {
-        console.log(" Server is not running ");
-        dbError = true;
-      } else {
-        dbError = false;
-        //console.log(db);
-        console.log("Connected correctly to server");
-        checkLogin(db);
-      }
-      checkError();
-    });
-  }
-  
-  function checkLogin(db) {
-    var collection = db.collection('userProfile');
-    console.log(db);
-    collection.find({ "userEmail": userEmail, "password": password }).toArray(function (err, docs) {
-      if (err) {
-        console.log(" Error in opening collections");
-        errorMessage = err.message;
-        console.log("DB" + errorMessage);
-        dbError = true;
-      } else {
-        console.log("Found the following records");
-        console.log(docs);
-        console.log("No. of Records: ", docs.length);
-  
-        if (docs.length == 1) //&& docs[0].userEmail == userEmail && docs[0].password == password)
-          validLogin = true;else validLogin = false;
-        console.log("Login Result-init(): " + validLogin);
-        db.close();
-        dbError = false;
-      }
-      checkError();
-    });
-  }
-  
-  function checkError() {
-    console.log("DB Error" + dbError);
-  
-    if (dbError) {
-      //return <Error error={errorMessage} />;
-      throw new Error(errorMessage);
-    }
-  
-    console.log("Login Result: action " + validLogin);
-    if (!validLogin) {
-      console.log("Invalid Login");
-      //alert(" Invalid Login");
-      return _react2.default.createElement(_Login2.default, null);
-    } else {
-      console.log("Valid Login");
-      return _react2.default.createElement(_Home2.default, null);
-    }
-  }
 
 /***/ },
-/* 106 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4442,7 +4649,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _VerifyPass = __webpack_require__(107);
+  var _VerifyPass = __webpack_require__(115);
   
   var _VerifyPass2 = _interopRequireDefault(_VerifyPass);
   
@@ -4492,11 +4699,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_VerifyPass2.default)(VerifyPass);
 
 /***/ },
-/* 107 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(108);
+      var content = __webpack_require__(116);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -4526,7 +4733,7 @@ module.exports =
     
 
 /***/ },
-/* 108 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -4553,13 +4760,19 @@ module.exports =
   };
 
 /***/ },
-/* 109 */
+/* 117 */
 /***/ function(module, exports) {
 
-  module.exports = require("mongodb");
+  module.exports = require("fibers");
 
 /***/ },
-/* 110 */
+/* 118 */
+/***/ function(module, exports) {
+
+  module.exports = require("fibers/future");
+
+/***/ },
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4568,20 +4781,74 @@ module.exports =
     value: true
   });
   
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var checkLogin = function () {
+    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(email) {
+      var request, url;
+      return _regenerator2.default.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              request = __webpack_require__(104);
+  
+              console.log('calling API');
+              url = 'http://' + _config.apihost + '/findemail?email=' + email;
+  
+              console.log("URL: " + url);
+              //return new Promise(function (resolve, reject) {
+              request(url, function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                  console.log('Response from API' + body);
+                  if (body == 'true') {
+                    sendEmail(email);
+                  }
+                  //return resolve(body);
+                } else {
+                    status = false;
+                    console.log("API Server not running: ") + error;
+                  }
+              });
+              //});
+  
+            case 5:
+            case 'end':
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+    return function checkLogin(_x) {
+      return ref.apply(this, arguments);
+    };
+  }();
+  
+  exports.passwordCode = passwordCode;
+  
   var _react = __webpack_require__(43);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Forgotpass = __webpack_require__(111);
+  var _Forgotpass = __webpack_require__(120);
   
   var _Forgotpass2 = _interopRequireDefault(_Forgotpass);
   
-  var _Login = __webpack_require__(114);
+  var _Login = __webpack_require__(123);
   
   var _Login2 = _interopRequireDefault(_Login);
   
+  var _config = __webpack_require__(20);
+  
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
+  var status = true;
+  var validLogin = false;
   exports.default = {
   
     path: '/forgotpass',
@@ -4591,40 +4858,83 @@ module.exports =
       var path = _ref2.path;
   
       var email = query.email;
+  
       console.log("Email ID:" + email);
       if (typeof email === 'undefined') return _react2.default.createElement(_Forgotpass2.default, null);else {
-        sendEmail(email);
-        _react2.default.createElement(_Login2.default, null);
+  
+        validLogin = checkLogin(email);
+      }
+      console.log("Status: " + status);
+      if (status == true) {
+        console.log("Redirected to Login Page");
+        return _react2.default.createElement(_Login2.default, null);
+      } else {
+        console.log("Error in Reseting request");
+        return _react2.default.createElement(_Forgotpass2.default, null);
       }
     }
   };
   
   
   function sendEmail(email) {
-    var nodemailer = __webpack_require__(118);
-  
+    var nodemailer = __webpack_require__(127);
+    var code = passwordCode(6);
     var transporter = nodemailer.createTransport('smtps://dreamtruesolution%40gmail.com:sowmi6050@smtp.gmail.com');
-  
+    console.log("SendEmail Code: " + code);
     // setup e-mail data with unicode symbols
     var mailOptions = {
       from: 'dreamtruesolution@gmail.com', // sender address
       to: email, // list of receivers
-      subject: 'Hello ', // Subject line
+      subject: 'Password Reset ', // Subject line
       text: 'Password Reset Mail ', // plaintext body
-      html: '<b>We received request and click here</b>' // html body
+      html: '<b>We received your request for password Reset. </b> <a href="http://localhost:3000/changepassword?code=' + code + '&userEmail=' + email + '"' + 'target="_blank">click here to reset the password</a>' // html body
     };
   
-    // send mail with defined transport object
+    // send mail with defined transport object 
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
-        return console.log("Error Message' " + error);
+        console.log("Error Message' " + error);
+        status = false;
+      } else {
+        status = true;
+        console.log('Message sent: ' + info.response);
+        storePasscode(email, code);
       }
-      console.log('Message sent: ' + info.response);
+    });
+    console.log("returning");
+  }
+  
+  function passwordCode(length) {
+    var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890";
+    var pass = "";
+    for (var x = 0; x < length; x++) {
+      var i = Math.floor(Math.random() * chars.length);
+      pass += chars.charAt(i);
+    }
+    return pass;
+  }
+  
+  function storePasscode(email, code) {
+    var request = __webpack_require__(104);
+    console.log("Inside storePasscode method email: " + email);
+    console.log("Inside storePasscode method Code: " + code);
+    console.log('calling API');
+    var url = 'http://' + _config.apihost + '/storePasscode';
+    console.log("URL: " + url);
+    request.post(url, { form: { email: email, code: code } }, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('Inside StorePasscode Response from API (body)' + body);
+  
+        if (body == 'true') status = true;
+      } else {
+        console.log("Error in storing passcode");
+        status = false;
+      }
     });
   }
 
 /***/ },
-/* 111 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4641,7 +4951,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Forgotpass = __webpack_require__(112);
+  var _Forgotpass = __webpack_require__(121);
   
   var _Forgotpass2 = _interopRequireDefault(_Forgotpass);
   
@@ -4678,7 +4988,7 @@ module.exports =
         ),
         _react2.default.createElement(
           'form',
-          { name: 'form1', method: 'get', action: 'forgotpass' },
+          { name: 'form1', method: 'put', action: 'forgotpass' },
           _react2.default.createElement(
             'div',
             { className: _Forgotpass2.default.formGroup },
@@ -4692,6 +5002,7 @@ module.exports =
               id: 'email',
               type: 'email',
               name: 'email',
+              placeholder: 'Enter E-mail',
               required: 'required'
             })
           ),
@@ -4712,14 +5023,13 @@ module.exports =
   Forgotpass.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
   
   exports.default = (0, _withStyles2.default)(_Forgotpass2.default)(Forgotpass);
-  //export  { verifypass};
 
 /***/ },
-/* 112 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(113);
+      var content = __webpack_require__(122);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -4749,7 +5059,7 @@ module.exports =
     
 
 /***/ },
-/* 113 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -4776,7 +5086,7 @@ module.exports =
   };
 
 /***/ },
-/* 114 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4789,7 +5099,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Login = __webpack_require__(115);
+  var _Login = __webpack_require__(124);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -4805,7 +5115,7 @@ module.exports =
   };
 
 /***/ },
-/* 115 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4818,7 +5128,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactDom = __webpack_require__(89);
+  var _reactDom = __webpack_require__(92);
   
   var _reactDom2 = _interopRequireDefault(_reactDom);
   
@@ -4826,7 +5136,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Login = __webpack_require__(116);
+  var _Login = __webpack_require__(125);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -4834,7 +5144,7 @@ module.exports =
   
   var _Link2 = _interopRequireDefault(_Link);
   
-  var _formsyReact = __webpack_require__(92);
+  var _formsyReact = __webpack_require__(95);
   
   var _formsyReact2 = _interopRequireDefault(_formsyReact);
   
@@ -5024,11 +5334,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Login2.default)(Login);
 
 /***/ },
-/* 116 */
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(117);
+      var content = __webpack_require__(126);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -5058,7 +5368,7 @@ module.exports =
     
 
 /***/ },
-/* 117 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -5086,13 +5396,13 @@ module.exports =
   };
 
 /***/ },
-/* 118 */
+/* 127 */
 /***/ function(module, exports) {
 
   module.exports = require("nodemailer");
 
 /***/ },
-/* 119 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5105,23 +5415,57 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Changepassword = __webpack_require__(120);
+  var _Changepassword = __webpack_require__(129);
   
   var _Changepassword2 = _interopRequireDefault(_Changepassword);
   
+  var _config = __webpack_require__(20);
+  
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var status = true;
   
   exports.default = {
   
     path: '/changepassword',
   
-    action: function action() {
-      return _react2.default.createElement(_Changepassword2.default, null);
+    action: function action(_ref, _ref2) {
+      var query = _ref.query;
+      var path = _ref2.path;
+  
+  
+      var email = query.userEmail;
+      var code = query.code;
+      console.log("Email ID:" + email);
+      checkCode(code, email);
+      return _react2.default.createElement(_Changepassword2.default, { email: email });
     }
   };
+  
+  
+  function checkCode(code, email) {
+    var request = __webpack_require__(104);
+    console.log('Check Code - calling API');
+    var url = 'http://' + _config.apihost + '/getCode?code=' + code + '&userEmail=' + email;
+    console.log("Change Password -URL: " + url);
+  
+    request(url, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('Change Password - Response from API' + body);
+  
+        if (body == 'true') {
+          //updatePassword();
+          status = true;
+        }
+      } else {
+        status = false;
+        console.log("Change Password -API Server not running: ") + error;
+      }
+    });
+  }
 
 /***/ },
-/* 120 */
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5138,9 +5482,9 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Changepassword = __webpack_require__(121);
+  var _changepassword = __webpack_require__(130);
   
-  var _Changepassword2 = _interopRequireDefault(_Changepassword);
+  var _changepassword2 = _interopRequireDefault(_changepassword);
   
   var _Link = __webpack_require__(61);
   
@@ -5159,15 +5503,17 @@ module.exports =
   
   var title = 'Changing Password';
   
-  function Changepassword(props, context) {
-    //console.log(props);
+  function Changepassword(_ref, context) {
+    var email = _ref.email;
+  
+    console.log("Changepassword: " + email);
     context.setTitle(title);
     return _react2.default.createElement(
       'div',
-      { className: _Changepassword2.default.root },
+      { className: _changepassword2.default.root },
       _react2.default.createElement(
         'div',
-        { className: _Changepassword2.default.container },
+        { className: _changepassword2.default.container },
         _react2.default.createElement(
           'h1',
           null,
@@ -5175,47 +5521,57 @@ module.exports =
         ),
         _react2.default.createElement(
           'form',
-          { name: 'form1', method: 'get', action: 'login' },
+          { name: 'form1', method: 'put', action: 'updatepass' },
           _react2.default.createElement(
             'div',
-            { className: _Changepassword2.default.formGroup },
+            { className: _changepassword2.default.formGroup },
             _react2.default.createElement(
               'label',
-              { className: _Changepassword2.default.label, htmlFor: 'password' },
+              { className: _changepassword2.default.label, htmlFor: 'password' },
               'New Password:'
             ),
             _react2.default.createElement('input', {
-              className: _Changepassword2.default.input,
+              className: _changepassword2.default.input,
               id: 'newpass',
               type: 'password',
               name: 'newpass',
-              autoFocus: true
+              autoFocus: true,
+              required: true
             })
           ),
           _react2.default.createElement(
             'div',
-            { className: _Changepassword2.default.formGroup },
+            { className: _changepassword2.default.formGroup },
             _react2.default.createElement(
               'label',
-              { className: _Changepassword2.default.label, htmlFor: 'password' },
+              { className: _changepassword2.default.label, htmlFor: 'password' },
               'Confirm Password:'
             ),
             _react2.default.createElement('input', {
-              className: _Changepassword2.default.input,
+              className: _changepassword2.default.input,
               id: 'confirmpass',
               type: 'password',
               name: 'confirmpass'
+  
             })
           ),
           _react2.default.createElement(
             'div',
-            { className: _Changepassword2.default.formGroup },
+            { className: _changepassword2.default.formGroup },
             _react2.default.createElement(
               'button',
-              { className: _Changepassword2.default.button, value: 'Send Reset Email', type: 'submit' },
-              'Log in'
-            )
-          )
+              { className: _changepassword2.default.button, value: 'Change Password', type: 'submit' },
+              'Change Password'
+            ),
+            _react2.default.createElement('input', {
+              className: _changepassword2.default.input,
+              id: 'email',
+              type: 'hidden',
+              name: 'email',
+              value: email
+            })
+          ),
+          _react2.default.createElement('script', null)
         )
       )
     );
@@ -5223,15 +5579,14 @@ module.exports =
   
   Changepassword.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
   
-  exports.default = (0, _withStyles2.default)(_Changepassword2.default)(Changepassword);
-  //export  { verifypass};
+  exports.default = (0, _withStyles2.default)(_changepassword2.default)(Changepassword);
 
 /***/ },
-/* 121 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(122);
+      var content = __webpack_require__(131);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -5247,8 +5602,8 @@ module.exports =
       // Only activated in browser context
       if (false) {
         var removeCss = function() {};
-        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Changepassword.css", function() {
-          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Changepassword.css");
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./changepassword.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./changepassword.css");
   
           if (typeof content === 'string') {
             content = [[module.id, content, '']];
@@ -5261,7 +5616,7 @@ module.exports =
     
 
 /***/ },
-/* 122 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -5269,29 +5624,473 @@ module.exports =
   
   
   // module
-  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n.Changepassword_root_1hU {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n.Changepassword_container_3p_ {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n.Changepassword_lead_203 {\n  font-size: 1.25em;\n}\n.Changepassword_formGroup_ejn {\n  margin-bottom: 20px;\n}\n.Changepassword_label_3sI {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n.Changepassword_input_2Y2 {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n.Changepassword_input_2Y2:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Changepassword_button_13A {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.Changepassword_button_13A:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n.Changepassword_button_13A:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Changepassword_facebook_9ak {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n.Changepassword_facebook_9ak:hover {\n  background: #2d4373;\n}\n.Changepassword_google_e9J {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n.Changepassword_google_e9J:hover {\n  background: #c23321;\n}\n.Changepassword_twitter_3sL {\n  border-color: #55acee;\n  background: #55acee;\n}\n.Changepassword_twitter_3sL:hover {\n  background: #2795e9;\n}\n.Changepassword_icon_2Yb {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n.Changepassword_lineThrough_30v {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n.Changepassword_lineThrough_30v::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n.Changepassword_lineThrough_30v::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./routes/changepassword/Changepassword.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;ACPH;;;;;;;GAOG;AAEH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;ADpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;AAED;EACE,kBAAkB;CACnB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;AAED;EACE,mCAAmC;CACpC;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Changepassword.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n","/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
+  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n.changepassword_root_2hw {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n.changepassword_container_vd0 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n.changepassword_lead_337 {\n  font-size: 1.25em;\n}\n.changepassword_formGroup_2cz {\n  margin-bottom: 20px;\n}\n.changepassword_label_1io {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n.changepassword_input_3LT {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n.changepassword_input_3LT:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.changepassword_button_CSn {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.changepassword_button_CSn:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n.changepassword_button_CSn:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.changepassword_facebook_34M {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n.changepassword_facebook_34M:hover {\n  background: #2d4373;\n}\n.changepassword_google_2Ay {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n.changepassword_google_2Ay:hover {\n  background: #c23321;\n}\n.changepassword_twitter_1ce {\n  border-color: #55acee;\n  background: #55acee;\n}\n.changepassword_twitter_1ce:hover {\n  background: #2795e9;\n}\n.changepassword_icon_1iu {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n.changepassword_lineThrough_3gi {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n.changepassword_lineThrough_3gi::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n.changepassword_lineThrough_3gi::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./routes/changepassword/changepassword.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;ACPH;;;;;;;GAOG;AAEH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;ADpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;AAED;EACE,kBAAkB;CACnB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;AAED;EACE,mCAAmC;CACpC;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"changepassword.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n","/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
   
   // exports
   exports.locals = {
-  	"root": "Changepassword_root_1hU",
-  	"container": "Changepassword_container_3p_",
-  	"lead": "Changepassword_lead_203",
-  	"formGroup": "Changepassword_formGroup_ejn",
-  	"label": "Changepassword_label_3sI",
-  	"input": "Changepassword_input_2Y2",
-  	"button": "Changepassword_button_13A",
-  	"facebook": "Changepassword_facebook_9ak Changepassword_button_13A",
-  	"google": "Changepassword_google_e9J Changepassword_button_13A",
-  	"twitter": "Changepassword_twitter_3sL Changepassword_button_13A",
-  	"icon": "Changepassword_icon_2Yb",
-  	"lineThrough": "Changepassword_lineThrough_30v"
+  	"root": "changepassword_root_2hw",
+  	"container": "changepassword_container_vd0",
+  	"lead": "changepassword_lead_337",
+  	"formGroup": "changepassword_formGroup_2cz",
+  	"label": "changepassword_label_1io",
+  	"input": "changepassword_input_3LT",
+  	"button": "changepassword_button_CSn",
+  	"facebook": "changepassword_facebook_34M changepassword_button_CSn",
+  	"google": "changepassword_google_2Ay changepassword_button_CSn",
+  	"twitter": "changepassword_twitter_1ce changepassword_button_CSn",
+  	"icon": "changepassword_icon_1iu",
+  	"lineThrough": "changepassword_lineThrough_3gi"
   };
 
 /***/ },
-/* 123 */
+/* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var extend = __webpack_require__(124);
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Updatepass = __webpack_require__(133);
+  
+  var _Updatepass2 = _interopRequireDefault(_Updatepass);
+  
+  var _Changepassword = __webpack_require__(136);
+  
+  var _Changepassword2 = _interopRequireDefault(_Changepassword);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var status = true;
+  var message = 'Password Sucessfully Updated';
+  
+  exports.default = {
+  
+    path: '/updatepass',
+  
+    action: function action(_ref, _ref2) {
+      var query = _ref.query;
+      var path = _ref2.path;
+  
+  
+      var email = query.email;
+      var newpass = query.newpass;
+      var confirmpass = query.confirmpass;
+      console.log("Email ID:" + email);
+      console.log("New Password: " + newpass);
+      console.log("Confirm Password: " + confirmpass);
+      if (newpass != confirmpass) return _react2.default.createElement(_Changepassword2.default, null);
+      updatePassword(newpass, email);
+      if (status = false) message = ' Error in updating password';
+      return _react2.default.createElement(_Updatepass2.default, { message: message });
+    }
+  };
+  
+  
+  function updatePassword(newpass, email) {
+    var request = __webpack_require__(104);
+    console.log("Inside updatePassword method email: " + email);
+    console.log("Inside updatePassword method Password: " + newpass);
+    console.log('calling API');
+    var url = 'http://' + _config.apihost + '/updatecred?newpass=' + newpass + '&email=' + email;
+    console.log("Update Password - URL: " + url);
+    request.put(url, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('Change Password - Response from API' + body);
+        if (body == 'true') {
+          status = true;
+        } else {
+          status = false;
+          message = 'Error in updating password';
+        }
+      } else {
+        status = false;
+        console.log("Change Password -API Server not running: ") + error;
+      }
+    });
+  }
+
+/***/ },
+/* 133 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _updatepass = __webpack_require__(134);
+  
+  var _updatepass2 = _interopRequireDefault(_updatepass);
+  
+  var _Link = __webpack_require__(61);
+  
+  var _Link2 = _interopRequireDefault(_Link);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  /**
+   * React Starter Kit (https://www.reactstarterkit.com/)
+   *
+   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE.txt file in the root directory of this source tree.
+   */
+  
+  var title = 'Update Password';
+  
+  function Updatepass(_ref, context) {
+    var message = _ref.message;
+  
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      { className: _updatepass2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _updatepass2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          message
+        )
+      )
+    );
+  }
+  
+  Updatepass.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_updatepass2.default)(Updatepass);
+
+/***/ },
+/* 134 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(135);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./updatepass.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./updatepass.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 135 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n.updatepass_root_Q_n {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n.updatepass_container_n8c {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n.updatepass_lead_1Xi {\n  font-size: 1.25em;\n}\n.updatepass_formGroup_1Fj {\n  margin-bottom: 20px;\n}\n.updatepass_label_3lc {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n.updatepass_input_3tg {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n.updatepass_input_3tg:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.updatepass_button_1mT {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.updatepass_button_1mT:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n.updatepass_button_1mT:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.updatepass_facebook_2jX {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n.updatepass_facebook_2jX:hover {\n  background: #2d4373;\n}\n.updatepass_google_1WT {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n.updatepass_google_1WT:hover {\n  background: #c23321;\n}\n.updatepass_twitter_3cW {\n  border-color: #55acee;\n  background: #55acee;\n}\n.updatepass_twitter_3cW:hover {\n  background: #2795e9;\n}\n.updatepass_icon_IAX {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n.updatepass_lineThrough_3LS {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n.updatepass_lineThrough_3LS::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n.updatepass_lineThrough_3LS::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./routes/updatepass/updatepass.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;ACPH;;;;;;;GAOG;AAEH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;ADpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;AAED;EACE,kBAAkB;CACnB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;AAED;EACE,mCAAmC;CACpC;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"updatepass.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n","/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "updatepass_root_Q_n",
+  	"container": "updatepass_container_n8c",
+  	"lead": "updatepass_lead_1Xi",
+  	"formGroup": "updatepass_formGroup_1Fj",
+  	"label": "updatepass_label_3lc",
+  	"input": "updatepass_input_3tg",
+  	"button": "updatepass_button_1mT",
+  	"facebook": "updatepass_facebook_2jX updatepass_button_1mT",
+  	"google": "updatepass_google_1WT updatepass_button_1mT",
+  	"twitter": "updatepass_twitter_3cW updatepass_button_1mT",
+  	"icon": "updatepass_icon_IAX",
+  	"lineThrough": "updatepass_lineThrough_3LS"
+  };
+
+/***/ },
+/* 136 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Changepassword = __webpack_require__(137);
+  
+  var _Changepassword2 = _interopRequireDefault(_Changepassword);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var status = true;
+  
+  exports.default = {
+  
+    path: '/changepassword',
+  
+    action: function action(_ref, _ref2) {
+      var query = _ref.query;
+      var path = _ref2.path;
+  
+  
+      var email = query.userEmail;
+      var code = query.code;
+      console.log("Email ID:" + email);
+      checkCode(code, email);
+      return _react2.default.createElement(_Changepassword2.default, { email: email });
+    }
+  };
+  
+  
+  function checkCode(code, email) {
+    var request = __webpack_require__(104);
+    console.log('Check Code - calling API');
+    var url = 'http://' + _config.apihost + '/getCode?code=' + code + '&userEmail=' + email;
+    console.log("Change Password -URL: " + url);
+  
+    request(url, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('Change Password - Response from API' + body);
+  
+        if (body == 'true') {
+          //updatePassword();
+          status = true;
+        }
+      } else {
+        status = false;
+        console.log("Change Password -API Server not running: ") + error;
+      }
+    });
+  }
+
+/***/ },
+/* 137 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _changepassword = __webpack_require__(138);
+  
+  var _changepassword2 = _interopRequireDefault(_changepassword);
+  
+  var _Link = __webpack_require__(61);
+  
+  var _Link2 = _interopRequireDefault(_Link);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  /**
+   * React Starter Kit (https://www.reactstarterkit.com/)
+   *
+   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE.txt file in the root directory of this source tree.
+   */
+  
+  var title = 'Changing Password';
+  
+  function Changepassword(_ref, context) {
+    var email = _ref.email;
+  
+    console.log("Changepassword: " + email);
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      { className: _changepassword2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _changepassword2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'form',
+          { name: 'form1', method: 'put', action: 'updatepass' },
+          _react2.default.createElement(
+            'div',
+            { className: _changepassword2.default.formGroup },
+            _react2.default.createElement(
+              'label',
+              { className: _changepassword2.default.label, htmlFor: 'password' },
+              'New Password:'
+            ),
+            _react2.default.createElement('input', {
+              className: _changepassword2.default.input,
+              id: 'newpass',
+              type: 'password',
+              name: 'newpass',
+              autoFocus: true,
+              required: true
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _changepassword2.default.formGroup },
+            _react2.default.createElement(
+              'label',
+              { className: _changepassword2.default.label, htmlFor: 'password' },
+              'Confirm Password:'
+            ),
+            _react2.default.createElement('input', {
+              className: _changepassword2.default.input,
+              id: 'confirmpass',
+              type: 'password',
+              name: 'confirmpass'
+  
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _changepassword2.default.formGroup },
+            _react2.default.createElement(
+              'button',
+              { className: _changepassword2.default.button, value: 'Change Password', type: 'submit' },
+              'Change Password'
+            ),
+            _react2.default.createElement('input', {
+              className: _changepassword2.default.input,
+              id: 'email',
+              type: 'hidden',
+              name: 'email',
+              value: email
+            })
+          ),
+          _react2.default.createElement('script', null)
+        )
+      )
+    );
+  }
+  
+  Changepassword.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_changepassword2.default)(Changepassword);
+
+/***/ },
+/* 138 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(139);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./changepassword.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./changepassword.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 139 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n.changepassword_root_2uC {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n.changepassword_container_163 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n.changepassword_lead_2Ab {\n  font-size: 1.25em;\n}\n.changepassword_formGroup_3oV {\n  margin-bottom: 20px;\n}\n.changepassword_label_xjx {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n.changepassword_input_3wQ {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n.changepassword_input_3wQ:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.changepassword_button_inZ {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.changepassword_button_inZ:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n.changepassword_button_inZ:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.changepassword_facebook_3_L {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n.changepassword_facebook_3_L:hover {\n  background: #2d4373;\n}\n.changepassword_google_pzK {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n.changepassword_google_pzK:hover {\n  background: #c23321;\n}\n.changepassword_twitter_1hP {\n  border-color: #55acee;\n  background: #55acee;\n}\n.changepassword_twitter_1hP:hover {\n  background: #2795e9;\n}\n.changepassword_icon_1K0 {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n.changepassword_lineThrough_qhm {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n.changepassword_lineThrough_qhm::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n.changepassword_lineThrough_qhm::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./routes/Changepassword/changepassword.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;ACPH;;;;;;;GAOG;AAEH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;ADpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;AAED;EACE,kBAAkB;CACnB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;AAED;EACE,mCAAmC;CACpC;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"changepassword.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n","/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "changepassword_root_2uC",
+  	"container": "changepassword_container_163",
+  	"lead": "changepassword_lead_2Ab",
+  	"formGroup": "changepassword_formGroup_3oV",
+  	"label": "changepassword_label_xjx",
+  	"input": "changepassword_input_3wQ",
+  	"button": "changepassword_button_inZ",
+  	"facebook": "changepassword_facebook_3_L changepassword_button_inZ",
+  	"google": "changepassword_google_pzK changepassword_button_inZ",
+  	"twitter": "changepassword_twitter_1hP changepassword_button_inZ",
+  	"icon": "changepassword_icon_1K0",
+  	"lineThrough": "changepassword_lineThrough_qhm"
+  };
+
+/***/ },
+/* 140 */
+/***/ function(module, exports, __webpack_require__) {
+
+  var extend = __webpack_require__(141);
   
   function Assets(options) {
     if (!(this instanceof Assets)) {
@@ -5303,7 +6102,7 @@ module.exports =
   }
   
   ['data', 'path', 'size', 'url'].forEach(function (resolver) {
-    Assets[resolver] = __webpack_require__(125)("./" + resolver);
+    Assets[resolver] = __webpack_require__(142)("./" + resolver);
     Assets.prototype[resolver] = function (path, callback) {
       return Assets[resolver](path, this.options, callback);
     };
@@ -5313,42 +6112,42 @@ module.exports =
 
 
 /***/ },
-/* 124 */
+/* 141 */
 /***/ function(module, exports) {
 
   module.exports = require("lodash/object/extend");
 
 /***/ },
-/* 125 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
   var map = {
-  	"./__utils__/composeAbsolutePathname": 126,
-  	"./__utils__/composeAbsolutePathname.js": 126,
-  	"./__utils__/composeQueryString": 130,
-  	"./__utils__/composeQueryString.js": 130,
-  	"./__utils__/composeRelativePathname": 131,
-  	"./__utils__/composeRelativePathname.js": 131,
-  	"./__utils__/convertPathToUrl": 127,
-  	"./__utils__/convertPathToUrl.js": 127,
-  	"./__utils__/defaultCachebuster": 132,
-  	"./__utils__/defaultCachebuster.js": 132,
-  	"./__utils__/encodeBuffer": 133,
-  	"./__utils__/encodeBuffer.js": 133,
-  	"./__utils__/ensureTrailingSlash": 128,
-  	"./__utils__/ensureTrailingSlash.js": 128,
-  	"./__utils__/exists": 134,
-  	"./__utils__/exists.js": 134,
-  	"./data": 135,
-  	"./data.js": 135,
-  	"./index": 123,
-  	"./index.js": 123,
-  	"./path": 137,
-  	"./path.js": 137,
-  	"./size": 141,
-  	"./size.js": 141,
-  	"./url": 143,
-  	"./url.js": 143
+  	"./__utils__/composeAbsolutePathname": 143,
+  	"./__utils__/composeAbsolutePathname.js": 143,
+  	"./__utils__/composeQueryString": 147,
+  	"./__utils__/composeQueryString.js": 147,
+  	"./__utils__/composeRelativePathname": 148,
+  	"./__utils__/composeRelativePathname.js": 148,
+  	"./__utils__/convertPathToUrl": 144,
+  	"./__utils__/convertPathToUrl.js": 144,
+  	"./__utils__/defaultCachebuster": 149,
+  	"./__utils__/defaultCachebuster.js": 149,
+  	"./__utils__/encodeBuffer": 150,
+  	"./__utils__/encodeBuffer.js": 150,
+  	"./__utils__/ensureTrailingSlash": 145,
+  	"./__utils__/ensureTrailingSlash.js": 145,
+  	"./__utils__/exists": 151,
+  	"./__utils__/exists.js": 151,
+  	"./data": 152,
+  	"./data.js": 152,
+  	"./index": 140,
+  	"./index.js": 140,
+  	"./path": 154,
+  	"./path.js": 154,
+  	"./size": 158,
+  	"./size.js": 158,
+  	"./url": 160,
+  	"./url.js": 160
   };
   function webpackContext(req) {
   	return __webpack_require__(webpackContextResolve(req));
@@ -5361,17 +6160,17 @@ module.exports =
   };
   webpackContext.resolve = webpackContextResolve;
   module.exports = webpackContext;
-  webpackContext.id = 125;
+  webpackContext.id = 142;
 
 
 /***/ },
-/* 126 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(127);
-  var ensureTrailingSlash = __webpack_require__(128);
+  var convertPathToUrl = __webpack_require__(144);
+  var ensureTrailingSlash = __webpack_require__(145);
   var path = __webpack_require__(4);
-  var url = __webpack_require__(129);
+  var url = __webpack_require__(146);
   
   module.exports = function (baseUrl, basePath, resolvedPath) {
     var from = ensureTrailingSlash(baseUrl);
@@ -5381,7 +6180,7 @@ module.exports =
 
 
 /***/ },
-/* 127 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
   var sep = __webpack_require__(4).sep;
@@ -5392,12 +6191,12 @@ module.exports =
 
 
 /***/ },
-/* 128 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(127);
+  var convertPathToUrl = __webpack_require__(144);
   var path = __webpack_require__(4);
-  var url = __webpack_require__(129);
+  var url = __webpack_require__(146);
   
   module.exports = function (urlStr) {
     var urlObj = url.parse(urlStr);
@@ -5407,13 +6206,13 @@ module.exports =
 
 
 /***/ },
-/* 129 */
+/* 146 */
 /***/ function(module, exports) {
 
   module.exports = require("url");
 
 /***/ },
-/* 130 */
+/* 147 */
 /***/ function(module, exports) {
 
   module.exports = function (current, addon) {
@@ -5425,10 +6224,10 @@ module.exports =
 
 
 /***/ },
-/* 131 */
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(127);
+  var convertPathToUrl = __webpack_require__(144);
   var path = __webpack_require__(4);
   
   module.exports = function (basePath, relativeTo, resolvedPath) {
@@ -5439,7 +6238,7 @@ module.exports =
 
 
 /***/ },
-/* 132 */
+/* 149 */
 /***/ function(module, exports, __webpack_require__) {
 
   var fs = __webpack_require__(32);
@@ -5451,7 +6250,7 @@ module.exports =
 
 
 /***/ },
-/* 133 */
+/* 150 */
 /***/ function(module, exports) {
 
   module.exports = function (buffer, mediaType) {
@@ -5463,7 +6262,7 @@ module.exports =
 
 
 /***/ },
-/* 134 */
+/* 151 */
 /***/ function(module, exports, __webpack_require__) {
 
   var fs = __webpack_require__(32);
@@ -5476,16 +6275,16 @@ module.exports =
 
 
 /***/ },
-/* 135 */
+/* 152 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var encodeBuffer = __webpack_require__(133);
-  var extend = __webpack_require__(124);
+  var encodeBuffer = __webpack_require__(150);
+  var extend = __webpack_require__(141);
   var fs = __webpack_require__(32);
-  var mime = __webpack_require__(136);
+  var mime = __webpack_require__(153);
   var Promise = __webpack_require__(33);
-  var resolvePath = __webpack_require__(137);
-  var url = __webpack_require__(129);
+  var resolvePath = __webpack_require__(154);
+  var url = __webpack_require__(146);
   
   var preadFile = Promise.promisify(fs.readFile);
   
@@ -5516,20 +6315,20 @@ module.exports =
 
 
 /***/ },
-/* 136 */
+/* 153 */
 /***/ function(module, exports) {
 
   module.exports = require("mime");
 
 /***/ },
-/* 137 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var async = __webpack_require__(138);
-  var exists = __webpack_require__(134);
-  var extend = __webpack_require__(124);
-  var flatten = __webpack_require__(139);
-  var glob = __webpack_require__(140);
+  var async = __webpack_require__(155);
+  var exists = __webpack_require__(151);
+  var extend = __webpack_require__(141);
+  var flatten = __webpack_require__(156);
+  var glob = __webpack_require__(157);
   var path = __webpack_require__(4);
   var Promise = __webpack_require__(33);
   
@@ -5574,30 +6373,30 @@ module.exports =
 
 
 /***/ },
-/* 138 */
+/* 155 */
 /***/ function(module, exports) {
 
   module.exports = require("async");
 
 /***/ },
-/* 139 */
+/* 156 */
 /***/ function(module, exports) {
 
   module.exports = require("lodash/array/flatten");
 
 /***/ },
-/* 140 */
+/* 157 */
 /***/ function(module, exports) {
 
   module.exports = require("glob");
 
 /***/ },
-/* 141 */
+/* 158 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var calipers = __webpack_require__(142)('webp', 'png', 'jpeg', 'gif', 'svg');
+  var calipers = __webpack_require__(159)('webp', 'png', 'jpeg', 'gif', 'svg');
   var Promise = __webpack_require__(33);
-  var resolvePath = __webpack_require__(137);
+  var resolvePath = __webpack_require__(154);
   
   module.exports = function (to, options, callback) {
     if (typeof options === 'function') {
@@ -5620,22 +6419,22 @@ module.exports =
 
 
 /***/ },
-/* 142 */
+/* 159 */
 /***/ function(module, exports) {
 
   module.exports = require("calipers");
 
 /***/ },
-/* 143 */
+/* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var composeAbsolutePathname = __webpack_require__(126);
-  var composeQueryString = __webpack_require__(130);
-  var composeRelativePathname = __webpack_require__(131);
-  var defaultCachebuster = __webpack_require__(132);
-  var extend = __webpack_require__(124);
-  var resolvePath = __webpack_require__(137);
-  var url = __webpack_require__(129);
+  var composeAbsolutePathname = __webpack_require__(143);
+  var composeQueryString = __webpack_require__(147);
+  var composeRelativePathname = __webpack_require__(148);
+  var defaultCachebuster = __webpack_require__(149);
+  var extend = __webpack_require__(141);
+  var resolvePath = __webpack_require__(154);
+  var url = __webpack_require__(146);
   
   module.exports = function (to, options, callback) {
     if (typeof options === 'function') {
@@ -5685,10 +6484,16 @@ module.exports =
 
 
 /***/ },
-/* 144 */
+/* 161 */
+/***/ function(module, exports) {
+
+  module.exports = require("mongodb");
+
+/***/ },
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var jade = __webpack_require__(145);
+  var jade = __webpack_require__(163);
   
   module.exports = function template(locals) {
   var jade_debug = [ new jade.DebugItem( 1, "C:\\dtsolutions\\bmfApp\\src\\views\\index.jade" ) ];
@@ -5791,7 +6596,7 @@ module.exports =
   }
 
 /***/ },
-/* 145 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -6043,10 +6848,10 @@ module.exports =
 
 
 /***/ },
-/* 146 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var jade = __webpack_require__(145);
+  var jade = __webpack_require__(163);
   
   module.exports = function template(locals) {
   var jade_debug = [ new jade.DebugItem( 1, "C:\\dtsolutions\\bmfApp\\src\\views\\error.jade" ) ];
@@ -6325,24 +7130,6 @@ module.exports =
     jade.rethrow(err, jade_debug[0].filename, jade_debug[0].lineno, "doctype html\nhtml(lang=\"en\")\n  head\n    meta(charset=\"utf-8\")\n    title Internal Server Error\n    meta(name=\"viewport\", content=\"width=device-width, initial-scale=1\")\n    style.\n      * {\n        line-height: 1.2;\n        margin: 0;\n      }\n\n      html {\n        color: #888;\n        display: table;\n        font-family: sans-serif;\n        height: 100%;\n        text-align: center;\n        width: 100%;\n      }\n\n      body {\n        display: table-cell;\n        vertical-align: middle;\n        margin: 2em auto;\n      }\n\n      h1 {\n        color: #555;\n        font-size: 2em;\n        font-weight: 400;\n      }\n\n      p {\n        margin: 0 auto;\n        width: 280px;\n      }\n\n      pre {\n        text-align: left;\n        margin-top: 2rem;\n      }\n\n      @media only screen and (max-width: 280px) {\n\n        body, p {\n          width: 95%;\n        }\n\n        h1 {\n          font-size: 1.5em;\n          margin: 0 0 0.3em;\n        }\n\n      }\n\n  body\n    h1 Internal Server Error\n    p Sorry, something went wrong.\n    pre= stack\n// IE needs 512+ bytes: http://blogs.msdn.com/b/ieinternals/archive/2010/08/19/http-error-pages-in-internet-explorer.aspx\n");
   }
   }
-
-/***/ },
-/* 147 */
-/***/ function(module, exports, __webpack_require__) {
-
-  module.exports = __webpack_require__.p + "public/fb.png?637b9a59e490ef651505c74a03122958";
-
-/***/ },
-/* 148 */
-/***/ function(module, exports) {
-
-  module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExOTk0Q0JDNjhBREQ3QkU0OSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFODYxM0VGQUFGMkExMUUxOTBFOUZEM0JFQjVCNTNBRCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFODYxM0VGOUFGMkExMUUxOTBFOUZEM0JFQjVCNTNBRCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgTWFjaW50b3NoIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDM4MDExNzQwNzIwNjgxMThDMTRDQkRDMUUyOEQ1OEQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTk5NENCQzY4QUREN0JFNDkiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5d82l2AAACE0lEQVR42mL8//8/AyWAiYFCwHLgwAEGx0OfBfbb8X7ApgAkB6TqgdgAiB8AcSNQ7QOonAIjQ+MmA0ZmlgX///5xQDcEpBkod+C/qJw+Awc3A8PvnwyMrx59/P/7x3ygtAM/D08bk7yYsOR/BV19oMILQA0GKM5jZU0CyTEISzEwcPMzMAiIMfxXNuBnkFAqYFYxVP7LxhXEpC/B/xRk+n9lQ3kgfR5oyHyQ00AGiEpIyYBtRgbMLAwgA1UEubZ/zjFvZBSbcMBNRMsw9dqnvyFgBR9eMTC8egR07o8HLOLyLH9EZGWwhc3/YEFVYPjdYVEQ4ft+6v7jELAzQQDoTDD+/VPhD46Q52NlvAPSDI7Gk9GG57UUZddgqGJlh2AsQPT/j9NwHzk4OPzi5Bd89ZWJjfH1z/8q/xgY2AjFfY7s/1zFX68fwhPSxQfPbly588D0z58/PIQ0K3Iz7WgyETsJjykQsTHE4C2Qivc5+iXk2ue/+ve//vPA5feJWsx1QP//QDEAKPAHGHV/xCRlWD6wcOsy8Ili1bzJgjPNXoz9/IF7SGkFqLEBSOcD41vg1R+gj3j5UNM6I8MXfQHmtb067AuBmg+DLEOWZwTmRoXjb39rTLn7y+Tml78qz7//V2ZnZvgixMb4Up2H+U6OMtsZS2HWG0C1T9A1wwyAeQWUaXigGKQQ5M8voKQF5WMFAAEGAPZkw8s7EntAAAAAAElFTkSuQmCC"
-
-/***/ },
-/* 149 */
-/***/ function(module, exports) {
-
-  module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAIFSURBVEhLzZY9SCNREMcnkQQ9cn4gWiiC5AqPEwUjWKhgYadWWlkodpYHOTitTkUEc8WW19gIYquFiCCIHhIxigqCXgQbPdKchXAqfkSzzsxO4kvc1S184A/+vHkzs++/b78STywWMyOLUZjbPQIddIdqYKizBTzdPwyTTMLfh6X0thg/J9nMA12DJpkYO3+l9LaEG6vYzEsTY/sEIJXSIl4bYSNIPegVYhk93D9X4hhgb9USxXY9boU47mik9ROYs+Msiu16XAtx3NFoTzuXCI5telwLcTZai3OJ4Nimx7UQfryh4ensVSoDfh4Tl3c8wuGmNRLFZQD+AoB/p5JAqmsBPnyUicLeihjVt0lGIb4lAfK5iQdzopdHYmo5ComLm6xL/OVrBP4k8wFKyiUj7P8Wo9oWyTxhTvZJhNsenuFRzTnREZmGpfM8mQkHUblH98nnUrHLOfBroCt7HTnO+T1CbpLWo6nmVIzVfVYa6vfl+bLXkePECF1zpWKTG13ahm/z6yyKs1DXkePk0qFrrlSUHJ01aWxhI5OnOLN7It2fFvLqjniBnByj9rqovXiPMryUc1l7H0b5PnkflFwGtVeplRYFbGvWC1uInxOd/D+THaXQVacQMZLfDV1C5B7hRKcQb3NFEcDtFX4x8c+EDuHa5OHtDwWhLuABuLvWIlq7PxSER722NIzBJCouAAAAAElFTkSuQmCC"
 
 /***/ }
 /******/ ]);

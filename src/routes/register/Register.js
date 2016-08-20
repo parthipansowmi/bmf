@@ -19,8 +19,8 @@ function Register(props, context) {
     <div className={s.root}>
       <div className={s.container}>
         <h1>{title}</h1>
-        <form name="form1" method="get" action="login" >
-          <div className={s.formGroup} >
+        <form name="form1" method="put" action="savecustomer" >
+          <div classname= {s.leftContainer} >
             <label className={s.label} htmlFor="firstname">
               User First Name:
             </label>
@@ -30,19 +30,44 @@ function Register(props, context) {
               type="text"
               name="firstname"
               autoFocus
+              required
               />
-
-            <label className={s.label} htmlFor="email">
+</div>
+<div classname= {s.rightContainer}>
+            <label className={s.label} htmlFor="Last Name">
               <span>User Last Name: </span>
             </label>
             <input
               className={s.input}
-              id="email"
+              id="lname"
               type="text"
-              name="email"
-
+              name="lname"
+              required
               />
           </div>
+
+          <div>
+          <label className={s.label} htmlFor="address">
+              <span>User Address: </span>
+            </label>
+            <input
+              className={s.input}
+              id="address"
+              type="text"
+              name="address"
+              required
+              />
+            <label className={s.label} htmlFor="zipcode">
+              <span>Zipcode: </span>
+            </label>
+            <input
+            className={s.input}
+              id="zipcode"
+              type="number"
+              name="zipcode"
+              required
+              />  
+            </div>
 
           <div className={s.formGroup} >
             <label className={s.label} htmlFor="email">
@@ -51,23 +76,24 @@ function Register(props, context) {
             <input
               className={s.input}
               id="email"
-              type="text"
+              type="email"
               name="email"
-              autoFocus
-              />
-            <label className={s.label} htmlFor="address">
-              <span>User Address: </span>
+              required
+              /> 
+              <label className={s.label} htmlFor="Phone">
+              phone:
             </label>
             <input
               className={s.input}
-              id="email"
+              id="phone"
               type="text"
-              name="email"
-              />
+              name="phone"
+              required
+              />           
           </div>
           <div className={s.formGroup}>
             <button className={s.button}    value="submit" type="submit" >
-              Log in
+             Register
             </button>
 
           </div>
