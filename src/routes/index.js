@@ -22,6 +22,8 @@ import verifypass from './verifypass'
 import forgotpass from './forgotpass'
 import changepassword from './changepassword'
 import updatepass from './updatepass'
+import serviceprovider from './serviceprovider'
+import saveprovider from './saveprovider'
 
 export default {
 
@@ -37,6 +39,8 @@ export default {
     updatepass,
     register,
     savecustomer,
+    serviceprovider,
+    saveprovider,
     content,
     error
   ],

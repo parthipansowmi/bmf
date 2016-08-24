@@ -9,11 +9,11 @@
 
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Savecustomer.css';
+import s from './Saveprovider.css';
 
 const title = 'New User Registration';
 
-function Savecustomer({message}, context) {
+function Saveprovider({message}, context) {
   context.setTitle(title);
   return (
     <div className={s.root}>
@@ -25,6 +25,6 @@ function Savecustomer({message}, context) {
   );
 }
 
-Savecustomer.contextTypes = { setTitle: PropTypes.func.isRequired };
+Saveprovider.contextTypes = { setTitle: PropTypes.func.isRequired };
 
-export default withStyles(s)(Savecustomer);
+export default withStyles(s)(Saveprovider);

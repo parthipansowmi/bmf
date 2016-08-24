@@ -23,7 +23,7 @@ function Navigation({ className }) {
       <span className={s.spacer}>or</span>
       <Link className={cx(s.link, s.highlight)} to="/register">Sign up</Link>
       <span className={s.spacer}> | </span>
-      <Link className={s.link} to= "/provider">Service Provider Link</Link>
+      <Link className={s.link} to= "/serviceprovider">Service Provider Registration</Link>
     </div>
   );
 }

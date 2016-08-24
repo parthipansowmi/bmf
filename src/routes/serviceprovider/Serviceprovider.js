@@ -9,32 +9,32 @@
 
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Register.css';
+import s from './Serviceprovider.css';
 
-const title = 'New User Registration';
+const title = 'Service Provider Registration';
 
-function Register(props, context) {
+function Serviceprovider(props, context) {
   context.setTitle(title);
   return (
     <div className={s.root}>
       <div className={s.container}>
-        <h1>{title}</h1>
-        <form name="form1" method="put" action="savecustomer" >
+        <h2>{title}</h2>
+        <form name="form1" method="put" action="saveprovider" >
           <div classname= {s.leftContainer} >
             <label className={s.label} htmlFor="firstname">
               User First Name:
-              
             </label>
             <input
               className={s.input}
               id="firstname"
               type="text"
               name="firstname"
+              placeholder="First Name"
               autoFocus
               required
               />
           </div>
-          <div classname= {s.rightContainer}>
+          <div classname= {s.div}>
             <label className={s.label} htmlFor="Last Name">
               <span>User Last Name: </span>
             </label>
@@ -43,6 +43,7 @@ function Register(props, context) {
               id="lname"
               type="text"
               name="lname"
+              placeholder="Last Name"
               required
               />
           </div>
@@ -56,6 +57,7 @@ function Register(props, context) {
               id="address"
               type="text"
               name="address"
+              placeholder="Address"
               required
               />
             <label className={s.label} htmlFor="zipcode">
@@ -66,6 +68,7 @@ function Register(props, context) {
               id="zipcode"
               type="number"
               name="zipcode"
+              placeholder="Zipcode"
               required
               />
           </div>
@@ -79,6 +82,7 @@ function Register(props, context) {
               id="email"
               type="email"
               name="email"
+              placeholder="Your E-mail"
               required
               />
             <label className={s.label} htmlFor="Phone">
@@ -89,12 +93,38 @@ function Register(props, context) {
               id="phone"
               type="text"
               name="phone"
+              placeholder="Mobile Number"
+              required
+              />
+          </div>
+          <div className={s.formGroup} >
+            <label className={s.label} htmlFor="servicetype">
+              Service Type:
+            </label>
+            <input
+              className={s.input}
+              id="servicetype"
+              type="servicetype"
+              name="servicetype"
+              placeholder="Service Type Catering, Astrology etc."
+              required
+              />
+            </div>
+            
+            <div>
+            <label className={s.label} htmlFor="serve">
+              Serve Outside:
+            </label>
+            <input className={s.squaredOne}
+              id="serveoutside"
+              type="checkbox"
+              name="serveoutside"
               required
               />
           </div>
           <div className={s.formGroup}>
             <button className={s.button}    value="submit" type="submit" >
-              Register
+              Serviceprovider
             </button>
 
           </div>
@@ -106,6 +136,6 @@ function Register(props, context) {
   );
 }
 
-Register.contextTypes = { setTitle: PropTypes.func.isRequired };
+Serviceprovider.contextTypes = { setTitle: PropTypes.func.isRequired };
 
-export default withStyles(s)(Register);
+export default withStyles(s)(Serviceprovider);

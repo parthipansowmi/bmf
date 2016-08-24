@@ -8,12 +8,11 @@
  */
 
 import React from 'react';
-import Savecustomer from './Savecustomer';
+import Saveprovider from './Saveprovider';
 import Login from '../Login';
 import { apihost } from '../../config';
 
-var message = 'Sucessfully Registered. ';
-var redirectlink = '<a href="http://'+apihost+'/login" >Click here to login</a>'
+var message = 'Sucessfully Registered. <a href="http://'+apihost+'/login" >Click here to login</a>';
 var status = true;
 var fn;
 var ln;
@@ -21,10 +20,12 @@ var address;
 var email;
 var phone;
 var zipcode;
+var type;
+var serve;
 
 export default {
 
-  path: '/savecustomer',
+  path: '/saveprovider',
 
   action({query}, {path}) {
     console.log("Query String: " + JSON.stringify(query));
@@ -36,27 +37,26 @@ export default {
     zipcode = query.zipcode;
     phone = query.phone;
     email = query.email;
-    saveCustomerData(query);
+    SaveproviderData(query);
     if (!status) {
       message = 'Error in Saving Customer Data';
-      redirectlink = '<a href="http://'+apihost+'/register" >Click here to Register.</a>';
     }
-    return <Savecustomer message={message} />;
+    return <Saveprovider message={message} />;
     //return <Login />;
   },
 
 };
 
-function saveCustomerData(data) {
+function SaveproviderData(data) {
   var request = require('request');
   //console.log("Inside storePasscode method email: " + email);
   // console.log("Inside storePasscode method Code: " + code);
   console.log('calling API');
-  var url = `http://${apihost}/addNewCustomer`;
+  var url = `http://${apihost}/addNewProvider`;
   console.log("URL: " + url);
   request.post(url, {form:  data}, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      console.log('Inside saveCustomerData Response from API (body)' + body);
+      console.log('Inside SaveproviderData Response from API (body)' + body);
 
       if (body == 'true')
         status = true;
