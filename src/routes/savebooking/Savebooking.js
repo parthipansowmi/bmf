@@ -9,7 +9,7 @@
 
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Savecustomer.css';
+import s from './Savebooking.css';
 
 const title = 'New User Registration';
 

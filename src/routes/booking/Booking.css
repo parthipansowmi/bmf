@@ -1,7 +1,4 @@
-
-@import '../../components/variables.css';
-
-.root {
+ .root {
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -18,13 +15,15 @@
 
 .formGroup {
   margin-bottom: 20px;
+  
 }
 
 .label {
-  display: inline-block;
+  
   margin-bottom: 5px;
   max-width: 100%;
   font-weight: 700;
+  float: left;
 }
 
 .input {
@@ -42,6 +41,8 @@
   font-size: 18px;
   line-height: 1.3333333;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  size: 15;
+  max-width: 30; 
 }
 
 .input:focus {
@@ -76,34 +77,12 @@
   box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);
 }
 
-.facebook {
-  border-color: #3b5998;
-  background: #3b5998;
-  composes: button;
+.leftContainer {
+   float:left;
 }
 
-.facebook:hover {
-  background: #2d4373;
-}
-
-.google {
-  border-color: #dd4b39;
-  background: #dd4b39;
-  composes: button;
-}
-
-.google:hover {
-  background: #c23321;
-}
-
-.twitter {
-  border-color: #55acee;
-  background: #55acee;
-  composes: button;
-}
-
-.twitter:hover {
-  background: #2795e9;
+.rightContainer {
+   float:right;
 }
 
 .icon {
@@ -147,4 +126,12 @@
   width: 100%;
   border-bottom: 1px solid #ddd;
   content: '';
+}
+#lastname{
+    max-width:100px;
+    float:left;
+}
+
+.div {
+  float:right;
 }

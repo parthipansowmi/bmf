@@ -10,10 +10,11 @@
 import React from 'react';
 import Savecustomer from './Savecustomer';
 import Login from '../Login';
-import { apihost } from '../../config';
+import { host, apihost } from '../../config';
 
-var message = 'Sucessfully Registered. ';
-var redirectlink = '<a href="http://'+apihost+'/login" >Click here to login</a>'
+var message = 'Sucessfully Registered. '
+var href =  `http://${host}/login`;
+var message1= 'Click here to login'
 var status = true;
 var fn;
 var ln;
@@ -36,12 +37,15 @@ export default {
     zipcode = query.zipcode;
     phone = query.phone;
     email = query.email;
-    saveCustomerData(query);
+    saveCustomerData(query).then( function(status) {
     if (!status) {
       message = 'Error in Saving Customer Data';
-      redirectlink = '<a href="http://'+apihost+'/register" >Click here to Register.</a>';
+      href =  `http://${host}/register`;
+      
+      message1='Click here to Register.';
     }
-    return <Savecustomer message={message} />;
+    console.log("Href: "+href);
+    return <Savecustomer message={message} redirectlink={href} message1={message1} />; } );
     //return <Login />;
   },
 

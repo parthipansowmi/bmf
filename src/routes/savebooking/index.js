@@ -8,11 +8,13 @@
  */
 
 import React from 'react';
-import Saveprovider from './Saveprovider';
+import Savebooking from './Savebooking';
 import Login from '../Login';
-import { apihost, host } from '../../config';
+import { host, apihost } from '../../config';
 
-var message = 'Sucessfully Registered. <a href="http://'+apihost+'/login" >Click here to login</a>';
+var message = 'Sucessfully Registered. '
+var href =  `http://${host}/login`;
+var message1= 'Click here to login'
 var status = true;
 var fn;
 var ln;
@@ -20,15 +22,10 @@ var address;
 var email;
 var phone;
 var zipcode;
-var type;
-var serve;
-var message = 'Sucessfully Registered. '
-var href =  `http://${host}/login`;
-var message1= 'Click here to login'
 
 export default {
 
-  path: '/saveprovider',
+  path: '/savebooking',
 
   action({query}, {path}) {
     console.log("Query String: " + JSON.stringify(query));
@@ -39,29 +36,31 @@ export default {
     address = query.address;
     zipcode = query.zipcode;
     phone = query.phone;
-    email = query.email;-
-    SaveproviderData(query);
+    email = query.email;
+    SavebookingData(query);
     if (!status) {
-      message = 'Error in Provider Data';
-      href = '"http://'+host+'/serviceprovider"';
-      message1= 'Click here to Register'
+      message = 'Error in Saving Customer Data';
+      href =  `http://${host}/register`;
+      
+      message1='Click here to Register.';
     }
-    return <Saveprovider message={message} href={href} message1={message1} />;
+    console.log("Href: "+href);
+    return <Savebooking message={message} redirectlink={href} message1={message1} />;
     //return <Login />;
   },
 
 };
 
-function SaveproviderData(data) {
+function SavebookingData(data) {
   var request = require('request');
   //console.log("Inside storePasscode method email: " + email);
   // console.log("Inside storePasscode method Code: " + code);
   console.log('calling API');
-  var url = `http://${apihost}/addNewProvider`;
+  var url = `http://${apihost}/addNewCustomer`;
   console.log("URL: " + url);
   request.post(url, {form:  data}, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      console.log('Inside SaveproviderData Response from API (body)' + body);
+      console.log('Inside SavebookingData Response from API (body)' + body);
 
       if (body == 'true')
         status = true;
