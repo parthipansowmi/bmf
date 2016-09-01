@@ -11,7 +11,7 @@ import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Savebooking.css';
 
-const title = 'New User Registration';
+const title = 'New Boooking';
 
 function Savecustomer({message, redirectlink, message1}, context) {
   context.setTitle(title);

@@ -1,11 +1,3 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
 
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
@@ -13,84 +5,95 @@ import s from './Booking.css';
 
 const title = 'New Event Booking';
 
-function Register(props, context) {
+function Booking(props, context) {
   context.setTitle(title);
   return (
     <div className={s.root}>
       <div className={s.container}>
         <h1>{title}</h1>
-        <form name="form1" method="put" action="savecustomer" >
+        <form name="form1" method="put" action="savebooking" >
           <div classname= {s.leftContainer} >
-            <label className={s.label} htmlFor="firstname">
-              User First Name:
-              
+            <label className={s.label} htmlFor="dateofbooking">
+              Date of Booking:
             </label>
             <input
               className={s.input}
-              id="firstname"
-              type="text"
-              name="firstname"
+              id="dateofbooking"
+              type="date"
+              name="dateofbooking"
               autoFocus
               required
               />
           </div>
           <div classname= {s.rightContainer}>
-            <label className={s.label} htmlFor="Last Name">
-              <span>User Last Name: </span>
+            <label className={s.label} htmlFor="eventdate">
+              <span>Event Date: </span>
             </label>
             <input
               className={s.input}
-              id="lname"
-              type="text"
-              name="lname"
+              id="functiondate"
+              type="date"
+              name="functiondate"
               required
               />
           </div>
 
           <div>
-            <label className={s.label} htmlFor="address">
-              <span>User Address: </span>
+            <label className={s.label} htmlFor="email">
+              <span>E-mail: </span>
             </label>
             <input
               className={s.input}
               id="address"
-              type="text"
+              type="email"
               name="address"
               required
               />
-            <label className={s.label} htmlFor="zipcode">
-              <span>Zipcode: </span>
+            <label className={s.label} htmlFor="mobile">
+              <span>Mobile Number: </span>
             </label>
             <input
               className={s.input}
-              id="zipcode"
+              id="mobile"
               type="number"
-              name="zipcode"
+              name="mobile"
               required
               />
           </div>
 
           <div className={s.formGroup} >
-            <label className={s.label} htmlFor="email">
-              E-mail:
+            <label className={s.label} htmlFor="catering">
+               Need Catering: 
             </label>
             <input
-              className={s.input}
-              id="email"
-              type="email"
-              name="email"
-              required
+              className={s.squaredOne}
+              id="catering"
+              type="checkbox"
+              name="catering"
+
               />
-            <label className={s.label} htmlFor="Phone">
-              phone:
+           <br/>
+            <label className={s.label} htmlFor="Travel">
+              Need Travel Arrangment:
             </label>
             <input
-              className={s.input}
-              id="phone"
-              type="text"
-              name="phone"
-              required
+              className={s.squaredOne}
+              id="travel"
+              type="checkbox"
+              name="travel"
+              
               />
+          </div>
+          <div>
+            <label className={s.label} htmlFor="Function" >
+              <span>Function: </span>
+            </label>
+            <select name="eventtype">
+              <option value="House Warming">House Warming</option>
+              <option value="Ayush  Homam">Ayush  Homam</option>
+              <option value="opel">60th Birthday</option>
+              <option value="audi">80th Birthday</option>
+            </select>
           </div>
           <div className={s.formGroup}>
             <button className={s.button}    value="submit" type="submit" >
@@ -106,6 +109,6 @@ function Register(props, context) {
   );
 }
 
-Register.contextTypes = { setTitle: PropTypes.func.isRequired };
+Booking.contextTypes = { setTitle: PropTypes.func.isRequired };
 
-export default withStyles(s)(Register);
+export default withStyles(s)(Booking);

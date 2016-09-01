@@ -10,15 +10,13 @@
 import React from 'react';
 import Savebooking from './Savebooking';
 import Login from '../Login';
-import { host, apihost } from '../../config';
+import { host, apihost, smsAPIKey, SMSmessage } from '../../config';
+var request = require('request');
 
 var message = 'Sucessfully Registered. '
-var href =  `http://${host}/login`;
-var message1= 'Click here to login'
+var href = `http://${host}/login`;
+var message1 = 'Click here to login'
 var status = true;
-var fn;
-var ln;
-var address;
 var email;
 var phone;
 var zipcode;
@@ -29,22 +27,16 @@ export default {
 
   action({query}, {path}) {
     console.log("Query String: " + JSON.stringify(query));
+    phone = query.mobile;
     path = '/';
-    fn = query.firstname;
-    console.log(fn);
-    ln = query.lname;
-    address = query.address;
-    zipcode = query.zipcode;
-    phone = query.phone;
-    email = query.email;
     SavebookingData(query);
     if (!status) {
       message = 'Error in Saving Customer Data';
-      href =  `http://${host}/register`;
-      
-      message1='Click here to Register.';
+      href = `http://${host}/register`;
+
+      message1 = 'Click here to Register.';
     }
-    console.log("Href: "+href);
+    console.log("Href: " + href);
     return <Savebooking message={message} redirectlink={href} message1={message1} />;
     //return <Login />;
   },
@@ -52,13 +44,33 @@ export default {
 };
 
 function SavebookingData(data) {
-  var request = require('request');
-  //console.log("Inside storePasscode method email: " + email);
-  // console.log("Inside storePasscode method Code: " + code);
+
   console.log('calling API');
-  var url = `http://${apihost}/addNewCustomer`;
+  var url = `http://${apihost}/newBooking`;
   console.log("URL: " + url);
-  request.post(url, {form:  data}, function (error, response, body) {
+  request.post(url, { form: data }, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log('Inside SavebookingData Response from API (body)' + body);
+
+      if (body == 'true')
+        status = true;
+        sendSMS();
+    }
+    else {
+      console.log("Error in storing customer data");
+      status = false;
+    }
+
+  });
+  console.log('returning');
+}
+
+function sendSMS() {
+  console.log('calling API');
+  
+  var url = `http://${apihost}/sendSMS?authkey=`+ smsAPIKey+'&mobiles='+ phone +'&message='+SMSmessage+'&sender=DTSBMF&route=4&country=91';
+  console.log("URL: " + url);
+  request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log('Inside SavebookingData Response from API (body)' + body);
 
@@ -66,11 +78,9 @@ function SavebookingData(data) {
         status = true;
     }
     else {
-      console.log("Error in storing customer data");
+      console.log("Error in Sending SMS");
       status = false;
     }
 
-
   });
-console.log('returning');
 }

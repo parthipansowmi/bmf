@@ -6,6 +6,8 @@ export const apihost = process.env.WEBSITE_HOSTNAME || `localhost:${apiport}`;
 
 export const databaseUrl = process.env.DATABASE_URL || 'sqlite:database.sqlite';
 export const mongodbUrl = process.env.mongo_URL || 'mongodb://localhost:27017/bmf';
+export const smsAPIKey = process.env.sms_APIKEY || '123775A0EfpcTgrR57c6a923';
+export const  SMSmessage = process.env.sms_message || 'Thank you booking the event';
 export const analytics = {
 
   // https://analytics.google.com/

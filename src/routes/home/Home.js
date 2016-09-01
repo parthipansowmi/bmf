@@ -19,7 +19,7 @@ function Home({ news }, context) {
   context.setTitle(title);
   return (
     <div >
-      <Link className={s.link} to="/about">Home Function</Link>
+      <Link className={s.link} to="/booking">Home Function</Link>
       
       <Link className={s.link} to="/contact">Astrology</Link>
      <br/>
