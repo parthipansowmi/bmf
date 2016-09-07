@@ -11,12 +11,12 @@ function Header() {
   return (
     <div className={s.root}>
       <div className={s.container}>
-        <Navigation className={s.nav} />
+        
         <Link className={s.brand} to="/">
-          <img src={logoUrl} width="38" height="38" alt="React" />
+          <img src={logoUrl} width="38" height="38" align="left" alt="React" />
           <span className={s.brandTxt}>Dream True Solutions</span>
         </Link>
-      
+        <Navigation className={s.nav} />
       </div>
     </div>
   );

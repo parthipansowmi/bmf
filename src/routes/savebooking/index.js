@@ -13,7 +13,7 @@ import Login from '../Login';
 import { host, apihost, smsAPIKey, SMSmessage } from '../../config';
 var request = require('request');
 
-var message = 'Sucessfully Registered. '
+var message = 'Booking done Sucessfully  '
 var href = `http://${host}/login`;
 var message1 = 'Click here to login'
 var status = true;

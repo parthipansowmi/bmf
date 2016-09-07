@@ -26,6 +26,7 @@ import serviceprovider from './serviceprovider'
 import saveprovider from './saveprovider'
 import booking from './booking';
 import savebooking from './savebooking'
+import providerlogin from './providerlogin'
 
 export default {
 
@@ -35,6 +36,7 @@ export default {
     home,
     contact,
     login,
+    providerlogin,
     verifypass,
     forgotpass,
     changepassword,

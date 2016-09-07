@@ -19,16 +19,18 @@
 .brand {
   color: color(var(--brand-color) lightness(+10%));
   text-decoration: none;
-  font-size: 1.75em; /* ~28px */
+  font-size: 1.10em; /* ~28px */
 }
 
 .brandTxt {
-  margin-left: 10px;
+  margin-left: 1px;
 }
 
 .nav {
   float: right;
-  margin-top: 6px;
+  margin-top: 2px;
+  margin-right: 0px;
+  padding-right: 2px;
 }
 
 .banner {
@@ -37,7 +39,7 @@
 
 .bannerTitle {
   margin: 0;
-  padding: 10px;
+  padding: 5px;
   font-weight: normal;
   font-size: 2em;
   line-height: 1em;
