@@ -1,4 +1,11 @@
-
+/**
+ * React Starter Kit (https://www.reactstarterkit.com/)
+ *
+ * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
 @import '../../components/variables.css';
 
 .root {
@@ -10,7 +17,6 @@
   margin: 0 auto;
   padding: 0 0 40px;
   max-width: 380px;
-  max-height: 580px
 }
 
 .lead {
@@ -18,7 +24,7 @@
 }
 
 .formGroup {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .label {
@@ -33,10 +39,10 @@
   box-sizing: border-box;
   padding: 10px 16px;
   width: 100%;
-  height: 26px;
+  height: 46px;
   outline: 0;
   border: 1px solid #ccc;
-  border-radius: 0;
+  border-radius: 10;
   background: #fff;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   color: #616161;
@@ -55,8 +61,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 10px 16px;
-  width: 80%;
-  outline: 10;
+  width: 100%;
+  outline: 0;
   border: 1px solid #373277;
   border-radius: 0;
   background: #373277;
@@ -64,23 +70,6 @@
   text-align: center;
   text-decoration: none;
   font-size: 18px;
-  line-height: 1.3333333;
-  cursor: pointer;
-}
-.button1 {
-  display: block;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 10px 16px;
-  width: 50%;
-  outline: 0;
-  border: 1px solid #373277;
-  border-radius: 0;
-  background: #373388;
-  color: #fff;
-  text-align: center;
-  text-decoration: none;
-  font-size: 14px;
   line-height: 1.3333333;
   cursor: pointer;
 }

@@ -112,7 +112,7 @@ module.exports =
   
   var _routes2 = _interopRequireDefault(_routes);
   
-  var _assets = __webpack_require__(156);
+  var _assets = __webpack_require__(165);
   
   var _assets2 = _interopRequireDefault(_assets);
   
@@ -120,7 +120,7 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var mongodb = __webpack_require__(177); // eslint-disable-line import/no-unresolved
+  var mongodb = __webpack_require__(186); // eslint-disable-line import/no-unresolved
   
   
   var app = (0, _express2.default)();
@@ -192,7 +192,7 @@ module.exports =
                       case 0:
                         css = [];
                         statusCode = 200;
-                        template = __webpack_require__(178); // eslint-disable-line global-require
+                        template = __webpack_require__(187); // eslint-disable-line global-require
   
                         data = { title: '', description: '', css: '', body: '', entry: 'assets.main.js' }; //assets.main.js
   
@@ -271,7 +271,7 @@ module.exports =
   app.use(function (err, req, res, next) {
     // eslint-disable-line no-unused-vars
     console.log(pe.render(err)); // eslint-disable-line no-console
-    var template = __webpack_require__(180); // eslint-disable-line global-require
+    var template = __webpack_require__(189); // eslint-disable-line global-require
     var statusCode = err.status || 500;
     res.status(statusCode);
     res.send(template({
@@ -1676,27 +1676,21 @@ module.exports =
   
   var _savebooking2 = _interopRequireDefault(_savebooking);
   
-  var _providerlogin = __webpack_require__(181);
+  var _providerlogin = __webpack_require__(156);
   
   var _providerlogin2 = _interopRequireDefault(_providerlogin);
   
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  var _verifyproviderlogin = __webpack_require__(160);
   
-  // Child routes
-  /**
-   * React Starter Kit (https://www.reactstarterkit.com/)
-   *
-   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE.txt file in the root directory of this source tree.
-   */
+  var _verifyproviderlogin2 = _interopRequireDefault(_verifyproviderlogin);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
   exports.default = {
   
     path: '/',
   
-    children: [_home2.default, _contact2.default, _login2.default, _providerlogin2.default, _verifypass2.default, _forgotpass2.default, _changepassword2.default, _updatepass2.default, _register2.default, _savecustomer2.default, _serviceprovider2.default, _saveprovider2.default, _booking2.default, _savebooking2.default, _content2.default, _error2.default],
+    children: [_home2.default, _contact2.default, _login2.default, _providerlogin2.default, _verifypass2.default, _verifyproviderlogin2.default, _forgotpass2.default, _changepassword2.default, _updatepass2.default, _register2.default, _savecustomer2.default, _serviceprovider2.default, _saveprovider2.default, _booking2.default, _savebooking2.default, _content2.default, _error2.default],
   
     action: function action(_ref) {
       var _this = this;
@@ -1739,6 +1733,16 @@ module.exports =
       }))();
     }
   };
+  
+  // Child routes
+  /**
+   * React Starter Kit (https://www.reactstarterkit.com/)
+   *
+   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE.txt file in the root directory of this source tree.
+   */
 
 /***/ },
 /* 43 */
@@ -3929,6 +3933,8 @@ module.exports =
    * LICENSE.txt file in the root directory of this source tree.
    */
   
+  var request = __webpack_require__(108);
+  
   var message = 'Sucessfully Registered. ';
   var href = 'http://' + _config.host + '/login';
   var message1 = 'Click here to login';
@@ -3949,6 +3955,7 @@ module.exports =
       var path = _ref2.path;
   
       console.log("Query String: " + (0, _stringify2.default)(query));
+  
       path = '/';
       fn = query.firstname;
       console.log(fn);
@@ -3957,25 +3964,23 @@ module.exports =
       zipcode = query.zipcode;
       phone = query.phone;
       email = query.email;
-      saveCustomerData(query).then(function (status) {
-        if (!status) {
-          message = 'Error in Saving Customer Data';
-          href = 'http://' + _config.host + '/register';
+      saveCustomerData(query); //.then(function (status) {
+      if (!status) {
+        message = 'Error in Saving Customer Data';
+        href = 'http://' + _config.host + '/register';
   
-          message1 = 'Click here to Register.';
-        }
-        console.log("Href: " + href);
-        return _react2.default.createElement(_Savecustomer2.default, { message: message, redirectlink: href, message1: message1 });
-      });
-      //return <Login />;
+        message1 = 'Click here to Register.';
+      }
+      console.log("Href: " + href);
+      return _react2.default.createElement(_Savecustomer2.default, { message: message, redirectlink: href, message1: message1 });
+      // });
+      // return <Login />;
     }
   };
   
   
   function saveCustomerData(data) {
-    var request = __webpack_require__(108);
-    //console.log("Inside storePasscode method email: " + email);
-    // console.log("Inside storePasscode method Code: " + code);
+    // var request = require('request');
     console.log('calling API');
     var url = 'http://' + _config.apihost + '/addNewCustomer';
     console.log("URL: " + url);
@@ -3983,13 +3988,48 @@ module.exports =
       if (!error && response.statusCode == 200) {
         console.log('Inside saveCustomerData Response from API (body)' + body);
   
-        if (body == 'true') status = true;
+        if (body == 'true') {
+          status = true;
+          url = 'http://' + _config.apihost + '/generatePass?length=6';
+          var password = getPassword(url);
+          console.log("generated Password: " + password);
+        }
       } else {
         console.log("Error in storing customer data");
         status = false;
       }
     });
     console.log('returning');
+  }
+  
+  function getPassword(url) {
+    console.log("URL: " + url);
+    request(url, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('generate Password - Response from API' + body);
+        saveLogin(body);
+      } else {
+  
+        console.log("Get Password -API Server not running: ") + error;
+        return '';
+      }
+    });
+  }
+  
+  function saveLogin(password) {
+    var data = { "userEmail": email, "password": password };
+    console.log("Data: " + data);
+    var url = 'http://' + _config.apihost + '/addcred';
+    //var url = `http://${apihost}/addcred';
+    request.post(url, { form: data }, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('saveLogin Password - Response from API' + body);
+        status = true;
+      } else {
+        status = false;
+        console.log("Change Password -API Server not running: ") + error;
+      }
+    });
   }
 
 /***/ },
@@ -6969,7 +7009,6 @@ module.exports =
       if (!status) {
         message = 'Error in Saving Customer Data';
         href = 'http://' + _config.host + '/register';
-  
         message1 = 'Click here to Register.';
       }
       console.log("Href: " + href);
@@ -7150,7 +7189,568 @@ module.exports =
 /* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var extend = __webpack_require__(157);
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _providerlogin = __webpack_require__(157);
+  
+  var _providerlogin2 = _interopRequireDefault(_providerlogin);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  exports.default = {
+  
+    path: '/providerlogin',
+  
+    action: function action() {
+      return _react2.default.createElement(_providerlogin2.default, null);
+    }
+  };
+
+/***/ },
+/* 157 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _reactDom = __webpack_require__(92);
+  
+  var _reactDom2 = _interopRequireDefault(_reactDom);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Providerlogin = __webpack_require__(158);
+  
+  var _Providerlogin2 = _interopRequireDefault(_Providerlogin);
+  
+  var _Link = __webpack_require__(61);
+  
+  var _Link2 = _interopRequireDefault(_Link);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'Entering Credentials';
+  
+  function Providerlogin(props, context) {
+    context.setTitle(title);
+  
+    return _react2.default.createElement(
+      'div',
+      { className: _Providerlogin2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Providerlogin2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'p',
+          { className: _Providerlogin2.default.lead },
+          'Log in with your username or email address.'
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _Providerlogin2.default.formGroup },
+          _react2.default.createElement(
+            'form',
+            { name: 'form1', method: 'get', action: 'verifyproviderlogin' },
+            _react2.default.createElement(
+              'div',
+              { className: _Providerlogin2.default.formGroup },
+              _react2.default.createElement(
+                'label',
+                { className: _Providerlogin2.default.label, htmlFor: 'usernameOrEmail' },
+                'Username or email address:'
+              ),
+              _react2.default.createElement('input', {
+                className: _Providerlogin2.default.input,
+                id: 'email',
+                type: 'email',
+                name: 'email',
+                required: 'required',
+                autoFocus: true
+              })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: _Providerlogin2.default.formGroup },
+              _react2.default.createElement(
+                'label',
+                { className: _Providerlogin2.default.label, htmlFor: 'password' },
+                'Password:'
+              ),
+              _react2.default.createElement('input', {
+                className: _Providerlogin2.default.input,
+                id: 'password',
+                type: 'password',
+                name: 'password',
+                required: 'required'
+              })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: _Providerlogin2.default.formGroup },
+              _react2.default.createElement(
+                'button',
+                { className: _Providerlogin2.default.button1, type: 'submit' },
+                'Log in'
+              ),
+              _react2.default.createElement(
+                _Link2.default,
+                { to: '/forgotpass' },
+                'Forgot Password'
+              ),
+              _react2.default.createElement(
+                'span',
+                { className: _Providerlogin2.default.spacer },
+                ' | '
+              ),
+              _react2.default.createElement(
+                _Link2.default,
+                { to: '/register' },
+                'Sign Up'
+              )
+            )
+          )
+        )
+      )
+    );
+  }
+  
+  Providerlogin.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Providerlogin2.default)(Providerlogin);
+
+/***/ },
+/* 158 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(159);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Providerlogin.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Providerlogin.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.Providerlogin_root_2kF {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Providerlogin_container_20Q {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height: 580px\n}\n\n.Providerlogin_lead_3Nd {\n  font-size: 1.25em;\n}\n\n.Providerlogin_formGroup_lA5 {\n  margin-bottom: 15px;\n}\n\n.Providerlogin_label_15r {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.Providerlogin_input_2Ay {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.Providerlogin_input_2Ay:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Providerlogin_button_2il {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 80%;\n  outline: 10;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Providerlogin_button1_120 {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373388;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Providerlogin_button_2il:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Providerlogin_button_2il:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Providerlogin_facebook_1jW {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n\n.Providerlogin_facebook_1jW:hover {\n  background: #2d4373;\n}\n\n.Providerlogin_google_1Ct {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n\n.Providerlogin_google_1Ct:hover {\n  background: #c23321;\n}\n\n.Providerlogin_twitter_3bX {\n  border-color: #55acee;\n  background: #55acee;\n}\n\n.Providerlogin_twitter_3bX:hover {\n  background: #2795e9;\n}\n\n.Providerlogin_icon_3e1 {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Providerlogin_lineThrough_1ur {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Providerlogin_lineThrough_1ur::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Providerlogin_lineThrough_1ur::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/providerlogin/Providerlogin.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;EACjB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,iBAAiB;EACjB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,YAAY;EACZ,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AACD;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Providerlogin.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height: 580px\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 15px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 80%;\n  outline: 10;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.button1 {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373388;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Providerlogin_root_2kF",
+  	"container": "Providerlogin_container_20Q",
+  	"lead": "Providerlogin_lead_3Nd",
+  	"formGroup": "Providerlogin_formGroup_lA5",
+  	"label": "Providerlogin_label_15r",
+  	"input": "Providerlogin_input_2Ay",
+  	"button": "Providerlogin_button_2il",
+  	"button1": "Providerlogin_button1_120",
+  	"facebook": "Providerlogin_facebook_1jW Providerlogin_button_2il",
+  	"google": "Providerlogin_google_1Ct Providerlogin_button_2il",
+  	"twitter": "Providerlogin_twitter_3bX Providerlogin_button_2il",
+  	"icon": "Providerlogin_icon_3e1",
+  	"lineThrough": "Providerlogin_lineThrough_1ur"
+  };
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Verifyproviderlogin = __webpack_require__(161);
+  
+  var _Verifyproviderlogin2 = _interopRequireDefault(_Verifyproviderlogin);
+  
+  var _Providerlogin = __webpack_require__(164);
+  
+  var _Providerlogin2 = _interopRequireDefault(_Providerlogin);
+  
+  var _ErrorPage = __webpack_require__(114);
+  
+  var _ErrorPage2 = _interopRequireDefault(_ErrorPage);
+  
+  var _Home = __webpack_require__(83);
+  
+  var _Home2 = _interopRequireDefault(_Home);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var req = __webpack_require__(108);
+  /*var Fiber = require('fibers');
+  var Future = require('fibers/future');
+  var req = Future.wrap(require('request'));*/
+  var res;
+  var userEmail;
+  var password;
+  var validLogin = true;
+  var url;
+  
+  exports.default = {
+  
+    path: '/verifyproviderlogin',
+  
+    action: function action(_ref, _ref2) {
+      var query = _ref.query;
+      var path = _ref2.path;
+  
+  
+      console.log("inside the verifypass");
+      //console.log(JSON.stringify(query));
+      userEmail = query.email;
+      password = query.password;
+      console.log(userEmail);
+      console.log(password);
+  
+      console.log('calling checkLogin');
+      checklogin();
+      if (validLogin) {
+        console.log(" Going to Home Page");
+        return _react2.default.createElement(_Home2.default, null);
+      } else {
+        console.log(" Invalid Credential return to Login Page");
+        return _react2.default.createElement(_Providerlogin2.default, null);
+      }
+    }
+  };
+  
+  
+  function checklogin() {
+    url = 'http://' + _config.apihost + '/verifylogin?email=' + userEmail + '&password=' + password;
+    console.log("API Endpoing: " + url);
+  
+    var results = req(url, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('Response from API' + body);
+        validLogin = body;
+      } else {
+        console.log("Server not responding");
+        validLogin = false;
+      }
+    });
+  
+    console.log("ValidLogin status: " + validLogin);
+  }
+
+/***/ },
+/* 161 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Verifyproviderlogin = __webpack_require__(162);
+  
+  var _Verifyproviderlogin2 = _interopRequireDefault(_Verifyproviderlogin);
+  
+  var _me = __webpack_require__(27);
+  
+  var _me2 = _interopRequireDefault(_me);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  /**
+   * React Starter Kit (https://www.reactstarterkit.com/)
+   *
+   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE.txt file in the root directory of this source tree.
+   */
+  
+  var title = 'Verify Credential';
+  
+  function Verifyproviderlogin(props, context) {
+  
+    context.setTitle(title);
+  
+    return _react2.default.createElement(
+      'div',
+      { className: _Verifyproviderlogin2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Verifyproviderlogin2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Password Verified'
+        )
+      )
+    );
+  }
+  
+  Verifyproviderlogin.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Verifyproviderlogin2.default)(Verifyproviderlogin);
+
+/***/ },
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(163);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Verifyproviderlogin.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Verifyproviderlogin.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n.Verifyproviderlogin_root_17V {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n.Verifyproviderlogin_container_1HV {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n.Verifyproviderlogin_lead_1lw {\n  font-size: 1.25em;\n}\n.Verifyproviderlogin_formGroup_bCk {\n  margin-bottom: 20px;\n}\n.Verifyproviderlogin_label_qt5 {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n.Verifyproviderlogin_input_2dV {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n.Verifyproviderlogin_input_2dV:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Verifyproviderlogin_button_25r {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.Verifyproviderlogin_button_25r:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n.Verifyproviderlogin_button_25r:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Verifyproviderlogin_facebook_WUa {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n.Verifyproviderlogin_facebook_WUa:hover {\n  background: #2d4373;\n}\n.Verifyproviderlogin_google_2OY {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n.Verifyproviderlogin_google_2OY:hover {\n  background: #c23321;\n}\n.Verifyproviderlogin_twitter_1Xg {\n  border-color: #55acee;\n  background: #55acee;\n}\n.Verifyproviderlogin_twitter_1Xg:hover {\n  background: #2795e9;\n}\n.Verifyproviderlogin_icon_39U {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n.Verifyproviderlogin_lineThrough_2z_ {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n.Verifyproviderlogin_lineThrough_2z_::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n.Verifyproviderlogin_lineThrough_2z_::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./routes/verifyproviderlogin/Verifyproviderlogin.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;ACLH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;ADbD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;AAED;EACE,kBAAkB;CACnB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;AAED;EACE,mCAAmC;CACpC;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Verifyproviderlogin.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n","\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Verifyproviderlogin_root_17V",
+  	"container": "Verifyproviderlogin_container_1HV",
+  	"lead": "Verifyproviderlogin_lead_1lw",
+  	"formGroup": "Verifyproviderlogin_formGroup_bCk",
+  	"label": "Verifyproviderlogin_label_qt5",
+  	"input": "Verifyproviderlogin_input_2dV",
+  	"button": "Verifyproviderlogin_button_25r",
+  	"facebook": "Verifyproviderlogin_facebook_WUa Verifyproviderlogin_button_25r",
+  	"google": "Verifyproviderlogin_google_2OY Verifyproviderlogin_button_25r",
+  	"twitter": "Verifyproviderlogin_twitter_1Xg Verifyproviderlogin_button_25r",
+  	"icon": "Verifyproviderlogin_icon_39U",
+  	"lineThrough": "Verifyproviderlogin_lineThrough_2z_"
+  };
+
+/***/ },
+/* 164 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _reactDom = __webpack_require__(92);
+  
+  var _reactDom2 = _interopRequireDefault(_reactDom);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Providerlogin = __webpack_require__(158);
+  
+  var _Providerlogin2 = _interopRequireDefault(_Providerlogin);
+  
+  var _Link = __webpack_require__(61);
+  
+  var _Link2 = _interopRequireDefault(_Link);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'Entering Credentials';
+  
+  function Providerlogin(props, context) {
+    context.setTitle(title);
+  
+    return _react2.default.createElement(
+      'div',
+      { className: _Providerlogin2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Providerlogin2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'p',
+          { className: _Providerlogin2.default.lead },
+          'Log in with your username or email address.'
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _Providerlogin2.default.formGroup },
+          _react2.default.createElement(
+            'form',
+            { name: 'form1', method: 'get', action: 'verifyproviderlogin' },
+            _react2.default.createElement(
+              'div',
+              { className: _Providerlogin2.default.formGroup },
+              _react2.default.createElement(
+                'label',
+                { className: _Providerlogin2.default.label, htmlFor: 'usernameOrEmail' },
+                'Username or email address:'
+              ),
+              _react2.default.createElement('input', {
+                className: _Providerlogin2.default.input,
+                id: 'email',
+                type: 'email',
+                name: 'email',
+                required: 'required',
+                autoFocus: true
+              })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: _Providerlogin2.default.formGroup },
+              _react2.default.createElement(
+                'label',
+                { className: _Providerlogin2.default.label, htmlFor: 'password' },
+                'Password:'
+              ),
+              _react2.default.createElement('input', {
+                className: _Providerlogin2.default.input,
+                id: 'password',
+                type: 'password',
+                name: 'password',
+                required: 'required'
+              })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: _Providerlogin2.default.formGroup },
+              _react2.default.createElement(
+                'button',
+                { className: _Providerlogin2.default.button1, type: 'submit' },
+                'Log in'
+              ),
+              _react2.default.createElement(
+                _Link2.default,
+                { to: '/forgotpass' },
+                'Forgot Password'
+              ),
+              _react2.default.createElement(
+                'span',
+                { className: _Providerlogin2.default.spacer },
+                ' | '
+              ),
+              _react2.default.createElement(
+                _Link2.default,
+                { to: '/register' },
+                'Sign Up'
+              )
+            )
+          )
+        )
+      )
+    );
+  }
+  
+  Providerlogin.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Providerlogin2.default)(Providerlogin);
+
+/***/ },
+/* 165 */
+/***/ function(module, exports, __webpack_require__) {
+
+  var extend = __webpack_require__(166);
   
   function Assets(options) {
     if (!(this instanceof Assets)) {
@@ -7162,7 +7762,7 @@ module.exports =
   }
   
   ['data', 'path', 'size', 'url'].forEach(function (resolver) {
-    Assets[resolver] = __webpack_require__(158)("./" + resolver);
+    Assets[resolver] = __webpack_require__(167)("./" + resolver);
     Assets.prototype[resolver] = function (path, callback) {
       return Assets[resolver](path, this.options, callback);
     };
@@ -7172,42 +7772,42 @@ module.exports =
 
 
 /***/ },
-/* 157 */
+/* 166 */
 /***/ function(module, exports) {
 
   module.exports = require("lodash/object/extend");
 
 /***/ },
-/* 158 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
   var map = {
-  	"./__utils__/composeAbsolutePathname": 159,
-  	"./__utils__/composeAbsolutePathname.js": 159,
-  	"./__utils__/composeQueryString": 163,
-  	"./__utils__/composeQueryString.js": 163,
-  	"./__utils__/composeRelativePathname": 164,
-  	"./__utils__/composeRelativePathname.js": 164,
-  	"./__utils__/convertPathToUrl": 160,
-  	"./__utils__/convertPathToUrl.js": 160,
-  	"./__utils__/defaultCachebuster": 165,
-  	"./__utils__/defaultCachebuster.js": 165,
-  	"./__utils__/encodeBuffer": 166,
-  	"./__utils__/encodeBuffer.js": 166,
-  	"./__utils__/ensureTrailingSlash": 161,
-  	"./__utils__/ensureTrailingSlash.js": 161,
-  	"./__utils__/exists": 167,
-  	"./__utils__/exists.js": 167,
-  	"./data": 168,
-  	"./data.js": 168,
-  	"./index": 156,
-  	"./index.js": 156,
-  	"./path": 170,
-  	"./path.js": 170,
-  	"./size": 174,
-  	"./size.js": 174,
-  	"./url": 176,
-  	"./url.js": 176
+  	"./__utils__/composeAbsolutePathname": 168,
+  	"./__utils__/composeAbsolutePathname.js": 168,
+  	"./__utils__/composeQueryString": 172,
+  	"./__utils__/composeQueryString.js": 172,
+  	"./__utils__/composeRelativePathname": 173,
+  	"./__utils__/composeRelativePathname.js": 173,
+  	"./__utils__/convertPathToUrl": 169,
+  	"./__utils__/convertPathToUrl.js": 169,
+  	"./__utils__/defaultCachebuster": 174,
+  	"./__utils__/defaultCachebuster.js": 174,
+  	"./__utils__/encodeBuffer": 175,
+  	"./__utils__/encodeBuffer.js": 175,
+  	"./__utils__/ensureTrailingSlash": 170,
+  	"./__utils__/ensureTrailingSlash.js": 170,
+  	"./__utils__/exists": 176,
+  	"./__utils__/exists.js": 176,
+  	"./data": 177,
+  	"./data.js": 177,
+  	"./index": 165,
+  	"./index.js": 165,
+  	"./path": 179,
+  	"./path.js": 179,
+  	"./size": 183,
+  	"./size.js": 183,
+  	"./url": 185,
+  	"./url.js": 185
   };
   function webpackContext(req) {
   	return __webpack_require__(webpackContextResolve(req));
@@ -7220,17 +7820,17 @@ module.exports =
   };
   webpackContext.resolve = webpackContextResolve;
   module.exports = webpackContext;
-  webpackContext.id = 158;
+  webpackContext.id = 167;
 
 
 /***/ },
-/* 159 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(160);
-  var ensureTrailingSlash = __webpack_require__(161);
+  var convertPathToUrl = __webpack_require__(169);
+  var ensureTrailingSlash = __webpack_require__(170);
   var path = __webpack_require__(4);
-  var url = __webpack_require__(162);
+  var url = __webpack_require__(171);
   
   module.exports = function (baseUrl, basePath, resolvedPath) {
     var from = ensureTrailingSlash(baseUrl);
@@ -7240,7 +7840,7 @@ module.exports =
 
 
 /***/ },
-/* 160 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
   var sep = __webpack_require__(4).sep;
@@ -7251,12 +7851,12 @@ module.exports =
 
 
 /***/ },
-/* 161 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(160);
+  var convertPathToUrl = __webpack_require__(169);
   var path = __webpack_require__(4);
-  var url = __webpack_require__(162);
+  var url = __webpack_require__(171);
   
   module.exports = function (urlStr) {
     var urlObj = url.parse(urlStr);
@@ -7266,13 +7866,13 @@ module.exports =
 
 
 /***/ },
-/* 162 */
+/* 171 */
 /***/ function(module, exports) {
 
   module.exports = require("url");
 
 /***/ },
-/* 163 */
+/* 172 */
 /***/ function(module, exports) {
 
   module.exports = function (current, addon) {
@@ -7284,10 +7884,10 @@ module.exports =
 
 
 /***/ },
-/* 164 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(160);
+  var convertPathToUrl = __webpack_require__(169);
   var path = __webpack_require__(4);
   
   module.exports = function (basePath, relativeTo, resolvedPath) {
@@ -7298,7 +7898,7 @@ module.exports =
 
 
 /***/ },
-/* 165 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
   var fs = __webpack_require__(32);
@@ -7310,7 +7910,7 @@ module.exports =
 
 
 /***/ },
-/* 166 */
+/* 175 */
 /***/ function(module, exports) {
 
   module.exports = function (buffer, mediaType) {
@@ -7322,7 +7922,7 @@ module.exports =
 
 
 /***/ },
-/* 167 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
   var fs = __webpack_require__(32);
@@ -7335,16 +7935,16 @@ module.exports =
 
 
 /***/ },
-/* 168 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var encodeBuffer = __webpack_require__(166);
-  var extend = __webpack_require__(157);
+  var encodeBuffer = __webpack_require__(175);
+  var extend = __webpack_require__(166);
   var fs = __webpack_require__(32);
-  var mime = __webpack_require__(169);
+  var mime = __webpack_require__(178);
   var Promise = __webpack_require__(33);
-  var resolvePath = __webpack_require__(170);
-  var url = __webpack_require__(162);
+  var resolvePath = __webpack_require__(179);
+  var url = __webpack_require__(171);
   
   var preadFile = Promise.promisify(fs.readFile);
   
@@ -7375,20 +7975,20 @@ module.exports =
 
 
 /***/ },
-/* 169 */
+/* 178 */
 /***/ function(module, exports) {
 
   module.exports = require("mime");
 
 /***/ },
-/* 170 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var async = __webpack_require__(171);
-  var exists = __webpack_require__(167);
-  var extend = __webpack_require__(157);
-  var flatten = __webpack_require__(172);
-  var glob = __webpack_require__(173);
+  var async = __webpack_require__(180);
+  var exists = __webpack_require__(176);
+  var extend = __webpack_require__(166);
+  var flatten = __webpack_require__(181);
+  var glob = __webpack_require__(182);
   var path = __webpack_require__(4);
   var Promise = __webpack_require__(33);
   
@@ -7433,30 +8033,30 @@ module.exports =
 
 
 /***/ },
-/* 171 */
+/* 180 */
 /***/ function(module, exports) {
 
   module.exports = require("async");
 
 /***/ },
-/* 172 */
+/* 181 */
 /***/ function(module, exports) {
 
   module.exports = require("lodash/array/flatten");
 
 /***/ },
-/* 173 */
+/* 182 */
 /***/ function(module, exports) {
 
   module.exports = require("glob");
 
 /***/ },
-/* 174 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var calipers = __webpack_require__(175)('webp', 'png', 'jpeg', 'gif', 'svg');
+  var calipers = __webpack_require__(184)('webp', 'png', 'jpeg', 'gif', 'svg');
   var Promise = __webpack_require__(33);
-  var resolvePath = __webpack_require__(170);
+  var resolvePath = __webpack_require__(179);
   
   module.exports = function (to, options, callback) {
     if (typeof options === 'function') {
@@ -7479,22 +8079,22 @@ module.exports =
 
 
 /***/ },
-/* 175 */
+/* 184 */
 /***/ function(module, exports) {
 
   module.exports = require("calipers");
 
 /***/ },
-/* 176 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var composeAbsolutePathname = __webpack_require__(159);
-  var composeQueryString = __webpack_require__(163);
-  var composeRelativePathname = __webpack_require__(164);
-  var defaultCachebuster = __webpack_require__(165);
-  var extend = __webpack_require__(157);
-  var resolvePath = __webpack_require__(170);
-  var url = __webpack_require__(162);
+  var composeAbsolutePathname = __webpack_require__(168);
+  var composeQueryString = __webpack_require__(172);
+  var composeRelativePathname = __webpack_require__(173);
+  var defaultCachebuster = __webpack_require__(174);
+  var extend = __webpack_require__(166);
+  var resolvePath = __webpack_require__(179);
+  var url = __webpack_require__(171);
   
   module.exports = function (to, options, callback) {
     if (typeof options === 'function') {
@@ -7544,16 +8144,16 @@ module.exports =
 
 
 /***/ },
-/* 177 */
+/* 186 */
 /***/ function(module, exports) {
 
   module.exports = require("mongodb");
 
 /***/ },
-/* 178 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var jade = __webpack_require__(179);
+  var jade = __webpack_require__(188);
   
   module.exports = function template(locals) {
   var jade_debug = [ new jade.DebugItem( 1, "C:\\dtsolutions\\bmfApp\\src\\views\\index.jade" ) ];
@@ -7656,7 +8256,7 @@ module.exports =
   }
 
 /***/ },
-/* 179 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7908,10 +8508,10 @@ module.exports =
 
 
 /***/ },
-/* 180 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var jade = __webpack_require__(179);
+  var jade = __webpack_require__(188);
   
   module.exports = function template(locals) {
   var jade_debug = [ new jade.DebugItem( 1, "C:\\dtsolutions\\bmfApp\\src\\views\\error.jade" ) ];
@@ -8190,236 +8790,6 @@ module.exports =
     jade.rethrow(err, jade_debug[0].filename, jade_debug[0].lineno, "doctype html\nhtml(lang=\"en\")\n  head\n    meta(charset=\"utf-8\")\n    title Internal Server Error\n    meta(name=\"viewport\", content=\"width=device-width, initial-scale=1\")\n    style.\n      * {\n        line-height: 1.2;\n        margin: 0;\n      }\n\n      html {\n        color: #888;\n        display: table;\n        font-family: sans-serif;\n        height: 100%;\n        text-align: center;\n        width: 100%;\n      }\n\n      body {\n        display: table-cell;\n        vertical-align: middle;\n        margin: 2em auto;\n      }\n\n      h1 {\n        color: #555;\n        font-size: 2em;\n        font-weight: 400;\n      }\n\n      p {\n        margin: 0 auto;\n        width: 280px;\n      }\n\n      pre {\n        text-align: left;\n        margin-top: 2rem;\n      }\n\n      @media only screen and (max-width: 280px) {\n\n        body, p {\n          width: 95%;\n        }\n\n        h1 {\n          font-size: 1.5em;\n          margin: 0 0 0.3em;\n        }\n\n      }\n\n  body\n    h1 Internal Server Error\n    p Sorry, something went wrong.\n    pre= stack\n// IE needs 512+ bytes: http://blogs.msdn.com/b/ieinternals/archive/2010/08/19/http-error-pages-in-internet-explorer.aspx\n");
   }
   }
-
-/***/ },
-/* 181 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(43);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _providerlogin = __webpack_require__(182);
-  
-  var _providerlogin2 = _interopRequireDefault(_providerlogin);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  exports.default = {
-  
-    path: '/providerlogin',
-  
-    action: function action() {
-      return _react2.default.createElement(_providerlogin2.default, null);
-    }
-  };
-
-/***/ },
-/* 182 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(43);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _reactDom = __webpack_require__(92);
-  
-  var _reactDom2 = _interopRequireDefault(_reactDom);
-  
-  var _withStyles = __webpack_require__(58);
-  
-  var _withStyles2 = _interopRequireDefault(_withStyles);
-  
-  var _Providerlogin = __webpack_require__(183);
-  
-  var _Providerlogin2 = _interopRequireDefault(_Providerlogin);
-  
-  var _Link = __webpack_require__(61);
-  
-  var _Link2 = _interopRequireDefault(_Link);
-  
-  var _formsyReact = __webpack_require__(95);
-  
-  var _formsyReact2 = _interopRequireDefault(_formsyReact);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  /**
-   * React Starter Kit (https://www.reactstarterkit.com/)
-   *
-   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE.txt file in the root directory of this source tree.
-   */
-  
-  var title = 'Entering Credentials';
-  
-  function Providerlogin(props, context) {
-    context.setTitle(title);
-  
-    return _react2.default.createElement(
-      'div',
-      { className: _Providerlogin2.default.root },
-      _react2.default.createElement(
-        'div',
-        { className: _Providerlogin2.default.container },
-        _react2.default.createElement(
-          'h1',
-          null,
-          title
-        ),
-        _react2.default.createElement(
-          'p',
-          { className: _Providerlogin2.default.lead },
-          'Log in with your username or email address.'
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: _Providerlogin2.default.formGroup },
-          _react2.default.createElement(
-            'form',
-            { name: 'form1', method: 'get', action: 'verifylogin' },
-            _react2.default.createElement(
-              'div',
-              { className: _Providerlogin2.default.formGroup },
-              _react2.default.createElement(
-                'label',
-                { className: _Providerlogin2.default.label, htmlFor: 'usernameOrEmail' },
-                'Username or email address:'
-              ),
-              _react2.default.createElement('input', {
-                className: _Providerlogin2.default.input,
-                id: 'usernameOrEmail',
-                type: 'email',
-                name: 'usernameOrEmail',
-                required: 'required',
-                autoFocus: true
-              })
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: _Providerlogin2.default.formGroup },
-              _react2.default.createElement(
-                'label',
-                { className: _Providerlogin2.default.label, htmlFor: 'password' },
-                'Password:'
-              ),
-              _react2.default.createElement('input', {
-                className: _Providerlogin2.default.input,
-                id: 'password',
-                type: 'password',
-                name: 'password',
-                required: 'required'
-              })
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: _Providerlogin2.default.formGroup },
-              _react2.default.createElement(
-                'button',
-                { className: _Providerlogin2.default.button1, type: 'submit' },
-                'Log in'
-              ),
-              _react2.default.createElement(
-                _Link2.default,
-                { to: '/forgotpass' },
-                'Forgot Password'
-              ),
-              _react2.default.createElement(
-                'span',
-                { className: _Providerlogin2.default.spacer },
-                ' | '
-              ),
-              _react2.default.createElement(
-                _Link2.default,
-                { to: '/register' },
-                'Sign Up'
-              )
-            )
-          )
-        )
-      )
-    );
-  }
-  
-  Providerlogin.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
-  
-  exports.default = (0, _withStyles2.default)(_Providerlogin2.default)(Providerlogin);
-
-/***/ },
-/* 183 */
-/***/ function(module, exports, __webpack_require__) {
-
-  
-      var content = __webpack_require__(184);
-      var insertCss = __webpack_require__(54);
-  
-      if (typeof content === 'string') {
-        content = [[module.id, content, '']];
-      }
-  
-      module.exports = content.locals || {};
-      module.exports._getCss = function() { return content.toString(); };
-      module.exports._insertCss = function(options) { return insertCss(content, options) };
-    
-      // Hot Module Replacement
-      // https://webpack.github.io/docs/hot-module-replacement
-      // Only activated in browser context
-      if (false) {
-        var removeCss = function() {};
-        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Providerlogin.css", function() {
-          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Providerlogin.css");
-  
-          if (typeof content === 'string') {
-            content = [[module.id, content, '']];
-          }
-  
-          removeCss = insertCss(content, { replace: true });
-        });
-        module.hot.dispose(function() { removeCss(); });
-      }
-    
-
-/***/ },
-/* 184 */
-/***/ function(module, exports, __webpack_require__) {
-
-  exports = module.exports = __webpack_require__(53)();
-  // imports
-  
-  
-  // module
-  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright Â© 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n.Providerlogin_root_2kF {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n.Providerlogin_container_20Q {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height: 580px\n}\n.Providerlogin_lead_3Nd {\n  font-size: 1.25em;\n}\n.Providerlogin_formGroup_lA5 {\n  margin-bottom: 15px;\n}\n.Providerlogin_label_15r {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n.Providerlogin_input_2Ay {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n.Providerlogin_input_2Ay:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Providerlogin_button_2il {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 80%;\n  outline: 10;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.Providerlogin_button1_120 {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373388;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.Providerlogin_button_2il:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n.Providerlogin_button_2il:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Providerlogin_facebook_1jW {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n.Providerlogin_facebook_1jW:hover {\n  background: #2d4373;\n}\n.Providerlogin_google_1Ct {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n.Providerlogin_google_1Ct:hover {\n  background: #c23321;\n}\n.Providerlogin_twitter_3bX {\n  border-color: #55acee;\n  background: #55acee;\n}\n.Providerlogin_twitter_3bX:hover {\n  background: #2795e9;\n}\n.Providerlogin_icon_3e1 {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n.Providerlogin_lineThrough_1ur {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n.Providerlogin_lineThrough_1ur::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n.Providerlogin_lineThrough_1ur::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./routes/providerlogin/Providerlogin.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;ACLH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;ADbD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;EACjB,iBAAiB;CAClB;AAED;EACE,kBAAkB;CACnB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,iBAAiB;EACjB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,YAAY;EACZ,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;AACD;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;AAED;EACE,mCAAmC;CACpC;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Providerlogin.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright Â© 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height: 580px\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 15px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 80%;\n  outline: 10;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.button1 {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373388;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n","\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
-  
-  // exports
-  exports.locals = {
-  	"root": "Providerlogin_root_2kF",
-  	"container": "Providerlogin_container_20Q",
-  	"lead": "Providerlogin_lead_3Nd",
-  	"formGroup": "Providerlogin_formGroup_lA5",
-  	"label": "Providerlogin_label_15r",
-  	"input": "Providerlogin_input_2Ay",
-  	"button": "Providerlogin_button_2il",
-  	"button1": "Providerlogin_button1_120",
-  	"facebook": "Providerlogin_facebook_1jW Providerlogin_button_2il",
-  	"google": "Providerlogin_google_1Ct Providerlogin_button_2il",
-  	"twitter": "Providerlogin_twitter_3bX Providerlogin_button_2il",
-  	"icon": "Providerlogin_icon_3e1",
-  	"lineThrough": "Providerlogin_lineThrough_1ur"
-  };
 
 /***/ }
 /******/ ]);

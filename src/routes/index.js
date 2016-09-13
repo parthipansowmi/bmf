@@ -27,7 +27,7 @@ import saveprovider from './saveprovider'
 import booking from './booking';
 import savebooking from './savebooking'
 import providerlogin from './providerlogin'
-
+import verifyproviderlogin from './verifyproviderlogin'
 export default {
 
   path: '/',
@@ -38,6 +38,7 @@ export default {
     login,
     providerlogin,
     verifypass,
+    verifyproviderlogin,
     forgotpass,
     changepassword,
     updatepass,

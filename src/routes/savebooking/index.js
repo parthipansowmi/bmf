@@ -33,7 +33,6 @@ export default {
     if (!status) {
       message = 'Error in Saving Customer Data';
       href = `http://${host}/register`;
-
       message1 = 'Click here to Register.';
     }
     console.log("Href: " + href);
