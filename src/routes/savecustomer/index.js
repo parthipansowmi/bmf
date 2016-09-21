@@ -39,7 +39,7 @@ export default {
     zipcode = query.zipcode;
     phone = query.phone;
     email = query.email;
-    saveCustomerData(query); //.then(function (status) {
+    saveCustomerData(query); 
       if (!status) {
         message = 'Error in Saving Customer Data';
         href = `http://${host}/register`;
@@ -48,8 +48,7 @@ export default {
       }
       console.log("Href: " + href);
       return <Savecustomer message={message} redirectlink={href} message1={message1} />;
-   // });
-   // return <Login />;
+  
   }
 
 };
@@ -57,9 +56,10 @@ export default {
 function saveCustomerData(data) {
  // var request = require('request');
   console.log('calling API');
+  //var request = require('request-promise');
   var url = `http://${apihost}/addNewCustomer`;
   console.log("URL: " + url);
-  request.post(url, { form: data }, function (error, response, body) {
+ request.post(url, { form: data }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log('Inside saveCustomerData Response from API (body)' + body);
 

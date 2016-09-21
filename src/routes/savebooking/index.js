@@ -28,7 +28,7 @@ export default {
   action({query}, {path}) {
     console.log("Query String: " + JSON.stringify(query));
     phone = query.mobile;
-    path = '/';
+    email = query.email;   
     SavebookingData(query);
     if (!status) {
       message = 'Error in Saving Customer Data';
@@ -44,7 +44,7 @@ export default {
 
 function SavebookingData(data) {
 
-  console.log('calling API');
+  console.log('calling API - SavebookingData method');
   var url = `http://${apihost}/newBooking`;
   console.log("URL: " + url);
   request.post(url, { form: data }, function (error, response, body) {
@@ -54,6 +54,7 @@ function SavebookingData(data) {
       if (body == 'true')
         status = true;
         sendSMS();
+        sendEmail();
     }
     else {
       console.log("Error in storing customer data");
@@ -65,19 +66,50 @@ function SavebookingData(data) {
 }
 
 function sendSMS() {
-  console.log('calling API');
+  console.log('calling API - sendSMS method');
   
   var url = `http://${apihost}/sendSMS?authkey=`+ smsAPIKey+'&mobiles='+ phone +'&message='+SMSmessage+'&sender=DTSBMF&route=4&country=91';
   console.log("URL: " + url);
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      console.log('Inside SavebookingData Response from API (body)' + body);
+      console.log('Inside sendSMS - Response from API (body)' + body);
 
       if (body == 'true')
         status = true;
     }
     else {
       console.log("Error in Sending SMS");
+      status = false;
+    }
+
+  });
+}
+
+function sendEmail() {
+  console.log('calling API - sendEmail');
+  var url = `http://${apihost}/sendmail`;
+  console.log("URL: " + url);
+
+  var subject = "Your booking for the event in BMY";
+  var message = "<b>Thank you for booking and service provider will get in touch shortly. </b> <br> <b> Your Booking id is <b> ";
+  var formdata = { 
+  tomail: email, 
+  subject: subject, 
+  message: message
+};
+
+  
+  //data = JSON.stringify('{\"tomail\": \"'+email+'\", \"subject\": '+subject+'\", \"message\": \" '+message+'\"}');
+  console.log("Data: "+formdata);
+  request.post(url, { form: formdata }, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log('Inside sendEmail - Response from API (body)' + body);
+
+      if (body == 'true')
+        status = true;
+    }
+    else {
+      console.log("Error in Sending Mail");
       status = false;
     }
 

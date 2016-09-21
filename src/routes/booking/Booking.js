@@ -44,9 +44,9 @@ function Booking(props, context) {
             </label>
             <input
               className={s.input}
-              id="address"
+              id="email"
               type="email"
-              name="address"
+              name="email"
               required
               />
             <label className={s.label} htmlFor="mobile">
