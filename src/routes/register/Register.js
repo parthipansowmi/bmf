@@ -58,6 +58,16 @@ function Register(props, context) {
               name="address"
               required
               />
+            <label className={s.label} htmlFor="city">
+              <span>City: </span>
+            </label>
+            <input
+              className={s.input}
+              id="city"
+              type="text"
+              name="city"
+              required
+              />
             <label className={s.label} htmlFor="zipcode">
               <span>Zipcode: </span>
             </label>

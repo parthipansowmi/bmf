@@ -53,7 +53,7 @@ function SavebookingData(data) {
 
       if (body == 'true')
         status = true;
-        sendSMS();
+        //sendSMS();
         sendEmail();
     }
     else {

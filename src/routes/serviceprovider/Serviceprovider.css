@@ -32,7 +32,7 @@
   box-sizing: border-box;
   padding: 10px 16px;
   width: 100%;
-  height: 46px;
+  height: 26px;
   outline: 0;
   border: 1px solid #ccc;
   border-radius: 10;
@@ -47,7 +47,7 @@
 }
 
 .input:focus {
-  border-color: #0074c2;
+  border-color: red;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);
 }
 
@@ -56,7 +56,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 10px 16px;
-  width: 100%;
+  width: 50%;
   outline: 0;
   border: 1px solid #373277;
   border-radius: 0;
@@ -64,7 +64,7 @@
   color: #fff;
   text-align: center;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1.3333333;
   cursor: pointer;
 }

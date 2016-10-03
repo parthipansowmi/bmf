@@ -20,7 +20,7 @@ function Serviceprovider(props, context) {
       <div className={s.container}>
         <h2>{title}</h2>
         <form name="form1" method="put" action="saveprovider" >
-          <div classname= {s.leftContainer} >
+          <div className= {s.leftContainer} >
             <label className={s.label} htmlFor="firstname">
               User First Name:
             </label>
@@ -33,8 +33,7 @@ function Serviceprovider(props, context) {
               autoFocus
               required
               />
-          </div>
-          <div classname= {s.div}>
+          
             <label className={s.label} htmlFor="Last Name">
               <span>User Last Name: </span>
             </label>
@@ -58,6 +57,17 @@ function Serviceprovider(props, context) {
               type="text"
               name="address"
               placeholder="Address"
+              required
+              />
+            <label className={s.label} htmlFor="city">
+              <span>City: </span>
+            </label>
+            <input
+              className={s.input}
+              id="city"
+              type="text"
+              name="city"
+              placeholder = "City"
               required
               />
             <label className={s.label} htmlFor="zipcode">
