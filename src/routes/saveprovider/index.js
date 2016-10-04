@@ -11,6 +11,7 @@ import React from 'react';
 import Saveprovider from './Saveprovider';
 import Login from '../Login';
 import { apihost, host } from '../../config';
+var request = require('request');
 
 var message = 'Sucessfully Registered. <a href="http://'+apihost+'/login" >Click here to login</a>';
 var status = true;
@@ -43,7 +44,7 @@ export default {
     SaveproviderData(query);
     if (!status) {
       message = 'Error in Provider Data';
-      href = '"http://'+host+'/serviceprovider"';
+      href = `http://${host}/serviceprovider`;
       message1= 'Click here to Register'
     }
     return <Saveprovider message={message} href={href} message1={message1} />;
@@ -64,14 +65,52 @@ function SaveproviderData(data) {
       console.log('Inside SaveproviderData Response from API (body)' + body);
 
       if (body == 'true')
+      {
         status = true;
+        url = `http://${apihost}/generatePass?length=6`;
+        var password = getPassword(url);
+        console.log("generated Password: "+password);
     }
     else {
       console.log("Error in storing customer data");
       status = false;
     }
-
+    }
 
   });
+  
 console.log('returning');
+
+}
+
+function getPassword(url) {
+  console.log("URL: " + url);
+  request(url, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log('generate Password - Response from API' + body);
+      saveLogin(body);
+    }
+    else {
+      
+      console.log("Get Password -API Server not running: ") + error;
+      return '';
+    }
+  });
+}
+
+function saveLogin(password) {
+  var data = { "email": email, "password": password};
+  console.log("Data: "+data);
+  var url = `http://${apihost}/addlogin`;
+  //var url = `http://${apihost}/addproviderlogin';
+  request.post(url, { form: data },function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log('saveLogin Password - Response from API' + body);
+      status = true;
+    }
+    else {
+      status = false;
+      console.log("Change Password -API Server not running: ") + error;
+    }
+  });
 }

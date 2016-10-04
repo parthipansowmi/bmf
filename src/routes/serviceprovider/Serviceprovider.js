@@ -129,12 +129,12 @@ function Serviceprovider(props, context) {
               id="serveoutside"
               type="checkbox"
               name="serveoutside"
-              required
+              
               />
           </div>
           <div className={s.formGroup}>
             <button className={s.button}    value="submit" type="submit" >
-              Serviceprovider
+              Save
             </button>
 
           </div>
