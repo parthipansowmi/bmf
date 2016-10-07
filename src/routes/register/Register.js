@@ -12,6 +12,13 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Register.css';
 
 const title = 'New User Registration';
+var date = new Date();
+var day = date.getDate();
+var month = date.getMonth()+1;
+var year = date.getFullYear();
+var currentdate = day + '/' + month + '/' + year;
+console.log("Date: "+currentdate);
+
 
 function Register(props, context) {
   context.setTitle(title);
@@ -21,6 +28,7 @@ function Register(props, context) {
         <h1>{title}</h1>
         <form name="form1" method="put" action="savecustomer" >
           <div classname= {s.leftContainer} >
+          <input id="modifieddate" type="hidden"  value={currentdate} name="modifieddate" />
             <label className={s.label} htmlFor="firstname">
               User First Name:
               

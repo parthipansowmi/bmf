@@ -13,6 +13,13 @@ import s from './Serviceprovider.css';
 
 const title = 'Service Provider Registration';
 
+
+var date = new Date();
+var day = date.getDate();
+var month = date.getMonth()+1;
+var year = date.getFullYear();
+var currentdate = day + '/' + month + '/' + year;
+
 function Serviceprovider(props, context) {
   context.setTitle(title);
   return (
@@ -21,6 +28,7 @@ function Serviceprovider(props, context) {
         <h2>{title}</h2>
         <form name="form1" method="put" action="saveprovider" >
           <div className= {s.leftContainer} >
+          <input id="modifieddate" type="hidden"  value={currentdate} name="modifieddate" />
             <label className={s.label} htmlFor="firstname">
               User First Name:
             </label>

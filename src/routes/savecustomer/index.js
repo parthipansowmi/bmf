@@ -39,7 +39,7 @@ export default {
     zipcode = query.zipcode;
     phone = query.phone;
     email = query.email;
-    saveCustomerData(query); 
+    checkDuplicate(query); 
       if (!status) {
         message = 'Error in Saving Customer Data';
         href = `http://${host}/register`;
@@ -52,6 +52,32 @@ export default {
   }
 
 };
+
+function checkDuplicate(data)
+{
+  var url = `http://${apihost}/getCustomer?email=`+ data.email;
+  console.log("URL: checkDuplicate " + url);
+  
+  request(url, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log('Check duplicate - Response from API' + body);
+      if ( body == 'true' )
+        {
+           message = 'Email id already register';
+           status = 'false';
+        }
+      
+      else
+        saveCustomerData(data);
+    }
+    else {
+      
+      console.log("Check duplicate - Error in getting customer ") + error;
+      return '';
+    }
+  });
+}
+
 
 function saveCustomerData(data) {
  // var request = require('request');
@@ -86,6 +112,7 @@ function getPassword(url) {
     if (!error && response.statusCode == 200) {
       console.log('generate Password - Response from API' + body);
       saveLogin(body);
+      
     }
     else {
       

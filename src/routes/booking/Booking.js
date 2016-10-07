@@ -5,6 +5,13 @@ import s from './Booking.css';
 
 const title = 'New Event Booking';
 
+var date = new Date();
+var day = date.getDate();
+var month = date.getMonth()+1;
+var year = date.getFullYear();
+var currentdate = day + '/' + month + '/' + year;
+
+
 function Booking(props, context) {
   context.setTitle(title);
   return (
@@ -19,10 +26,11 @@ function Booking(props, context) {
             <input
               className={s.input}
               id="dateofbooking"
-              type="date"
+              type="text"
               name="dateofbooking"
+              value={currentdate}
               autoFocus
-              required
+              readOnly
               />
           </div>
           <div classname= {s.rightContainer}>
@@ -63,7 +71,7 @@ function Booking(props, context) {
 
           <div className={s.formGroup} >
             <label className={s.label} htmlFor="catering">
-               Need Catering: 
+              Need Catering:
             </label>
             <input
               className={s.squaredOne}
@@ -72,7 +80,7 @@ function Booking(props, context) {
               name="catering"
 
               />
-           <br/>
+            <br/>
             <label className={s.label} htmlFor="Travel">
               Need Travel Arrangment:
             </label>
@@ -81,7 +89,7 @@ function Booking(props, context) {
               id="travel"
               type="checkbox"
               name="travel"
-              
+
               />
           </div>
           <div>
