@@ -28,9 +28,11 @@ import booking from './booking';
 import savebooking from './savebooking'
 import providerlogin from './providerlogin'
 import verifyproviderlogin from './verifyproviderlogin'
+import providerlist from './providerlist'
 export default {
 
   path: '/',
+  
 
   children: [
     home,
@@ -45,6 +47,7 @@ export default {
     register,
     savecustomer,
     serviceprovider,
+    providerlist,
     saveprovider,
     booking,
     savebooking,

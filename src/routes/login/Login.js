@@ -16,13 +16,13 @@ import Formsy from 'formsy-react';
 
 
 const title = 'Entering Credentials';
-var classNames = require('classnames');
+//var classNames = require('classnames');
 
 
 
 function Login(props, context) {
   context.setTitle(title);
-  console.log(props);
+  console.log("Porps: "+props);
   return (
 
 

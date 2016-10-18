@@ -24,7 +24,7 @@ var zipcode;
 var type;
 var serve;
 var message = 'Sucessfully Registered. '
-var href =  `http://${host}/login`;
+var href =  `http://${host}/providerlogin`;
 var message1= 'Click here to login'
 
 export default {
@@ -40,7 +40,7 @@ export default {
     address = query.address;
     zipcode = query.zipcode;
     phone = query.phone;
-    email = query.email;-
+    email = query.email;
     SaveproviderData(query);
     if (!status) {
       message = 'Error in Provider Data';

@@ -20,6 +20,7 @@ function Booking(props, context) {
         <h1>{title}</h1>
         <form name="form1" method="put" action="savebooking" >
           <div classname= {s.leftContainer} >
+          <input id="status" type="hidden"  value="booked" name="status" />
             <label className={s.label} htmlFor="dateofbooking">
               Date of Booking:
             </label>
@@ -105,7 +106,7 @@ function Booking(props, context) {
           </div>
           <div className={s.formGroup}>
             <button className={s.button}    value="submit" type="submit" >
-              Register
+              Book Event
             </button>
 
           </div>
