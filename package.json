@@ -5,6 +5,7 @@
     "npm": ">=3.3 <4"
   },
   "dependencies": {
+    "ag-grid": "^6.2.1",
     "assets": "^2.1.0",
     "babel-polyfill": "6.9.0",
     "babel-runtime": "6.9.0",

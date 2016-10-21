@@ -11,14 +11,40 @@ import React from 'react';
 import Serviceprovider from './Providerlist';
 import { host, apihost, smsAPIKey, SMSmessage } from '../../config';
 
-var providerList;
+var providerList = [
+  {
+    "_id": "57f75cb5e0c058d42dc63df3",
+    "modifieddate": "7/10/2016",
+    "firstname": "Krishna",
+    "lname": "Vembu",
+    "address": "Vadamalai",
+    "city": "Coimbatore",
+    "zipcode": "600010",
+    "email": "krishna_v@hotmail.com",
+    "phone": "9841030770",
+    "servicetype": "Pooja"
+  },
+  {
+    "_id": "5805de4f50986a542046ced8",
+    "modifieddate": "18/10/2016",
+    "firstname": "Mukund",
+    "lname": "Sundaram",
+    "address": "No:10 2nd cross street",
+    "city": "Chennai",
+    "zipcode": "600041",
+    "email": "parthipansowmi@gmail.com",
+    "phone": "9840888415",
+    "servicetype": "Pooja",
+    "serveoutside": "on"
+  }
+];
 export default {
 
   path: '/providerlist',
 
   action() {
 
-    getProviderData();
+   getProviderData();
     return <Providerlist providerlist= {providerlist} />;
   },
 
