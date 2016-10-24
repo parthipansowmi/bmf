@@ -46,10 +46,10 @@ export default {
     updatepass,
     register,
     savecustomer,
-    serviceprovider,
-    providerlist,
+    serviceprovider,    
     saveprovider,
     booking,
+    providerlist,
     savebooking,
     content,
     error

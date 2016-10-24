@@ -8,10 +8,10 @@
  */
 
 import React from 'react';
-import Serviceprovider from './Providerlist';
-import { host, apihost, smsAPIKey, SMSmessage } from '../../config';
+import Providerlist from './Providerlist';
+import { host, apihost } from '../../config';
 
-var providerList = [
+var providerlist = [
   {
     "_id": "57f75cb5e0c058d42dc63df3",
     "modifieddate": "7/10/2016",
@@ -44,8 +44,9 @@ export default {
 
   action() {
 
-   getProviderData();
-    return <Providerlist providerlist= {providerlist} />;
+   //getProviderData();
+    return <Providerlist providerlist={providerlist} />;
+
   },
 
 };
@@ -59,8 +60,8 @@ function getProviderData() {
   request(url,  function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log('Inside getProviderData Response from API (body)' + body);
-      providerList = body;
-      console.log("Providerlist: "+providerList);
+      providerlist = body;
+      console.log("Providerlist: "+providerlist);
 
     }
 
