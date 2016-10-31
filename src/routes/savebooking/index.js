@@ -9,12 +9,13 @@
 
 import React from 'react';
 import Savebooking from './Savebooking';
+import Providerlist from '../providerlist/Providerlist';
 import Login from '../Login';
 import { host, apihost, smsAPIKey, SMSmessage } from '../../config';
 var request = require('request');
 
 var message = 'Booking done Sucessfully  '
-var href = `http://${host}/login`;
+var href = `http://${host}/providerlist`;
 var message1 = 'Click here to login'
 var status = true;
 var email;
@@ -34,10 +35,13 @@ export default {
       message = 'Error in Saving Customer Data';
       href = `http://${host}/register`;
       message1 = 'Click here to Register.';
+      return <Savebooking message={message} redirectlink={href} message1={message1} />;
     }
-    console.log("Href: " + href);
-    return <Savebooking message={message} redirectlink={href} message1={message1} />;
-    //return <Login />;
+    else
+    {
+      return <Providerlist />
+    }
+   
   },
 
 };
@@ -53,7 +57,7 @@ function SavebookingData(data) {
 
       if (body == 'true')
         status = true;
-        sendSMS();
+        //sendSMS();
         sendEmail();
     }
     else {

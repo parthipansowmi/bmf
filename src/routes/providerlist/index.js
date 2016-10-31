@@ -1,17 +1,9 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
 
 import React from 'react';
 import Providerlist from './Providerlist';
 import { host, apihost } from '../../config';
 
-var providerlist = [
+ var providerlist = [
   {
     "_id": "57f75cb5e0c058d42dc63df3",
     "modifieddate": "7/10/2016",
@@ -42,8 +34,7 @@ export default {
 
   path: '/providerlist',
 
-  action() {
-
+ async action() {
    //getProviderData();
     return <Providerlist providerlist={providerlist} />;
 

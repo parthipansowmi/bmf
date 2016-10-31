@@ -78,7 +78,7 @@ function Booking(props, context) {
               id="catering"
               type="checkbox"
               name="catering"
-
+              value="no"
               />
             <br/>
             <label className={s.label} htmlFor="Travel">
@@ -89,7 +89,7 @@ function Booking(props, context) {
               id="travel"
               type="checkbox"
               name="travel"
-
+              value="no"
               />
           </div>
           <div>
@@ -99,15 +99,14 @@ function Booking(props, context) {
             <select name="eventtype">
               <option value="House Warming">House Warming</option>
               <option value="Ayush  Homam">Ayush  Homam</option>
-              <option value="opel">60th Birthday</option>
-              <option value="audi">80th Birthday</option>
+              <option value="60th Birthday">60th Birthday</option>
+              <option value="80th Birthday">80th Birthday</option>
             </select>
           </div>
           <div className={s.formGroup}>
-            <button className={s.button}    value="submit" type="submit" >
+            <button className={s.button}  value="submit" type="submit" >
               Book Event
             </button>
-
           </div>
         </form>
 

@@ -13,7 +13,7 @@ import s from './Savebooking.css';
 
 const title = 'New Boooking';
 
-function Savecustomer({message, redirectlink, message1}, context) {
+function Savebooking({message, redirectlink, message1}, context) {
   context.setTitle(title);
   return (
     <div className={s.root}>
@@ -27,6 +27,6 @@ function Savecustomer({message, redirectlink, message1}, context) {
   );
 }
 
-Savecustomer.contextTypes = { setTitle: PropTypes.func.isRequired };
+Savebooking.contextTypes = { setTitle: PropTypes.func.isRequired };
 
-export default withStyles(s)(Savecustomer);
+export default withStyles(s)(Savebooking);
