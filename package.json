@@ -61,6 +61,7 @@
     "synchronize": "^0.9.15",
     "tls": "0.0.1",
     "universal-router": "1.2.1",
+    "webpack": "^1.13.3",
     "whatwg-fetch": "1.0.0"
   },
   "devDependencies": {

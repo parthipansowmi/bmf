@@ -9,9 +9,8 @@ const title = 'Changing Password';
 
  
 
-function Forgotpass(props, context) {
-  console.log(props);
-  context.setTitle(title);
+function Forgotpass( props, context) {
+    context.setTitle(title);
   return (
     <div className={s.root}>
       <div className={s.container}>
@@ -31,7 +30,7 @@ function Forgotpass(props, context) {
               placeholder="Enter E-mail"
               required="required"             
             />
-       
+          
           </div>
           <div className={s.formGroup}>
             <button className={s.button}   type="submit" >

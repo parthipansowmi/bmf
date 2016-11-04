@@ -15,31 +15,40 @@ import { host, apihost, smsAPIKey, SMSmessage } from '../../config';
 var request = require('request');
 
 var message = 'Booking done Sucessfully  '
-var href = `http://${host}/providerlist`;
+var href = `http://${host}/`;
 var message1 = 'Click here to login'
 var status = true;
 var email;
 var phone;
 var zipcode;
+var providerlist;
 
 export default {
 
   path: '/savebooking',
 
-  action({query}, {path}) {
+ async action({query}, {path}) {
     console.log("Query String: " + JSON.stringify(query));
     phone = query.mobile;
     email = query.email;   
-    SavebookingData(query);
+    var body = await SavebookingData(query);
+    console.log("Calling SendEmail");
+    var mail = await sendEmail();
+    console.log("Calling sendSMS");
+   // var sms = await sendSMS();
+    //console.log("Body: "+body);
     if (!status) {
-      message = 'Error in Saving Customer Data';
-      href = `http://${host}/register`;
+      message = 'Unable to book the Event';
+      href = `http://${host}/booking`;
       message1 = 'Click here to Register.';
       return <Savebooking message={message} redirectlink={href} message1={message1} />;
     }
     else
     {
-      return <Providerlist />
+      providerlist = await getProviderData();
+      console.log("Service Provider List: "+providerlist);
+      return <Providerlist providerlist={providerlist} customeremail={email} />
+     // return <Savebooking message={message} redirectlink={href} message1={message1} />;
     }
    
   },
@@ -51,43 +60,55 @@ function SavebookingData(data) {
   console.log('calling API - SavebookingData method');
   var url = `http://${apihost}/newBooking`;
   console.log("URL: " + url);
+
+return new Promise(function(resolve, reject) {
   request.post(url, { form: data }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log('Inside SavebookingData Response from API (body)' + body);
 
       if (body == 'true')
         status = true;
+        resolve(body);
         //sendSMS();
-        sendEmail();
+      //var result = await sendEmail();
     }
-    else {
+    if (error) {
       console.log("Error in storing customer data");
       status = false;
+      return reject(error);
     }
 
   });
+ 
   console.log('returning');
+   });
 }
 
-function sendSMS() {
+async function sendSMS() {
   console.log('calling API - sendSMS method');
   
   var url = `http://${apihost}/sendSMS?authkey=`+ smsAPIKey+'&mobiles='+ phone +'&message='+SMSmessage+'&sender=DTSBMF&route=4&country=91';
   console.log("URL: " + url);
+   return new Promise(function(resolve, reject) {
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log('Inside sendSMS - Response from API (body)' + body);
 
-      if (body == 'true')
-        status = true;
-    }
-    else {
+   if (error) {
       console.log("Error in Sending SMS");
       status = false;
+      return reject(error);
     }
 
-  });
+  if (body == 'true')
+        status = true;
+        resolve(body)
+    }
+    
+      });
+   });
 }
+
 
 function sendEmail() {
   console.log('calling API - sendEmail');
@@ -101,21 +122,49 @@ function sendEmail() {
   subject: subject, 
   message: message
 };
-
   
   //data = JSON.stringify('{\"tomail\": \"'+email+'\", \"subject\": '+subject+'\", \"message\": \" '+message+'\"}');
   console.log("Data: "+formdata);
+  return new Promise(function(resolve, reject) {
   request.post(url, { form: formdata }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log('Inside sendEmail - Response from API (body)' + body);
 
       if (body == 'true')
+        resolve(body)
         status = true;
     }
-    else {
+    if (error) {
       console.log("Error in Sending Mail");
       status = false;
+      return reject(error);
     }
 
+  });
+   });
+}
+
+
+function getProviderData() {
+  var request = require('request');
+ 
+  console.log('calling API');
+  var url = `http://${apihost}/searchByType?servicetype=Pooja`;
+  console.log("URL: " + url);
+  return new Promise(function(resolve, reject) {
+    request(url,  function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      //console.log('Inside getProviderData Response from API (body)' + body);
+      providerlist = body;
+      //console.log("Providerlist: "+providerlist);
+      resolve(body);    
+    }
+
+    else
+    {
+      return reject(body);
+    }
+
+  });
   });
 }

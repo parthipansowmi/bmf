@@ -23,12 +23,13 @@ var address;
 var email;
 var phone;
 var zipcode;
+var password;
 
 export default {
 
   path: '/savecustomer',
 
-  action({query}, {path}) {
+ async action({query}, {path}) {
     console.log("Query String: " + JSON.stringify(query));
     
     path = '/';
@@ -39,7 +40,23 @@ export default {
     zipcode = query.zipcode;
     phone = query.phone;
     email = query.email;
-    checkDuplicate(query); 
+    var body = await checkDuplicate(email);
+    console.log("Response: "+body);
+    if ( body == 'false')
+     {
+      var customerdata = await saveCustomerData(query);
+      console.log("Customerdata: "+customerdata);
+      console.log("Status--saveCustomerData: "+status);
+      if ( customerdata == 'true')
+      {
+        password = await getPassword();
+        console.log("generated Password: "+password);
+        console.log("Status--getPassword: "+status);
+        var login = await saveLogin(password);      
+      }
+       
+     }
+    
       if (!status) {
         message = 'Error in Saving Customer Data';
         href = `http://${host}/register`;
@@ -53,14 +70,16 @@ export default {
 
 };
 
-function checkDuplicate(data)
+function checkDuplicate(email)
 {
-  var url = `http://${apihost}/getCustomer?email=`+ data.email;
+  var url = `http://${apihost}/getCustomer?email=`+email;
   console.log("URL: checkDuplicate " + url);
   
+  return new Promise(function(resolve, reject) {
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log('Check duplicate - Response from API' + body);
+      
       if ( body == 'true' )
         {
            message = 'Email id already register';
@@ -68,75 +87,93 @@ function checkDuplicate(data)
         }
       
       else
-        saveCustomerData(data);
+      {
+           console.log("Customer email not exist");
+           status='true';
+      }
+        resolve(body);
     }
     else {
       
       console.log("Check duplicate - Error in getting customer ") + error;
-      return '';
+      return reject(error);
     }
+  });
+  console.log("Checkduplicate -- Returning")
   });
 }
 
 
 function saveCustomerData(data) {
  // var request = require('request');
-  console.log('calling API');
+  console.log('saveCustomerData -- calling API');
   //var request = require('request-promise');
   var url = `http://${apihost}/addNewCustomer`;
-  console.log("URL: " + url);
- request.post(url, { form: data }, function (error, response, body) {
+  console.log("saveCustomerData -- URL: " + url);
+
+  return new Promise(function(resolve, reject) {
+  request.post(url, { form: data }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log('Inside saveCustomerData Response from API (body)' + body);
 
       if (body == 'true') {
         status = true;
-        url = `http://${apihost}/generatePass?length=6`;
-        var password = getPassword(url);
-        console.log("generated Password: "+password);        
+       
       }
+      resolve(body);
     }
     else {
-      console.log("Error in storing customer data");
+      console.log("saveCustomerData -- Error in storing customer data");
       status = false;
+      return(error);
     }
 
-
+  console.log('saveCustomerData -- returning from API call');
   });
-  console.log('returning');
+  
+  });
+  
 }
 
-function getPassword(url) {
-  console.log("URL: " + url);
+function getPassword() {
+  var url = `http://${apihost}/generatePass?length=6`;
+  console.log("getPassword -- URL: " + url);
+
+  return new Promise(function(resolve, reject) {
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      console.log('generate Password - Response from API' + body);
-      saveLogin(body);
-      
+      console.log('getPassword --  Response from API' + body); 
+      status='true';        
+      resolve(body);
     }
     else {
       
-      console.log("Get Password -API Server not running: ") + error;
-      return '';
+      console.log("getPassword -- API Server not running: " + error);
+      status = 'false';
+      return(error);
     }
+    console.log('getPassword -- returning from API call');
   });
 
+});
 }
 
 function saveLogin(password) {
   var data = { "userEmail": email, "password": password};
   console.log("Data: "+data);
   var url = `http://${apihost}/addcred`;
-  //var url = `http://${apihost}/addcred';
+  return new Promise(function(resolve, reject) {
   request.post(url, { form: data },function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log('saveLogin Password - Response from API' + body);
       status = true;
+      resolve(body);
     }
     else {
       status = false;
-      console.log("Change Password -API Server not running: ") + error;
+      console.log("saveLoging -API Server not running: ") + error;
+      return(error);
     }
   });
-
+});
 }

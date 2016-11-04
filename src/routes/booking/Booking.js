@@ -19,7 +19,7 @@ function Booking(props, context) {
       <div className={s.container}>
         <h1>{title}</h1>
         <form name="form1" method="put" action="savebooking" >
-          <div classname= {s.rightContainer}>
+          <div className= {s.rightContainer}>
           <input id="status" type="hidden"  value="booked" name="status" />
             <label className={s.label} htmlFor="dateofbooking">
               Date of Booking:

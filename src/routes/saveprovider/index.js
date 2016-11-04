@@ -15,14 +15,16 @@ var request = require('request');
 
 var message = 'Sucessfully Registered. <a href="http://'+apihost+'/login" >Click here to login</a>';
 var status = true;
-var fn;
+/*var fn;
 var ln;
 var address;
-var email;
+
 var phone;
 var zipcode;
 var type;
-var serve;
+var serve;*/
+
+var email;
 var message = 'Sucessfully Registered. '
 var href =  `http://${host}/providerlogin`;
 var message1= 'Click here to login'
@@ -31,17 +33,26 @@ export default {
 
   path: '/saveprovider',
 
-  action({query}, {path}) {
+ async action({query}, {path}) {
     console.log("Query String: " + JSON.stringify(query));
     path = '/';
-    fn = query.firstname;
+    /*fn = query.firstname;
     console.log(fn);
     ln = query.lname;
     address = query.address;
     zipcode = query.zipcode;
-    phone = query.phone;
+    phone = query.phone;*/
     email = query.email;
-    SaveproviderData(query);
+
+    var result = await SaveproviderData(query);
+    console.log("Status -- SaveproviderData: "+status);
+    if ( status )
+     {
+        var password = await getPassword();
+        console.log("Status -- getPassword: "+status);
+        if (status)
+          var savelogin = await saveLogin(password);
+     }
     if (!status) {
       message = 'Error in Provider Data';
       href = `http://${host}/serviceprovider`;
@@ -60,41 +71,46 @@ function SaveproviderData(data) {
   console.log('calling API');
   var url = `http://${apihost}/addNewProvider`;
   console.log("URL: " + url);
+
+  return new Promise(function(resolve, reject) {
   request.post(url, {form:  data}, function (error, response, body) {
+
+    if ( error)
+      return reject(error);
     if (!error && response.statusCode == 200) {
       console.log('Inside SaveproviderData Response from API (body)' + body);
-
       if (body == 'true')
       {
-        status = true;
-        url = `http://${apihost}/generatePass?length=6`;
-        var password = getPassword(url);
-        console.log("generated Password: "+password);
-    }
+        status = true;        
+     }
     else {
       console.log("Error in storing customer data");
       status = false;
     }
+    resolve(body);
     }
-
+      console.log('returning');
   });
-  
-console.log('returning');
 
+});
 }
 
-function getPassword(url) {
+function getPassword() {
+  var url = `http://${apihost}/generatePass?length=6`;
   console.log("URL: " + url);
+  return new Promise(function(resolve, reject) {
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log('generate Password - Response from API' + body);
-      saveLogin(body);
+      resolve(body);
     }
     else {
       
-      console.log("Get Password -API Server not running: ") + error;
-      return '';
-    }
+      console.log("Get Password - API Server not running: ") + error;
+      return reject(error);
+    } 
+  });
+
   });
 }
 
@@ -103,14 +119,18 @@ function saveLogin(password) {
   console.log("Data: "+data);
   var url = `http://${apihost}/addlogin`;
   //var url = `http://${apihost}/addproviderlogin';
+  return new Promise(function(resolve, reject) {
   request.post(url, { form: data },function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log('saveLogin Password - Response from API' + body);
       status = true;
+      resolve(body);
     }
     else {
       status = false;
       console.log("Change Password -API Server not running: ") + error;
+      return reject(error);
     }
+  });
   });
 }

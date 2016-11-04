@@ -19,6 +19,7 @@ import saveprovider from './saveprovider'
 import booking from './booking';
 import savebooking from './savebooking'
 import providerlogin from './providerlogin'
+import linkprovider from './linkprovider'
 import verifyproviderlogin from './verifyproviderlogin'
 import providerlist from './providerlist'
 export default {
@@ -43,6 +44,7 @@ export default {
     booking,
     providerlist,
     savebooking,
+    linkprovider,
     content,
     error
   ],

@@ -3,41 +3,19 @@ import React from 'react';
 import Providerlist from './Providerlist';
 import { host, apihost } from '../../config';
 
- var providerlist = [
-  {
-    "_id": "57f75cb5e0c058d42dc63df3",
-    "modifieddate": "7/10/2016",
-    "firstname": "Krishna",
-    "lname": "Vembu",
-    "address": "Vadamalai",
-    "city": "Coimbatore",
-    "zipcode": "600010",
-    "email": "krishna_v@hotmail.com",
-    "phone": "9841030770",
-    "servicetype": "Pooja"
-  },
-  {
-    "_id": "5805de4f50986a542046ced8",
-    "modifieddate": "18/10/2016",
-    "firstname": "Mukund",
-    "lname": "Sundaram",
-    "address": "No:10 2nd cross street",
-    "city": "Chennai",
-    "zipcode": "600041",
-    "email": "parthipansowmi@gmail.com",
-    "phone": "9840888415",
-    "servicetype": "Pooja",
-    "serveoutside": "on"
-  }
-];
+ var providerlist;
+
 export default {
 
   path: '/providerlist',
 
- async action() {
-   //getProviderData();
-    return <Providerlist providerlist={providerlist} />;
-
+ async action({query}, {path}) {
+   var body = await getProviderData();
+   //console.log("Body: "+body);
+   var customeremail = query.customeremail;
+   console.log("customer Email: "+customeremail);
+  return <Providerlist providerlist={providerlist} customeremail={customeremail} />;
+ 
   },
 
 };
@@ -48,13 +26,21 @@ function getProviderData() {
   console.log('calling API');
   var url = `http://${apihost}/searchByType?servicetype=Pooja`;
   console.log("URL: " + url);
-  request(url,  function (error, response, body) {
+  return new Promise(function(resolve, reject) {
+    request(url,  function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log('Inside getProviderData Response from API (body)' + body);
       providerlist = body;
       console.log("Providerlist: "+providerlist);
-
+      resolve(body);    
     }
+    else
+    {
+      console.log("Error Object: "+error);
+      return reject(error);
+    }
+
+  });
 
   });
 }

@@ -40,8 +40,7 @@ function Changepassword({email}, context) {
               className={s.input}
               id="confirmpass"
               type="password"
-              name="confirmpass"
-              
+              name="confirmpass"              
               />
           </div>
           <div className={s.formGroup}>

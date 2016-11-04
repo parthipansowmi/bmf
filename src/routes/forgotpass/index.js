@@ -1,14 +1,17 @@
 import React from 'react';
 import Forgotpass from './Forgotpass';
-import Login from '../Login';
-import { apihost } from '../../config';
-var status = true;
-var validLogin = false;
+import Login from '../login/Login';
+import { apihost, host } from '../../config';
+var request = require('request');
+
+var status = 'false';
+var errormessage = '';
+
 export default {
 
   path: '/forgotpass',
 
-  action({query}, {path}) {
+  async action({query}, {path}) {
     var email = query.email;
 
     console.log("Email ID:" + email);
@@ -16,7 +19,17 @@ export default {
       return <Forgotpass />;
     else {
 
-        validLogin = checkLogin(email);
+        var  validlogin = await checkLogin(email);
+        console.log("ValidLogin:"+validlogin);
+        if ( validlogin == 'true')
+        {
+        var code = passwordCode(6);
+        console.log("Passcode: "+code);
+        var body = await sendEmail(email, code);
+        if (body == 'true')
+          var result = await storePasscode(email, code);
+        }
+
     }
     console.log("Status: "+status);
     if (status == true)
@@ -26,46 +39,53 @@ export default {
     }      
     else
     {
-      console.log("Error in Reseting request");
-return <Forgotpass />;
+      console.log("Error in Reseting password request");
+      return <Forgotpass errormessage={errormessage} />;
     }
       
   }
 
 };
 
-function sendEmail(email) {
-  var nodemailer = require('nodemailer');
-  var code = passwordCode(6);
-  var transporter = nodemailer.createTransport('smtps://dreamtruesolution%40gmail.com:sowmi6050@smtp.gmail.com');
-  console.log("SendEmail Code: " + code);
-  // setup e-mail data with unicode symbols 
-  var mailOptions = {
-    from: 'dreamtruesolution@gmail.com', // sender address 
-    to: email, // list of receivers 
-    subject: 'Password Reset ', // Subject line 
-    text: 'Password Reset Mail ', // plaintext body 
-    html: '<b>We received your request for password Reset. </b> <a href="http://localhost:3000/changepassword?code=' + code + '&userEmail=' + email + '"' + 'target="_blank">click here to reset the password</a>'// html body 
-  };
+function sendEmail(email, code) {
+  console.log('calling API - sendEmail');
+  var url = `http://${apihost}/sendmail`;
+  console.log("URL: " + url);
 
-  // send mail with defined transport object  
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log("Error Message' " + error);
-      status = false;
+  var subject = "Your Password Reset";
+  var href = `http://${host}/changepassword?code=`+code+'&userEmail='+email;
+  console.log("Href: "+href);
+  var message = '<b>We received your request for password Reset. <a href="'+href+ '" >Click here to reset password</a> ';
+  var formdata = { 
+  tomail: email, 
+  subject: subject, 
+  message: message
+};
+     
+  console.log("Data: "+formdata);
+  return new Promise(function(resolve, reject) {
+  request.post(url, { form: formdata }, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log('Inside sendEmail - Response from API (body)' + body);
+
+      if (body == 'true')
+        status = true;
+      else 
+        status = false;
+        resolve(body);        
     }
-    else {
-      status = true;
-      console.log('Message sent: ' + info.response);
-      storePasscode(email, code);
+    else if (error) {
+      console.log("Error in Sending Mail");
+      status = false;
+      return reject(error);
     }
 
   });
-  console.log("returning");
+   });
 }
 
-export function passwordCode(length) {
-  var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890";
+function passwordCode(length) {
+  var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^*()-+<>ABCDEFGHIJKLMNOP1234567890";
   var pass = "";
   for (var x = 0; x < length; x++) {
     var i = Math.floor(Math.random() * chars.length);
@@ -75,49 +95,52 @@ export function passwordCode(length) {
 }
 
 function storePasscode(email, code) {
-  var request = require('request');
+  
   console.log("Inside storePasscode method email: " + email);
   console.log("Inside storePasscode method Code: " + code);
   console.log('calling API');
   var url = `http://${apihost}/storePasscode`;
   console.log("URL: " + url);
+  return new Promise(function(resolve, reject) {
   request.post(url, { form: { email: email, code: code } }, function (error, response, body) {
     if (!error && response.statusCode == 200 ) {
       console.log('Inside StorePasscode Response from API (body)' + body);
       
       if ( body == 'true')
       status = true;
+      resolve(body);
     }
     else {
       console.log("Error in storing passcode");
       status = false;
+      return reject(error);
     }
-
-
+  });
+  
   });
 
 }
 
-async function checkLogin(email) {
-  var request = require('request');
+function checkLogin(email) {
+  
   console.log('calling API');
   var url = `http://${apihost}/findemail?email=` + email;
   console.log("URL: " + url);
-  //return new Promise(function (resolve, reject) {
+  return new Promise(function (resolve, reject) {
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      console.log('Response from API' + body);
-      if ( body == 'true') {
-      sendEmail(email);
-    }
-      //return resolve(body);
+      console.log('Response from API: ' + body);
+      if ( body == 'true')
+        status = true;
+      resolve(body);
     }
     else {
-      status = false;
-      console.log("API Server not running: ")+error;
+      status = 'false';
+      console.log("API Server not running: "+error);
+      return reject(error);
     }
-
+    console.log('Returning')
+  });
 
   });
-  //});
 }

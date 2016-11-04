@@ -9,7 +9,7 @@ export default {
 
   path: '/updatepass',
 
-  action({query}, {path}) {
+ async action({query}, {path}) {
 
     var email = query.email;
     var newpass = query.newpass;
@@ -33,7 +33,7 @@ function updatePassword(newpass, email) {
   console.log("Inside updatePassword method email: " + email);
   console.log("Inside updatePassword method Password: " + newpass);
   console.log('calling API');
-  var url = `http://${apihost}/updatecred?newpass=` +newpass+'&email='+email;
+  var url = `http://${apihost}/updatecred?newpass=`+newpass+'&email='+email;
   console.log("Update Password - URL: " + url);
   request.put(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
