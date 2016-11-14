@@ -9,7 +9,7 @@ const title = 'Changing Password';
 
 
 
-function Changepassword({email}, context) {
+function Changepassword({email, message}, context) {
   console.log("Changepassword: "+email);
   context.setTitle(title);
   return (
@@ -42,6 +42,9 @@ function Changepassword({email}, context) {
               type="password"
               name="confirmpass"              
               />
+              <label className={s.label1} htmlFor="message">
+              {message}
+            </label>
           </div>
           <div className={s.formGroup}>
             <button className={s.button}    value="Change Password" type="submit" >

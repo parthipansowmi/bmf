@@ -112,7 +112,7 @@ module.exports =
   
   var _routes2 = _interopRequireDefault(_routes);
   
-  var _assets = __webpack_require__(169);
+  var _assets = __webpack_require__(167);
   
   var _assets2 = _interopRequireDefault(_assets);
   
@@ -120,7 +120,7 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var mongodb = __webpack_require__(190); // eslint-disable-line import/no-unresolved
+  var mongodb = __webpack_require__(188); // eslint-disable-line import/no-unresolved
   
   
   var app = (0, _express2.default)();
@@ -192,7 +192,7 @@ module.exports =
                       case 0:
                         css = [];
                         statusCode = 200;
-                        template = __webpack_require__(191); // eslint-disable-line global-require
+                        template = __webpack_require__(189); // eslint-disable-line global-require
   
                         data = { title: '', description: '', css: '', body: '', entry: 'assets.main.js' }; //assets.main.js
   
@@ -271,7 +271,7 @@ module.exports =
   app.use(function (err, req, res, next) {
     // eslint-disable-line no-unused-vars
     console.log(pe.render(err)); // eslint-disable-line no-console
-    var template = __webpack_require__(193); // eslint-disable-line global-require
+    var template = __webpack_require__(191); // eslint-disable-line global-require
     var statusCode = err.status || 500;
     res.status(statusCode);
     res.send(template({
@@ -1622,66 +1622,69 @@ module.exports =
   
   var _savecustomer2 = _interopRequireDefault(_savecustomer);
   
-  var _content = __webpack_require__(109);
+  var _content = __webpack_require__(110);
   
   var _content2 = _interopRequireDefault(_content);
   
-  var _error = __webpack_require__(113);
+  var _error = __webpack_require__(114);
   
   var _error2 = _interopRequireDefault(_error);
   
-  var _verifypass = __webpack_require__(117);
+  var _verifypass = __webpack_require__(118);
   
   var _verifypass2 = _interopRequireDefault(_verifypass);
   
-  var _forgotpass = __webpack_require__(123);
+  var _forgotpass = __webpack_require__(122);
   
   var _forgotpass2 = _interopRequireDefault(_forgotpass);
   
-  var _changepassword = __webpack_require__(128);
+  var _changepassword = __webpack_require__(126);
   
   var _changepassword2 = _interopRequireDefault(_changepassword);
   
-  var _updatepass = __webpack_require__(132);
+  var _updatepass = __webpack_require__(130);
   
   var _updatepass2 = _interopRequireDefault(_updatepass);
   
-  var _serviceprovider = __webpack_require__(140);
+  var _serviceprovider = __webpack_require__(134);
   
   var _serviceprovider2 = _interopRequireDefault(_serviceprovider);
   
-  var _saveprovider = __webpack_require__(144);
+  var _saveprovider = __webpack_require__(138);
   
   var _saveprovider2 = _interopRequireDefault(_saveprovider);
   
-  var _booking = __webpack_require__(148);
+  var _booking = __webpack_require__(142);
   
   var _booking2 = _interopRequireDefault(_booking);
   
-  var _savebooking = __webpack_require__(152);
+  var _savebooking = __webpack_require__(146);
   
   var _savebooking2 = _interopRequireDefault(_savebooking);
   
-  var _providerlogin = __webpack_require__(159);
+  var _providerlogin = __webpack_require__(153);
   
   var _providerlogin2 = _interopRequireDefault(_providerlogin);
   
-  var _verifyproviderlogin = __webpack_require__(163);
+  var _linkprovider = __webpack_require__(157);
+  
+  var _linkprovider2 = _interopRequireDefault(_linkprovider);
+  
+  var _verifyproviderlogin = __webpack_require__(161);
   
   var _verifyproviderlogin2 = _interopRequireDefault(_verifyproviderlogin);
   
-  var _providerlist = __webpack_require__(168);
+  var _providerlist = __webpack_require__(166);
   
   var _providerlist2 = _interopRequireDefault(_providerlist);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  // Child routes
   exports.default = {
   
     path: '/',
   
-    children: [_home2.default, _contact2.default, _login2.default, _providerlogin2.default, _verifypass2.default, _verifyproviderlogin2.default, _forgotpass2.default, _changepassword2.default, _updatepass2.default, _register2.default, _savecustomer2.default, _serviceprovider2.default, _saveprovider2.default, _booking2.default, _providerlist2.default, _savebooking2.default, _content2.default, _error2.default],
+    children: [_home2.default, _contact2.default, _login2.default, _providerlogin2.default, _verifypass2.default, _verifyproviderlogin2.default, _forgotpass2.default, _changepassword2.default, _updatepass2.default, _register2.default, _savecustomer2.default, _serviceprovider2.default, _saveprovider2.default, _booking2.default, _providerlist2.default, _savebooking2.default, _linkprovider2.default, _content2.default, _error2.default],
   
     action: function action(_ref) {
       var _this = this;
@@ -1724,6 +1727,8 @@ module.exports =
       }))();
     }
   };
+  
+  // Child routes
 
 /***/ },
 /* 43 */
@@ -3339,7 +3344,7 @@ module.exports =
   
   function Login(props, context) {
     context.setTitle(title);
-    console.log("Porps: " + props);
+  
     return _react2.default.createElement(
       'div',
       { className: _Login2.default.root },
@@ -3441,7 +3446,7 @@ module.exports =
         ),
         _react2.default.createElement(
           'form',
-          { name: 'form1', method: 'post', action: 'verifypass' },
+          { name: 'form1', method: 'get', action: 'verifypass' },
           _react2.default.createElement(
             'div',
             { className: _Login2.default.formGroup },
@@ -3884,19 +3889,31 @@ module.exports =
     value: true
   });
   
+  var _promise = __webpack_require__(101);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
   var _stringify = __webpack_require__(55);
   
   var _stringify2 = _interopRequireDefault(_stringify);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
   
   var _react = __webpack_require__(43);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Savecustomer = __webpack_require__(101);
+  var _Savecustomer = __webpack_require__(102);
   
   var _Savecustomer2 = _interopRequireDefault(_Savecustomer);
   
-  var _Login = __webpack_require__(104);
+  var _Login = __webpack_require__(105);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -3913,7 +3930,7 @@ module.exports =
    * LICENSE.txt file in the root directory of this source tree.
    */
   
-  var request = __webpack_require__(108);
+  var request = __webpack_require__(109);
   
   var message = 'Sucessfully Registered. ';
   var href = 'http://' + _config.host + '/login';
@@ -3925,92 +3942,168 @@ module.exports =
   var email;
   var phone;
   var zipcode;
+  var password;
   
   exports.default = {
   
     path: '/savecustomer',
   
     action: function action(_ref, _ref2) {
+      var _this = this;
+  
       var query = _ref.query;
       var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var body, customerdata, login;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                console.log("Query String: " + (0, _stringify2.default)(query));
   
-      console.log("Query String: " + (0, _stringify2.default)(query));
+                path = '/';
+                fn = query.firstname;
+                console.log(fn);
+                ln = query.lname;
+                address = query.address;
+                zipcode = query.zipcode;
+                phone = query.phone;
+                email = query.email;
+                _context.next = 11;
+                return checkDuplicate(email);
   
-      path = '/';
-      fn = query.firstname;
-      console.log(fn);
-      ln = query.lname;
-      address = query.address;
-      zipcode = query.zipcode;
-      phone = query.phone;
-      email = query.email;
-      checkDuplicate(query);
-      if (!status) {
-        message = 'Error in Saving Customer Data';
-        href = 'http://' + _config.host + '/register';
+              case 11:
+                body = _context.sent;
   
-        message1 = 'Click here to Register.';
-      }
-      console.log("Href: " + href);
-      return _react2.default.createElement(_Savecustomer2.default, { message: message, redirectlink: href, message1: message1 });
+                console.log("Response: " + body);
+  
+                if (!(body == 'false')) {
+                  _context.next = 28;
+                  break;
+                }
+  
+                _context.next = 16;
+                return saveCustomerData(query);
+  
+              case 16:
+                customerdata = _context.sent;
+  
+                console.log("Customerdata: " + customerdata);
+                console.log("Status--saveCustomerData: " + status);
+  
+                if (!(customerdata == 'true')) {
+                  _context.next = 28;
+                  break;
+                }
+  
+                _context.next = 22;
+                return getPassword();
+  
+              case 22:
+                password = _context.sent;
+  
+                console.log("generated Password: " + password);
+                console.log("Status--getPassword: " + status);
+                _context.next = 27;
+                return saveLogin(password);
+  
+              case 27:
+                login = _context.sent;
+  
+              case 28:
+  
+                if (!status) {
+                  message = 'Error in Saving Customer Data';
+                  href = 'http://' + _config.host + '/register';
+  
+                  message1 = 'Click here to Register.';
+                }
+                console.log("Href: " + href);
+                return _context.abrupt('return', _react2.default.createElement(_Savecustomer2.default, { message: message, redirectlink: href, message1: message1 }));
+  
+              case 31:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
     }
   };
   
   
-  function checkDuplicate(data) {
-    var url = 'http://' + _config.apihost + '/getCustomer?email=' + data.email;
+  function checkDuplicate(email) {
+    var url = 'http://' + _config.apihost + '/getCustomer?email=' + email;
     console.log("URL: checkDuplicate " + url);
   
-    request(url, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log('Check duplicate - Response from API' + body);
-        if (body == 'true') {
-          message = 'Email id already register';
-          status = 'false';
-        } else saveCustomerData(data);
-      } else {
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Check duplicate - Response from API' + body);
   
-        console.log("Check duplicate - Error in getting customer ") + error;
-        return '';
-      }
+          if (body == 'true') {
+            message = 'Email id already register';
+            status = 'false';
+          } else {
+            console.log("Customer email not exist");
+            status = 'true';
+          }
+          resolve(body);
+        } else {
+  
+          console.log("Check duplicate - Error in getting customer ") + error;
+          return reject(error);
+        }
+      });
+      console.log("Checkduplicate -- Returning");
     });
   }
   
   function saveCustomerData(data) {
     // var request = require('request');
-    console.log('calling API');
+    console.log('saveCustomerData -- calling API');
     //var request = require('request-promise');
     var url = 'http://' + _config.apihost + '/addNewCustomer';
-    console.log("URL: " + url);
-    request.post(url, { form: data }, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log('Inside saveCustomerData Response from API (body)' + body);
+    console.log("saveCustomerData -- URL: " + url);
   
-        if (body == 'true') {
-          status = true;
-          url = 'http://' + _config.apihost + '/generatePass?length=6';
-          var password = getPassword(url);
-          console.log("generated Password: " + password);
+    return new _promise2.default(function (resolve, reject) {
+      request.post(url, { form: data }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside saveCustomerData Response from API (body)' + body);
+  
+          if (body == 'true') {
+            status = true;
+          }
+          resolve(body);
+        } else {
+          console.log("saveCustomerData -- Error in storing customer data");
+          status = false;
+          return error;
         }
-      } else {
-        console.log("Error in storing customer data");
-        status = false;
-      }
+  
+        console.log('saveCustomerData -- returning from API call');
+      });
     });
-    console.log('returning');
   }
   
-  function getPassword(url) {
-    console.log("URL: " + url);
-    request(url, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log('generate Password - Response from API' + body);
-        saveLogin(body);
-      } else {
+  function getPassword() {
+    var url = 'http://' + _config.apihost + '/generatePass?length=6';
+    console.log("getPassword -- URL: " + url);
   
-        console.log("Get Password -API Server not running: ") + error;
-        return '';
-      }
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('getPassword --  Response from API' + body);
+          status = 'true';
+          resolve(body);
+        } else {
+  
+          console.log("getPassword -- API Server not running: " + error);
+          status = 'false';
+          return error;
+        }
+        console.log('getPassword -- returning from API call');
+      });
     });
   }
   
@@ -4018,20 +4111,29 @@ module.exports =
     var data = { "userEmail": email, "password": password };
     console.log("Data: " + data);
     var url = 'http://' + _config.apihost + '/addcred';
-    //var url = `http://${apihost}/addcred';
-    request.post(url, { form: data }, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log('saveLogin Password - Response from API' + body);
-        status = true;
-      } else {
-        status = false;
-        console.log("Change Password -API Server not running: ") + error;
-      }
+    return new _promise2.default(function (resolve, reject) {
+      request.post(url, { form: data }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('saveLogin Password - Response from API' + body);
+          status = true;
+          resolve(body);
+        } else {
+          status = false;
+          console.log("saveLoging -API Server not running: ") + error;
+          return error;
+        }
+      });
     });
   }
 
 /***/ },
 /* 101 */
+/***/ function(module, exports) {
+
+  module.exports = require("babel-runtime/core-js/promise");
+
+/***/ },
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4048,7 +4150,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Savecustomer = __webpack_require__(102);
+  var _Savecustomer = __webpack_require__(103);
   
   var _Savecustomer2 = _interopRequireDefault(_Savecustomer);
   
@@ -4100,11 +4202,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Savecustomer2.default)(Savecustomer);
 
 /***/ },
-/* 102 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(103);
+      var content = __webpack_require__(104);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -4134,7 +4236,7 @@ module.exports =
     
 
 /***/ },
-/* 103 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -4162,7 +4264,7 @@ module.exports =
   };
 
 /***/ },
-/* 104 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4175,7 +4277,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Login = __webpack_require__(105);
+  var _Login = __webpack_require__(106);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -4191,7 +4293,7 @@ module.exports =
   };
 
 /***/ },
-/* 105 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4212,7 +4314,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Login = __webpack_require__(106);
+  var _Login = __webpack_require__(107);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -4231,7 +4333,7 @@ module.exports =
   
   function Login(props, context) {
     context.setTitle(title);
-    console.log("Porps: " + props);
+  
     return _react2.default.createElement(
       'div',
       { className: _Login2.default.root },
@@ -4333,7 +4435,7 @@ module.exports =
         ),
         _react2.default.createElement(
           'form',
-          { name: 'form1', method: 'post', action: 'verifypass' },
+          { name: 'form1', method: 'get', action: 'verifypass' },
           _react2.default.createElement(
             'div',
             { className: _Login2.default.formGroup },
@@ -4401,11 +4503,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Login2.default)(Login);
 
 /***/ },
-/* 106 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(107);
+      var content = __webpack_require__(108);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -4435,7 +4537,7 @@ module.exports =
     
 
 /***/ },
-/* 107 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -4463,13 +4565,13 @@ module.exports =
   };
 
 /***/ },
-/* 108 */
+/* 109 */
 /***/ function(module, exports) {
 
   module.exports = require("request");
 
 /***/ },
-/* 109 */
+/* 110 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4494,7 +4596,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Content = __webpack_require__(110);
+  var _Content = __webpack_require__(111);
   
   var _Content2 = _interopRequireDefault(_Content);
   
@@ -4571,7 +4673,7 @@ module.exports =
   };
 
 /***/ },
-/* 110 */
+/* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4608,7 +4710,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Content = __webpack_require__(111);
+  var _Content = __webpack_require__(112);
   
   var _Content2 = _interopRequireDefault(_Content);
   
@@ -4660,11 +4762,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Content2.default)(Content);
 
 /***/ },
-/* 111 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(112);
+      var content = __webpack_require__(113);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -4694,7 +4796,7 @@ module.exports =
     
 
 /***/ },
-/* 112 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -4711,7 +4813,7 @@ module.exports =
   };
 
 /***/ },
-/* 113 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4728,7 +4830,7 @@ module.exports =
   
   var _App2 = _interopRequireDefault(_App);
   
-  var _ErrorPage = __webpack_require__(114);
+  var _ErrorPage = __webpack_require__(115);
   
   var _ErrorPage2 = _interopRequireDefault(_ErrorPage);
   
@@ -4752,7 +4854,7 @@ module.exports =
   };
 
 /***/ },
-/* 114 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4769,7 +4871,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _ErrorPage = __webpack_require__(115);
+  var _ErrorPage = __webpack_require__(116);
   
   var _ErrorPage2 = _interopRequireDefault(_ErrorPage);
   
@@ -4818,11 +4920,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_ErrorPage2.default)(ErrorPage);
 
 /***/ },
-/* 115 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(116);
+      var content = __webpack_require__(117);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -4852,7 +4954,7 @@ module.exports =
     
 
 /***/ },
-/* 116 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -4866,7 +4968,7 @@ module.exports =
 
 
 /***/ },
-/* 117 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4875,11 +4977,23 @@ module.exports =
     value: true
   });
   
+  var _promise = __webpack_require__(101);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
   var _react = __webpack_require__(43);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Verifypass = __webpack_require__(118);
+  var _Verifypass = __webpack_require__(119);
   
   var _Verifypass2 = _interopRequireDefault(_Verifypass);
   
@@ -4887,7 +5001,7 @@ module.exports =
   
   var _Login2 = _interopRequireDefault(_Login);
   
-  var _ErrorPage = __webpack_require__(114);
+  var _ErrorPage = __webpack_require__(115);
   
   var _ErrorPage2 = _interopRequireDefault(_ErrorPage);
   
@@ -4899,10 +5013,8 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var request = __webpack_require__(108);
-  var Fiber = __webpack_require__(121);
-  var Future = __webpack_require__(122);
-  var req = Future.wrap(__webpack_require__(108));
+  var request = __webpack_require__(109);
+  
   var res;
   var userEmail;
   var password;
@@ -4914,55 +5026,75 @@ module.exports =
     path: '/verifypass',
   
     action: function action(_ref, _ref2) {
+      var _this = this;
+  
       var query = _ref.query;
       var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
   
+                console.log("inside the verifypass");
+                userEmail = query.usernameOrEmail;
+                password = query.password;
+                console.log(userEmail);
+                console.log(password);
+                url = 'http://' + _config.apihost + '/checklogin?usernameOrEmail=' + userEmail + '&password=' + password;
   
-      console.log("inside the verifypass");
-      //console.log(JSON.stringify(query));
-      userEmail = query.usernameOrEmail;
-      password = query.password;
-      console.log(userEmail);
-      console.log(password);
-      url = 'http://' + _config.apihost + '/checklogin?usernameOrEmail=' + userEmail + '&password=' + password;
-      console.log(url);
-      //console.log('calling API');
+                _context.next = 8;
+                return verifylogin(url);
   
-      // var checkLoginWithFuture = Future.wrap(checkLogin);
+              case 8:
+                validLogin = _context.sent;
   
-      var doFutureWork = function () {
+                console.log("Result from API call: " + validLogin);
   
-        console.log("Inside the doFutureWork");
-        //validLogin = body;
-        var results = req(url, function (error, response, body) {
-          if (!error && response.statusCode == 200) {
-            console.log('Response from API' + body);
-            validLogin = body;
-          } else {
-            console.log("Server not responding");
-            validLogin = false;
+                if (!(validLogin == 'true')) {
+                  _context.next = 15;
+                  break;
+                }
+  
+                console.log(" Going to Home Page");
+                return _context.abrupt('return', _react2.default.createElement(_Home2.default, null));
+  
+              case 15:
+                console.log(" Invalid Credential return to Login Page");
+                return _context.abrupt('return', _react2.default.createElement(_Login2.default, null));
+  
+              case 17:
+              case 'end':
+                return _context.stop();
+            }
           }
-        }).wait();
-  
-        console.log("ValidLogin status: " + validLogin);
-      }.future();
-  
-      console.log('calling checkLogin');
-      doFutureWork();
-      //Fiber.yield();
-      console.log("Done");
-      if (validLogin) {
-        console.log(" Going to Home Page");
-        return _react2.default.createElement(_Home2.default, null);
-      } else {
-        console.log(" Invalid Credential return to Login Page");
-        return _react2.default.createElement(_Login2.default, null);
-      }
+        }, _callee, _this);
+      }))();
     }
   };
+  
+  
+  function verifylogin(url) {
+    console.log("URL -- veriylogin: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Response from API' + body);
+          validLogin = body;
+          resolve(body);
+        } else {
+          console.log("Server not responding");
+          validLogin = false;
+        }
+  
+        console.log("ValidLogin status: " + validLogin);
+      });
+    });
+  }
 
 /***/ },
-/* 118 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4979,7 +5111,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _VerifyPass = __webpack_require__(119);
+  var _VerifyPass = __webpack_require__(120);
   
   var _VerifyPass2 = _interopRequireDefault(_VerifyPass);
   
@@ -5029,11 +5161,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_VerifyPass2.default)(VerifyPass);
 
 /***/ },
-/* 119 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(120);
+      var content = __webpack_require__(121);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -5063,7 +5195,7 @@ module.exports =
     
 
 /***/ },
-/* 120 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -5090,19 +5222,7 @@ module.exports =
   };
 
 /***/ },
-/* 121 */
-/***/ function(module, exports) {
-
-  module.exports = require("fibers");
-
-/***/ },
 /* 122 */
-/***/ function(module, exports) {
-
-  module.exports = require("fibers/future");
-
-/***/ },
-/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5110,6 +5230,10 @@ module.exports =
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
+  
+  var _promise = __webpack_require__(101);
+  
+  var _promise2 = _interopRequireDefault(_promise);
   
   var _regenerator = __webpack_require__(1);
   
@@ -5119,57 +5243,15 @@ module.exports =
   
   var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
   
-  var checkLogin = function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(email) {
-      var request, url;
-      return _regenerator2.default.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              request = __webpack_require__(108);
-  
-              console.log('calling API');
-              url = 'http://' + _config.apihost + '/findemail?email=' + email;
-  
-              console.log("URL: " + url);
-              //return new Promise(function (resolve, reject) {
-              request(url, function (error, response, body) {
-                if (!error && response.statusCode == 200) {
-                  console.log('Response from API' + body);
-                  if (body == 'true') {
-                    sendEmail(email);
-                  }
-                  //return resolve(body);
-                } else {
-                    status = false;
-                    console.log("API Server not running: ") + error;
-                  }
-              });
-              //});
-  
-            case 5:
-            case 'end':
-              return _context.stop();
-          }
-        }
-      }, _callee, this);
-    }));
-    return function checkLogin(_x) {
-      return ref.apply(this, arguments);
-    };
-  }();
-  
-  exports.passwordCode = passwordCode;
-  
   var _react = __webpack_require__(43);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Forgotpass = __webpack_require__(124);
+  var _Forgotpass = __webpack_require__(123);
   
   var _Forgotpass2 = _interopRequireDefault(_Forgotpass);
   
-  var _Login = __webpack_require__(104);
+  var _Login = __webpack_require__(91);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -5177,65 +5259,132 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var status = true;
-  var validLogin = false;
+  var request = __webpack_require__(109);
+  
+  var status = 'false';
+  var errormessage = '';
+  
   exports.default = {
   
     path: '/forgotpass',
   
     action: function action(_ref, _ref2) {
+      var _this = this;
+  
       var query = _ref.query;
       var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var email, validlogin, code, body, result;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                email = query.email;
   
-      var email = query.email;
   
-      console.log("Email ID:" + email);
-      if (typeof email === 'undefined') return _react2.default.createElement(_Forgotpass2.default, null);else {
+                console.log("Email ID:" + email);
   
-        validLogin = checkLogin(email);
-      }
-      console.log("Status: " + status);
-      if (status == true) {
-        console.log("Redirected to Login Page");
-        return _react2.default.createElement(_Login2.default, null);
-      } else {
-        console.log("Error in Reseting request");
-        return _react2.default.createElement(_Forgotpass2.default, null);
-      }
+                if (!(typeof email === 'undefined')) {
+                  _context.next = 6;
+                  break;
+                }
+  
+                return _context.abrupt('return', _react2.default.createElement(_Forgotpass2.default, null));
+  
+              case 6:
+                _context.next = 8;
+                return checkLogin(email);
+  
+              case 8:
+                validlogin = _context.sent;
+  
+                console.log("ValidLogin:" + validlogin);
+  
+                if (!(validlogin == 'true')) {
+                  _context.next = 20;
+                  break;
+                }
+  
+                code = passwordCode(6);
+  
+                console.log("Passcode: " + code);
+                _context.next = 15;
+                return sendEmail(email, code);
+  
+              case 15:
+                body = _context.sent;
+  
+                if (!(body == 'true')) {
+                  _context.next = 20;
+                  break;
+                }
+  
+                _context.next = 19;
+                return storePasscode(email, code);
+  
+              case 19:
+                result = _context.sent;
+  
+              case 20:
+                console.log("Status: " + status);
+  
+                if (!(status == true)) {
+                  _context.next = 26;
+                  break;
+                }
+  
+                console.log("Redirected to Login Page");
+                return _context.abrupt('return', _react2.default.createElement(_Login2.default, null));
+  
+              case 26:
+                console.log("Error in Reseting password request");
+                return _context.abrupt('return', _react2.default.createElement(_Forgotpass2.default, { errormessage: errormessage }));
+  
+              case 28:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
     }
   };
   
   
-  function sendEmail(email) {
-    var nodemailer = __webpack_require__(127);
-    var code = passwordCode(6);
-    var transporter = nodemailer.createTransport('smtps://dreamtruesolution%40gmail.com:sowmi6050@smtp.gmail.com');
-    console.log("SendEmail Code: " + code);
-    // setup e-mail data with unicode symbols
-    var mailOptions = {
-      from: 'dreamtruesolution@gmail.com', // sender address
-      to: email, // list of receivers
-      subject: 'Password Reset ', // Subject line
-      text: 'Password Reset Mail ', // plaintext body
-      html: '<b>We received your request for password Reset. </b> <a href="http://localhost:3000/changepassword?code=' + code + '&userEmail=' + email + '"' + 'target="_blank">click here to reset the password</a>' // html body
+  function sendEmail(email, code) {
+    console.log('calling API - sendEmail');
+    var url = 'http://' + _config.apihost + '/sendmail';
+    console.log("URL: " + url);
+  
+    var subject = "Your Password Reset";
+    var href = 'http://' + _config.host + '/changepassword?code=' + code + '&userEmail=' + email;
+    console.log("Href: " + href);
+    var message = '<b>We received your request for password Reset. <a href="' + href + '" >Click here to reset password</a> ';
+    var formdata = {
+      tomail: email,
+      subject: subject,
+      message: message
     };
   
-    // send mail with defined transport object 
-    transporter.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        console.log("Error Message' " + error);
-        status = false;
-      } else {
-        status = true;
-        console.log('Message sent: ' + info.response);
-        storePasscode(email, code);
-      }
+    console.log("Data: " + formdata);
+    return new _promise2.default(function (resolve, reject) {
+      request.post(url, { form: formdata }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside sendEmail - Response from API (body)' + body);
+  
+          if (body == 'true') status = true;else status = false;
+          resolve(body);
+        } else if (error) {
+          console.log("Error in Sending Mail");
+          status = false;
+          return reject(error);
+        }
+      });
     });
-    console.log("returning");
   }
   
   function passwordCode(length) {
-    var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890";
+    var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^*()-+<>ABCDEFGHIJKLMNOP1234567890";
     var pass = "";
     for (var x = 0; x < length; x++) {
       var i = Math.floor(Math.random() * chars.length);
@@ -5245,26 +5394,51 @@ module.exports =
   }
   
   function storePasscode(email, code) {
-    var request = __webpack_require__(108);
+  
     console.log("Inside storePasscode method email: " + email);
     console.log("Inside storePasscode method Code: " + code);
     console.log('calling API');
     var url = 'http://' + _config.apihost + '/storePasscode';
     console.log("URL: " + url);
-    request.post(url, { form: { email: email, code: code } }, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log('Inside StorePasscode Response from API (body)' + body);
+    return new _promise2.default(function (resolve, reject) {
+      request.post(url, { form: { email: email, code: code } }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside StorePasscode Response from API (body)' + body);
   
-        if (body == 'true') status = true;
-      } else {
-        console.log("Error in storing passcode");
-        status = false;
-      }
+          if (body == 'true') status = true;
+          resolve(body);
+        } else {
+          console.log("Error in storing passcode");
+          status = false;
+          return reject(error);
+        }
+      });
+    });
+  }
+  
+  function checkLogin(email) {
+  
+    console.log('calling API');
+    var url = 'http://' + _config.apihost + '/findemail?email=' + email;
+    console.log("URL: " + url);
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Response from API: ' + body);
+          if (body == 'true') status = true;
+          resolve(body);
+        } else {
+          status = 'false';
+          console.log("API Server not running: " + error);
+          return reject(error);
+        }
+        console.log('Returning');
+      });
     });
   }
 
 /***/ },
-/* 124 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5281,7 +5455,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Forgotpass = __webpack_require__(125);
+  var _Forgotpass = __webpack_require__(124);
   
   var _Forgotpass2 = _interopRequireDefault(_Forgotpass);
   
@@ -5294,7 +5468,6 @@ module.exports =
   var title = 'Changing Password';
   
   function Forgotpass(props, context) {
-    console.log(props);
     context.setTitle(title);
     return _react2.default.createElement(
       'div',
@@ -5346,11 +5519,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Forgotpass2.default)(Forgotpass);
 
 /***/ },
-/* 125 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(126);
+      var content = __webpack_require__(125);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -5380,7 +5553,7 @@ module.exports =
     
 
 /***/ },
-/* 126 */
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -5407,13 +5580,7 @@ module.exports =
   };
 
 /***/ },
-/* 127 */
-/***/ function(module, exports) {
-
-  module.exports = require("nodemailer");
-
-/***/ },
-/* 128 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5422,61 +5589,112 @@ module.exports =
     value: true
   });
   
+  var _promise = __webpack_require__(101);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
   var _react = __webpack_require__(43);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Changepassword = __webpack_require__(129);
+  var _Changepassword = __webpack_require__(127);
   
   var _Changepassword2 = _interopRequireDefault(_Changepassword);
+  
+  var _Login = __webpack_require__(91);
+  
+  var _Login2 = _interopRequireDefault(_Login);
   
   var _config = __webpack_require__(20);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var status = true;
+  var status = false;
   
   exports.default = {
   
     path: '/changepassword',
   
     action: function action(_ref, _ref2) {
+      var _this = this;
+  
       var query = _ref.query;
       var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var email, code, startdate, body, enddate, difftime;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                email = query.userEmail;
+                code = query.code;
   
+                console.log("Email ID:" + email);
+                startdate = new Date();
+                _context.next = 6;
+                return checkCode(code, email);
   
-      var email = query.userEmail;
-      var code = query.code;
-      console.log("Email ID:" + email);
-      checkCode(code, email);
-      return _react2.default.createElement(_Changepassword2.default, { email: email });
+              case 6:
+                body = _context.sent;
+                enddate = new Date();
+                difftime = enddate.getTime() - startdate.getTime();
+  
+                console.log("Execution Time:" + difftime);
+  
+                if (!status) {
+                  _context.next = 14;
+                  break;
+                }
+  
+                return _context.abrupt('return', _react2.default.createElement(_Changepassword2.default, { email: email }));
+  
+              case 14:
+                return _context.abrupt('return', _react2.default.createElement(_Login2.default, null));
+  
+              case 15:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
     }
   };
   
   
   function checkCode(code, email) {
-    var request = __webpack_require__(108);
+    var request = __webpack_require__(109);
     console.log('Check Code - calling API');
     var url = 'http://' + _config.apihost + '/getCode?code=' + code + '&userEmail=' + email;
-    console.log("Change Password -URL: " + url);
+    console.log("Checkcode - URL: " + url);
   
-    request(url, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log('Change Password - Response from API' + body);
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Checkcode - Response from API' + body);
   
-        if (body == 'true') {
-          //updatePassword();
-          status = true;
+          if (body == 'true') status = true;else status = false;
+          resolve(body);
+        } else {
+          status = false;
+          console.log("checkCode -API Server not running: " + error);
+          return reject(error);
         }
-      } else {
-        status = false;
-        console.log("Change Password -API Server not running: ") + error;
-      }
+        console.log("Checkecode - Returning from API call");
+      });
     });
   }
 
 /***/ },
-/* 129 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5493,7 +5711,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _changepassword = __webpack_require__(130);
+  var _changepassword = __webpack_require__(128);
   
   var _changepassword2 = _interopRequireDefault(_changepassword);
   
@@ -5507,6 +5725,7 @@ module.exports =
   
   function Changepassword(_ref, context) {
     var email = _ref.email;
+    var message = _ref.message;
   
     console.log("Changepassword: " + email);
     context.setTitle(title);
@@ -5554,8 +5773,12 @@ module.exports =
               id: 'confirmpass',
               type: 'password',
               name: 'confirmpass'
-  
-            })
+            }),
+            _react2.default.createElement(
+              'label',
+              { className: _changepassword2.default.label1, htmlFor: 'message' },
+              message
+            )
           ),
           _react2.default.createElement(
             'div',
@@ -5584,11 +5807,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_changepassword2.default)(Changepassword);
 
 /***/ },
-/* 130 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(131);
+      var content = __webpack_require__(129);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -5618,7 +5841,7 @@ module.exports =
     
 
 /***/ },
-/* 131 */
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -5626,7 +5849,7 @@ module.exports =
   
   
   // module
-  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.changepassword_root_2hw {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.changepassword_container_vd0 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.changepassword_lead_337 {\n  font-size: 1.25em;\n}\n\n.changepassword_formGroup_2cz {\n  margin-bottom: 20px;\n}\n\n.changepassword_label_1io {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.changepassword_input_3LT {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.changepassword_input_3LT:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.changepassword_button_CSn {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.changepassword_button_CSn:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.changepassword_button_CSn:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.changepassword_facebook_34M {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n\n.changepassword_facebook_34M:hover {\n  background: #2d4373;\n}\n\n.changepassword_google_2Ay {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n\n.changepassword_google_2Ay:hover {\n  background: #c23321;\n}\n\n.changepassword_twitter_1ce {\n  border-color: #55acee;\n  background: #55acee;\n}\n\n.changepassword_twitter_1ce:hover {\n  background: #2795e9;\n}\n\n.changepassword_icon_1iu {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.changepassword_lineThrough_3gi {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.changepassword_lineThrough_3gi::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.changepassword_lineThrough_3gi::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/changepassword/changepassword.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"changepassword.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n"],"sourceRoot":"webpack://"}]);
+  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.changepassword_root_2hw {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.changepassword_container_vd0 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.changepassword_lead_337 {\n  font-size: 1.25em;\n}\n\n.changepassword_formGroup_2cz {\n  margin-bottom: 20px;\n}\n\n.changepassword_label_1io {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.changepassword_label1_2Xu {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 300;\n  color: #FF0000;\n}\n\n.changepassword_input_3LT {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.changepassword_input_3LT:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.changepassword_button_CSn {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.changepassword_button_CSn:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.changepassword_button_CSn:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/changepassword/changepassword.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,eAAe;CAChB;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C","file":"changepassword.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.label1 {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 300;\n  color: #FF0000;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n"],"sourceRoot":"webpack://"}]);
   
   // exports
   exports.locals = {
@@ -5635,17 +5858,13 @@ module.exports =
   	"lead": "changepassword_lead_337",
   	"formGroup": "changepassword_formGroup_2cz",
   	"label": "changepassword_label_1io",
+  	"label1": "changepassword_label1_2Xu",
   	"input": "changepassword_input_3LT",
-  	"button": "changepassword_button_CSn",
-  	"facebook": "changepassword_facebook_34M changepassword_button_CSn",
-  	"google": "changepassword_google_2Ay changepassword_button_CSn",
-  	"twitter": "changepassword_twitter_1ce changepassword_button_CSn",
-  	"icon": "changepassword_icon_1iu",
-  	"lineThrough": "changepassword_lineThrough_3gi"
+  	"button": "changepassword_button_CSn"
   };
 
 /***/ },
-/* 132 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5654,15 +5873,27 @@ module.exports =
     value: true
   });
   
+  var _promise = __webpack_require__(101);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
   var _react = __webpack_require__(43);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Updatepass = __webpack_require__(133);
+  var _Updatepass = __webpack_require__(131);
   
   var _Updatepass2 = _interopRequireDefault(_Updatepass);
   
-  var _Changepassword = __webpack_require__(136);
+  var _Changepassword = __webpack_require__(127);
   
   var _Changepassword2 = _interopRequireDefault(_Changepassword);
   
@@ -5678,49 +5909,85 @@ module.exports =
     path: '/updatepass',
   
     action: function action(_ref, _ref2) {
+      var _this = this;
+  
       var query = _ref.query;
       var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var email, newpass, confirmpass, body;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                email = query.email;
+                newpass = query.newpass;
+                confirmpass = query.confirmpass;
   
+                console.log("Email ID:" + email);
+                console.log("New Password: " + newpass);
+                console.log("Confirm Password: " + confirmpass);
   
-      var email = query.email;
-      var newpass = query.newpass;
-      var confirmpass = query.confirmpass;
-      console.log("Email ID:" + email);
-      console.log("New Password: " + newpass);
-      console.log("Confirm Password: " + confirmpass);
-      if (newpass != confirmpass) return _react2.default.createElement(_Changepassword2.default, null);
-      updatePassword(newpass, email);
-      if (status = false) message = ' Error in updating password';
-      return _react2.default.createElement(_Updatepass2.default, { message: message });
+                if (!(newpass != confirmpass)) {
+                  _context.next = 9;
+                  break;
+                }
+  
+                message = "Password Not matching";
+                return _context.abrupt('return', _react2.default.createElement(_Changepassword2.default, { email: email, message: message }));
+  
+              case 9:
+                _context.next = 11;
+                return updatePassword(newpass, email);
+  
+              case 11:
+                body = _context.sent;
+  
+                if (status = false) message = ' Error in updating password';else message = 'Password Sucessfully Updated';
+  
+                return _context.abrupt('return', _react2.default.createElement(_Updatepass2.default, { message: message }));
+  
+              case 14:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
     }
   };
   
   
   function updatePassword(newpass, email) {
-    var request = __webpack_require__(108);
+    var request = __webpack_require__(109);
     console.log("Inside updatePassword method email: " + email);
     console.log("Inside updatePassword method Password: " + newpass);
     console.log('calling API');
     var url = 'http://' + _config.apihost + '/updatecred?newpass=' + newpass + '&email=' + email;
     console.log("Update Password - URL: " + url);
-    request.put(url, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log('Change Password - Response from API' + body);
-        if (body == 'true') {
-          status = true;
+  
+    return new _promise2.default(function (resolve, reject) {
+  
+      request.put(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Change Password - Response from API' + body);
+          if (body == 'true') {
+            status = true;
+          } else {
+            status = false;
+            message = 'Error in updating password';
+          }
+          resolve(body);
         } else {
           status = false;
-          message = 'Error in updating password';
+          console.log("Change Password -API Server not running: ") + error;
+          return reject(error);
         }
-      } else {
-        status = false;
-        console.log("Change Password -API Server not running: ") + error;
-      }
+      });
     });
   }
 
 /***/ },
-/* 133 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5737,7 +6004,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _updatepass = __webpack_require__(134);
+  var _updatepass = __webpack_require__(132);
   
   var _updatepass2 = _interopRequireDefault(_updatepass);
   
@@ -5787,11 +6054,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_updatepass2.default)(Updatepass);
 
 /***/ },
-/* 134 */
+/* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(135);
+      var content = __webpack_require__(133);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -5821,7 +6088,7 @@ module.exports =
     
 
 /***/ },
-/* 135 */
+/* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -5829,7 +6096,7 @@ module.exports =
   
   
   // module
-  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n.updatepass_root_Q_n {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n.updatepass_container_n8c {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n.updatepass_lead_1Xi {\n  font-size: 1.25em;\n}\n.updatepass_formGroup_1Fj {\n  margin-bottom: 20px;\n}\n.updatepass_label_3lc {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n.updatepass_input_3tg {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n.updatepass_input_3tg:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.updatepass_button_1mT {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.updatepass_button_1mT:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n.updatepass_button_1mT:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.updatepass_facebook_2jX {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n.updatepass_facebook_2jX:hover {\n  background: #2d4373;\n}\n.updatepass_google_1WT {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n.updatepass_google_1WT:hover {\n  background: #c23321;\n}\n.updatepass_twitter_3cW {\n  border-color: #55acee;\n  background: #55acee;\n}\n.updatepass_twitter_3cW:hover {\n  background: #2795e9;\n}\n.updatepass_icon_IAX {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n.updatepass_lineThrough_3LS {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n.updatepass_lineThrough_3LS::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n.updatepass_lineThrough_3LS::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./routes/updatepass/updatepass.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;ACLH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;ADbD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;AAED;EACE,kBAAkB;CACnB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;AAED;EACE,mCAAmC;CACpC;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"updatepass.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n","\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
+  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n.updatepass_root_Q_n {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n.updatepass_container_n8c {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n.updatepass_lead_1Xi {\n  font-size: 1.25em;\n}\n.updatepass_formGroup_1Fj {\n  margin-bottom: 20px;\n}\n.updatepass_label_3lc {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n.updatepass_input_3tg {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n.updatepass_input_3tg:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.updatepass_button_1mT {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.updatepass_button_1mT:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n.updatepass_button_1mT:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.updatepass_facebook_2jX {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n.updatepass_facebook_2jX:hover {\n  background: #2d4373;\n}\n.updatepass_google_1WT {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n.updatepass_google_1WT:hover {\n  background: #c23321;\n}\n.updatepass_twitter_3cW {\n  border-color: #55acee;\n  background: #55acee;\n}\n.updatepass_twitter_3cW:hover {\n  background: #2795e9;\n}\n.updatepass_icon_IAX {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n.updatepass_lineThrough_3LS {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n.updatepass_lineThrough_3LS::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n.updatepass_lineThrough_3LS::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./routes/updatepass/updatepass.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;ACLH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;ADbD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;AAED;EACE,kBAAkB;CACnB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;AAGD;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;AAED;EACE,mCAAmC;CACpC;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"updatepass.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n","\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
   
   // exports
   exports.locals = {
@@ -5848,7 +6115,7 @@ module.exports =
   };
 
 /***/ },
-/* 136 */
+/* 134 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5861,239 +6128,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Changepassword = __webpack_require__(137);
-  
-  var _Changepassword2 = _interopRequireDefault(_Changepassword);
-  
-  var _config = __webpack_require__(20);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var status = true;
-  
-  exports.default = {
-  
-    path: '/changepassword',
-  
-    action: function action(_ref, _ref2) {
-      var query = _ref.query;
-      var path = _ref2.path;
-  
-  
-      var email = query.userEmail;
-      var code = query.code;
-      console.log("Email ID:" + email);
-      checkCode(code, email);
-      return _react2.default.createElement(_Changepassword2.default, { email: email });
-    }
-  };
-  
-  
-  function checkCode(code, email) {
-    var request = __webpack_require__(108);
-    console.log('Check Code - calling API');
-    var url = 'http://' + _config.apihost + '/getCode?code=' + code + '&userEmail=' + email;
-    console.log("Change Password -URL: " + url);
-  
-    request(url, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log('Change Password - Response from API' + body);
-  
-        if (body == 'true') {
-          //updatePassword();
-          status = true;
-        }
-      } else {
-        status = false;
-        console.log("Change Password -API Server not running: ") + error;
-      }
-    });
-  }
-
-/***/ },
-/* 137 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(43);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _withStyles = __webpack_require__(58);
-  
-  var _withStyles2 = _interopRequireDefault(_withStyles);
-  
-  var _changepassword = __webpack_require__(138);
-  
-  var _changepassword2 = _interopRequireDefault(_changepassword);
-  
-  var _Link = __webpack_require__(61);
-  
-  var _Link2 = _interopRequireDefault(_Link);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var title = 'Changing Password';
-  
-  function Changepassword(_ref, context) {
-    var email = _ref.email;
-  
-    console.log("Changepassword: " + email);
-    context.setTitle(title);
-    return _react2.default.createElement(
-      'div',
-      { className: _changepassword2.default.root },
-      _react2.default.createElement(
-        'div',
-        { className: _changepassword2.default.container },
-        _react2.default.createElement(
-          'h1',
-          null,
-          title
-        ),
-        _react2.default.createElement(
-          'form',
-          { name: 'form1', method: 'put', action: 'updatepass' },
-          _react2.default.createElement(
-            'div',
-            { className: _changepassword2.default.formGroup },
-            _react2.default.createElement(
-              'label',
-              { className: _changepassword2.default.label, htmlFor: 'password' },
-              'New Password:'
-            ),
-            _react2.default.createElement('input', {
-              className: _changepassword2.default.input,
-              id: 'newpass',
-              type: 'password',
-              name: 'newpass',
-              autoFocus: true,
-              required: true
-            })
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: _changepassword2.default.formGroup },
-            _react2.default.createElement(
-              'label',
-              { className: _changepassword2.default.label, htmlFor: 'password' },
-              'Confirm Password:'
-            ),
-            _react2.default.createElement('input', {
-              className: _changepassword2.default.input,
-              id: 'confirmpass',
-              type: 'password',
-              name: 'confirmpass'
-  
-            })
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: _changepassword2.default.formGroup },
-            _react2.default.createElement(
-              'button',
-              { className: _changepassword2.default.button, value: 'Change Password', type: 'submit' },
-              'Change Password'
-            ),
-            _react2.default.createElement('input', {
-              className: _changepassword2.default.input,
-              id: 'email',
-              type: 'hidden',
-              name: 'email',
-              value: email
-            })
-          ),
-          _react2.default.createElement('script', null)
-        )
-      )
-    );
-  }
-  
-  Changepassword.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
-  
-  exports.default = (0, _withStyles2.default)(_changepassword2.default)(Changepassword);
-
-/***/ },
-/* 138 */
-/***/ function(module, exports, __webpack_require__) {
-
-  
-      var content = __webpack_require__(139);
-      var insertCss = __webpack_require__(54);
-  
-      if (typeof content === 'string') {
-        content = [[module.id, content, '']];
-      }
-  
-      module.exports = content.locals || {};
-      module.exports._getCss = function() { return content.toString(); };
-      module.exports._insertCss = function(options) { return insertCss(content, options) };
-    
-      // Hot Module Replacement
-      // https://webpack.github.io/docs/hot-module-replacement
-      // Only activated in browser context
-      if (false) {
-        var removeCss = function() {};
-        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./changepassword.css", function() {
-          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./changepassword.css");
-  
-          if (typeof content === 'string') {
-            content = [[module.id, content, '']];
-          }
-  
-          removeCss = insertCss(content, { replace: true });
-        });
-        module.hot.dispose(function() { removeCss(); });
-      }
-    
-
-/***/ },
-/* 139 */
-/***/ function(module, exports, __webpack_require__) {
-
-  exports = module.exports = __webpack_require__(53)();
-  // imports
-  
-  
-  // module
-  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.changepassword_root_2uC {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.changepassword_container_163 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.changepassword_lead_2Ab {\n  font-size: 1.25em;\n}\n\n.changepassword_formGroup_3oV {\n  margin-bottom: 20px;\n}\n\n.changepassword_label_xjx {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.changepassword_input_3wQ {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.changepassword_input_3wQ:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.changepassword_button_inZ {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.changepassword_button_inZ:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.changepassword_button_inZ:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.changepassword_facebook_3_L {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n\n.changepassword_facebook_3_L:hover {\n  background: #2d4373;\n}\n\n.changepassword_google_pzK {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n\n.changepassword_google_pzK:hover {\n  background: #c23321;\n}\n\n.changepassword_twitter_1hP {\n  border-color: #55acee;\n  background: #55acee;\n}\n\n.changepassword_twitter_1hP:hover {\n  background: #2795e9;\n}\n\n.changepassword_icon_1K0 {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.changepassword_lineThrough_qhm {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.changepassword_lineThrough_qhm::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.changepassword_lineThrough_qhm::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/Changepassword/changepassword.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"changepassword.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n"],"sourceRoot":"webpack://"}]);
-  
-  // exports
-  exports.locals = {
-  	"root": "changepassword_root_2uC",
-  	"container": "changepassword_container_163",
-  	"lead": "changepassword_lead_2Ab",
-  	"formGroup": "changepassword_formGroup_3oV",
-  	"label": "changepassword_label_xjx",
-  	"input": "changepassword_input_3wQ",
-  	"button": "changepassword_button_inZ",
-  	"facebook": "changepassword_facebook_3_L changepassword_button_inZ",
-  	"google": "changepassword_google_pzK changepassword_button_inZ",
-  	"twitter": "changepassword_twitter_1hP changepassword_button_inZ",
-  	"icon": "changepassword_icon_1K0",
-  	"lineThrough": "changepassword_lineThrough_qhm"
-  };
-
-/***/ },
-/* 140 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(43);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _Serviceprovider = __webpack_require__(141);
+  var _Serviceprovider = __webpack_require__(135);
   
   var _Serviceprovider2 = _interopRequireDefault(_Serviceprovider);
   
@@ -6118,7 +6153,7 @@ module.exports =
   };
 
 /***/ },
-/* 141 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -6135,7 +6170,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Serviceprovider = __webpack_require__(142);
+  var _Serviceprovider = __webpack_require__(136);
   
   var _Serviceprovider2 = _interopRequireDefault(_Serviceprovider);
   
@@ -6344,11 +6379,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Serviceprovider2.default)(Serviceprovider);
 
 /***/ },
-/* 142 */
+/* 136 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(143);
+      var content = __webpack_require__(137);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -6378,7 +6413,7 @@ module.exports =
     
 
 /***/ },
-/* 143 */
+/* 137 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -6386,7 +6421,7 @@ module.exports =
   
   
   // module
-  exports.push([module.id, " .Serviceprovider_root_3Ll {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Serviceprovider_container_c6Z {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height:100x\n}\n\n.Serviceprovider_lead_35E {\n  font-size: 1.25em;\n}\n\n.Serviceprovider_formGroup_3-S {\n  margin-bottom: 20px;\n  \n}\n\n.Serviceprovider_label_15b {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.Serviceprovider_input_354 {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n}\n\n.Serviceprovider_input_354:focus {\n  border-color: red;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Serviceprovider_button_vnx {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Serviceprovider_button_vnx:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Serviceprovider_button_vnx:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Serviceprovider_leftContainer_31v {\n   float:left;\n}\n\n.Serviceprovider_rightContainer_2M6 {\n   float:right;\n}\n\n.Serviceprovider_icon_1-O {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Serviceprovider_lineThrough_2lM {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Serviceprovider_lineThrough_2lM::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Serviceprovider_lineThrough_2lM::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n.Serviceprovider_squaredOne_5rn {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  margin: 20px auto;\n  background: #fcfff4;\n  background: -webkit-gradient(linear, left top, left bottom, from(#fcfff4), color-stop(40%, #dfe5d7), to(#b3bead));\n  background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n          box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n  label {\n    width: 20px;\n    height: 20px;\n    position: absolute;\n    top: 4px;\n    left: 4px;\n    cursor: pointer;\n    background: -webkit-gradient(linear, left top, left bottom, from(top), color-stop(0%, #222), to(#45484d));\n    background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);\n    background: -o-linear-gradient(top, #222 0%, #45484d 100%);\n    background: linear-gradient(top, #222 0%, #45484d 100%);\n    -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);\n            box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1)\n  }\n  label:after {\n    content: '';\n    width: 16px;\n    height: 16px;\n    position: absolute;\n    top: 2px;\n    left: 2px;\n    background: $activeColor;\n    background: -webkit-gradient(linear, left top, left bottom, from($activeColor), to($darkenColor));\n    background: -webkit-linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    background: -o-linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n            box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n    opacity: 0;\n  }\n  label:hover::after {\n    opacity: 0.3;\n  }\n  input[type=checkbox] {\n    visibility: hidden   \n  }\n  input[type=checkbox]:checked + label:after {\n    opacity: 1;\n  } \n}\n\nhtml {\n  min-height: 100%;\n}\n\nbody {\n  min-height: 100vh;\n}", "", {"version":3,"sources":["/./routes/serviceprovider/Serviceprovider.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;CAChB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;EACzE,SAAS;EACT,cAAc;CACf;;AAED;EACE,kBAAkB;EAClB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;GACG,WAAW;CACb;;AAED;GACG,YAAY;CACd;;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb;;AAED;EACE,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,oBAAoB;EACpB,kHAAwE;EAAxE,gFAAwE;EAAxE,2EAAwE;EAAxE,wEAAwE;EACxE,yEAAiE;UAAjE,iEAAiE;EACjE;IACE,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,UAAU;IACV,gBAAgB;IAChB,0GAAwD;IAAxD,gEAAwD;IAAxD,2DAAwD;IAAxD,wDAAwD;IACxD,uFAA+E;YAA/E,8EAA+E;GAgBhF;EAfC;IACE,YAAY;IACZ,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,UAAU;IACV,yBAAyB;IACzB,kGAAqE;IAArE,6EAAqE;IAArE,wEAAqE;IAArE,qEAAqE;IACrE,yEAAiE;YAAjE,iEAAiE;IACjE,WAAW;GACZ;EACD;IACE,aAAa;GACd;EAEH;IACE,kBAAmB;GAIpB;EAHC;IACE,WAAW;GACZ;CAEJ;;AAED;EACE,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB","file":"Serviceprovider.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height:100x\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n}\n\n.input:focus {\n  border-color: red;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.leftContainer {\n   float:left;\n}\n\n.rightContainer {\n   float:right;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n.squaredOne {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  margin: 20px auto;\n  background: #fcfff4;\n  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n  label {\n    width: 20px;\n    height: 20px;\n    position: absolute;\n    top: 4px;\n    left: 4px;\n    cursor: pointer;\n    background: linear-gradient(top, #222 0%, #45484d 100%);\n    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);\n    &:after {\n      content: '';\n      width: 16px;\n      height: 16px;\n      position: absolute;\n      top: 2px;\n      left: 2px;\n      background: $activeColor;\n      background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n      opacity: 0;\n    }\n    &:hover::after {\n      opacity: 0.3;\n    }\n  }\n  input[type=checkbox] {\n    visibility: hidden;\n    &:checked + label:after {\n      opacity: 1;\n    }   \n  } \n}\n\nhtml {\n  min-height: 100%;\n}\n\nbody {\n  min-height: 100vh;\n}"],"sourceRoot":"webpack://"}]);
+  exports.push([module.id, " .Serviceprovider_root_3Ll {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Serviceprovider_container_c6Z {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height:100x\n}\n\n.Serviceprovider_lead_35E {\n  font-size: 1.25em;\n}\n\n.Serviceprovider_formGroup_3-S {\n  margin-bottom: 20px;\n  \n}\n\n.Serviceprovider_label_15b {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.Serviceprovider_input_354 {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n}\n\n.Serviceprovider_input_354:focus {\n  border-color: red;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Serviceprovider_button_vnx {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Serviceprovider_button_vnx:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Serviceprovider_button_vnx:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Serviceprovider_leftContainer_31v {\n   float:left;\n}\n\n.Serviceprovider_rightContainer_2M6 {\n   float:right;\n}\n\n.Serviceprovider_icon_1-O {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Serviceprovider_lineThrough_2lM {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Serviceprovider_lineThrough_2lM::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Serviceprovider_lineThrough_2lM::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n.Serviceprovider_squaredOne_5rn {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  margin: 20px auto;\n  background: #fcfff4;\n  background: -webkit-gradient(linear, left top, left bottom, from(top), color-stop(0%, #fcfff4), color-stop(40%, #dfe5d7), to(#b3bead));\n  background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n          box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n  label {\n    width: 20px;\n    height: 20px;\n    position: absolute;\n    top: 4px;\n    left: 4px;\n    cursor: pointer;\n    background: -webkit-gradient(linear, left top, left bottom, from(#222), to(#45484d));\n    background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);\n    background: -o-linear-gradient(top, #222 0%, #45484d 100%);\n    background: linear-gradient(top, #222 0%, #45484d 100%);\n    -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);\n            box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1)\n  }\n  label:after {\n    content: '';\n    width: 16px;\n    height: 16px;\n    position: absolute;\n    top: 2px;\n    left: 2px;\n    background: $activeColor;\n    background: -webkit-gradient(linear, left top, left bottom, from(top), color-stop(0%, $activeColor), to($darkenColor));\n    background: -webkit-linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    background: -o-linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n            box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n    opacity: 0;\n  }\n  label:hover::after {\n    opacity: 0.3;\n  }\n  input[type=checkbox] {\n    visibility: hidden   \n  }\n  input[type=checkbox]:checked + label:after {\n    opacity: 1;\n  } \n}\n\nhtml {\n  min-height: 100%;\n}\n\nbody {\n  min-height: 100vh;\n}", "", {"version":3,"sources":["/./routes/serviceprovider/Serviceprovider.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;CAChB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;EACzE,SAAS;EACT,cAAc;CACf;;AAED;EACE,kBAAkB;EAClB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;GACG,WAAW;CACb;;AAED;GACG,YAAY;CACd;;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb;;AAED;EACE,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,oBAAoB;EACpB,uIAAwE;EAAxE,gFAAwE;EAAxE,2EAAwE;EAAxE,wEAAwE;EACxE,yEAAiE;UAAjE,iEAAiE;EACjE;IACE,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,UAAU;IACV,gBAAgB;IAChB,qFAAwD;IAAxD,gEAAwD;IAAxD,2DAAwD;IAAxD,wDAAwD;IACxD,uFAA+E;YAA/E,8EAA+E;GAgBhF;EAfC;IACE,YAAY;IACZ,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,UAAU;IACV,yBAAyB;IACzB,uHAAqE;IAArE,6EAAqE;IAArE,wEAAqE;IAArE,qEAAqE;IACrE,yEAAiE;YAAjE,iEAAiE;IACjE,WAAW;GACZ;EACD;IACE,aAAa;GACd;EAEH;IACE,kBAAmB;GAIpB;EAHC;IACE,WAAW;GACZ;CAEJ;;AAED;EACE,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB","file":"Serviceprovider.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height:100x\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n}\n\n.input:focus {\n  border-color: red;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.leftContainer {\n   float:left;\n}\n\n.rightContainer {\n   float:right;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n.squaredOne {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  margin: 20px auto;\n  background: #fcfff4;\n  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n  label {\n    width: 20px;\n    height: 20px;\n    position: absolute;\n    top: 4px;\n    left: 4px;\n    cursor: pointer;\n    background: linear-gradient(top, #222 0%, #45484d 100%);\n    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);\n    &:after {\n      content: '';\n      width: 16px;\n      height: 16px;\n      position: absolute;\n      top: 2px;\n      left: 2px;\n      background: $activeColor;\n      background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n      opacity: 0;\n    }\n    &:hover::after {\n      opacity: 0.3;\n    }\n  }\n  input[type=checkbox] {\n    visibility: hidden;\n    &:checked + label:after {\n      opacity: 1;\n    }   \n  } \n}\n\nhtml {\n  min-height: 100%;\n}\n\nbody {\n  min-height: 100vh;\n}"],"sourceRoot":"webpack://"}]);
   
   // exports
   exports.locals = {
@@ -6405,7 +6440,7 @@ module.exports =
   };
 
 /***/ },
-/* 144 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -6414,19 +6449,31 @@ module.exports =
     value: true
   });
   
+  var _promise = __webpack_require__(101);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
   var _stringify = __webpack_require__(55);
   
   var _stringify2 = _interopRequireDefault(_stringify);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
   
   var _react = __webpack_require__(43);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Saveprovider = __webpack_require__(145);
+  var _Saveprovider = __webpack_require__(139);
   
   var _Saveprovider2 = _interopRequireDefault(_Saveprovider);
   
-  var _Login = __webpack_require__(104);
+  var _Login = __webpack_require__(105);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -6443,18 +6490,20 @@ module.exports =
    * LICENSE.txt file in the root directory of this source tree.
    */
   
-  var request = __webpack_require__(108);
+  var request = __webpack_require__(109);
   
   var message = 'Sucessfully Registered. <a href="http://' + _config.apihost + '/login" >Click here to login</a>';
   var status = true;
-  var fn;
+  /*var fn;
   var ln;
   var address;
-  var email;
+  
   var phone;
   var zipcode;
   var type;
-  var serve;
+  var serve;*/
+  
+  var email;
   var message = 'Sucessfully Registered. ';
   var href = 'http://' + _config.host + '/providerlogin';
   var message1 = 'Click here to login';
@@ -6464,67 +6513,120 @@ module.exports =
     path: '/saveprovider',
   
     action: function action(_ref, _ref2) {
+      var _this = this;
+  
       var query = _ref.query;
       var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var result, password, savelogin;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                console.log("Query String: " + (0, _stringify2.default)(query));
+                path = '/';
+                /*fn = query.firstname;
+                console.log(fn);
+                ln = query.lname;
+                address = query.address;
+                zipcode = query.zipcode;
+                phone = query.phone;*/
+                email = query.email;
   
-      console.log("Query String: " + (0, _stringify2.default)(query));
-      path = '/';
-      fn = query.firstname;
-      console.log(fn);
-      ln = query.lname;
-      address = query.address;
-      zipcode = query.zipcode;
-      phone = query.phone;
-      email = query.email;
-      SaveproviderData(query);
-      if (!status) {
-        message = 'Error in Provider Data';
-        href = 'http://' + _config.host + '/serviceprovider';
-        message1 = 'Click here to Register';
-      }
-      return _react2.default.createElement(_Saveprovider2.default, { message: message, href: href, message1: message1 });
-      //return <Login />;
+                _context.next = 5;
+                return SaveproviderData(query);
+  
+              case 5:
+                result = _context.sent;
+  
+                console.log("Status -- SaveproviderData: " + status);
+  
+                if (!status) {
+                  _context.next = 16;
+                  break;
+                }
+  
+                _context.next = 10;
+                return getPassword();
+  
+              case 10:
+                password = _context.sent;
+  
+                console.log("Status -- getPassword: " + status);
+  
+                if (!status) {
+                  _context.next = 16;
+                  break;
+                }
+  
+                _context.next = 15;
+                return saveLogin(password);
+  
+              case 15:
+                savelogin = _context.sent;
+  
+              case 16:
+                if (!status) {
+                  message = 'Error in Provider Data';
+                  href = 'http://' + _config.host + '/serviceprovider';
+                  message1 = 'Click here to Register';
+                }
+                return _context.abrupt('return', _react2.default.createElement(_Saveprovider2.default, { message: message, href: href, message1: message1 }));
+  
+              case 18:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
     }
   };
   
+  //return <Login />;
+  
   
   function SaveproviderData(data) {
-    var request = __webpack_require__(108);
+    var request = __webpack_require__(109);
     //console.log("Inside storePasscode method email: " + email);
     // console.log("Inside storePasscode method Code: " + code);
     console.log('calling API');
     var url = 'http://' + _config.apihost + '/addNewProvider';
     console.log("URL: " + url);
-    request.post(url, { form: data }, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log('Inside SaveproviderData Response from API (body)' + body);
   
-        if (body == 'true') {
-          status = true;
-          url = 'http://' + _config.apihost + '/generatePass?length=6';
-          var password = getPassword(url);
-          console.log("generated Password: " + password);
-        } else {
-          console.log("Error in storing customer data");
-          status = false;
+    return new _promise2.default(function (resolve, reject) {
+      request.post(url, { form: data }, function (error, response, body) {
+  
+        if (error) return reject(error);
+        if (!error && response.statusCode == 200) {
+          console.log('Inside SaveproviderData Response from API (body)' + body);
+          if (body == 'true') {
+            status = true;
+          } else {
+            console.log("Error in storing customer data");
+            status = false;
+          }
+          resolve(body);
         }
-      }
+        console.log('returning');
+      });
     });
-  
-    console.log('returning');
   }
   
-  function getPassword(url) {
+  function getPassword() {
+    var url = 'http://' + _config.apihost + '/generatePass?length=6';
     console.log("URL: " + url);
-    request(url, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log('generate Password - Response from API' + body);
-        saveLogin(body);
-      } else {
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('generate Password - Response from API' + body);
+          resolve(body);
+        } else {
   
-        console.log("Get Password -API Server not running: ") + error;
-        return '';
-      }
+          console.log("Get Password - API Server not running: ") + error;
+          return reject(error);
+        }
+      });
     });
   }
   
@@ -6533,19 +6635,23 @@ module.exports =
     console.log("Data: " + data);
     var url = 'http://' + _config.apihost + '/addlogin';
     //var url = `http://${apihost}/addproviderlogin';
-    request.post(url, { form: data }, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log('saveLogin Password - Response from API' + body);
-        status = true;
-      } else {
-        status = false;
-        console.log("Change Password -API Server not running: ") + error;
-      }
+    return new _promise2.default(function (resolve, reject) {
+      request.post(url, { form: data }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('saveLogin Password - Response from API' + body);
+          status = true;
+          resolve(body);
+        } else {
+          status = false;
+          console.log("Change Password -API Server not running: ") + error;
+          return reject(error);
+        }
+      });
     });
   }
 
 /***/ },
-/* 145 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -6562,7 +6668,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Saveprovider = __webpack_require__(146);
+  var _Saveprovider = __webpack_require__(140);
   
   var _Saveprovider2 = _interopRequireDefault(_Saveprovider);
   
@@ -6614,11 +6720,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Saveprovider2.default)(Saveprovider);
 
 /***/ },
-/* 146 */
+/* 140 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(147);
+      var content = __webpack_require__(141);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -6648,7 +6754,7 @@ module.exports =
     
 
 /***/ },
-/* 147 */
+/* 141 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -6676,7 +6782,7 @@ module.exports =
   };
 
 /***/ },
-/* 148 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -6689,7 +6795,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Booking = __webpack_require__(149);
+  var _Booking = __webpack_require__(143);
   
   var _Booking2 = _interopRequireDefault(_Booking);
   
@@ -6711,7 +6817,7 @@ module.exports =
   };
 
 /***/ },
-/* 149 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -6728,7 +6834,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Booking = __webpack_require__(150);
+  var _Booking = __webpack_require__(144);
   
   var _Booking2 = _interopRequireDefault(_Booking);
   
@@ -6760,7 +6866,7 @@ module.exports =
           { name: 'form1', method: 'put', action: 'savebooking' },
           _react2.default.createElement(
             'div',
-            { classname: _Booking2.default.rightContainer },
+            { className: _Booking2.default.rightContainer },
             _react2.default.createElement('input', { id: 'status', type: 'hidden', value: 'booked', name: 'status' }),
             _react2.default.createElement(
               'label',
@@ -6914,11 +7020,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Booking2.default)(Booking);
 
 /***/ },
-/* 150 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(151);
+      var content = __webpack_require__(145);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -6948,7 +7054,7 @@ module.exports =
     
 
 /***/ },
-/* 151 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -6956,7 +7062,7 @@ module.exports =
   
   
   // module
-  exports.push([module.id, " .Booking_root_16d {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Booking_container_3w7 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Booking_lead_oXi {\n  font-size: 1.25em;\n}\n\n.Booking_formGroup_1Wc {\n  margin-bottom: 20px;\n  \n}\n\n.Booking_label_yqN {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.Booking_input_b9l {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n}\n\n.Booking_input_b9l:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Booking_button_1QB {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #483288;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor:  pointer;\n}\n\n.Booking_button_1QB:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Booking_button_1QB:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Booking_leftContainer_3QX {\n   float:left;\n}\n\n.Booking_rightContainer_35N {\n   float:right;\n}\n\n.Booking_icon_1b7 {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Booking_lineThrough_SuZ {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Booking_lineThrough_SuZ::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Booking_lineThrough_SuZ::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n#Booking_lastname_1vn{\n    max-width:100px;\n    float:left;\n}\n\n.Booking_squaredOne_2tF {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  margin: 20px auto;\n  background: #fcfff4;\n  background: -webkit-gradient(linear, left top, left bottom, from(top), color-stop(0%, #fcfff4), color-stop(40%, #dfe5d7), to(#b3bead));\n  background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n          box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n  label {\n    width: 20px;\n    height: 20px;\n    position: absolute;\n    top: 4px;\n    left: 4px;\n    cursor: pointer;\n    background: -webkit-gradient(linear, left top, left bottom, from(#222), to(#45484d));\n    background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);\n    background: -o-linear-gradient(top, #222 0%, #45484d 100%);\n    background: linear-gradient(top, #222 0%, #45484d 100%);\n    -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);\n            box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1)\n  }\n  label:after {\n    content: '';\n    width: 16px;\n    height: 16px;\n    position: absolute;\n    top: 2px;\n    left: 2px;\n    background: $activeColor;\n    background: -webkit-gradient(linear, left top, left bottom, from(top), color-stop(0%, $activeColor), to($darkenColor));\n    background: -webkit-linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    background: -o-linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n            box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n    opacity: 0;\n  }\n  label:hover::after {\n    opacity: 0.3;\n  }\n  input[type=checkbox] {\n    visibility: hidden   \n  }\n  input[type=checkbox]:checked + label:after {\n    opacity: 1;\n  } \n}", "", {"version":3,"sources":["/./routes/booking/Booking.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;EACzE,SAAS;EACT,cAAc;CACf;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,iBAAiB;CAClB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;GACG,WAAW;CACb;;AAED;GACG,YAAY;CACd;;AAGD;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb;;AACD;IACI,gBAAgB;IAChB,WAAW;CACd;;AAED;EACE,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,oBAAoB;EACpB,uIAAwE;EAAxE,gFAAwE;EAAxE,2EAAwE;EAAxE,wEAAwE;EACxE,yEAAiE;UAAjE,iEAAiE;EACjE;IACE,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,UAAU;IACV,gBAAgB;IAChB,qFAAwD;IAAxD,gEAAwD;IAAxD,2DAAwD;IAAxD,wDAAwD;IACxD,uFAA+E;YAA/E,8EAA+E;GAgBhF;EAfC;IACE,YAAY;IACZ,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,UAAU;IACV,yBAAyB;IACzB,uHAAqE;IAArE,6EAAqE;IAArE,wEAAqE;IAArE,qEAAqE;IACrE,yEAAiE;YAAjE,iEAAiE;IACjE,WAAW;GACZ;EACD;IACE,aAAa;GACd;EAEH;IACE,kBAAmB;GAIpB;EAHC;IACE,WAAW;GACZ;CAEJ","file":"Booking.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #483288;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor:  pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.leftContainer {\n   float:left;\n}\n\n.rightContainer {\n   float:right;\n}\n\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n#lastname{\n    max-width:100px;\n    float:left;\n}\n\n.squaredOne {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  margin: 20px auto;\n  background: #fcfff4;\n  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n  label {\n    width: 20px;\n    height: 20px;\n    position: absolute;\n    top: 4px;\n    left: 4px;\n    cursor: pointer;\n    background: linear-gradient(top, #222 0%, #45484d 100%);\n    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);\n    &:after {\n      content: '';\n      width: 16px;\n      height: 16px;\n      position: absolute;\n      top: 2px;\n      left: 2px;\n      background: $activeColor;\n      background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n      opacity: 0;\n    }\n    &:hover::after {\n      opacity: 0.3;\n    }\n  }\n  input[type=checkbox] {\n    visibility: hidden;\n    &:checked + label:after {\n      opacity: 1;\n    }   \n  } \n}"],"sourceRoot":"webpack://"}]);
+  exports.push([module.id, " .Booking_root_16d {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Booking_container_3w7 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Booking_lead_oXi {\n  font-size: 1.25em;\n}\n\n.Booking_formGroup_1Wc {\n  margin-bottom: 20px;\n  \n}\n\n.Booking_label_yqN {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.Booking_input_b9l {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n}\n\n.Booking_input_b9l:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Booking_button_1QB {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #483288;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor:  pointer;\n}\n\n.Booking_button_1QB:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Booking_button_1QB:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Booking_leftContainer_3QX {\n   float:left;\n}\n\n.Booking_rightContainer_35N {\n   float:right;\n}\n\n.Booking_icon_1b7 {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Booking_lineThrough_SuZ {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Booking_lineThrough_SuZ::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Booking_lineThrough_SuZ::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n#Booking_lastname_1vn{\n    max-width:100px;\n    float:left;\n}\n\n.Booking_squaredOne_2tF {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  margin: 20px auto;\n  background: #fcfff4;\n  background: -webkit-gradient(linear, left top, left bottom, from(#fcfff4), color-stop(40%, #dfe5d7), to(#b3bead));\n  background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n          box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n  label {\n    width: 20px;\n    height: 20px;\n    position: absolute;\n    top: 4px;\n    left: 4px;\n    cursor: pointer;\n    background: -webkit-gradient(linear, left top, left bottom, from(top), color-stop(0%, #222), to(#45484d));\n    background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);\n    background: -o-linear-gradient(top, #222 0%, #45484d 100%);\n    background: linear-gradient(top, #222 0%, #45484d 100%);\n    -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);\n            box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1)\n  }\n  label:after {\n    content: '';\n    width: 16px;\n    height: 16px;\n    position: absolute;\n    top: 2px;\n    left: 2px;\n    background: $activeColor;\n    background: -webkit-gradient(linear, left top, left bottom, from($activeColor), to($darkenColor));\n    background: -webkit-linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    background: -o-linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n            box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n    opacity: 0;\n  }\n  label:hover::after {\n    opacity: 0.3;\n  }\n  input[type=checkbox] {\n    visibility: hidden   \n  }\n  input[type=checkbox]:checked + label:after {\n    opacity: 1;\n  } \n}", "", {"version":3,"sources":["/./routes/booking/Booking.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;EACzE,SAAS;EACT,cAAc;CACf;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,iBAAiB;CAClB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;GACG,WAAW;CACb;;AAED;GACG,YAAY;CACd;;AAGD;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb;;AACD;IACI,gBAAgB;IAChB,WAAW;CACd;;AAED;EACE,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,oBAAoB;EACpB,kHAAwE;EAAxE,gFAAwE;EAAxE,2EAAwE;EAAxE,wEAAwE;EACxE,yEAAiE;UAAjE,iEAAiE;EACjE;IACE,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,UAAU;IACV,gBAAgB;IAChB,0GAAwD;IAAxD,gEAAwD;IAAxD,2DAAwD;IAAxD,wDAAwD;IACxD,uFAA+E;YAA/E,8EAA+E;GAgBhF;EAfC;IACE,YAAY;IACZ,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,UAAU;IACV,yBAAyB;IACzB,kGAAqE;IAArE,6EAAqE;IAArE,wEAAqE;IAArE,qEAAqE;IACrE,yEAAiE;YAAjE,iEAAiE;IACjE,WAAW;GACZ;EACD;IACE,aAAa;GACd;EAEH;IACE,kBAAmB;GAIpB;EAHC;IACE,WAAW;GACZ;CAEJ","file":"Booking.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #483288;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor:  pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.leftContainer {\n   float:left;\n}\n\n.rightContainer {\n   float:right;\n}\n\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n#lastname{\n    max-width:100px;\n    float:left;\n}\n\n.squaredOne {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  margin: 20px auto;\n  background: #fcfff4;\n  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n  label {\n    width: 20px;\n    height: 20px;\n    position: absolute;\n    top: 4px;\n    left: 4px;\n    cursor: pointer;\n    background: linear-gradient(top, #222 0%, #45484d 100%);\n    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);\n    &:after {\n      content: '';\n      width: 16px;\n      height: 16px;\n      position: absolute;\n      top: 2px;\n      left: 2px;\n      background: $activeColor;\n      background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n      opacity: 0;\n    }\n    &:hover::after {\n      opacity: 0.3;\n    }\n  }\n  input[type=checkbox] {\n    visibility: hidden;\n    &:checked + label:after {\n      opacity: 1;\n    }   \n  } \n}"],"sourceRoot":"webpack://"}]);
   
   // exports
   exports.locals = {
@@ -6976,7 +7082,7 @@ module.exports =
   };
 
 /***/ },
-/* 152 */
+/* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -6985,23 +7091,76 @@ module.exports =
     value: true
   });
   
+  var _promise = __webpack_require__(101);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
   var _stringify = __webpack_require__(55);
   
   var _stringify2 = _interopRequireDefault(_stringify);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var sendSMS = function () {
+    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2() {
+      var url;
+      return _regenerator2.default.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              console.log('calling API - sendSMS method');
+  
+              url = 'http://' + _config.apihost + '/sendSMS?authkey=' + _config.smsAPIKey + '&mobiles=' + phone + '&message=' + _config.SMSmessage + '&sender=DTSBMF&route=4&country=91';
+  
+              console.log("URL: " + url);
+              return _context2.abrupt('return', new _promise2.default(function (resolve, reject) {
+                request(url, function (error, response, body) {
+                  if (!error && response.statusCode == 200) {
+                    console.log('Inside sendSMS - Response from API (body)' + body);
+  
+                    if (error) {
+                      console.log("Error in Sending SMS");
+                      status = false;
+                      return reject(error);
+                    }
+  
+                    if (body == 'true') status = true;
+                    resolve(body);
+                  }
+                });
+              }));
+  
+            case 4:
+            case 'end':
+              return _context2.stop();
+          }
+        }
+      }, _callee2, this);
+    }));
+    return function sendSMS() {
+      return ref.apply(this, arguments);
+    };
+  }();
   
   var _react = __webpack_require__(43);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Savebooking = __webpack_require__(153);
+  var _Savebooking = __webpack_require__(147);
   
   var _Savebooking2 = _interopRequireDefault(_Savebooking);
   
-  var _Providerlist = __webpack_require__(156);
+  var _Providerlist = __webpack_require__(150);
   
   var _Providerlist2 = _interopRequireDefault(_Providerlist);
   
-  var _Login = __webpack_require__(104);
+  var _Login = __webpack_require__(105);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -7009,7 +7168,7 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var request = __webpack_require__(108); /**
+  var request = __webpack_require__(109); /**
                                      * React Starter Kit (https://www.reactstarterkit.com/)
                                      *
                                      * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
@@ -7019,35 +7178,80 @@ module.exports =
                                      */
   
   var message = 'Booking done Sucessfully  ';
-  var href = 'http://' + _config.host + '/providerlist';
+  var href = 'http://' + _config.host + '/';
   var message1 = 'Click here to login';
   var status = true;
   var email;
   var phone;
   var zipcode;
+  var providerlist;
   
   exports.default = {
   
     path: '/savebooking',
   
     action: function action(_ref, _ref2) {
+      var _this = this;
+  
       var query = _ref.query;
       var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var body, mail;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                console.log("Query String: " + (0, _stringify2.default)(query));
+                phone = query.mobile;
+                email = query.email;
+                _context.next = 5;
+                return SavebookingData(query);
   
-      console.log("Query String: " + (0, _stringify2.default)(query));
-      phone = query.mobile;
-      email = query.email;
-      SavebookingData(query);
-      if (!status) {
-        message = 'Error in Saving Customer Data';
-        href = 'http://' + _config.host + '/register';
-        message1 = 'Click here to Register.';
-        return _react2.default.createElement(_Savebooking2.default, { message: message, redirectlink: href, message1: message1 });
-      } else {
-        return _react2.default.createElement(_Providerlist2.default, null);
-      }
+              case 5:
+                body = _context.sent;
+  
+                console.log("Calling SendEmail");
+                _context.next = 9;
+                return sendEmail();
+  
+              case 9:
+                mail = _context.sent;
+  
+                console.log("Calling sendSMS");
+                // var sms = await sendSMS();
+                //console.log("Body: "+body);
+  
+                if (status) {
+                  _context.next = 18;
+                  break;
+                }
+  
+                message = 'Unable to book the Event';
+                href = 'http://' + _config.host + '/booking';
+                message1 = 'Click here to Register.';
+                return _context.abrupt('return', _react2.default.createElement(_Savebooking2.default, { message: message, redirectlink: href, message1: message1 }));
+  
+              case 18:
+                _context.next = 20;
+                return getProviderData();
+  
+              case 20:
+                providerlist = _context.sent;
+  
+                console.log("Service Provider List: " + providerlist);
+                return _context.abrupt('return', _react2.default.createElement(_Providerlist2.default, { providerlist: providerlist, customeremail: email }));
+  
+              case 23:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
     }
   };
+  
+  // return <Savebooking message={message} redirectlink={href} message1={message1} />;
   
   
   function SavebookingData(data) {
@@ -7055,35 +7259,25 @@ module.exports =
     console.log('calling API - SavebookingData method');
     var url = 'http://' + _config.apihost + '/newBooking';
     console.log("URL: " + url);
-    request.post(url, { form: data }, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log('Inside SavebookingData Response from API (body)' + body);
   
-        if (body == 'true') status = true;
-        //sendSMS();
-        sendEmail();
-      } else {
-        console.log("Error in storing customer data");
-        status = false;
-      }
-    });
-    console.log('returning');
-  }
+    return new _promise2.default(function (resolve, reject) {
+      request.post(url, { form: data }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside SavebookingData Response from API (body)' + body);
   
-  function sendSMS() {
-    console.log('calling API - sendSMS method');
+          if (body == 'true') status = true;
+          resolve(body);
+          //sendSMS();
+          //var result = await sendEmail();
+        }
+        if (error) {
+          console.log("Error in storing customer data");
+          status = false;
+          return reject(error);
+        }
+      });
   
-    var url = 'http://' + _config.apihost + '/sendSMS?authkey=' + _config.smsAPIKey + '&mobiles=' + phone + '&message=' + _config.SMSmessage + '&sender=DTSBMF&route=4&country=91';
-    console.log("URL: " + url);
-    request(url, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log('Inside sendSMS - Response from API (body)' + body);
-  
-        if (body == 'true') status = true;
-      } else {
-        console.log("Error in Sending SMS");
-        status = false;
-      }
+      console.log('returning');
     });
   }
   
@@ -7102,20 +7296,45 @@ module.exports =
   
     //data = JSON.stringify('{\"tomail\": \"'+email+'\", \"subject\": '+subject+'\", \"message\": \" '+message+'\"}');
     console.log("Data: " + formdata);
-    request.post(url, { form: formdata }, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log('Inside sendEmail - Response from API (body)' + body);
+    return new _promise2.default(function (resolve, reject) {
+      request.post(url, { form: formdata }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside sendEmail - Response from API (body)' + body);
   
-        if (body == 'true') status = true;
-      } else {
-        console.log("Error in Sending Mail");
-        status = false;
-      }
+          if (body == 'true') resolve(body);
+          status = true;
+        }
+        if (error) {
+          console.log("Error in Sending Mail");
+          status = false;
+          return reject(error);
+        }
+      });
+    });
+  }
+  
+  function getProviderData() {
+    var request = __webpack_require__(109);
+  
+    console.log('calling API');
+    var url = 'http://' + _config.apihost + '/searchByType?servicetype=Pooja';
+    console.log("URL: " + url);
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          //console.log('Inside getProviderData Response from API (body)' + body);
+          providerlist = body;
+          //console.log("Providerlist: "+providerlist);
+          resolve(body);
+        } else {
+          return reject(body);
+        }
+      });
     });
   }
 
 /***/ },
-/* 153 */
+/* 147 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7132,7 +7351,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Savebooking = __webpack_require__(154);
+  var _Savebooking = __webpack_require__(148);
   
   var _Savebooking2 = _interopRequireDefault(_Savebooking);
   
@@ -7184,11 +7403,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Savebooking2.default)(Savebooking);
 
 /***/ },
-/* 154 */
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(155);
+      var content = __webpack_require__(149);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -7218,7 +7437,7 @@ module.exports =
     
 
 /***/ },
-/* 155 */
+/* 149 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -7246,7 +7465,7 @@ module.exports =
   };
 
 /***/ },
-/* 156 */
+/* 150 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7263,7 +7482,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Providerlist = __webpack_require__(157);
+  var _Providerlist = __webpack_require__(151);
   
   var _Providerlist2 = _interopRequireDefault(_Providerlist);
   
@@ -7280,34 +7499,13 @@ module.exports =
   
   function Providerlist(_ref, props, context) {
     var providerlist = _ref.providerlist;
+    var customeremail = _ref.customeremail;
   
     //context.setTitle(title);
   
-    var providerdata = [{
-      "_id": "57f75cb5e0c058d42dc63df3",
-      "modifieddate": "7/10/2016",
-      "firstname": "Krishna",
-      "lname": "Vembu",
-      "address": "Vadamalai",
-      "city": "Coimbatore",
-      "zipcode": "600010",
-      "email": "krishna_v@hotmail.com",
-      "phone": "9841030770",
-      "servicetype": "Pooja"
-    }, {
-      "_id": "5805de4f50986a542046ced8",
-      "modifieddate": "18/10/2016",
-      "firstname": "Mukund",
-      "lname": "Sundaram",
-      "address": "No:10 2nd cross street",
-      "city": "Chennai",
-      "zipcode": "600041",
-      "email": "parthipansowmi@gmail.com",
-      "phone": "9840888415",
-      "servicetype": "Pooja",
-      "serveoutside": "on"
-    }];
-    console.log(providerdata);
+    var providerdata = JSON.parse(providerlist);
+  
+    console.log("Provider Data: " + providerdata);
     return _react2.default.createElement(
       'div',
       { className: _Providerlist2.default.root },
@@ -7329,7 +7527,7 @@ module.exports =
           null,
           _react2.default.createElement(
             'form',
-            { name: 'form1', method: 'get', action: 'verifyproviderlogin' },
+            { name: 'form1', method: 'put', action: 'linkprovider' },
             _react2.default.createElement(
               'div',
               { className: _Providerlist2.default.formGroup },
@@ -7394,14 +7592,16 @@ module.exports =
                       _react2.default.createElement(
                         'td',
                         null,
-                        _react2.default.createElement('input', { type: 'radio', name: 'provider' }),
+                        _react2.default.createElement('input', { type: 'radio', name: 'provideremail', value: obj.email }),
                         ' '
                       ),
                       _react2.default.createElement(
                         'td',
                         null,
                         ' ',
-                        obj.email
+                        _react2.default.createElement('input', { id: 'email', type: 'hidden', value: obj.email }),
+                        obj.email,
+                        ' '
                       ),
                       _react2.default.createElement(
                         'td',
@@ -7437,17 +7637,18 @@ module.exports =
                   })
                 )
               )
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('input', { type: 'hidden', name: 'customeremail', value: customeremail }),
+              _react2.default.createElement(
+                'button',
+                { className: _Providerlist2.default.button, type: 'submit' },
+                'Submit'
+              )
             )
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement('br', null),
-          _react2.default.createElement(
-            'button',
-            { className: _Providerlist2.default.button, type: 'submit' },
-            'Submit'
           )
         )
       )
@@ -7459,11 +7660,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Providerlist2.default)(Providerlist);
 
 /***/ },
-/* 157 */
+/* 151 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(158);
+      var content = __webpack_require__(152);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -7493,7 +7694,7 @@ module.exports =
     
 
 /***/ },
-/* 158 */
+/* 152 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -7512,7 +7713,7 @@ module.exports =
   };
 
 /***/ },
-/* 159 */
+/* 153 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7525,7 +7726,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _providerlogin = __webpack_require__(160);
+  var _providerlogin = __webpack_require__(154);
   
   var _providerlogin2 = _interopRequireDefault(_providerlogin);
   
@@ -7541,7 +7742,7 @@ module.exports =
   };
 
 /***/ },
-/* 160 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7562,7 +7763,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Providerlogin = __webpack_require__(161);
+  var _Providerlogin = __webpack_require__(155);
   
   var _Providerlogin2 = _interopRequireDefault(_Providerlogin);
   
@@ -7667,11 +7868,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Providerlogin2.default)(Providerlogin);
 
 /***/ },
-/* 161 */
+/* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(162);
+      var content = __webpack_require__(156);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -7701,7 +7902,7 @@ module.exports =
     
 
 /***/ },
-/* 162 */
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -7729,7 +7930,7 @@ module.exports =
   };
 
 /***/ },
-/* 163 */
+/* 157 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7738,88 +7939,121 @@ module.exports =
     value: true
   });
   
+  var _promise = __webpack_require__(101);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _stringify = __webpack_require__(55);
+  
+  var _stringify2 = _interopRequireDefault(_stringify);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
   var _react = __webpack_require__(43);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Verifyproviderlogin = __webpack_require__(164);
+  var _LinkProvider = __webpack_require__(158);
   
-  var _Verifyproviderlogin2 = _interopRequireDefault(_Verifyproviderlogin);
-  
-  var _Providerlogin = __webpack_require__(167);
-  
-  var _Providerlogin2 = _interopRequireDefault(_Providerlogin);
-  
-  var _ErrorPage = __webpack_require__(114);
-  
-  var _ErrorPage2 = _interopRequireDefault(_ErrorPage);
-  
-  var _Home = __webpack_require__(83);
-  
-  var _Home2 = _interopRequireDefault(_Home);
+  var _LinkProvider2 = _interopRequireDefault(_LinkProvider);
   
   var _config = __webpack_require__(20);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var req = __webpack_require__(108);
-  /*var Fiber = require('fibers');
-  var Future = require('fibers/future');
-  var req = Future.wrap(require('request'));*/
-  var res;
-  var userEmail;
-  var password;
-  var validLogin = true;
-  var url;
+  var message = 'Booking done Sucessfully  '; /**
+                                               * React Starter Kit (https://www.reactstarterkit.com/)
+                                               *
+                                               * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+                                               *
+                                               * This source code is licensed under the MIT license found in the
+                                               * LICENSE.txt file in the root directory of this source tree.
+                                               */
+  
+  var href = 'http://' + _config.host + '/';
+  var message1 = 'Click here to Home Page';
+  var status = true;
   
   exports.default = {
   
-    path: '/verifyproviderlogin',
+    path: '/linkprovider',
   
     action: function action(_ref, _ref2) {
+      var _this = this;
+  
       var query = _ref.query;
       var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var provideremail, customeremail, url, result;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                console.log("Query String: " + (0, _stringify2.default)(query));
+                provideremail = query.provideremail;
+                customeremail = query.customeremail;
+                url = 'http://' + _config.apihost + '/updateProviderLink?provideremail=' + provideremail + '&email=' + customeremail;
   
+                console.log("Link Provider - Provider Email: " + provideremail);
+                console.log("Link Provider - Customer Email: " + customeremail);
+                console.log("URL: " + url);
+                _context.next = 9;
+                return LinkProviderData(url);
   
-      console.log("inside the verifypass");
-      //console.log(JSON.stringify(query));
-      userEmail = query.email;
-      password = query.password;
-      console.log(userEmail);
-      console.log(password);
+              case 9:
+                result = _context.sent;
   
-      console.log('calling checkLogin');
-      checklogin();
-      if (validLogin) {
-        console.log(" Going to Home Page");
-        return _react2.default.createElement(_Home2.default, null);
-      } else {
-        console.log(" Invalid Credential return to Login Page");
-        return _react2.default.createElement(_Providerlogin2.default, null);
-      }
+                console.log("Return from LinkProviderData");
+                if (!status) {
+                  message = 'Error in Saving Booking Data';
+                  href = 'http://' + _config.host + '/booking';
+                  message1 = 'Click here to Re-booking';
+                }
+  
+                return _context.abrupt('return', _react2.default.createElement(_LinkProvider2.default, { message: message, redirectlink: href, message1: message1 }));
+  
+              case 13:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
     }
   };
   
   
-  function checklogin() {
-    url = 'http://' + _config.apihost + '/verifylogin?email=' + userEmail + '&password=' + password;
-    console.log("API Endpoing: " + url);
+  function LinkProviderData(url) {
+    var request = __webpack_require__(109);
+    // console.log("APIHOST: "+apihost);
+    console.log('calling API - LinkProviderData method');
+    //console.log("URL: " + url);
+    return new _promise2.default(function (resolve, reject) {
+      request.put(url, function (error, response, body) {
+        if (error) {
+          console.log("Error in storing provider data");
+          status = false;
+          return reject(error);
+        }
   
-    var results = req(url, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log('Response from API' + body);
-        validLogin = body;
-      } else {
-        console.log("Server not responding");
-        validLogin = false;
-      }
+        if (body == 'true') {
+          console.log('Inside LinkProviderData Response from API (body)' + body);
+          status = true;
+          resolve(body);
+        }
+      });
+      console.log('returning');
     });
-  
-    console.log("ValidLogin status: " + validLogin);
   }
 
 /***/ },
-/* 164 */
+/* 158 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7836,7 +8070,259 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Verifyproviderlogin = __webpack_require__(165);
+  var _LinkProvider = __webpack_require__(159);
+  
+  var _LinkProvider2 = _interopRequireDefault(_LinkProvider);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'New Boooking';
+  
+  function LinkProvider(_ref, context) {
+    var message = _ref.message;
+    var redirectlink = _ref.redirectlink;
+    var message1 = _ref.message1;
+  
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      { className: _LinkProvider2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _LinkProvider2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          message
+        ),
+        _react2.default.createElement(
+          'a',
+          { href: redirectlink },
+          message1,
+          ' '
+        )
+      )
+    );
+  }
+  
+  LinkProvider.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_LinkProvider2.default)(LinkProvider);
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(160);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./LinkProvider.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./LinkProvider.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, " .LinkProvider_root_r-g {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.LinkProvider_container_3Z8 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.LinkProvider_lead_102 {\n  font-size: 1.25em;\n}\n\n.LinkProvider_formGroup_2xX {\n  margin-bottom: 20px;\n  \n}\n\n.LinkProvider_label_1tq {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.LinkProvider_input_3Aq {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.LinkProvider_input_3Aq:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.LinkProvider_button_296 {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.LinkProvider_button_296:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.LinkProvider_button_296:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.LinkProvider_icon_2pS {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.LinkProvider_lineThrough_2QD {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.LinkProvider_lineThrough_2QD::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.LinkProvider_lineThrough_2QD::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n#LinkProvider_lastname_3Uq{\n    max-width:100px;\n    float:left;\n}\n\n.LinkProvider_div_314 {\n  float:right;\n}\n\n#LinkProvider_leftContainer_1J2 {\n   float:left;\n}\n\n#LinkProvider_rightContainer_3SK {\n   float:right;\n}", "", {"version":3,"sources":["/./routes/linkprovider/LinkProvider.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAID;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb;;AACD;IACI,gBAAgB;IAChB,WAAW;CACd;;AAED;EACE,YAAY;CACb;;AAED;GACG,WAAW;CACb;;AAED;GACG,YAAY;CACd","file":"LinkProvider.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n#lastname{\n    max-width:100px;\n    float:left;\n}\n\n.div {\n  float:right;\n}\n\n#leftContainer {\n   float:left;\n}\n\n#rightContainer {\n   float:right;\n}"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "LinkProvider_root_r-g",
+  	"container": "LinkProvider_container_3Z8",
+  	"lead": "LinkProvider_lead_102",
+  	"formGroup": "LinkProvider_formGroup_2xX",
+  	"label": "LinkProvider_label_1tq",
+  	"input": "LinkProvider_input_3Aq",
+  	"button": "LinkProvider_button_296",
+  	"icon": "LinkProvider_icon_2pS",
+  	"lineThrough": "LinkProvider_lineThrough_2QD",
+  	"lastname": "LinkProvider_lastname_3Uq",
+  	"div": "LinkProvider_div_314",
+  	"leftContainer": "LinkProvider_leftContainer_1J2",
+  	"rightContainer": "LinkProvider_rightContainer_3SK"
+  };
+
+/***/ },
+/* 161 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _promise = __webpack_require__(101);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Verifyproviderlogin = __webpack_require__(162);
+  
+  var _Verifyproviderlogin2 = _interopRequireDefault(_Verifyproviderlogin);
+  
+  var _Providerlogin = __webpack_require__(165);
+  
+  var _Providerlogin2 = _interopRequireDefault(_Providerlogin);
+  
+  var _ErrorPage = __webpack_require__(115);
+  
+  var _ErrorPage2 = _interopRequireDefault(_ErrorPage);
+  
+  var _Home = __webpack_require__(83);
+  
+  var _Home2 = _interopRequireDefault(_Home);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var req = __webpack_require__(109);
+  /*var Fiber = require('fibers');
+  var Future = require('fibers/future');
+  var req = Future.wrap(require('request'));*/
+  var res;
+  var userEmail;
+  var password;
+  var validLogin = true;
+  var url;
+  
+  exports.default = {
+  
+    path: '/verifyproviderlogin',
+  
+    action: function action(_ref, _ref2) {
+      var _this = this;
+  
+      var query = _ref.query;
+      var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var body;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+  
+                console.log("inside the verifypass");
+                //console.log(JSON.stringify(query));
+                userEmail = query.email;
+                password = query.password;
+                console.log(userEmail);
+                console.log(password);
+  
+                console.log('calling checkLogin');
+                _context.next = 8;
+                return checklogin();
+  
+              case 8:
+                body = _context.sent;
+  
+                if (!validLogin) {
+                  _context.next = 14;
+                  break;
+                }
+  
+                console.log(" Going to Home Page");
+                return _context.abrupt('return', _react2.default.createElement(_Home2.default, null));
+  
+              case 14:
+                console.log(" Invalid Credential return to Login Page");
+                return _context.abrupt('return', _react2.default.createElement(_Providerlogin2.default, null));
+  
+              case 16:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    }
+  };
+  
+  
+  function checklogin() {
+    url = 'http://' + _config.apihost + '/verifylogin?email=' + userEmail + '&password=' + password;
+    console.log("API Endpoing: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      var results = req(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Response from API' + body);
+          validLogin = body;
+          resolve(body);
+        } else {
+          console.log("Server not responding");
+          validLogin = false;
+        }
+      });
+      console.log("ValidLogin status: " + validLogin);
+    });
+  }
+
+/***/ },
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Verifyproviderlogin = __webpack_require__(163);
   
   var _Verifyproviderlogin2 = _interopRequireDefault(_Verifyproviderlogin);
   
@@ -7886,11 +8372,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Verifyproviderlogin2.default)(Verifyproviderlogin);
 
 /***/ },
-/* 165 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(166);
+      var content = __webpack_require__(164);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -7920,7 +8406,7 @@ module.exports =
     
 
 /***/ },
-/* 166 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -7947,7 +8433,7 @@ module.exports =
   };
 
 /***/ },
-/* 167 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7968,7 +8454,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Providerlogin = __webpack_require__(161);
+  var _Providerlogin = __webpack_require__(155);
   
   var _Providerlogin2 = _interopRequireDefault(_Providerlogin);
   
@@ -8073,7 +8559,7 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Providerlogin2.default)(Providerlogin);
 
 /***/ },
-/* 168 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -8081,6 +8567,10 @@ module.exports =
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
+  
+  var _promise = __webpack_require__(101);
+  
+  var _promise2 = _interopRequireDefault(_promise);
   
   var _regenerator = __webpack_require__(1);
   
@@ -8094,7 +8584,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Providerlist = __webpack_require__(156);
+  var _Providerlist = __webpack_require__(150);
   
   var _Providerlist2 = _interopRequireDefault(_Providerlist);
   
@@ -8102,45 +8592,36 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var providerlist = [{
-    "_id": "57f75cb5e0c058d42dc63df3",
-    "modifieddate": "7/10/2016",
-    "firstname": "Krishna",
-    "lname": "Vembu",
-    "address": "Vadamalai",
-    "city": "Coimbatore",
-    "zipcode": "600010",
-    "email": "krishna_v@hotmail.com",
-    "phone": "9841030770",
-    "servicetype": "Pooja"
-  }, {
-    "_id": "5805de4f50986a542046ced8",
-    "modifieddate": "18/10/2016",
-    "firstname": "Mukund",
-    "lname": "Sundaram",
-    "address": "No:10 2nd cross street",
-    "city": "Chennai",
-    "zipcode": "600041",
-    "email": "parthipansowmi@gmail.com",
-    "phone": "9840888415",
-    "servicetype": "Pooja",
-    "serveoutside": "on"
-  }];
+  var providerlist;
+  
   exports.default = {
   
     path: '/providerlist',
   
-    action: function action() {
+    action: function action(_ref, _ref2) {
       var _this = this;
   
+      var query = _ref.query;
+      var path = _ref2.path;
       return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var body, customeremail;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                return _context.abrupt('return', _react2.default.createElement(_Providerlist2.default, { providerlist: providerlist }));
+                _context.next = 2;
+                return getProviderData();
   
-              case 1:
+              case 2:
+                body = _context.sent;
+  
+                //console.log("Body: "+body);
+                customeremail = query.customeremail;
+  
+                console.log("customer Email: " + customeremail);
+                return _context.abrupt('return', _react2.default.createElement(_Providerlist2.default, { providerlist: providerlist, customeremail: customeremail }));
+  
+              case 6:
               case 'end':
                 return _context.stop();
             }
@@ -8152,25 +8633,31 @@ module.exports =
   
   
   function getProviderData() {
-    var request = __webpack_require__(108);
+    var request = __webpack_require__(109);
   
     console.log('calling API');
     var url = 'http://' + _config.apihost + '/searchByType?servicetype=Pooja';
     console.log("URL: " + url);
-    request(url, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log('Inside getProviderData Response from API (body)' + body);
-        providerlist = body;
-        console.log("Providerlist: " + providerlist);
-      }
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside getProviderData Response from API (body)' + body);
+          providerlist = body;
+          console.log("Providerlist: " + providerlist);
+          resolve(body);
+        } else {
+          console.log("Error Object: " + error);
+          return reject(error);
+        }
+      });
     });
   }
 
 /***/ },
-/* 169 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var extend = __webpack_require__(170);
+  var extend = __webpack_require__(168);
   
   function Assets(options) {
     if (!(this instanceof Assets)) {
@@ -8182,7 +8669,7 @@ module.exports =
   }
   
   ['data', 'path', 'size', 'url'].forEach(function (resolver) {
-    Assets[resolver] = __webpack_require__(171)("./" + resolver);
+    Assets[resolver] = __webpack_require__(169)("./" + resolver);
     Assets.prototype[resolver] = function (path, callback) {
       return Assets[resolver](path, this.options, callback);
     };
@@ -8192,42 +8679,42 @@ module.exports =
 
 
 /***/ },
-/* 170 */
+/* 168 */
 /***/ function(module, exports) {
 
   module.exports = require("lodash/object/extend");
 
 /***/ },
-/* 171 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
   var map = {
-  	"./__utils__/composeAbsolutePathname": 172,
-  	"./__utils__/composeAbsolutePathname.js": 172,
-  	"./__utils__/composeQueryString": 176,
-  	"./__utils__/composeQueryString.js": 176,
-  	"./__utils__/composeRelativePathname": 177,
-  	"./__utils__/composeRelativePathname.js": 177,
-  	"./__utils__/convertPathToUrl": 173,
-  	"./__utils__/convertPathToUrl.js": 173,
-  	"./__utils__/defaultCachebuster": 178,
-  	"./__utils__/defaultCachebuster.js": 178,
-  	"./__utils__/encodeBuffer": 179,
-  	"./__utils__/encodeBuffer.js": 179,
-  	"./__utils__/ensureTrailingSlash": 174,
-  	"./__utils__/ensureTrailingSlash.js": 174,
-  	"./__utils__/exists": 180,
-  	"./__utils__/exists.js": 180,
-  	"./data": 181,
-  	"./data.js": 181,
-  	"./index": 169,
-  	"./index.js": 169,
-  	"./path": 183,
-  	"./path.js": 183,
-  	"./size": 187,
-  	"./size.js": 187,
-  	"./url": 189,
-  	"./url.js": 189
+  	"./__utils__/composeAbsolutePathname": 170,
+  	"./__utils__/composeAbsolutePathname.js": 170,
+  	"./__utils__/composeQueryString": 174,
+  	"./__utils__/composeQueryString.js": 174,
+  	"./__utils__/composeRelativePathname": 175,
+  	"./__utils__/composeRelativePathname.js": 175,
+  	"./__utils__/convertPathToUrl": 171,
+  	"./__utils__/convertPathToUrl.js": 171,
+  	"./__utils__/defaultCachebuster": 176,
+  	"./__utils__/defaultCachebuster.js": 176,
+  	"./__utils__/encodeBuffer": 177,
+  	"./__utils__/encodeBuffer.js": 177,
+  	"./__utils__/ensureTrailingSlash": 172,
+  	"./__utils__/ensureTrailingSlash.js": 172,
+  	"./__utils__/exists": 178,
+  	"./__utils__/exists.js": 178,
+  	"./data": 179,
+  	"./data.js": 179,
+  	"./index": 167,
+  	"./index.js": 167,
+  	"./path": 181,
+  	"./path.js": 181,
+  	"./size": 185,
+  	"./size.js": 185,
+  	"./url": 187,
+  	"./url.js": 187
   };
   function webpackContext(req) {
   	return __webpack_require__(webpackContextResolve(req));
@@ -8240,17 +8727,17 @@ module.exports =
   };
   webpackContext.resolve = webpackContextResolve;
   module.exports = webpackContext;
-  webpackContext.id = 171;
+  webpackContext.id = 169;
 
 
 /***/ },
-/* 172 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(173);
-  var ensureTrailingSlash = __webpack_require__(174);
+  var convertPathToUrl = __webpack_require__(171);
+  var ensureTrailingSlash = __webpack_require__(172);
   var path = __webpack_require__(4);
-  var url = __webpack_require__(175);
+  var url = __webpack_require__(173);
   
   module.exports = function (baseUrl, basePath, resolvedPath) {
     var from = ensureTrailingSlash(baseUrl);
@@ -8260,7 +8747,7 @@ module.exports =
 
 
 /***/ },
-/* 173 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
   var sep = __webpack_require__(4).sep;
@@ -8271,12 +8758,12 @@ module.exports =
 
 
 /***/ },
-/* 174 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(173);
+  var convertPathToUrl = __webpack_require__(171);
   var path = __webpack_require__(4);
-  var url = __webpack_require__(175);
+  var url = __webpack_require__(173);
   
   module.exports = function (urlStr) {
     var urlObj = url.parse(urlStr);
@@ -8286,13 +8773,13 @@ module.exports =
 
 
 /***/ },
-/* 175 */
+/* 173 */
 /***/ function(module, exports) {
 
   module.exports = require("url");
 
 /***/ },
-/* 176 */
+/* 174 */
 /***/ function(module, exports) {
 
   module.exports = function (current, addon) {
@@ -8304,10 +8791,10 @@ module.exports =
 
 
 /***/ },
-/* 177 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(173);
+  var convertPathToUrl = __webpack_require__(171);
   var path = __webpack_require__(4);
   
   module.exports = function (basePath, relativeTo, resolvedPath) {
@@ -8318,7 +8805,7 @@ module.exports =
 
 
 /***/ },
-/* 178 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
   var fs = __webpack_require__(32);
@@ -8330,7 +8817,7 @@ module.exports =
 
 
 /***/ },
-/* 179 */
+/* 177 */
 /***/ function(module, exports) {
 
   module.exports = function (buffer, mediaType) {
@@ -8342,7 +8829,7 @@ module.exports =
 
 
 /***/ },
-/* 180 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
   var fs = __webpack_require__(32);
@@ -8355,16 +8842,16 @@ module.exports =
 
 
 /***/ },
-/* 181 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var encodeBuffer = __webpack_require__(179);
-  var extend = __webpack_require__(170);
+  var encodeBuffer = __webpack_require__(177);
+  var extend = __webpack_require__(168);
   var fs = __webpack_require__(32);
-  var mime = __webpack_require__(182);
+  var mime = __webpack_require__(180);
   var Promise = __webpack_require__(33);
-  var resolvePath = __webpack_require__(183);
-  var url = __webpack_require__(175);
+  var resolvePath = __webpack_require__(181);
+  var url = __webpack_require__(173);
   
   var preadFile = Promise.promisify(fs.readFile);
   
@@ -8395,20 +8882,20 @@ module.exports =
 
 
 /***/ },
-/* 182 */
+/* 180 */
 /***/ function(module, exports) {
 
   module.exports = require("mime");
 
 /***/ },
-/* 183 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var async = __webpack_require__(184);
-  var exists = __webpack_require__(180);
-  var extend = __webpack_require__(170);
-  var flatten = __webpack_require__(185);
-  var glob = __webpack_require__(186);
+  var async = __webpack_require__(182);
+  var exists = __webpack_require__(178);
+  var extend = __webpack_require__(168);
+  var flatten = __webpack_require__(183);
+  var glob = __webpack_require__(184);
   var path = __webpack_require__(4);
   var Promise = __webpack_require__(33);
   
@@ -8453,30 +8940,30 @@ module.exports =
 
 
 /***/ },
-/* 184 */
+/* 182 */
 /***/ function(module, exports) {
 
   module.exports = require("async");
 
 /***/ },
-/* 185 */
+/* 183 */
 /***/ function(module, exports) {
 
   module.exports = require("lodash/array/flatten");
 
 /***/ },
-/* 186 */
+/* 184 */
 /***/ function(module, exports) {
 
   module.exports = require("glob");
 
 /***/ },
-/* 187 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var calipers = __webpack_require__(188)('webp', 'png', 'jpeg', 'gif', 'svg');
+  var calipers = __webpack_require__(186)('webp', 'png', 'jpeg', 'gif', 'svg');
   var Promise = __webpack_require__(33);
-  var resolvePath = __webpack_require__(183);
+  var resolvePath = __webpack_require__(181);
   
   module.exports = function (to, options, callback) {
     if (typeof options === 'function') {
@@ -8499,22 +8986,22 @@ module.exports =
 
 
 /***/ },
-/* 188 */
+/* 186 */
 /***/ function(module, exports) {
 
   module.exports = require("calipers");
 
 /***/ },
-/* 189 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var composeAbsolutePathname = __webpack_require__(172);
-  var composeQueryString = __webpack_require__(176);
-  var composeRelativePathname = __webpack_require__(177);
-  var defaultCachebuster = __webpack_require__(178);
-  var extend = __webpack_require__(170);
-  var resolvePath = __webpack_require__(183);
-  var url = __webpack_require__(175);
+  var composeAbsolutePathname = __webpack_require__(170);
+  var composeQueryString = __webpack_require__(174);
+  var composeRelativePathname = __webpack_require__(175);
+  var defaultCachebuster = __webpack_require__(176);
+  var extend = __webpack_require__(168);
+  var resolvePath = __webpack_require__(181);
+  var url = __webpack_require__(173);
   
   module.exports = function (to, options, callback) {
     if (typeof options === 'function') {
@@ -8564,16 +9051,16 @@ module.exports =
 
 
 /***/ },
-/* 190 */
+/* 188 */
 /***/ function(module, exports) {
 
   module.exports = require("mongodb");
 
 /***/ },
-/* 191 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var jade = __webpack_require__(192);
+  var jade = __webpack_require__(190);
   
   module.exports = function template(locals) {
   var jade_debug = [ new jade.DebugItem( 1, "C:\\dtsolutions\\bmfApp\\src\\views\\index.jade" ) ];
@@ -8676,7 +9163,7 @@ module.exports =
   }
 
 /***/ },
-/* 192 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -8928,10 +9415,10 @@ module.exports =
 
 
 /***/ },
-/* 193 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var jade = __webpack_require__(192);
+  var jade = __webpack_require__(190);
   
   module.exports = function template(locals) {
   var jade_debug = [ new jade.DebugItem( 1, "C:\\dtsolutions\\bmfApp\\src\\views\\error.jade" ) ];

@@ -4,6 +4,7 @@ import Login from '../login/Login';
 import { apihost } from '../../config';
 var status = false ;
 
+
 export default {
 
   path: '/changepassword',
@@ -18,8 +19,8 @@ export default {
     var enddate = new Date();
     var difftime = enddate.getTime()-startdate.getTime();
    console.log("Execution Time:"+ difftime);
-    if ( status )
-     return <Changepassword email={email} />;
+    if ( status )     
+      return <Changepassword email={email} />;
     else
      return <Login />;
 

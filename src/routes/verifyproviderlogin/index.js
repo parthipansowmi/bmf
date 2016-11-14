@@ -20,7 +20,7 @@ export default {
 
   path: '/verifyproviderlogin',
 
-  action({query}, {path}) {
+ async action({query}, {path}) {
 
     console.log("inside the verifypass");
     //console.log(JSON.stringify(query));
@@ -30,7 +30,7 @@ export default {
     console.log(password);
    
     console.log('calling checkLogin');
-    checklogin();
+    var body = await checklogin();
     if (validLogin) {
       console.log(" Going to Home Page");
       return <Home />;
@@ -51,10 +51,12 @@ function checklogin()
  url = `http://${apihost}/verifylogin?email=` + userEmail + '&password=' + password;
     console.log("API Endpoing: "+url);
   
+   return new Promise(function(resolve, reject) {
    var results = req(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
           console.log('Response from API' + body)
           validLogin = body;
+          resolve(body);
         }
         else {
           console.log("Server not responding");
@@ -62,6 +64,7 @@ function checklogin()
         }
 
       });
-
-    console.log("ValidLogin status: " + validLogin);
+console.log("ValidLogin status: " + validLogin);
+});
+    
 }
