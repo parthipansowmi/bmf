@@ -20,7 +20,7 @@
     "express": "4.13.4",
     "express-graphql": "0.5.1",
     "express-jwt": "3.4.0",
-    "express-session": "^1.14.1",
+    "express-session": "^1.14.2",
     "fastclick": "1.0.6",
     "fbjs": "0.8.2",
     "fiber": "^1.0.4",

@@ -17,8 +17,15 @@ import routes from './routes';
 import assets from '../node_modules/assets'; // eslint-disable-line import/no-unresolved
 import { port, auth, analytics, mongodbUrl } from './config';
 var mongodb = require('mongodb');
+var session = require('express-session')
 
 const app = express();
+app.use(session({
+  secret: '1234567890QWERTY',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
 
 //
 // Tell any CSS tooling (such as Material UI) to use all vendor prefixes if the
@@ -79,6 +86,7 @@ app.get('*', async (req, res, next) => {
     let statusCode = 200;
     const template = require('./views/index.jade'); // eslint-disable-line global-require
     const data = { title: '', description: '', css: '', body: '', entry:'assets.main.js'  }; //assets.main.js
+    //var sess = req.session;
 
     if (process.env.NODE_ENV === 'production') {
       data.trackingId = analytics.google.trackingId;
@@ -87,6 +95,7 @@ app.get('*', async (req, res, next) => {
     await match(routes, {
       path: req.path,
       query: req.query,
+      request : req,
       context: {
         insertCss: styles => css.push(styles._getCss()), // eslint-disable-line no-underscore-dangle
         setTitle: value => (data.title = value),

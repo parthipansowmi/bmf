@@ -11,9 +11,7 @@ import Formsy from 'formsy-react';
 const title = 'Entering Credentials';
 //var classNames = require('classnames');
 
-
-
-function Login(props, context) {
+function Login( {sessionid}, context ) {
   context.setTitle(title);
   
   return (
@@ -25,9 +23,9 @@ function Login(props, context) {
           <a className={s.facebook} href="/login/facebook">
             <svg
               className={s.icon}
-              width="30"
-              height="30"
-              viewBox="0 0 30 30"
+              width="10"
+              height="10"
+              viewBox="0 0 10 10"
               xmlns="http://www.w3.org/2000/svg"
               >
               <path
@@ -118,6 +116,12 @@ function Login(props, context) {
             <Link  to="/forgotpass">Forgot Password</Link>
             <span className={s.spacer}> | </span>
             <Link  to="/register">Sign Up</Link>
+           <input
+              id="sessionid"
+              type="hidden"
+              name="sessionid"
+              value={sessionid}
+              />
           </div>
         </form>
       </div>
