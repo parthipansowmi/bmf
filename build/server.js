@@ -112,7 +112,7 @@ module.exports =
   
   var _routes2 = _interopRequireDefault(_routes);
   
-  var _assets = __webpack_require__(167);
+  var _assets = __webpack_require__(171);
   
   var _assets2 = _interopRequireDefault(_assets);
   
@@ -120,10 +120,17 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var mongodb = __webpack_require__(188); // eslint-disable-line import/no-unresolved
+  var mongodb = __webpack_require__(192); // eslint-disable-line import/no-unresolved
   
+  var session = __webpack_require__(193);
   
   var app = (0, _express2.default)();
+  app.use(session({
+    secret: '1234567890QWERTY',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+  }));
   
   //
   // Tell any CSS tooling (such as Material UI) to use all vendor prefixes if the
@@ -192,9 +199,10 @@ module.exports =
                       case 0:
                         css = [];
                         statusCode = 200;
-                        template = __webpack_require__(189); // eslint-disable-line global-require
+                        template = __webpack_require__(194); // eslint-disable-line global-require
   
                         data = { title: '', description: '', css: '', body: '', entry: 'assets.main.js' }; //assets.main.js
+                        //var sess = req.session;
   
                         if (false) {
                           data.trackingId = _config.analytics.google.trackingId;
@@ -204,6 +212,7 @@ module.exports =
                         return (0, _universalRouter.match)(_routes2.default, {
                           path: req.path,
                           query: req.query,
+                          request: req,
                           context: {
                             insertCss: function insertCss(styles) {
                               return css.push(styles._getCss());
@@ -271,7 +280,7 @@ module.exports =
   app.use(function (err, req, res, next) {
     // eslint-disable-line no-unused-vars
     console.log(pe.render(err)); // eslint-disable-line no-console
-    var template = __webpack_require__(191); // eslint-disable-line global-require
+    var template = __webpack_require__(196); // eslint-disable-line global-require
     var statusCode = err.status || 500;
     res.status(statusCode);
     res.send(template({
@@ -1606,19 +1615,19 @@ module.exports =
   
   var _home2 = _interopRequireDefault(_home);
   
-  var _contact = __webpack_require__(86);
+  var _contact = __webpack_require__(93);
   
   var _contact2 = _interopRequireDefault(_contact);
   
-  var _login = __webpack_require__(90);
+  var _login = __webpack_require__(97);
   
   var _login2 = _interopRequireDefault(_login);
   
-  var _register = __webpack_require__(96);
+  var _register = __webpack_require__(98);
   
   var _register2 = _interopRequireDefault(_register);
   
-  var _savecustomer = __webpack_require__(100);
+  var _savecustomer = __webpack_require__(102);
   
   var _savecustomer2 = _interopRequireDefault(_savecustomer);
   
@@ -1678,13 +1687,18 @@ module.exports =
   
   var _providerlist2 = _interopRequireDefault(_providerlist);
   
+  var _logout = __webpack_require__(167);
+  
+  var _logout2 = _interopRequireDefault(_logout);
+  
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
+  // Child routes
   exports.default = {
   
     path: '/',
   
-    children: [_home2.default, _contact2.default, _login2.default, _providerlogin2.default, _verifypass2.default, _verifyproviderlogin2.default, _forgotpass2.default, _changepassword2.default, _updatepass2.default, _register2.default, _savecustomer2.default, _serviceprovider2.default, _saveprovider2.default, _booking2.default, _providerlist2.default, _savebooking2.default, _linkprovider2.default, _content2.default, _error2.default],
+    children: [_home2.default, _contact2.default, _login2.default, _providerlogin2.default, _verifypass2.default, _verifyproviderlogin2.default, _forgotpass2.default, _changepassword2.default, _updatepass2.default, _register2.default, _savecustomer2.default, _serviceprovider2.default, _saveprovider2.default, _booking2.default, _providerlist2.default, _savebooking2.default, _linkprovider2.default, _content2.default, _error2.default, _logout2.default],
   
     action: function action(_ref) {
       var _this = this;
@@ -1727,8 +1741,6 @@ module.exports =
       }))();
     }
   };
-  
-  // Child routes
 
 /***/ },
 /* 43 */
@@ -2953,6 +2965,10 @@ module.exports =
     value: true
   });
   
+  var _promise = __webpack_require__(83);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
   var _regenerator = __webpack_require__(1);
   
   var _regenerator2 = _interopRequireDefault(_regenerator);
@@ -2965,31 +2981,58 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Home = __webpack_require__(83);
+  var _Home = __webpack_require__(84);
   
   var _Home2 = _interopRequireDefault(_Home);
+  
+  var _Login = __webpack_require__(87);
+  
+  var _Login2 = _interopRequireDefault(_Login);
   
   var _fetch = __webpack_require__(39);
   
   var _fetch2 = _interopRequireDefault(_fetch);
   
+  var _config = __webpack_require__(20);
+  
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var sessionid;
   
   exports.default = {
   
     path: '/',
   
-    action: function action() {
+    action: function action(_ref, _ref2) {
       var _this = this;
   
+      var query = _ref.query;
+      var path = _ref2.path;
       return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var body;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                return _context.abrupt('return', _react2.default.createElement(_Home2.default, null));
+                sessionid = query.sessionid;
+                console.log("Sessionid: " + sessionid);
   
-              case 1:
+                if (!(sessionid === undefined || sessionid == '')) {
+                  _context.next = 9;
+                  break;
+                }
+  
+                _context.next = 5;
+                return getSessionid();
+  
+              case 5:
+                body = _context.sent;
+                return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: body }));
+  
+              case 9:
+                return _context.abrupt('return', _react2.default.createElement(_Home2.default, { sessionid: sessionid }));
+  
+              case 10:
               case 'end':
                 return _context.stop();
             }
@@ -2997,17 +3040,39 @@ module.exports =
         }, _callee, _this);
       }))();
     }
-  }; /**
-      * React Starter Kit (https://www.reactstarterkit.com/)
-      *
-      * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-      *
-      * This source code is licensed under the MIT license found in the
-      * LICENSE.txt file in the root directory of this source tree.
-      */
+  };
+  
+  
+  function getSessionid() {
+    var request = __webpack_require__(92);
+    console.log('Home - genSessionid - calling API');
+    var url = 'http://' + _config.apihost + '/genSessionid';
+    console.log("getSeesionid - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('genSessionid - Response from API' + body);
+          //sessionid = body;
+          resolve(body);
+        } else {
+  
+          console.log("genSessionid -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("getSessionid - Returning from API call");
+      });
+    });
+  }
 
 /***/ },
 /* 83 */
+/***/ function(module, exports) {
+
+  module.exports = require("babel-runtime/core-js/promise");
+
+/***/ },
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3024,7 +3089,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Home = __webpack_require__(84);
+  var _Home = __webpack_require__(85);
   
   var _Home2 = _interopRequireDefault(_Home);
   
@@ -3048,9 +3113,10 @@ module.exports =
                                                 */
   
   function Home(_ref, context) {
-    var news = _ref.news;
+    var sessionid = _ref.sessionid;
   
     context.setTitle(title);
+    var logoutlink = "/logout?sessionid=" + sessionid;
     return _react2.default.createElement(
       'div',
       null,
@@ -3077,10 +3143,21 @@ module.exports =
       ),
       _react2.default.createElement('br', null),
       _react2.default.createElement(
+        _Link2.default,
+        { className: _Home2.default.link, to: logoutlink },
+        'Logout'
+      ),
+      _react2.default.createElement(
         'span',
         { className: _Home2.default.spacer },
         ' | '
-      )
+      ),
+      _react2.default.createElement('input', {
+        id: 'sessionid',
+        type: 'hidden',
+        name: 'sessionid',
+        value: sessionid
+      })
     );
   }
   
@@ -3089,11 +3166,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Home2.default)(Home);
 
 /***/ },
-/* 84 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(85);
+      var content = __webpack_require__(86);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -3123,7 +3200,7 @@ module.exports =
     
 
 /***/ },
-/* 85 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -3143,35 +3220,6 @@ module.exports =
   };
 
 /***/ },
-/* 86 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(43);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _Contact = __webpack_require__(87);
-  
-  var _Contact2 = _interopRequireDefault(_Contact);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  exports.default = {
-  
-    path: '/contact',
-  
-    action: function action() {
-      return _react2.default.createElement(_Contact2.default, null);
-    }
-  };
-
-/***/ },
 /* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -3185,139 +3233,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _withStyles = __webpack_require__(58);
-  
-  var _withStyles2 = _interopRequireDefault(_withStyles);
-  
-  var _Contact = __webpack_require__(88);
-  
-  var _Contact2 = _interopRequireDefault(_Contact);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var title = 'Contact Us';
-  
-  function Contact(props, context) {
-    context.setTitle(title);
-    return _react2.default.createElement(
-      'div',
-      { className: _Contact2.default.root },
-      _react2.default.createElement(
-        'div',
-        { className: _Contact2.default.container },
-        _react2.default.createElement(
-          'h1',
-          null,
-          title
-        ),
-        _react2.default.createElement(
-          'p',
-          null,
-          '...'
-        )
-      )
-    );
-  }
-  
-  Contact.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
-  
-  exports.default = (0, _withStyles2.default)(_Contact2.default)(Contact);
-
-/***/ },
-/* 88 */
-/***/ function(module, exports, __webpack_require__) {
-
-  
-      var content = __webpack_require__(89);
-      var insertCss = __webpack_require__(54);
-  
-      if (typeof content === 'string') {
-        content = [[module.id, content, '']];
-      }
-  
-      module.exports = content.locals || {};
-      module.exports._getCss = function() { return content.toString(); };
-      module.exports._insertCss = function(options) { return insertCss(content, options) };
-    
-      // Hot Module Replacement
-      // https://webpack.github.io/docs/hot-module-replacement
-      // Only activated in browser context
-      if (false) {
-        var removeCss = function() {};
-        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Contact.css", function() {
-          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Contact.css");
-  
-          if (typeof content === 'string') {
-            content = [[module.id, content, '']];
-          }
-  
-          removeCss = insertCss(content, { replace: true });
-        });
-        module.hot.dispose(function() { removeCss(); });
-      }
-    
-
-/***/ },
-/* 89 */
-/***/ function(module, exports, __webpack_require__) {
-
-  exports = module.exports = __webpack_require__(53)();
-  // imports
-  
-  
-  // module
-  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.Contact_root_sD4 {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Contact_container_PcA {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 1000px;\n}\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/contact/Contact.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,kBAAoC;CACrC","file":"Contact.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: var(--max-content-width);\n}\n"],"sourceRoot":"webpack://"}]);
-  
-  // exports
-  exports.locals = {
-  	"root": "Contact_root_sD4",
-  	"container": "Contact_container_PcA"
-  };
-
-/***/ },
-/* 90 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(43);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _Login = __webpack_require__(91);
-  
-  var _Login2 = _interopRequireDefault(_Login);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  exports.default = {
-  
-    path: '/login',
-  
-    action: function action() {
-      return _react2.default.createElement(_Login2.default, null);
-    }
-  };
-
-/***/ },
-/* 91 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(43);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _reactDom = __webpack_require__(92);
+  var _reactDom = __webpack_require__(88);
   
   var _reactDom2 = _interopRequireDefault(_reactDom);
   
@@ -3325,7 +3241,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Login = __webpack_require__(93);
+  var _Login = __webpack_require__(89);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -3333,7 +3249,7 @@ module.exports =
   
   var _Link2 = _interopRequireDefault(_Link);
   
-  var _formsyReact = __webpack_require__(95);
+  var _formsyReact = __webpack_require__(91);
   
   var _formsyReact2 = _interopRequireDefault(_formsyReact);
   
@@ -3342,9 +3258,11 @@ module.exports =
   var title = 'Entering Credentials';
   //var classNames = require('classnames');
   
-  function Login(props, context) {
-    context.setTitle(title);
+  function Login(_ref, context) {
+    var sessionid = _ref.sessionid;
   
+    context.setTitle(title);
+    console.log("Login.js-SessionId: " + { sessionid: sessionid });
     return _react2.default.createElement(
       'div',
       { className: _Login2.default.root },
@@ -3371,9 +3289,9 @@ module.exports =
               'svg',
               {
                 className: _Login2.default.icon,
-                width: '30',
-                height: '30',
-                viewBox: '0 0 30 30',
+                width: '10',
+                height: '10',
+                viewBox: '0 0 10 10',
                 xmlns: 'http://www.w3.org/2000/svg'
               },
               _react2.default.createElement('path', {
@@ -3502,7 +3420,13 @@ module.exports =
               _Link2.default,
               { to: '/register' },
               'Sign Up'
-            )
+            ),
+            _react2.default.createElement('input', {
+              id: 'sessionid',
+              type: 'hidden',
+              name: 'sessionid',
+              value: sessionid
+            })
           )
         )
       )
@@ -3514,17 +3438,17 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Login2.default)(Login);
 
 /***/ },
-/* 92 */
+/* 88 */
 /***/ function(module, exports) {
 
   module.exports = require("react-dom");
 
 /***/ },
-/* 93 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(94);
+      var content = __webpack_require__(90);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -3554,7 +3478,7 @@ module.exports =
     
 
 /***/ },
-/* 94 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -3562,7 +3486,7 @@ module.exports =
   
   
   // module
-  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.Login_root_AfB {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Login_container_2g2 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Login_lead_ri6 {\n  font-size: 1.25em;\n}\n\n.Login_formGroup_3_X {\n  margin-bottom: 15px;\n}\n\n.Login_label_2Z7 {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.Login_input_PvY {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.Login_input_PvY:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Login_button_10W {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 80%;\n  outline: 10;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Login_button1_1E- {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373388;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Login_button_10W:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Login_button_10W:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Login_facebook_3CI {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n\n.Login_facebook_3CI:hover {\n  background: #2d4373;\n}\n\n.Login_google_1Ig {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n\n.Login_google_1Ig:hover {\n  background: #c23321;\n}\n\n.Login_twitter_3Vq {\n  border-color: #55acee;\n  background: #55acee;\n}\n\n.Login_twitter_3Vq:hover {\n  background: #2795e9;\n}\n\n.Login_icon_97U {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Login_lineThrough_3eY {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Login_lineThrough_3eY::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Login_lineThrough_3eY::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/login/Login.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,iBAAiB;EACjB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,YAAY;EACZ,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AACD;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Login.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 15px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 80%;\n  outline: 10;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.button1 {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373388;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n"],"sourceRoot":"webpack://"}]);
+  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.Login_root_AfB {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Login_container_2g2 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Login_lead_ri6 {\n  font-size: 1.25em;\n}\n\n.Login_formGroup_3_X {\n  margin-bottom: 15px;\n}\n\n.Login_label_2Z7 {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.Login_input_PvY {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.Login_input_PvY:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Login_button_10W {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 80%;\n  outline: 10;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Login_button1_1E- {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373388;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Login_button_10W:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Login_button_10W:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Login_facebook_3CI {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n\n.Login_facebook_3CI:hover {\n  background: #2d4373;\n}\n\n.Login_google_1Ig {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n\n.Login_google_1Ig:hover {\n  background: #c23321;\n}\n\n.Login_twitter_3Vq {\n  border-color: #55acee;\n  background: #55acee;\n}\n\n.Login_twitter_3Vq:hover {\n  background: #2795e9;\n}\n\n.Login_icon_97U {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 10px;\n  height: 10px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Login_lineThrough_3eY {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Login_lineThrough_3eY::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Login_lineThrough_3eY::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/login/Login.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,iBAAiB;EACjB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,YAAY;EACZ,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AACD;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Login.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 15px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 80%;\n  outline: 10;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.button1 {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373388;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 10px;\n  height: 10px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n"],"sourceRoot":"webpack://"}]);
   
   // exports
   exports.locals = {
@@ -3582,13 +3506,19 @@ module.exports =
   };
 
 /***/ },
-/* 95 */
+/* 91 */
 /***/ function(module, exports) {
 
   module.exports = require("formsy-react");
 
 /***/ },
-/* 96 */
+/* 92 */
+/***/ function(module, exports) {
+
+  module.exports = require("request");
+
+/***/ },
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3601,7 +3531,230 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Register = __webpack_require__(97);
+  var _Contact = __webpack_require__(94);
+  
+  var _Contact2 = _interopRequireDefault(_Contact);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  exports.default = {
+  
+    path: '/contact',
+  
+    action: function action() {
+      return _react2.default.createElement(_Contact2.default, null);
+    }
+  };
+
+/***/ },
+/* 94 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Contact = __webpack_require__(95);
+  
+  var _Contact2 = _interopRequireDefault(_Contact);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'Contact Us';
+  
+  function Contact(props, context) {
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      { className: _Contact2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Contact2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          '...'
+        )
+      )
+    );
+  }
+  
+  Contact.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Contact2.default)(Contact);
+
+/***/ },
+/* 95 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(96);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Contact.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Contact.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 96 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.Contact_root_sD4 {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Contact_container_PcA {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 1000px;\n}\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/contact/Contact.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,kBAAoC;CACrC","file":"Contact.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: var(--max-content-width);\n}\n"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Contact_root_sD4",
+  	"container": "Contact_container_PcA"
+  };
+
+/***/ },
+/* 97 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _promise = __webpack_require__(83);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Login = __webpack_require__(87);
+  
+  var _Login2 = _interopRequireDefault(_Login);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var sessionid = '';
+  
+  exports.default = {
+  
+    path: '/login',
+  
+    action: function action() {
+      var _this = this;
+  
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var body;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return getSessionid();
+  
+              case 2:
+                body = _context.sent;
+  
+                console.log("SessionId-Login: " + sessionid);
+                return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: sessionid }));
+  
+              case 5:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    }
+  };
+  
+  
+  function getSessionid() {
+    var request = __webpack_require__(92);
+    console.log('genSessionid - calling API');
+    var url = 'http://' + _config.apihost + '/genSessionid';
+    console.log("getSeesionid - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('genSessionid - Response from API' + body);
+          sessionid = body;
+          resolve(body);
+        } else {
+  
+          console.log("genSessionid -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("getSessionid - Returning from API call");
+      });
+    });
+  }
+
+/***/ },
+/* 98 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Register = __webpack_require__(99);
   
   var _Register2 = _interopRequireDefault(_Register);
   
@@ -3626,7 +3779,7 @@ module.exports =
   };
 
 /***/ },
-/* 97 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3643,7 +3796,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Register = __webpack_require__(98);
+  var _Register = __webpack_require__(100);
   
   var _Register2 = _interopRequireDefault(_Register);
   
@@ -3818,11 +3971,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Register2.default)(Register);
 
 /***/ },
-/* 98 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(99);
+      var content = __webpack_require__(101);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -3852,7 +4005,7 @@ module.exports =
     
 
 /***/ },
-/* 99 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -3880,7 +4033,7 @@ module.exports =
   };
 
 /***/ },
-/* 100 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -3889,7 +4042,7 @@ module.exports =
     value: true
   });
   
-  var _promise = __webpack_require__(101);
+  var _promise = __webpack_require__(83);
   
   var _promise2 = _interopRequireDefault(_promise);
   
@@ -3909,11 +4062,11 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Savecustomer = __webpack_require__(102);
+  var _Savecustomer = __webpack_require__(103);
   
   var _Savecustomer2 = _interopRequireDefault(_Savecustomer);
   
-  var _Login = __webpack_require__(105);
+  var _Login = __webpack_require__(106);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -3930,7 +4083,7 @@ module.exports =
    * LICENSE.txt file in the root directory of this source tree.
    */
   
-  var request = __webpack_require__(109);
+  var request = __webpack_require__(92);
   
   var message = 'Sucessfully Registered. ';
   var href = 'http://' + _config.host + '/login';
@@ -4127,13 +4280,7 @@ module.exports =
   }
 
 /***/ },
-/* 101 */
-/***/ function(module, exports) {
-
-  module.exports = require("babel-runtime/core-js/promise");
-
-/***/ },
-/* 102 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4150,7 +4297,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Savecustomer = __webpack_require__(103);
+  var _Savecustomer = __webpack_require__(104);
   
   var _Savecustomer2 = _interopRequireDefault(_Savecustomer);
   
@@ -4202,11 +4349,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Savecustomer2.default)(Savecustomer);
 
 /***/ },
-/* 103 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(104);
+      var content = __webpack_require__(105);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -4236,7 +4383,7 @@ module.exports =
     
 
 /***/ },
-/* 104 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -4264,35 +4411,6 @@ module.exports =
   };
 
 /***/ },
-/* 105 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(43);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _Login = __webpack_require__(106);
-  
-  var _Login2 = _interopRequireDefault(_Login);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  exports.default = {
-  
-    path: '/login',
-  
-    action: function action() {
-      return _react2.default.createElement(_Login2.default, null);
-    }
-  };
-
-/***/ },
 /* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -4302,11 +4420,102 @@ module.exports =
     value: true
   });
   
+  var _promise = __webpack_require__(83);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
   var _react = __webpack_require__(43);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactDom = __webpack_require__(92);
+  var _Login = __webpack_require__(107);
+  
+  var _Login2 = _interopRequireDefault(_Login);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var sessionid = '';
+  
+  exports.default = {
+  
+    path: '/login',
+  
+    action: function action() {
+      var _this = this;
+  
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var body;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return getSessionid();
+  
+              case 2:
+                body = _context.sent;
+  
+                console.log("SessionId-Login: " + sessionid);
+                return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: sessionid }));
+  
+              case 5:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    }
+  };
+  
+  
+  function getSessionid() {
+    var request = __webpack_require__(92);
+    console.log('genSessionid - calling API');
+    var url = 'http://' + _config.apihost + '/genSessionid';
+    console.log("getSeesionid - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('genSessionid - Response from API' + body);
+          sessionid = body;
+          resolve(body);
+        } else {
+  
+          console.log("genSessionid -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("getSessionid - Returning from API call");
+      });
+    });
+  }
+
+/***/ },
+/* 107 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _reactDom = __webpack_require__(88);
   
   var _reactDom2 = _interopRequireDefault(_reactDom);
   
@@ -4314,7 +4523,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Login = __webpack_require__(107);
+  var _Login = __webpack_require__(108);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -4322,7 +4531,7 @@ module.exports =
   
   var _Link2 = _interopRequireDefault(_Link);
   
-  var _formsyReact = __webpack_require__(95);
+  var _formsyReact = __webpack_require__(91);
   
   var _formsyReact2 = _interopRequireDefault(_formsyReact);
   
@@ -4331,9 +4540,11 @@ module.exports =
   var title = 'Entering Credentials';
   //var classNames = require('classnames');
   
-  function Login(props, context) {
-    context.setTitle(title);
+  function Login(_ref, context) {
+    var sessionid = _ref.sessionid;
   
+    context.setTitle(title);
+    console.log("Login.js-SessionId: " + { sessionid: sessionid });
     return _react2.default.createElement(
       'div',
       { className: _Login2.default.root },
@@ -4360,9 +4571,9 @@ module.exports =
               'svg',
               {
                 className: _Login2.default.icon,
-                width: '30',
-                height: '30',
-                viewBox: '0 0 30 30',
+                width: '10',
+                height: '10',
+                viewBox: '0 0 10 10',
                 xmlns: 'http://www.w3.org/2000/svg'
               },
               _react2.default.createElement('path', {
@@ -4491,7 +4702,13 @@ module.exports =
               _Link2.default,
               { to: '/register' },
               'Sign Up'
-            )
+            ),
+            _react2.default.createElement('input', {
+              id: 'sessionid',
+              type: 'hidden',
+              name: 'sessionid',
+              value: sessionid
+            })
           )
         )
       )
@@ -4503,11 +4720,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Login2.default)(Login);
 
 /***/ },
-/* 107 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(108);
+      var content = __webpack_require__(109);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -4537,7 +4754,7 @@ module.exports =
     
 
 /***/ },
-/* 108 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -4545,7 +4762,7 @@ module.exports =
   
   
   // module
-  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.Login_root_2w1 {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Login_container__GI {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Login_lead_1kn {\n  font-size: 1.25em;\n}\n\n.Login_formGroup_1oM {\n  margin-bottom: 15px;\n}\n\n.Login_label_1Gy {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.Login_input_3Hu {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.Login_input_3Hu:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Login_button_2e4 {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 80%;\n  outline: 10;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Login_button1_Mej {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373388;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Login_button_2e4:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Login_button_2e4:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Login_facebook_1Zm {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n\n.Login_facebook_1Zm:hover {\n  background: #2d4373;\n}\n\n.Login_google_U0z {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n\n.Login_google_U0z:hover {\n  background: #c23321;\n}\n\n.Login_twitter_1C5 {\n  border-color: #55acee;\n  background: #55acee;\n}\n\n.Login_twitter_1C5:hover {\n  background: #2795e9;\n}\n\n.Login_icon_2K7 {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Login_lineThrough_1sW {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Login_lineThrough_1sW::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Login_lineThrough_1sW::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/Login/Login.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,iBAAiB;EACjB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,YAAY;EACZ,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AACD;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Login.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 15px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 80%;\n  outline: 10;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.button1 {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373388;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n"],"sourceRoot":"webpack://"}]);
+  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.Login_root_2w1 {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Login_container__GI {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Login_lead_1kn {\n  font-size: 1.25em;\n}\n\n.Login_formGroup_1oM {\n  margin-bottom: 15px;\n}\n\n.Login_label_1Gy {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.Login_input_3Hu {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.Login_input_3Hu:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Login_button_2e4 {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 80%;\n  outline: 10;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Login_button1_Mej {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373388;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Login_button_2e4:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Login_button_2e4:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Login_facebook_1Zm {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n\n.Login_facebook_1Zm:hover {\n  background: #2d4373;\n}\n\n.Login_google_U0z {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n\n.Login_google_U0z:hover {\n  background: #c23321;\n}\n\n.Login_twitter_1C5 {\n  border-color: #55acee;\n  background: #55acee;\n}\n\n.Login_twitter_1C5:hover {\n  background: #2795e9;\n}\n\n.Login_icon_2K7 {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 10px;\n  height: 10px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Login_lineThrough_1sW {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Login_lineThrough_1sW::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Login_lineThrough_1sW::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/Login/Login.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,iBAAiB;EACjB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,YAAY;EACZ,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AACD;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Login.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 15px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 0;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 80%;\n  outline: 10;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.button1 {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373388;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 10px;\n  height: 10px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n"],"sourceRoot":"webpack://"}]);
   
   // exports
   exports.locals = {
@@ -4563,12 +4780,6 @@ module.exports =
   	"icon": "Login_icon_2K7",
   	"lineThrough": "Login_lineThrough_1sW"
   };
-
-/***/ },
-/* 109 */
-/***/ function(module, exports) {
-
-  module.exports = require("request");
 
 /***/ },
 /* 110 */
@@ -4977,7 +5188,7 @@ module.exports =
     value: true
   });
   
-  var _promise = __webpack_require__(101);
+  var _promise = __webpack_require__(83);
   
   var _promise2 = _interopRequireDefault(_promise);
   
@@ -4997,7 +5208,7 @@ module.exports =
   
   var _Verifypass2 = _interopRequireDefault(_Verifypass);
   
-  var _Login = __webpack_require__(91);
+  var _Login = __webpack_require__(87);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -5005,7 +5216,7 @@ module.exports =
   
   var _ErrorPage2 = _interopRequireDefault(_ErrorPage);
   
-  var _Home = __webpack_require__(83);
+  var _Home = __webpack_require__(84);
   
   var _Home2 = _interopRequireDefault(_Home);
   
@@ -5013,7 +5224,7 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var request = __webpack_require__(109);
+  var request = __webpack_require__(92);
   
   var res;
   var userEmail;
@@ -5021,6 +5232,8 @@ module.exports =
   var validLogin;
   var url;
   var page;
+  var status;
+  var sessionid;
   exports.default = {
   
     path: '/verifypass',
@@ -5031,39 +5244,51 @@ module.exports =
       var query = _ref.query;
       var path = _ref2.path;
       return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var body;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
   
                 console.log("inside the verifypass");
+                // var sess = request.session;
+                //session.sessionid = query.sessionid;
+                //console.log("Session ID: "+query.sessionid);
                 userEmail = query.usernameOrEmail;
                 password = query.password;
+                sessionid = query.sessionid;
                 console.log(userEmail);
                 console.log(password);
+                console.log("SessionId: ") + sessionid;
                 url = 'http://' + _config.apihost + '/checklogin?usernameOrEmail=' + userEmail + '&password=' + password;
   
-                _context.next = 8;
+                _context.next = 10;
                 return verifylogin(url);
   
-              case 8:
+              case 10:
                 validLogin = _context.sent;
   
                 console.log("Result from API call: " + validLogin);
   
                 if (!(validLogin == 'true')) {
-                  _context.next = 15;
+                  _context.next = 20;
                   break;
                 }
   
-                console.log(" Going to Home Page");
-                return _context.abrupt('return', _react2.default.createElement(_Home2.default, null));
+                _context.next = 15;
+                return SaveSessionData();
   
               case 15:
+                body = _context.sent;
+  
+                console.log(" Going to Home Page");
+                return _context.abrupt('return', _react2.default.createElement(_Home2.default, { sessionid: sessionid }));
+  
+              case 20:
                 console.log(" Invalid Credential return to Login Page");
                 return _context.abrupt('return', _react2.default.createElement(_Login2.default, null));
   
-              case 17:
+              case 22:
               case 'end':
                 return _context.stop();
             }
@@ -5090,6 +5315,37 @@ module.exports =
   
         console.log("ValidLogin status: " + validLogin);
       });
+    });
+  }
+  
+  function SaveSessionData() {
+  
+    console.log('calling API - SaveSessionData method');
+    var url = 'http://' + _config.apihost + '/addSession';
+    console.log("URL: " + url);
+    var createdate = new Date();
+    var data = {
+      email: userEmail,
+      sessionid: sessionid,
+      creationdate: createdate
+    };
+    console.log("Data: " + data);
+    return new _promise2.default(function (resolve, reject) {
+      request.post(url, { form: data }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside SaveSessionData Response from API (body)' + body);
+  
+          if (body == 'true') status = true;
+          resolve(body);
+        }
+        if (error) {
+          console.log("Error in storing Session data");
+          status = false;
+          return reject(error);
+        }
+      });
+  
+      console.log('returning');
     });
   }
 
@@ -5132,7 +5388,10 @@ module.exports =
   
   var title = 'Verify Credential';
   
-  function VerifyPass(props, context) {
+  function VerifyPass(_ref, props, context) {
+    var message = _ref.message;
+    var sessionid = _ref.sessionid;
+  
   
     context.setTitle(title);
   
@@ -5150,8 +5409,19 @@ module.exports =
         _react2.default.createElement(
           'p',
           null,
-          'Password Verified'
-        )
+          message
+        ),
+        _react2.default.createElement(
+          'a',
+          { href: redirectlink },
+          'Clicke Here to Login '
+        ),
+        _react2.default.createElement('input', {
+          id: 'sessionid',
+          type: 'hidden',
+          name: 'sessionid',
+          value: sessionid
+        })
       )
     );
   }
@@ -5231,7 +5501,7 @@ module.exports =
     value: true
   });
   
-  var _promise = __webpack_require__(101);
+  var _promise = __webpack_require__(83);
   
   var _promise2 = _interopRequireDefault(_promise);
   
@@ -5251,7 +5521,7 @@ module.exports =
   
   var _Forgotpass2 = _interopRequireDefault(_Forgotpass);
   
-  var _Login = __webpack_require__(91);
+  var _Login = __webpack_require__(87);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -5259,7 +5529,7 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var request = __webpack_require__(109);
+  var request = __webpack_require__(92);
   
   var status = 'false';
   var errormessage = '';
@@ -5589,7 +5859,7 @@ module.exports =
     value: true
   });
   
-  var _promise = __webpack_require__(101);
+  var _promise = __webpack_require__(83);
   
   var _promise2 = _interopRequireDefault(_promise);
   
@@ -5609,7 +5879,7 @@ module.exports =
   
   var _Changepassword2 = _interopRequireDefault(_Changepassword);
   
-  var _Login = __webpack_require__(91);
+  var _Login = __webpack_require__(87);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -5671,7 +5941,7 @@ module.exports =
   
   
   function checkCode(code, email) {
-    var request = __webpack_require__(109);
+    var request = __webpack_require__(92);
     console.log('Check Code - calling API');
     var url = 'http://' + _config.apihost + '/getCode?code=' + code + '&userEmail=' + email;
     console.log("Checkcode - URL: " + url);
@@ -5873,7 +6143,7 @@ module.exports =
     value: true
   });
   
-  var _promise = __webpack_require__(101);
+  var _promise = __webpack_require__(83);
   
   var _promise2 = _interopRequireDefault(_promise);
   
@@ -5958,7 +6228,7 @@ module.exports =
   
   
   function updatePassword(newpass, email) {
-    var request = __webpack_require__(109);
+    var request = __webpack_require__(92);
     console.log("Inside updatePassword method email: " + email);
     console.log("Inside updatePassword method Password: " + newpass);
     console.log('calling API');
@@ -6449,7 +6719,7 @@ module.exports =
     value: true
   });
   
-  var _promise = __webpack_require__(101);
+  var _promise = __webpack_require__(83);
   
   var _promise2 = _interopRequireDefault(_promise);
   
@@ -6473,7 +6743,7 @@ module.exports =
   
   var _Saveprovider2 = _interopRequireDefault(_Saveprovider);
   
-  var _Login = __webpack_require__(105);
+  var _Login = __webpack_require__(106);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -6490,7 +6760,7 @@ module.exports =
    * LICENSE.txt file in the root directory of this source tree.
    */
   
-  var request = __webpack_require__(109);
+  var request = __webpack_require__(92);
   
   var message = 'Sucessfully Registered. <a href="http://' + _config.apihost + '/login" >Click here to login</a>';
   var status = true;
@@ -6587,7 +6857,7 @@ module.exports =
   
   
   function SaveproviderData(data) {
-    var request = __webpack_require__(109);
+    var request = __webpack_require__(92);
     //console.log("Inside storePasscode method email: " + email);
     // console.log("Inside storePasscode method Code: " + code);
     console.log('calling API');
@@ -7091,7 +7361,7 @@ module.exports =
     value: true
   });
   
-  var _promise = __webpack_require__(101);
+  var _promise = __webpack_require__(83);
   
   var _promise2 = _interopRequireDefault(_promise);
   
@@ -7160,7 +7430,7 @@ module.exports =
   
   var _Providerlist2 = _interopRequireDefault(_Providerlist);
   
-  var _Login = __webpack_require__(105);
+  var _Login = __webpack_require__(106);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -7168,7 +7438,7 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var request = __webpack_require__(109); /**
+  var request = __webpack_require__(92); /**
                                      * React Starter Kit (https://www.reactstarterkit.com/)
                                      *
                                      * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
@@ -7314,7 +7584,7 @@ module.exports =
   }
   
   function getProviderData() {
-    var request = __webpack_require__(109);
+    var request = __webpack_require__(92);
   
     console.log('calling API');
     var url = 'http://' + _config.apihost + '/searchByType?servicetype=Pooja';
@@ -7755,7 +8025,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactDom = __webpack_require__(92);
+  var _reactDom = __webpack_require__(88);
   
   var _reactDom2 = _interopRequireDefault(_reactDom);
   
@@ -7939,7 +8209,7 @@ module.exports =
     value: true
   });
   
-  var _promise = __webpack_require__(101);
+  var _promise = __webpack_require__(83);
   
   var _promise2 = _interopRequireDefault(_promise);
   
@@ -8030,7 +8300,7 @@ module.exports =
   
   
   function LinkProviderData(url) {
-    var request = __webpack_require__(109);
+    var request = __webpack_require__(92);
     // console.log("APIHOST: "+apihost);
     console.log('calling API - LinkProviderData method');
     //console.log("URL: " + url);
@@ -8186,7 +8456,7 @@ module.exports =
     value: true
   });
   
-  var _promise = __webpack_require__(101);
+  var _promise = __webpack_require__(83);
   
   var _promise2 = _interopRequireDefault(_promise);
   
@@ -8214,7 +8484,7 @@ module.exports =
   
   var _ErrorPage2 = _interopRequireDefault(_ErrorPage);
   
-  var _Home = __webpack_require__(83);
+  var _Home = __webpack_require__(84);
   
   var _Home2 = _interopRequireDefault(_Home);
   
@@ -8222,7 +8492,7 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var req = __webpack_require__(109);
+  var req = __webpack_require__(92);
   /*var Fiber = require('fibers');
   var Future = require('fibers/future');
   var req = Future.wrap(require('request'));*/
@@ -8446,7 +8716,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _reactDom = __webpack_require__(92);
+  var _reactDom = __webpack_require__(88);
   
   var _reactDom2 = _interopRequireDefault(_reactDom);
   
@@ -8568,7 +8838,7 @@ module.exports =
     value: true
   });
   
-  var _promise = __webpack_require__(101);
+  var _promise = __webpack_require__(83);
   
   var _promise2 = _interopRequireDefault(_promise);
   
@@ -8633,7 +8903,7 @@ module.exports =
   
   
   function getProviderData() {
-    var request = __webpack_require__(109);
+    var request = __webpack_require__(92);
   
     console.log('calling API');
     var url = 'http://' + _config.apihost + '/searchByType?servicetype=Pooja';
@@ -8657,7 +8927,223 @@ module.exports =
 /* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var extend = __webpack_require__(168);
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _promise = __webpack_require__(83);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Logout = __webpack_require__(168);
+  
+  var _Logout2 = _interopRequireDefault(_Logout);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var message = 'Thanks for visiting our website. You have Sucessfully Logged out ';
+  var message1 = 'Click here to login';
+  var href = 'http://' + _config.host + '/login';
+  var status;
+  var sessionid;
+  
+  exports.default = {
+  
+    path: '/logout',
+  
+    action: function action(_ref, _ref2) {
+      var _this = this;
+  
+      var query = _ref.query;
+      var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var body;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                sessionid = query.sessionid;
+                console.log("Logout - index.js - Sessionid: " + sessionid);
+                _context.next = 4;
+                return deleteSession();
+  
+              case 4:
+                body = _context.sent;
+  
+                console.log("Session deleted");
+                return _context.abrupt('return', _react2.default.createElement(_Logout2.default, { message: message, redirectlink: href, message1: message1 }));
+  
+              case 7:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    }
+  };
+  
+  
+  function deleteSession() {
+    var request = __webpack_require__(92);
+    console.log('calling API - DeleteSession method');
+    var url = 'http://' + _config.apihost + '/deleteSession?sessionid=' + sessionid;
+    console.log("URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request.put(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside Logout - index.js - deleteSession Response from API (body)' + body);
+  
+          if (body == 'true') status = true;
+          resolve(body);
+        }
+        if (error) {
+          console.log("Error in deleting session data");
+          status = false;
+          return reject(error);
+        }
+        console.log('returning from deleteSession API call');
+      });
+    });
+  }
+
+/***/ },
+/* 168 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Logout = __webpack_require__(169);
+  
+  var _Logout2 = _interopRequireDefault(_Logout);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'Logout';
+  
+  function Logout(_ref, context) {
+    var message = _ref.message;
+    var redirectlink = _ref.redirectlink;
+    var message1 = _ref.message1;
+  
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      { className: _Logout2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Logout2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          message
+        ),
+        _react2.default.createElement(
+          'a',
+          { href: redirectlink },
+          message1
+        )
+      )
+    );
+  }
+  
+  Logout.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Logout2.default)(Logout);
+
+/***/ },
+/* 169 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(170);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Logout.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Logout.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 170 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, " .Logout_root_3lw {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Logout_container_Wra {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Logout_lead_RHc {\n  font-size: 1.25em;\n}\n\n.Logout_formGroup_2i2 {\n  margin-bottom: 20px;\n  \n}\n\n.Logout_label_3-A {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n", "", {"version":3,"sources":["/./routes/logout/Logout.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb","file":"Logout.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Logout_root_3lw",
+  	"container": "Logout_container_Wra",
+  	"lead": "Logout_lead_RHc",
+  	"formGroup": "Logout_formGroup_2i2",
+  	"label": "Logout_label_3-A"
+  };
+
+/***/ },
+/* 171 */
+/***/ function(module, exports, __webpack_require__) {
+
+  var extend = __webpack_require__(172);
   
   function Assets(options) {
     if (!(this instanceof Assets)) {
@@ -8669,7 +9155,7 @@ module.exports =
   }
   
   ['data', 'path', 'size', 'url'].forEach(function (resolver) {
-    Assets[resolver] = __webpack_require__(169)("./" + resolver);
+    Assets[resolver] = __webpack_require__(173)("./" + resolver);
     Assets.prototype[resolver] = function (path, callback) {
       return Assets[resolver](path, this.options, callback);
     };
@@ -8679,42 +9165,42 @@ module.exports =
 
 
 /***/ },
-/* 168 */
+/* 172 */
 /***/ function(module, exports) {
 
   module.exports = require("lodash/object/extend");
 
 /***/ },
-/* 169 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
   var map = {
-  	"./__utils__/composeAbsolutePathname": 170,
-  	"./__utils__/composeAbsolutePathname.js": 170,
-  	"./__utils__/composeQueryString": 174,
-  	"./__utils__/composeQueryString.js": 174,
-  	"./__utils__/composeRelativePathname": 175,
-  	"./__utils__/composeRelativePathname.js": 175,
-  	"./__utils__/convertPathToUrl": 171,
-  	"./__utils__/convertPathToUrl.js": 171,
-  	"./__utils__/defaultCachebuster": 176,
-  	"./__utils__/defaultCachebuster.js": 176,
-  	"./__utils__/encodeBuffer": 177,
-  	"./__utils__/encodeBuffer.js": 177,
-  	"./__utils__/ensureTrailingSlash": 172,
-  	"./__utils__/ensureTrailingSlash.js": 172,
-  	"./__utils__/exists": 178,
-  	"./__utils__/exists.js": 178,
-  	"./data": 179,
-  	"./data.js": 179,
-  	"./index": 167,
-  	"./index.js": 167,
-  	"./path": 181,
-  	"./path.js": 181,
-  	"./size": 185,
-  	"./size.js": 185,
-  	"./url": 187,
-  	"./url.js": 187
+  	"./__utils__/composeAbsolutePathname": 174,
+  	"./__utils__/composeAbsolutePathname.js": 174,
+  	"./__utils__/composeQueryString": 178,
+  	"./__utils__/composeQueryString.js": 178,
+  	"./__utils__/composeRelativePathname": 179,
+  	"./__utils__/composeRelativePathname.js": 179,
+  	"./__utils__/convertPathToUrl": 175,
+  	"./__utils__/convertPathToUrl.js": 175,
+  	"./__utils__/defaultCachebuster": 180,
+  	"./__utils__/defaultCachebuster.js": 180,
+  	"./__utils__/encodeBuffer": 181,
+  	"./__utils__/encodeBuffer.js": 181,
+  	"./__utils__/ensureTrailingSlash": 176,
+  	"./__utils__/ensureTrailingSlash.js": 176,
+  	"./__utils__/exists": 182,
+  	"./__utils__/exists.js": 182,
+  	"./data": 183,
+  	"./data.js": 183,
+  	"./index": 171,
+  	"./index.js": 171,
+  	"./path": 185,
+  	"./path.js": 185,
+  	"./size": 189,
+  	"./size.js": 189,
+  	"./url": 191,
+  	"./url.js": 191
   };
   function webpackContext(req) {
   	return __webpack_require__(webpackContextResolve(req));
@@ -8727,17 +9213,17 @@ module.exports =
   };
   webpackContext.resolve = webpackContextResolve;
   module.exports = webpackContext;
-  webpackContext.id = 169;
+  webpackContext.id = 173;
 
 
 /***/ },
-/* 170 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(171);
-  var ensureTrailingSlash = __webpack_require__(172);
+  var convertPathToUrl = __webpack_require__(175);
+  var ensureTrailingSlash = __webpack_require__(176);
   var path = __webpack_require__(4);
-  var url = __webpack_require__(173);
+  var url = __webpack_require__(177);
   
   module.exports = function (baseUrl, basePath, resolvedPath) {
     var from = ensureTrailingSlash(baseUrl);
@@ -8747,7 +9233,7 @@ module.exports =
 
 
 /***/ },
-/* 171 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
   var sep = __webpack_require__(4).sep;
@@ -8758,12 +9244,12 @@ module.exports =
 
 
 /***/ },
-/* 172 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(171);
+  var convertPathToUrl = __webpack_require__(175);
   var path = __webpack_require__(4);
-  var url = __webpack_require__(173);
+  var url = __webpack_require__(177);
   
   module.exports = function (urlStr) {
     var urlObj = url.parse(urlStr);
@@ -8773,13 +9259,13 @@ module.exports =
 
 
 /***/ },
-/* 173 */
+/* 177 */
 /***/ function(module, exports) {
 
   module.exports = require("url");
 
 /***/ },
-/* 174 */
+/* 178 */
 /***/ function(module, exports) {
 
   module.exports = function (current, addon) {
@@ -8791,10 +9277,10 @@ module.exports =
 
 
 /***/ },
-/* 175 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(171);
+  var convertPathToUrl = __webpack_require__(175);
   var path = __webpack_require__(4);
   
   module.exports = function (basePath, relativeTo, resolvedPath) {
@@ -8805,7 +9291,7 @@ module.exports =
 
 
 /***/ },
-/* 176 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
   var fs = __webpack_require__(32);
@@ -8817,7 +9303,7 @@ module.exports =
 
 
 /***/ },
-/* 177 */
+/* 181 */
 /***/ function(module, exports) {
 
   module.exports = function (buffer, mediaType) {
@@ -8829,7 +9315,7 @@ module.exports =
 
 
 /***/ },
-/* 178 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
   var fs = __webpack_require__(32);
@@ -8842,16 +9328,16 @@ module.exports =
 
 
 /***/ },
-/* 179 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var encodeBuffer = __webpack_require__(177);
-  var extend = __webpack_require__(168);
+  var encodeBuffer = __webpack_require__(181);
+  var extend = __webpack_require__(172);
   var fs = __webpack_require__(32);
-  var mime = __webpack_require__(180);
+  var mime = __webpack_require__(184);
   var Promise = __webpack_require__(33);
-  var resolvePath = __webpack_require__(181);
-  var url = __webpack_require__(173);
+  var resolvePath = __webpack_require__(185);
+  var url = __webpack_require__(177);
   
   var preadFile = Promise.promisify(fs.readFile);
   
@@ -8882,20 +9368,20 @@ module.exports =
 
 
 /***/ },
-/* 180 */
+/* 184 */
 /***/ function(module, exports) {
 
   module.exports = require("mime");
 
 /***/ },
-/* 181 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var async = __webpack_require__(182);
-  var exists = __webpack_require__(178);
-  var extend = __webpack_require__(168);
-  var flatten = __webpack_require__(183);
-  var glob = __webpack_require__(184);
+  var async = __webpack_require__(186);
+  var exists = __webpack_require__(182);
+  var extend = __webpack_require__(172);
+  var flatten = __webpack_require__(187);
+  var glob = __webpack_require__(188);
   var path = __webpack_require__(4);
   var Promise = __webpack_require__(33);
   
@@ -8940,30 +9426,30 @@ module.exports =
 
 
 /***/ },
-/* 182 */
+/* 186 */
 /***/ function(module, exports) {
 
   module.exports = require("async");
 
 /***/ },
-/* 183 */
+/* 187 */
 /***/ function(module, exports) {
 
   module.exports = require("lodash/array/flatten");
 
 /***/ },
-/* 184 */
+/* 188 */
 /***/ function(module, exports) {
 
   module.exports = require("glob");
 
 /***/ },
-/* 185 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var calipers = __webpack_require__(186)('webp', 'png', 'jpeg', 'gif', 'svg');
+  var calipers = __webpack_require__(190)('webp', 'png', 'jpeg', 'gif', 'svg');
   var Promise = __webpack_require__(33);
-  var resolvePath = __webpack_require__(181);
+  var resolvePath = __webpack_require__(185);
   
   module.exports = function (to, options, callback) {
     if (typeof options === 'function') {
@@ -8986,22 +9472,22 @@ module.exports =
 
 
 /***/ },
-/* 186 */
+/* 190 */
 /***/ function(module, exports) {
 
   module.exports = require("calipers");
 
 /***/ },
-/* 187 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var composeAbsolutePathname = __webpack_require__(170);
-  var composeQueryString = __webpack_require__(174);
-  var composeRelativePathname = __webpack_require__(175);
-  var defaultCachebuster = __webpack_require__(176);
-  var extend = __webpack_require__(168);
-  var resolvePath = __webpack_require__(181);
-  var url = __webpack_require__(173);
+  var composeAbsolutePathname = __webpack_require__(174);
+  var composeQueryString = __webpack_require__(178);
+  var composeRelativePathname = __webpack_require__(179);
+  var defaultCachebuster = __webpack_require__(180);
+  var extend = __webpack_require__(172);
+  var resolvePath = __webpack_require__(185);
+  var url = __webpack_require__(177);
   
   module.exports = function (to, options, callback) {
     if (typeof options === 'function') {
@@ -9051,16 +9537,22 @@ module.exports =
 
 
 /***/ },
-/* 188 */
+/* 192 */
 /***/ function(module, exports) {
 
   module.exports = require("mongodb");
 
 /***/ },
-/* 189 */
+/* 193 */
+/***/ function(module, exports) {
+
+  module.exports = require("express-session");
+
+/***/ },
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var jade = __webpack_require__(190);
+  var jade = __webpack_require__(195);
   
   module.exports = function template(locals) {
   var jade_debug = [ new jade.DebugItem( 1, "C:\\dtsolutions\\bmfApp\\src\\views\\index.jade" ) ];
@@ -9163,7 +9655,7 @@ module.exports =
   }
 
 /***/ },
-/* 190 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -9415,10 +9907,10 @@ module.exports =
 
 
 /***/ },
-/* 191 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var jade = __webpack_require__(190);
+  var jade = __webpack_require__(195);
   
   module.exports = function template(locals) {
   var jade_debug = [ new jade.DebugItem( 1, "C:\\dtsolutions\\bmfApp\\src\\views\\error.jade" ) ];

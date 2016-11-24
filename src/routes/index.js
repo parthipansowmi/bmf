@@ -21,7 +21,8 @@ import savebooking from './savebooking'
 import providerlogin from './providerlogin'
 import linkprovider from './linkprovider'
 import verifyproviderlogin from './verifyproviderlogin'
-import providerlist from './providerlist'
+import providerlist from './providerlist';
+import logout from './logout';
 export default {
 
   path: '/',
@@ -46,7 +47,8 @@ export default {
     savebooking,
     linkprovider,
     content,
-    error
+    error,
+    logout
   ],
 
   async action({ next, render, context }) {

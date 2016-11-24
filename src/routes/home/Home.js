@@ -15,8 +15,9 @@ import cx from 'classnames';
 
 const title = 'Welcom to World of Opporunity';
 
-function Home({ news }, context) {
+function Home({ sessionid }, context) {
   context.setTitle(title);
+  var logoutlink = "/logout?sessionid="+sessionid;
   return (
     <div >
       <Link className={s.link} to="/booking">Home Function</Link>
@@ -27,8 +28,14 @@ function Home({ news }, context) {
       
       <Link className={s.link} to="/register">Catering</Link>
       <br/>
+      <Link className={s.link} to={logoutlink} >Logout</Link>
       <span className={s.spacer}> | </span>
-      
+      <input
+              id="sessionid"
+              type="hidden"
+              name="sessionid"
+              value={sessionid}
+              />
     </div>
   );
 }

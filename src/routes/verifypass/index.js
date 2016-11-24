@@ -4,7 +4,7 @@ import VerifyPass from './Verifypass';
 import Login from '../login/Login';
 import ErrorPage from '../error/ErrorPage';
 import Home from'../home/Home';
-import { apihost } from '../../config';
+import { apihost, host } from '../../config';
 
 var request = require('request');
 
@@ -14,27 +14,32 @@ var password;
 var validLogin;
 var url;
 var page;
+var status;
+var sessionid;
 export default {
 
   path: '/verifypass',
 
-  async action({request}, {query}, {path} ) {
+  async action({query}, {path} ) {
 
     console.log("inside the verifypass");
-    var sess = request.session;
+   // var sess = request.session;
     //session.sessionid = query.sessionid;
     //console.log("Session ID: "+query.sessionid);
     userEmail = query.usernameOrEmail;
     password = query.password;
+    sessionid = query.sessionid;
     console.log(userEmail);
     console.log(password);
+    console.log("SessionId: ")+sessionid;
     url = `http://${apihost}/checklogin?usernameOrEmail=` + userEmail + '&password=' + password;
     
     validLogin = await verifylogin(url);
     console.log("Result from API call: "+validLogin)
      if (validLogin == 'true') {
+      var body = await SaveSessionData();
       console.log(" Going to Home Page");
-      return <Home />;
+      return <Home sessionid={sessionid} />;
     }
 
     else {
@@ -62,7 +67,40 @@ function verifylogin(url)
         }
 
      console.log("ValidLogin status: " + validLogin);
-
     });
   });
+}
+
+function SaveSessionData() {
+
+  console.log('calling API - SaveSessionData method');
+  var url = `http://${apihost}/addSession`;
+  console.log("URL: " + url);
+  var createdate = new Date();
+  var data = { 
+  email: userEmail, 
+  sessionid: sessionid, 
+  creationdate: createdate
+};
+console.log("Data: "+data);
+return new Promise(function(resolve, reject) {
+  request.post(url, { form: data }, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log('Inside SaveSessionData Response from API (body)' + body);
+
+      if (body == 'true')
+        status = true;
+        resolve(body);
+      
+    }
+    if (error) {
+      console.log("Error in storing Session data");
+      status = false;
+      return reject(error);
+    }
+
+  });
+ 
+  console.log('returning');
+   });
 }

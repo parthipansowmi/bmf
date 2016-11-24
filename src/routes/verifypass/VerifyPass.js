@@ -14,7 +14,7 @@ import me from '../../data/queries/me.js';
 
 const title = 'Verify Credential';
 
-function VerifyPass(props, context) {
+function VerifyPass({message, sessionid}, props, context) {
  
   context.setTitle(title);
   
@@ -22,8 +22,14 @@ function VerifyPass(props, context) {
     <div className={s.root}>
       <div className={s.container}>
         <h1>{title}</h1>
-        <p>Password Verified</p>
-                     
+        <p>{message}</p>
+           <a href={redirectlink}>Clicke Here to Login </a>    
+           <input
+              id="sessionid"
+              type="hidden"
+              name="sessionid"
+              value={sessionid}
+              />      
       </div>
     </div>
   );
