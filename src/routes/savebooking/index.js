@@ -10,26 +10,27 @@ var href = `http://${host}/`;
 var message1 = 'Click here to login'
 var status = true;
 var email;
-//var phone;
-//var zipcode;
+var phone;
+var zipcode;
 var providerlist;
-var sessionid
+var sessionid;
 
 export default {
 
 path: '/savebooking',
 
  async action({query}, {path}) {
-    console.log("Query String: " + JSON.stringify(query));
+    console.log("Query String - index.js - Savebooking: " + JSON.stringify(query));
     phone = query.mobile;
-    email = query.email;   
+    email = query.email;
+    console.log("Email: "+email);
     sessionid = query.sessionid;
-    console.log("Sessionid - index.js - Home "+sessionid);
+    console.log("Sessionid - index.js - Savebooking "+sessionid);
 
     if ( sessionid === undefined || sessionid == '')
        {
-         var body = await getSessionid();
-         return <Login sessionid = {body}/>
+         var sessionbody = await getSessionid();
+         return <Login sessionid = {sessionbody}/>
        }        
       
        

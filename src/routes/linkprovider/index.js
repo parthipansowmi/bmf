@@ -9,8 +9,8 @@
 
 import React from 'react';
 import LinkProvider from './LinkProvider';
-
 import { host, apihost } from '../../config';
+import Login from '../login/Login';
 
 
 var message = 'Booking done Sucessfully  '
@@ -24,11 +24,11 @@ export default {
   path: '/linkprovider',
 
 async  action({query}, {path}) {
-    console.log("Query String: " + JSON.stringify(query));
+    console.log("Query String - index.js - linkprovider: " + JSON.stringify(query));
     var provideremail = query.provideremail;
     var customeremail = query.customeremail;
 
-    sessionid = query.sessionid;
+    var sessionid = query.sessionid;
     console.log("Sessionid - index.js - Home "+sessionid);
        if ( sessionid === undefined || sessionid == '')
        {
@@ -39,9 +39,9 @@ async  action({query}, {path}) {
     var url = `http://${apihost}/updateProviderLink?provideremail=`+provideremail+'&email='+customeremail;
     console.log("Link Provider - Provider Email: "+provideremail);
     console.log("Link Provider - Customer Email: "+customeremail);
-   console.log("URL: " + url);
-   var result = await LinkProviderData(url);
-   console.log("Return from LinkProviderData");
+    console.log("URL: " + url);
+    var result = await LinkProviderData(url);
+    console.log("Return from LinkProviderData");
     if (!status) {
       message = 'Error in Saving Booking Data';
       href = `http://${host}/booking`;
@@ -88,7 +88,7 @@ function getSessionid() {
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log('genSessionid - Response from API' + body);
-      sessionid = body;
+      //sessionid = body;
       resolve(body);
     }
     else {

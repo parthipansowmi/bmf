@@ -78,7 +78,7 @@ function Booking({sessionid}, context) {
               id="catering"
               type="checkbox"
               name="catering"
-              value="no"
+              
               />
             <br/>
             <label className={s.label} htmlFor="Travel">
@@ -89,7 +89,7 @@ function Booking({sessionid}, context) {
               id="travel"
               type="checkbox"
               name="travel"
-              value="no"
+              
               />
           </div>
           <div>

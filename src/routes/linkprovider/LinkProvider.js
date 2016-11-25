@@ -13,7 +13,7 @@ function LinkProvider({message, redirectlink, message1, sessionid}, context) {
         <h1>{title}</h1>
         <p>{message}</p>
         <a href={redirectlink}>{message1} </a>
-                      
+         <input type="hidden" name="sessionid"  value={sessionid} />             
       </div>
     </div>
   );

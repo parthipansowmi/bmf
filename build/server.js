@@ -7290,8 +7290,8 @@ module.exports =
               className: _Booking2.default.squaredOne,
               id: 'catering',
               type: 'checkbox',
-              name: 'catering',
-              value: 'no'
+              name: 'catering'
+  
             }),
             _react2.default.createElement('br', null),
             _react2.default.createElement(
@@ -7303,8 +7303,8 @@ module.exports =
               className: _Booking2.default.squaredOne,
               id: 'travel',
               type: 'checkbox',
-              name: 'travel',
-              value: 'no'
+              name: 'travel'
+  
             })
           ),
           _react2.default.createElement(
@@ -7525,8 +7525,8 @@ module.exports =
   var message1 = 'Click here to login';
   var status = true;
   var email;
-  //var phone;
-  //var zipcode;
+  var phone;
+  var zipcode;
   var providerlist;
   var sessionid;
   
@@ -7540,54 +7540,55 @@ module.exports =
       var query = _ref.query;
       var path = _ref2.path;
       return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
-        var body, mail, sms;
+        var sessionbody, body, mail, sms;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log("Query String: " + (0, _stringify2.default)(query));
+                console.log("Query String - index.js - Savebooking: " + (0, _stringify2.default)(query));
                 phone = query.mobile;
                 email = query.email;
+                console.log("Email: " + email);
                 sessionid = query.sessionid;
-                console.log("Sessionid - index.js - Home " + sessionid);
+                console.log("Sessionid - index.js - Savebooking " + sessionid);
   
                 if (!(sessionid === undefined || sessionid == '')) {
-                  _context.next = 10;
+                  _context.next = 11;
                   break;
                 }
   
-                _context.next = 8;
+                _context.next = 9;
                 return getSessionid();
   
-              case 8:
-                body = _context.sent;
-                return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: body }));
+              case 9:
+                sessionbody = _context.sent;
+                return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: sessionbody }));
   
-              case 10:
-                _context.next = 12;
+              case 11:
+                _context.next = 13;
                 return SavebookingData(query);
   
-              case 12:
+              case 13:
                 body = _context.sent;
   
                 console.log("Calling SendEmail");
-                _context.next = 16;
+                _context.next = 17;
                 return sendEmail();
   
-              case 16:
+              case 17:
                 mail = _context.sent;
   
                 console.log("Calling sendSMS");
-                _context.next = 20;
+                _context.next = 21;
                 return sendSMS();
   
-              case 20:
+              case 21:
                 sms = _context.sent;
   
                 console.log("Body: " + body);
   
                 if (status) {
-                  _context.next = 29;
+                  _context.next = 30;
                   break;
                 }
   
@@ -7596,17 +7597,17 @@ module.exports =
                 message1 = 'Click here to Register.';
                 return _context.abrupt('return', _react2.default.createElement(_Savebooking2.default, { message: message, redirectlink: href, message1: message1, sessionid: sessionid }));
   
-              case 29:
-                _context.next = 31;
+              case 30:
+                _context.next = 32;
                 return getProviderData();
   
-              case 31:
+              case 32:
                 providerlist = _context.sent;
   
                 console.log("Service Provider List: " + providerlist);
                 return _context.abrupt('return', _react2.default.createElement(_Providerlist2.default, { providerlist: providerlist, customeremail: email, sessionid: sessionid }));
   
-              case 34:
+              case 35:
               case 'end':
                 return _context.stop();
             }
@@ -8359,17 +8360,22 @@ module.exports =
   
   var _config = __webpack_require__(20);
   
+  var _Login = __webpack_require__(87);
+  
+  var _Login2 = _interopRequireDefault(_Login);
+  
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var message = 'Booking done Sucessfully  '; /**
-                                               * React Starter Kit (https://www.reactstarterkit.com/)
-                                               *
-                                               * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-                                               *
-                                               * This source code is licensed under the MIT license found in the
-                                               * LICENSE.txt file in the root directory of this source tree.
-                                               */
+  /**
+   * React Starter Kit (https://www.reactstarterkit.com/)
+   *
+   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE.txt file in the root directory of this source tree.
+   */
   
+  var message = 'Booking done Sucessfully  ';
   var href = 'http://' + _config.host + '/';
   var message1 = 'Click here to Home Page';
   var status = true;
@@ -8384,17 +8390,16 @@ module.exports =
       var query = _ref.query;
       var path = _ref2.path;
       return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
-        var provideremail, customeremail, body, url, result;
+        var provideremail, customeremail, sessionid, body, url, result;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log("Query String: " + (0, _stringify2.default)(query));
+                console.log("Query String - index.js - linkprovider: " + (0, _stringify2.default)(query));
                 provideremail = query.provideremail;
                 customeremail = query.customeremail;
-  
-  
                 sessionid = query.sessionid;
+  
                 console.log("Sessionid - index.js - Home " + sessionid);
   
                 if (!(sessionid === undefined || sessionid == '')) {
@@ -8407,7 +8412,7 @@ module.exports =
   
               case 8:
                 body = _context.sent;
-                return _context.abrupt('return', _react2.default.createElement(Login, { sessionid: body }));
+                return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: body }));
   
               case 10:
                 url = 'http://' + _config.apihost + '/updateProviderLink?provideremail=' + provideremail + '&email=' + customeremail;
@@ -8474,7 +8479,7 @@ module.exports =
       request(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
           console.log('genSessionid - Response from API' + body);
-          sessionid = body;
+          //sessionid = body;
           resolve(body);
         } else {
   
@@ -8540,7 +8545,8 @@ module.exports =
           { href: redirectlink },
           message1,
           ' '
-        )
+        ),
+        _react2.default.createElement('input', { type: 'hidden', name: 'sessionid', value: sessionid })
       )
     );
   }
@@ -9025,9 +9031,14 @@ module.exports =
   
   var _config = __webpack_require__(20);
   
+  var _Login = __webpack_require__(87);
+  
+  var _Login2 = _interopRequireDefault(_Login);
+  
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
   var providerlist;
+  var sessionid;
   
   exports.default = {
   
@@ -9058,7 +9069,7 @@ module.exports =
   
               case 5:
                 body = _context.sent;
-                return _context.abrupt('return', _react2.default.createElement(Login, { sessionid: body }));
+                return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: body }));
   
               case 7:
                 _context.next = 9;
@@ -9115,7 +9126,7 @@ module.exports =
       request(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
           console.log('genSessionid - Response from API' + body);
-          sessionid = body;
+          //sessionid = body;
           resolve(body);
         } else {
   

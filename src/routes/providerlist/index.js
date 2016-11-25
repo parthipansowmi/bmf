@@ -2,8 +2,10 @@
 import React from 'react';
 import Providerlist from './Providerlist';
 import { host, apihost } from '../../config';
+import Login from '../login/Login';
 
  var providerlist;
+ var sessionid;
 
 export default {
 
@@ -63,7 +65,7 @@ function getSessionid() {
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log('genSessionid - Response from API' + body);
-      sessionid = body;
+      //sessionid = body;
       resolve(body);
     }
     else {
