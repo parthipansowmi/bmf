@@ -1,15 +1,13 @@
-'use strict';
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports['default'] = render;
 
-var _reactCompat = require('./react-compat');
-
 var _cheerio = require('cheerio');
 
 var _cheerio2 = _interopRequireDefault(_cheerio);
+
+var _reactCompat = require('./react-compat');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 

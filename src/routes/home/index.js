@@ -2,7 +2,6 @@
 import React from 'react';
 import Home from './Home';
 import Login from '../login/Login'
-import fetch from '../../core/fetch';
 import { apihost } from '../../config';
 
 var sessionid;
@@ -13,7 +12,7 @@ export default {
 
   async action({query}, {path}) {
     sessionid = query.sessionid;
-    console.log("Sessionid: "+sessionid);
+    console.log("Sessionid - index.js - Home "+sessionid);
        if ( sessionid === undefined || sessionid == '')
        {
          var body = await getSessionid();

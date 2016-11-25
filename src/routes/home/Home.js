@@ -13,14 +13,15 @@ import s from './Home.css';
 import Link from '../../components/Link';
 import cx from 'classnames';
 
-const title = 'Welcom to World of Opporunity';
+const title = 'Welcome to World of Opporunity';
 
 function Home({ sessionid }, context) {
-  context.setTitle(title);
+ context.setTitle(title);
   var logoutlink = "/logout?sessionid="+sessionid;
+  var bookinglink = "/booking?sessionid="+sessionid;
   return (
     <div >
-      <Link className={s.link} to="/booking">Home Function</Link>
+      <Link className={s.link} to={bookinglink}>Home Function</Link>
       
       <Link className={s.link} to="/contact">Astrology</Link>
      <br/>

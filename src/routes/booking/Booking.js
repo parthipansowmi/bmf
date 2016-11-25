@@ -12,7 +12,7 @@ var year = date.getFullYear();
 var currentdate = day + '/' + month + '/' + year;
 
 
-function Booking(props, context) {
+function Booking({sessionid}, context) {
   context.setTitle(title);
   return (
     <div className={s.root}>
@@ -102,6 +102,13 @@ function Booking(props, context) {
               <option value="60th Birthday">60th Birthday</option>
               <option value="80th Birthday">80th Birthday</option>
             </select>
+            <input
+              id="sessionid"
+              type="hidden"
+              name="sessionid"
+              value={sessionid}
+              />
+    
           </div>
           <div className={s.formGroup}>
             <button className={s.button}  value="submit" type="submit" >

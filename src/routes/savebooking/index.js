@@ -1,12 +1,3 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 import React from 'react';
 import Savebooking from './Savebooking';
 import Providerlist from '../providerlist/Providerlist';
@@ -19,35 +10,46 @@ var href = `http://${host}/`;
 var message1 = 'Click here to login'
 var status = true;
 var email;
-var phone;
-var zipcode;
+//var phone;
+//var zipcode;
 var providerlist;
+var sessionid
 
 export default {
 
-  path: '/savebooking',
+path: '/savebooking',
 
  async action({query}, {path}) {
     console.log("Query String: " + JSON.stringify(query));
     phone = query.mobile;
     email = query.email;   
+    sessionid = query.sessionid;
+    console.log("Sessionid - index.js - Home "+sessionid);
+
+    if ( sessionid === undefined || sessionid == '')
+       {
+         var body = await getSessionid();
+         return <Login sessionid = {body}/>
+       }        
+      
+       
     var body = await SavebookingData(query);
     console.log("Calling SendEmail");
     var mail = await sendEmail();
     console.log("Calling sendSMS");
-   // var sms = await sendSMS();
-    //console.log("Body: "+body);
+    var sms = await sendSMS();
+    console.log("Body: "+body);
     if (!status) {
       message = 'Unable to book the Event';
       href = `http://${host}/booking`;
       message1 = 'Click here to Register.';
-      return <Savebooking message={message} redirectlink={href} message1={message1} />;
+      return <Savebooking message={message} redirectlink={href} message1={message1} sessionid = {sessionid} />;
     }
     else
     {
       providerlist = await getProviderData();
       console.log("Service Provider List: "+providerlist);
-      return <Providerlist providerlist={providerlist} customeremail={email} />
+      return <Providerlist providerlist={providerlist} customeremail={email} sessionid = {sessionid} />
      // return <Savebooking message={message} redirectlink={href} message1={message1} />;
     }
    
@@ -167,4 +169,29 @@ function getProviderData() {
 
   });
   });
+}
+
+function getSessionid() {
+  var request = require('request');
+  console.log('genSessionid - calling API');
+  var url = `http://${apihost}/genSessionid`;
+  console.log("getSeesionid - URL: " + url);
+  
+  return new Promise(function(resolve, reject) {
+  request(url, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log('genSessionid - Response from API' + body);
+      //sessionid = body;
+      resolve(body);
+    }
+    else {
+      
+      console.log("genSessionid -API Server not running: "+error);
+      return reject(error);
+    }
+    console.log("getSessionid - Returning from API call")
+  });
+
+ });
+ 
 }

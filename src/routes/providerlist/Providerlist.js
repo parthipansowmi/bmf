@@ -14,7 +14,7 @@ import s from './Providerlist.css';
 const title = 'Service Provider Search';
 
 
-function Providerlist({providerlist, customeremail}, props, context) {
+function Providerlist({providerlist, customeremail, sessionid}, props, context) {
   //context.setTitle(title);
   
    var providerdata = JSON.parse(providerlist);  
@@ -53,6 +53,7 @@ function Providerlist({providerlist, customeremail}, props, context) {
          <div >
          <br></br>
          <input type="hidden" name="customeremail"  value={customeremail} />
+         <input type="hidden" name="sessionid"  value={sessionid} />
          <button   className={s.button}  type="submit" >
              Submit
          </button>

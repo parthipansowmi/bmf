@@ -1,15 +1,16 @@
 #include "coroutine.h"
+#include "v8-version.h"
 #include <assert.h>
 #include <node.h>
 #include <node_version.h>
 
 #include <vector>
-
 #include <iostream>
 
 #define THROW(x, m) return uni::Return(uni::ThrowException(Isolate::GetCurrent(), x(uni::NewLatin1String(Isolate::GetCurrent(), m))), args)
-#ifdef DEBUG
+
 // Run GC more often when debugging
+#ifdef DEBUG
 #define GC_ADJUST 100
 #else
 #define GC_ADJUST 1
@@ -18,13 +19,42 @@
 using namespace std;
 using namespace v8;
 
-#if NODE_MODULE_VERSION > 1
-#define USE_GLOBAL_LOCKER
-#endif
-
 // Handle legacy V8 API
 namespace uni {
-#if NODE_MODULE_VERSION >= 0x000D
+#if V8_MAJOR_VERSION > 5 || (V8_MAJOR_VERSION == 5 && V8_MINOR_VERSION >= 2)
+	// Actually 5.2.244
+	template <void (*F)(void*), class P>
+	void WeakCallbackShim(const WeakCallbackInfo<P>& data) {
+		F(data.GetParameter());
+	}
+
+	template <void (*F)(void*), class T, typename P>
+	void MakeWeak(Isolate* isolate, Persistent<T>& handle, P* val) {
+		handle.SetWeak(val, WeakCallbackShim<F, P>, WeakCallbackType::kFinalizer);
+	}
+#elif V8_MAJOR_VERSION > 3 || (V8_MAJOR_VERSION == 3 && V8_MINOR_VERSION >= 26)
+	template <void (*F)(void*), class T, typename P>
+	void WeakCallbackShim(const v8::WeakCallbackData<T, P>& data) {
+		F(data.GetParameter());
+	}
+
+	template <void (*F)(void*), class T, typename P>
+	void MakeWeak(Isolate* isolate, Persistent<T>& handle, P* val) {
+		handle.SetWeak(val, WeakCallbackShim<F>);
+	}
+#else
+	template <void (*F)(void*)>
+	void WeakCallbackShim(Persistent<Value> value, void* data) {
+		F(data);
+	}
+	template <void (*F)(void*), class T, typename P>
+	void MakeWeak(Isolate* isolate, Persistent<T>& handle, P* val) {
+		handle.MakeWeak(val, WeakCallbackShim<F>);
+	}
+#endif
+
+
+#if V8_MAJOR_VERSION > 3 || (V8_MAJOR_VERSION == 3 && V8_MINOR_VERSION >= 26)
 	// Node v0.11.13+
 	typedef PropertyCallbackInfo<Value> GetterCallbackInfo;
 	typedef PropertyCallbackInfo<void> SetterCallbackInfo;
@@ -43,16 +73,6 @@ namespace uni {
 	template <class T>
 	void Dispose(Isolate* isolate, Persistent<T>& handle) {
 		handle.Reset();
-	}
-
-	template <void (*F)(void*), class T, typename P>
-	void WeakCallbackShim(const v8::WeakCallbackData<T, P>& data) {
-		F(data.GetParameter());
-	}
-
-	template <void (*F)(void*), class T, typename P>
-	void MakeWeak(Isolate* isolate, Persistent<T>& handle, P* val) {
-		handle.SetWeak(val, WeakCallbackShim<F>);
 	}
 	template <class T>
 	void ClearWeak(Isolate* isolate, Persistent<T>& handle) {
@@ -145,19 +165,6 @@ namespace uni {
 	void AdjustAmountOfExternalAllocatedMemory(Isolate* isolate, int64_t change_in_bytes) {
 		isolate->AdjustAmountOfExternalAllocatedMemory(change_in_bytes);
 	}
-
-	#if NODE_MODULE_VERSION >= 0x002A
-		void SetStackGuard(Isolate* isolate, void* guard) {
-			isolate->SetStackLimit(reinterpret_cast<uintptr_t>(guard));
-		}
-	#else
-		void SetStackGuard(Isolate* isolate, void* guard) {
-			ResourceConstraints constraints;
-			constraints.set_stack_limit(reinterpret_cast<uint32_t*>(guard));
-			v8::SetResourceConstraints(isolate, &constraints);
-		}
-	#endif
-
 #else
 	// Node v0.10.x and lower
 	typedef AccessorInfo GetterCallbackInfo;
@@ -179,14 +186,6 @@ namespace uni {
 		handle.Dispose();
 	}
 
-	template <void (*F)(void*)>
-	void WeakCallbackShim(Persistent<Value> value, void* data) {
-		F(data);
-	}
-	template <void (*F)(void*), class T, typename P>
-	void MakeWeak(Isolate* isolate, Persistent<T>& handle, P* val) {
-		handle.MakeWeak(val, WeakCallbackShim<F>);
-	}
 	template <class T>
 	void ClearWeak(Isolate* isolate, Persistent<T>& handle) {
 		handle.ClearWeak();
@@ -268,10 +267,23 @@ namespace uni {
 	void AdjustAmountOfExternalAllocatedMemory(Isolate* isolate, int64_t change_in_bytes) {
 		V8::AdjustAmountOfExternalAllocatedMemory(change_in_bytes);
 	}
+#endif
 
+#if V8_MAJOR_VERSION > 3 || (V8_MAJOR_VERSION == 3 && V8_MINOR_VERSION >= 29)
+	// This was actually added in 3.29.67
+	void SetStackGuard(Isolate* isolate, void* guard) {
+		isolate->SetStackLimit(reinterpret_cast<uintptr_t>(guard));
+	}
+#elif V8_MAJOR_VERSION > 3 || (V8_MAJOR_VERSION == 3 && V8_MINOR_VERSION >= 26)
 	void SetStackGuard(Isolate* isolate, void* guard) {
 		ResourceConstraints constraints;
-		// Extra padding for old versions of v8. Shit's fucked.
+		constraints.set_stack_limit(reinterpret_cast<uint32_t*>(guard));
+		v8::SetResourceConstraints(isolate, &constraints);
+	}
+#else
+	// Extra padding for old versions of v8. Shit's fucked.
+	void SetStackGuard(Isolate* isolate, void* guard) {
+		ResourceConstraints constraints;
 		constraints.set_stack_limit(
 			reinterpret_cast<uint32_t*>(guard) + 18 * 1024
 		);
@@ -283,9 +295,7 @@ namespace uni {
 class Fiber {
 
 	private:
-#ifdef USE_GLOBAL_LOCKER
 		static Locker* global_locker; // Node does not use locks or threads, so we need a global lock
-#endif
 		static Persistent<FunctionTemplate> tmpl;
 		static Persistent<Function> fiber_object;
 		static Fiber* current;
@@ -604,9 +614,9 @@ class Fiber {
 				Isolate::Scope isolate_scope(that.isolate);
 				uni::HandleScope scope(that.isolate);
 
-				// Set the stack guard for this "thread"; allow 4k of padding past the JS limit for
+				// Set the stack guard for this "thread"; allow 6k of padding past the JS limit for
 				// native v8 code to run
-				uni::SetStackGuard(that.isolate, reinterpret_cast<char*>(that.this_fiber->bottom()) + 1024 * 4);
+				uni::SetStackGuard(that.isolate, reinterpret_cast<char*>(that.this_fiber->bottom()) + 1024 * 6);
 
 				TryCatch try_catch;
 				that.ClearWeak();
@@ -653,7 +663,7 @@ class Fiber {
 
 			// The function returned (instead of yielding).
 			that.started = false;
-			that.this_fiber->finish(*that.entry_fiber);
+			that.this_fiber->finish(*that.entry_fiber, that.isolate);
 		}
 
 		/**
@@ -749,9 +759,7 @@ class Fiber {
 			// application is going down lost memory isn't the end of the world. But with a regular lock
 			// there's seg faults when node shuts down.
 			Isolate* isolate = Isolate::GetCurrent();
-#ifdef USE_GLOBAL_LOCKER
 			global_locker = new Locker(isolate);
-#endif
 			current = NULL;
 
 			// Fiber constructor
@@ -794,9 +802,7 @@ class Fiber {
 
 Persistent<FunctionTemplate> Fiber::tmpl;
 Persistent<Function> Fiber::fiber_object;
-#ifdef USE_GLOBAL_LOCKER
 Locker* Fiber::global_locker;
-#endif
 Fiber* Fiber::current = NULL;
 vector<Fiber*> Fiber::orphaned_fibers;
 Persistent<Value> Fiber::fatal_stack;

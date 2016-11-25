@@ -7,8 +7,7 @@ var cp = require('child_process'),
 var force = false, debug = false;
 var
 	arch = process.arch,
-	platform = process.platform,
-	v8 = /[0-9]+\.[0-9]+/.exec(process.versions.v8)[0];
+	platform = process.platform;
 var args = process.argv.slice(2).filter(function(arg) {
 	if (arg === '-f') {
 		force = true;
@@ -23,13 +22,13 @@ var args = process.argv.slice(2).filter(function(arg) {
 if (!debug) {
 	args.push('--release');
 }
-if (!{ia32: true, x64: true, arm: true, ppc: true, ppc64: true, s390: true, s390x: true}.hasOwnProperty(arch)) {
+if (!{ia32: true, x64: true, arm: true, arm64: true, ppc: true, ppc64: true, s390: true, s390x: true}.hasOwnProperty(arch)) {
 	console.error('Unsupported (?) architecture: `'+ arch+ '`');
 	process.exit(1);
 }
 
 // Test for pre-built library
-var modPath = platform+ '-'+ arch+ '-v8-'+ v8;
+var modPath = platform+ '-'+ arch+ '-'+ process.versions.modules;
 if (!force) {
 	try {
 		fs.statSync(path.join(__dirname, 'bin', modPath, 'fibers.node'));
@@ -52,6 +51,9 @@ if (!force) {
 
 // Build it
 function build() {
+	if (process.versions.electron) {
+		args.push('--target='+ process.versions.electron,  '--dist-url=https://atom.io/download/atom-shell');
+	}
 	cp.spawn(
 		process.platform === 'win32' ? 'node-gyp.cmd' : 'node-gyp',
 		['rebuild'].concat(args),
@@ -64,7 +66,7 @@ function build() {
 				'would like to compile fibers on this machine please make sure you have setup your\n'+
 				'build environment--\n'+
 				'Windows + OS X instructions here: https://github.com/nodejs/node-gyp\n'+
-				'Ubuntu users please run: `sudo apt-get install g++`\n'+
+				'Ubuntu users please run: `sudo apt-get install g++ build-essential`\n'+
 				'Alpine users please run: `sudo apk add python make g++`'
 			);
 			return process.exit(err);
@@ -98,4 +100,9 @@ function afterBuild() {
 	}
 	fs.renameSync(targetPath, installPath);
 	console.log('Installed in `'+ installPath+ '`');
+	if (process.versions.electron) {
+		process.nextTick(function() {
+			require('electron').app.quit();
+		});
+	}
 }

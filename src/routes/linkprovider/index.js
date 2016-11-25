@@ -27,7 +27,16 @@ async  action({query}, {path}) {
     console.log("Query String: " + JSON.stringify(query));
     var provideremail = query.provideremail;
     var customeremail = query.customeremail;
-     var url = `http://${apihost}/updateProviderLink?provideremail=`+provideremail+'&email='+customeremail;
+
+    sessionid = query.sessionid;
+    console.log("Sessionid - index.js - Home "+sessionid);
+       if ( sessionid === undefined || sessionid == '')
+       {
+         var body = await getSessionid();
+         return <Login sessionid = {body}/>
+       }
+
+    var url = `http://${apihost}/updateProviderLink?provideremail=`+provideremail+'&email='+customeremail;
     console.log("Link Provider - Provider Email: "+provideremail);
     console.log("Link Provider - Customer Email: "+customeremail);
    console.log("URL: " + url);
@@ -39,7 +48,7 @@ async  action({query}, {path}) {
       message1 = 'Click here to Re-booking';
     }
    
-   return <LinkProvider message={message} redirectlink={href} message1={message1} />;
+   return <LinkProvider message={message} redirectlink={href} message1={message1} sessionid={sessionid}/>;
   },
 
 };
@@ -69,4 +78,27 @@ function LinkProviderData(url) {
  });
  }
  
+function getSessionid() {
+  var request = require('request');
+  console.log('genSessionid - calling API');
+  var url = `http://${apihost}/genSessionid`;
+  console.log("getSeesionid - URL: " + url);
+  
+  return new Promise(function(resolve, reject) {
+  request(url, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log('genSessionid - Response from API' + body);
+      sessionid = body;
+      resolve(body);
+    }
+    else {
+      
+      console.log("genSessionid -API Server not running: "+error);
+      return reject(error);
+    }
+    console.log("getSessionid - Returning from API call")
+  });
 
+ });
+ 
+}

@@ -5,7 +5,7 @@ import s from './LinkProvider.css';
 
 const title = 'New Boooking';
 
-function LinkProvider({message, redirectlink, message1}, context) {
+function LinkProvider({message, redirectlink, message1, sessionid}, context) {
   context.setTitle(title);
   return (
     <div className={s.root}>

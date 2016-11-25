@@ -158,7 +158,6 @@ module.exports =
       return req.cookies.id_token;
     }
   }));
-  /* jscs:enable requireCamelCaseOrUpperCaseIdentifiers */
   app.use(_passport2.default.initialize());
   
   app.get('/login/facebook', _passport2.default.authenticate('facebook', { scope: ['email', 'user_location'], session: false }));
@@ -185,7 +184,7 @@ module.exports =
   // Register server-side rendering middleware
   // -----------------------------------------------------------------------------
   app.get('*', function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2(req, res, next) {
+    var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2(req, res, next) {
       return _regenerator2.default.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -225,7 +224,7 @@ module.exports =
                             }
                           },
                           render: function render(component) {
-                            var status = arguments.length <= 1 || arguments[1] === undefined ? 200 : arguments[1];
+                            var status = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 200;
   
                             css = [];
                             statusCode = status;
@@ -265,8 +264,9 @@ module.exports =
         }
       }, _callee2, undefined, [[0, 4]]);
     }));
+  
     return function (_x, _x2, _x3) {
-      return ref.apply(this, arguments);
+      return _ref.apply(this, arguments);
     };
   }());
   
@@ -431,7 +431,7 @@ module.exports =
     var loginName = 'facebook';
     var claimType = 'urn:facebook:access_token';
     var fooBar = function () {
-      var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+      var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
         var userLogin, user, users, _user;
   
         return _regenerator2.default.wrap(function _callee$(_context) {
@@ -565,8 +565,9 @@ module.exports =
           }
         }, _callee, undefined);
       }));
+  
       return function fooBar() {
-        return ref.apply(this, arguments);
+        return _ref.apply(this, arguments);
       };
     }();
   
@@ -1083,7 +1084,7 @@ module.exports =
   var _assign2 = _interopRequireDefault(_assign);
   
   var resolveExtension = function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(path, extension) {
+    var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(path, extension) {
       var fileNameBase, ext, fileName;
       return _regenerator2.default.wrap(function _callee$(_context) {
         while (1) {
@@ -1131,13 +1132,14 @@ module.exports =
         }
       }, _callee, this);
     }));
+  
     return function resolveExtension(_x, _x2) {
-      return ref.apply(this, arguments);
+      return _ref.apply(this, arguments);
     };
   }();
   
   var resolveFileName = function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2(path) {
+    var _ref2 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2(path) {
       var extensions, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, extension, maybeFileName;
   
       return _regenerator2.default.wrap(function _callee2$(_context2) {
@@ -1220,8 +1222,9 @@ module.exports =
         }
       }, _callee2, this, [[4, 18, 22, 30], [23,, 25, 29]]);
     }));
+  
     return function resolveFileName(_x3) {
-      return ref.apply(this, arguments);
+      return _ref2.apply(this, arguments);
     };
   }();
   
@@ -1301,13 +1304,13 @@ module.exports =
     args: {
       path: { type: new _graphql.GraphQLNonNull(_graphql.GraphQLString) }
     },
-    resolve: function resolve(_ref, _ref2) {
+    resolve: function resolve(_ref3, _ref4) {
       var _this = this;
   
-      var request = _ref.request;
-      var path = _ref2.path;
+      var request = _ref3.request;
+      var path = _ref4.path;
       return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee3() {
-        var _ref3, success, fileName, extension, source;
+        var _ref5, success, fileName, extension, source;
   
         return _regenerator2.default.wrap(function _callee3$(_context3) {
           while (1) {
@@ -1317,10 +1320,10 @@ module.exports =
                 return resolveFileName(path);
   
               case 2:
-                _ref3 = _context3.sent;
-                success = _ref3.success;
-                fileName = _ref3.fileName;
-                extension = _ref3.extension;
+                _ref5 = _context3.sent;
+                success = _ref5.success;
+                fileName = _ref5.fileName;
+                extension = _ref5.extension;
   
                 if (success) {
                   _context3.next = 8;
@@ -1703,9 +1706,9 @@ module.exports =
     action: function action(_ref) {
       var _this = this;
   
-      var next = _ref.next;
-      var render = _ref.render;
-      var context = _ref.context;
+      var next = _ref.next,
+          render = _ref.render,
+          context = _ref.context;
       return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
         var component;
         return _regenerator2.default.wrap(function _callee$(_context) {
@@ -1809,7 +1812,7 @@ module.exports =
   
     function App() {
       (0, _classCallCheck3.default)(this, App);
-      return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(App).apply(this, arguments));
+      return (0, _possibleConstructorReturn3.default)(this, (App.__proto__ || (0, _getPrototypeOf2.default)(App)).apply(this, arguments));
     }
   
     (0, _createClass3.default)(App, [{
@@ -2362,7 +2365,7 @@ module.exports =
     (0, _inherits3.default)(Link, _Component);
   
     function Link() {
-      var _Object$getPrototypeO;
+      var _ref;
   
       var _temp, _this, _ret;
   
@@ -2372,7 +2375,7 @@ module.exports =
         args[_key] = arguments[_key];
       }
   
-      return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_Object$getPrototypeO = (0, _getPrototypeOf2.default)(Link)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.handleClick = function (event) {
+      return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Link.__proto__ || (0, _getPrototypeOf2.default)(Link)).call.apply(_ref, [this].concat(args))), _this), _this.handleClick = function (event) {
         var allowTransition = true;
   
         if (_this.props.onClick) {
@@ -2405,9 +2408,9 @@ module.exports =
     (0, _createClass3.default)(Link, [{
       key: 'render',
       value: function render() {
-        var _props = this.props;
-        var to = _props.to;
-        var props = (0, _objectWithoutProperties3.default)(_props, ['to']); // eslint-disable-line no-use-before-define
+        var _props = this.props,
+            to = _props.to,
+            props = (0, _objectWithoutProperties3.default)(_props, ['to']); // eslint-disable-line no-use-before-define
   
         return _react2.default.createElement('a', (0, _extends3.default)({ href: _history2.default.createHref(to) }, props, { onClick: this.handleClick }));
       }
@@ -2848,12 +2851,12 @@ module.exports =
         _react2.default.createElement(
           'span',
           { className: _Footer2.default.text },
-          '© Dream True Soutions'
+          '\xA9 Dream True Soutions'
         ),
         _react2.default.createElement(
           'span',
           { className: _Footer2.default.spacer },
-          '·'
+          '\xB7'
         ),
         _react2.default.createElement(
           _Link2.default,
@@ -2863,7 +2866,7 @@ module.exports =
         _react2.default.createElement(
           'span',
           { className: _Footer2.default.spacer },
-          '·'
+          '\xB7'
         ),
         _react2.default.createElement(
           _Link2.default,
@@ -2873,7 +2876,7 @@ module.exports =
         _react2.default.createElement(
           'span',
           { className: _Footer2.default.spacer },
-          '·'
+          '\xB7'
         )
       )
     );
@@ -2989,10 +2992,6 @@ module.exports =
   
   var _Login2 = _interopRequireDefault(_Login);
   
-  var _fetch = __webpack_require__(39);
-  
-  var _fetch2 = _interopRequireDefault(_fetch);
-  
   var _config = __webpack_require__(20);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -3015,7 +3014,7 @@ module.exports =
             switch (_context.prev = _context.next) {
               case 0:
                 sessionid = query.sessionid;
-                console.log("Sessionid: " + sessionid);
+                console.log("Sessionid - index.js - Home " + sessionid);
   
                 if (!(sessionid === undefined || sessionid == '')) {
                   _context.next = 9;
@@ -3103,26 +3102,27 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var title = 'Welcom to World of Opporunity'; /**
-                                                * React Starter Kit (https://www.reactstarterkit.com/)
-                                                *
-                                                * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-                                                *
-                                                * This source code is licensed under the MIT license found in the
-                                                * LICENSE.txt file in the root directory of this source tree.
-                                                */
+  var title = 'Welcome to World of Opporunity'; /**
+                                                 * React Starter Kit (https://www.reactstarterkit.com/)
+                                                 *
+                                                 * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+                                                 *
+                                                 * This source code is licensed under the MIT license found in the
+                                                 * LICENSE.txt file in the root directory of this source tree.
+                                                 */
   
   function Home(_ref, context) {
     var sessionid = _ref.sessionid;
   
     context.setTitle(title);
     var logoutlink = "/logout?sessionid=" + sessionid;
+    var bookinglink = "/booking?sessionid=" + sessionid;
     return _react2.default.createElement(
       'div',
       null,
       _react2.default.createElement(
         _Link2.default,
-        { className: _Home2.default.link, to: '/booking' },
+        { className: _Home2.default.link, to: bookinglink },
         'Home Function'
       ),
       _react2.default.createElement(
@@ -4313,9 +4313,9 @@ module.exports =
                                         */
   
   function Savecustomer(_ref, context) {
-    var message = _ref.message;
-    var redirectlink = _ref.redirectlink;
-    var message1 = _ref.message1;
+    var message = _ref.message,
+        redirectlink = _ref.redirectlink,
+        message1 = _ref.message1;
   
     context.setTitle(title);
     return _react2.default.createElement(
@@ -4932,7 +4932,7 @@ module.exports =
   
     function Content() {
       (0, _classCallCheck3.default)(this, Content);
-      return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(Content).apply(this, arguments));
+      return (0, _possibleConstructorReturn3.default)(this, (Content.__proto__ || (0, _getPrototypeOf2.default)(Content)).apply(this, arguments));
     }
   
     (0, _createClass3.default)(Content, [{
@@ -5052,9 +5052,9 @@ module.exports =
     path: '/error',
   
     action: function action(_ref) {
-      var render = _ref.render;
-      var context = _ref.context;
-      var error = _ref.error;
+      var render = _ref.render,
+          context = _ref.context,
+          error = _ref.error;
   
       return render(_react2.default.createElement(
         _App2.default,
@@ -5389,8 +5389,8 @@ module.exports =
   var title = 'Verify Credential';
   
   function VerifyPass(_ref, props, context) {
-    var message = _ref.message;
-    var sessionid = _ref.sessionid;
+    var message = _ref.message,
+        sessionid = _ref.sessionid;
   
   
     context.setTitle(title);
@@ -5994,8 +5994,8 @@ module.exports =
   var title = 'Changing Password';
   
   function Changepassword(_ref, context) {
-    var email = _ref.email;
-    var message = _ref.message;
+    var email = _ref.email,
+        message = _ref.message;
   
     console.log("Changepassword: " + email);
     context.setTitle(title);
@@ -6853,8 +6853,6 @@ module.exports =
     }
   };
   
-  //return <Login />;
-  
   
   function SaveproviderData(data) {
     var request = __webpack_require__(92);
@@ -6954,9 +6952,9 @@ module.exports =
                                             */
   
   function Saveprovider(_ref, context) {
-    var message = _ref.message;
-    var message1 = _ref.message1;
-    var href = _ref.href;
+    var message = _ref.message,
+        message1 = _ref.message1,
+        href = _ref.href;
   
     context.setTitle(title);
     return _react2.default.createElement(
@@ -7061,6 +7059,18 @@ module.exports =
     value: true
   });
   
+  var _promise = __webpack_require__(83);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
   var _react = __webpack_require__(43);
   
   var _react2 = _interopRequireDefault(_react);
@@ -7069,22 +7079,83 @@ module.exports =
   
   var _Booking2 = _interopRequireDefault(_Booking);
   
+  var _Login = __webpack_require__(87);
+  
+  var _Login2 = _interopRequireDefault(_Login);
+  
+  var _config = __webpack_require__(20);
+  
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
   exports.default = {
   
     path: '/booking',
   
-    action: function action() {
+    action: function action(_ref) {
+      var _this = this;
   
-      var date = new Date();
-      var currentdate = date.getDate() + '/' + date.getMonth() + 1 + '/' + date.getFullYear();
-      //console.log("Date: " + currentdate);
-      //return <Booking currentdate={currentdate} />;
+      var query = _ref.query;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var date, currentdate, sessionid, body;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                date = new Date();
+                currentdate = date.getDate() + '/' + date.getMonth() + 1 + '/' + date.getFullYear();
+                sessionid = query.sessionid;
   
-      return _react2.default.createElement(_Booking2.default, null);
+                console.log("Sessionid - index.js - Booking : " + sessionid);
+  
+                if (!(sessionid === undefined || sessionid == '')) {
+                  _context.next = 12;
+                  break;
+                }
+  
+                _context.next = 7;
+                return getSessionid();
+  
+              case 7:
+                body = _context.sent;
+  
+                console.log("Sessionid: " + body);
+                return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: body }));
+  
+              case 12:
+                return _context.abrupt('return', _react2.default.createElement(_Booking2.default, { sessionid: sessionid }));
+  
+              case 13:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
     }
   };
+  
+  
+  function getSessionid() {
+    var request = __webpack_require__(92);
+    console.log('genSessionid - calling API');
+    var url = 'http://' + _config.apihost + '/genSessionid';
+    console.log("getSeesionid - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('genSessionid - Response from API' + body);
+          // sessionid = body;
+          resolve(body);
+        } else {
+  
+          console.log("genSessionid -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("getSessionid - Returning from API call");
+      });
+    });
+  }
 
 /***/ },
 /* 143 */
@@ -7118,7 +7189,9 @@ module.exports =
   var year = date.getFullYear();
   var currentdate = day + '/' + month + '/' + year;
   
-  function Booking(props, context) {
+  function Booking(_ref, context) {
+    var sessionid = _ref.sessionid;
+  
     context.setTitle(title);
     return _react2.default.createElement(
       'div',
@@ -7269,7 +7342,13 @@ module.exports =
                 { value: '80th Birthday' },
                 '80th Birthday'
               )
-            )
+            ),
+            _react2.default.createElement('input', {
+              id: 'sessionid',
+              type: 'hidden',
+              name: 'sessionid',
+              value: sessionid
+            })
           ),
           _react2.default.createElement(
             'div',
@@ -7378,7 +7457,7 @@ module.exports =
   var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
   
   var sendSMS = function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2() {
+    var _ref3 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2() {
       var url;
       return _regenerator2.default.wrap(function _callee2$(_context2) {
         while (1) {
@@ -7413,8 +7492,9 @@ module.exports =
         }
       }, _callee2, this);
     }));
+  
     return function sendSMS() {
-      return ref.apply(this, arguments);
+      return _ref3.apply(this, arguments);
     };
   }();
   
@@ -7438,23 +7518,17 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var request = __webpack_require__(92); /**
-                                     * React Starter Kit (https://www.reactstarterkit.com/)
-                                     *
-                                     * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-                                     *
-                                     * This source code is licensed under the MIT license found in the
-                                     * LICENSE.txt file in the root directory of this source tree.
-                                     */
+  var request = __webpack_require__(92);
   
   var message = 'Booking done Sucessfully  ';
   var href = 'http://' + _config.host + '/';
   var message1 = 'Click here to login';
   var status = true;
   var email;
-  var phone;
-  var zipcode;
+  //var phone;
+  //var zipcode;
   var providerlist;
+  var sessionid;
   
   exports.default = {
   
@@ -7466,7 +7540,7 @@ module.exports =
       var query = _ref.query;
       var path = _ref2.path;
       return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
-        var body, mail;
+        var body, mail, sms;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -7474,44 +7548,65 @@ module.exports =
                 console.log("Query String: " + (0, _stringify2.default)(query));
                 phone = query.mobile;
                 email = query.email;
-                _context.next = 5;
+                sessionid = query.sessionid;
+                console.log("Sessionid - index.js - Home " + sessionid);
+  
+                if (!(sessionid === undefined || sessionid == '')) {
+                  _context.next = 10;
+                  break;
+                }
+  
+                _context.next = 8;
+                return getSessionid();
+  
+              case 8:
+                body = _context.sent;
+                return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: body }));
+  
+              case 10:
+                _context.next = 12;
                 return SavebookingData(query);
   
-              case 5:
+              case 12:
                 body = _context.sent;
   
                 console.log("Calling SendEmail");
-                _context.next = 9;
+                _context.next = 16;
                 return sendEmail();
   
-              case 9:
+              case 16:
                 mail = _context.sent;
   
                 console.log("Calling sendSMS");
-                // var sms = await sendSMS();
-                //console.log("Body: "+body);
+                _context.next = 20;
+                return sendSMS();
+  
+              case 20:
+                sms = _context.sent;
+  
+                console.log("Body: " + body);
   
                 if (status) {
-                  _context.next = 18;
+                  _context.next = 29;
                   break;
                 }
   
                 message = 'Unable to book the Event';
                 href = 'http://' + _config.host + '/booking';
                 message1 = 'Click here to Register.';
-                return _context.abrupt('return', _react2.default.createElement(_Savebooking2.default, { message: message, redirectlink: href, message1: message1 }));
+                return _context.abrupt('return', _react2.default.createElement(_Savebooking2.default, { message: message, redirectlink: href, message1: message1, sessionid: sessionid }));
   
-              case 18:
-                _context.next = 20;
+              case 29:
+                _context.next = 31;
                 return getProviderData();
   
-              case 20:
+              case 31:
                 providerlist = _context.sent;
   
                 console.log("Service Provider List: " + providerlist);
-                return _context.abrupt('return', _react2.default.createElement(_Providerlist2.default, { providerlist: providerlist, customeremail: email }));
+                return _context.abrupt('return', _react2.default.createElement(_Providerlist2.default, { providerlist: providerlist, customeremail: email, sessionid: sessionid }));
   
-              case 23:
+              case 34:
               case 'end':
                 return _context.stop();
             }
@@ -7520,8 +7615,6 @@ module.exports =
       }))();
     }
   };
-  
-  // return <Savebooking message={message} redirectlink={href} message1={message1} />;
   
   
   function SavebookingData(data) {
@@ -7602,6 +7695,28 @@ module.exports =
       });
     });
   }
+  
+  function getSessionid() {
+    var request = __webpack_require__(92);
+    console.log('genSessionid - calling API');
+    var url = 'http://' + _config.apihost + '/genSessionid';
+    console.log("getSeesionid - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('genSessionid - Response from API' + body);
+          //sessionid = body;
+          resolve(body);
+        } else {
+  
+          console.log("genSessionid -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("getSessionid - Returning from API call");
+      });
+    });
+  }
 
 /***/ },
 /* 147 */
@@ -7627,19 +7742,20 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var title = 'New Boooking'; /**
-                               * React Starter Kit (https://www.reactstarterkit.com/)
-                               *
-                               * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-                               *
-                               * This source code is licensed under the MIT license found in the
-                               * LICENSE.txt file in the root directory of this source tree.
-                               */
+  var title = 'New Booking'; /**
+                              * React Starter Kit (https://www.reactstarterkit.com/)
+                              *
+                              * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+                              *
+                              * This source code is licensed under the MIT license found in the
+                              * LICENSE.txt file in the root directory of this source tree.
+                              */
   
   function Savebooking(_ref, context) {
-    var message = _ref.message;
-    var redirectlink = _ref.redirectlink;
-    var message1 = _ref.message1;
+    var message = _ref.message,
+        redirectlink = _ref.redirectlink,
+        message1 = _ref.message1,
+        sessionid = _ref.sessionid;
   
     context.setTitle(title);
     return _react2.default.createElement(
@@ -7663,7 +7779,13 @@ module.exports =
           { href: redirectlink },
           message1,
           ' '
-        )
+        ),
+        _react2.default.createElement('input', {
+          id: 'sessionid',
+          type: 'hidden',
+          name: 'sessionid',
+          value: sessionid
+        })
       )
     );
   }
@@ -7768,8 +7890,9 @@ module.exports =
                                           */
   
   function Providerlist(_ref, props, context) {
-    var providerlist = _ref.providerlist;
-    var customeremail = _ref.customeremail;
+    var providerlist = _ref.providerlist,
+        customeremail = _ref.customeremail,
+        sessionid = _ref.sessionid;
   
     //context.setTitle(title);
   
@@ -7913,6 +8036,7 @@ module.exports =
               null,
               _react2.default.createElement('br', null),
               _react2.default.createElement('input', { type: 'hidden', name: 'customeremail', value: customeremail }),
+              _react2.default.createElement('input', { type: 'hidden', name: 'sessionid', value: sessionid }),
               _react2.default.createElement(
                 'button',
                 { className: _Providerlist2.default.button, type: 'submit' },
@@ -8260,7 +8384,7 @@ module.exports =
       var query = _ref.query;
       var path = _ref2.path;
       return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
-        var provideremail, customeremail, url, result;
+        var provideremail, customeremail, body, url, result;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -8268,15 +8392,33 @@ module.exports =
                 console.log("Query String: " + (0, _stringify2.default)(query));
                 provideremail = query.provideremail;
                 customeremail = query.customeremail;
+  
+  
+                sessionid = query.sessionid;
+                console.log("Sessionid - index.js - Home " + sessionid);
+  
+                if (!(sessionid === undefined || sessionid == '')) {
+                  _context.next = 10;
+                  break;
+                }
+  
+                _context.next = 8;
+                return getSessionid();
+  
+              case 8:
+                body = _context.sent;
+                return _context.abrupt('return', _react2.default.createElement(Login, { sessionid: body }));
+  
+              case 10:
                 url = 'http://' + _config.apihost + '/updateProviderLink?provideremail=' + provideremail + '&email=' + customeremail;
   
                 console.log("Link Provider - Provider Email: " + provideremail);
                 console.log("Link Provider - Customer Email: " + customeremail);
                 console.log("URL: " + url);
-                _context.next = 9;
+                _context.next = 16;
                 return LinkProviderData(url);
   
-              case 9:
+              case 16:
                 result = _context.sent;
   
                 console.log("Return from LinkProviderData");
@@ -8286,9 +8428,9 @@ module.exports =
                   message1 = 'Click here to Re-booking';
                 }
   
-                return _context.abrupt('return', _react2.default.createElement(_LinkProvider2.default, { message: message, redirectlink: href, message1: message1 }));
+                return _context.abrupt('return', _react2.default.createElement(_LinkProvider2.default, { message: message, redirectlink: href, message1: message1, sessionid: sessionid }));
   
-              case 13:
+              case 20:
               case 'end':
                 return _context.stop();
             }
@@ -8321,6 +8463,28 @@ module.exports =
       console.log('returning');
     });
   }
+  
+  function getSessionid() {
+    var request = __webpack_require__(92);
+    console.log('genSessionid - calling API');
+    var url = 'http://' + _config.apihost + '/genSessionid';
+    console.log("getSeesionid - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('genSessionid - Response from API' + body);
+          sessionid = body;
+          resolve(body);
+        } else {
+  
+          console.log("genSessionid -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("getSessionid - Returning from API call");
+      });
+    });
+  }
 
 /***/ },
 /* 158 */
@@ -8349,9 +8513,10 @@ module.exports =
   var title = 'New Boooking';
   
   function LinkProvider(_ref, context) {
-    var message = _ref.message;
-    var redirectlink = _ref.redirectlink;
-    var message1 = _ref.message1;
+    var message = _ref.message,
+        redirectlink = _ref.redirectlink,
+        message1 = _ref.message1,
+        sessionid = _ref.sessionid;
   
     context.setTitle(title);
     return _react2.default.createElement(
@@ -8879,19 +9044,36 @@ module.exports =
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+  
+                sessionid = query.sessionid;
+                console.log("Sessionid - index.js - Home " + sessionid);
+  
+                if (!(sessionid === undefined || sessionid == '')) {
+                  _context.next = 7;
+                  break;
+                }
+  
+                _context.next = 5;
+                return getSessionid();
+  
+              case 5:
+                body = _context.sent;
+                return _context.abrupt('return', _react2.default.createElement(Login, { sessionid: body }));
+  
+              case 7:
+                _context.next = 9;
                 return getProviderData();
   
-              case 2:
+              case 9:
                 body = _context.sent;
   
                 //console.log("Body: "+body);
                 customeremail = query.customeremail;
   
                 console.log("customer Email: " + customeremail);
-                return _context.abrupt('return', _react2.default.createElement(_Providerlist2.default, { providerlist: providerlist, customeremail: customeremail }));
+                return _context.abrupt('return', _react2.default.createElement(_Providerlist2.default, { providerlist: providerlist, customeremail: customeremail, sessionid: sessionid }));
   
-              case 6:
+              case 13:
               case 'end':
                 return _context.stop();
             }
@@ -8919,6 +9101,28 @@ module.exports =
           console.log("Error Object: " + error);
           return reject(error);
         }
+      });
+    });
+  }
+  
+  function getSessionid() {
+    var request = __webpack_require__(92);
+    console.log('genSessionid - calling API');
+    var url = 'http://' + _config.apihost + '/genSessionid';
+    console.log("getSeesionid - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('genSessionid - Response from API' + body);
+          sessionid = body;
+          resolve(body);
+        } else {
+  
+          console.log("genSessionid -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("getSessionid - Returning from API call");
       });
     });
   }
@@ -9051,9 +9255,9 @@ module.exports =
   var title = 'Logout';
   
   function Logout(_ref, context) {
-    var message = _ref.message;
-    var redirectlink = _ref.redirectlink;
-    var message1 = _ref.message1;
+    var message = _ref.message,
+        redirectlink = _ref.redirectlink,
+        message1 = _ref.message1;
   
     context.setTitle(title);
     return _react2.default.createElement(

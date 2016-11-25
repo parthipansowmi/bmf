@@ -52,8 +52,10 @@
     });
   }
 
-  cmds[map["Alt-Left"] = "goSubwordLeft"] = function(cm) { moveSubword(cm, -1); };
-  cmds[map["Alt-Right"] = "goSubwordRight"] = function(cm) { moveSubword(cm, 1); };
+  var goSubwordCombo = mac ? "Ctrl-" : "Alt-";
+
+  cmds[map[goSubwordCombo + "Left"] = "goSubwordLeft"] = function(cm) { moveSubword(cm, -1); };
+  cmds[map[goSubwordCombo + "Right"] = "goSubwordRight"] = function(cm) { moveSubword(cm, 1); };
 
   if (mac) map["Cmd-Left"] = "goLineStartSmart";
 
@@ -292,7 +294,7 @@
     });
   };
 
-  map[ctrl + "T"] = "transposeChars";
+  if (!mac) map[ctrl + "T"] = "transposeChars";
 
   function sortLines(cm, caseSensitive) {
     if (cm.isReadOnly()) return CodeMirror.Pass
@@ -568,7 +570,7 @@
 
   map["Shift-" + ctrl + "["] = "fold";
   map["Shift-" + ctrl + "]"] = "unfold";
-  map[cK + ctrl + "0"] = map[cK + ctrl + "j"] = "unfoldAll";
+  map[cK + ctrl + "0"] = map[cK + ctrl + "J"] = "unfoldAll";
 
   map[ctrl + "I"] = "findIncremental";
   map["Shift-" + ctrl + "I"] = "findIncrementalReverse";
