@@ -85,7 +85,7 @@ app.get('*', async (req, res, next) => {
     let css = [];
     let statusCode = 200;
     const template = require('./views/index.jade'); // eslint-disable-line global-require
-    const data = { title: '', description: '', css: '', body: '', entry:'assets.main.js'  }; //assets.main.js
+    const data = { title: '', description: '', user: '', css: '', body: '', entry:'assets.main.js'  }; //assets.main.js
     //var sess = req.session;
 
     if (process.env.NODE_ENV === 'production') {
@@ -99,6 +99,7 @@ app.get('*', async (req, res, next) => {
       context: {
         insertCss: styles => css.push(styles._getCss()), // eslint-disable-line no-underscore-dangle
         setTitle: value => (data.title = value),
+        setUser: value => (data.user = value),
         setMeta: (key, value) => (data[key] = value),
       },
       render(component, status = 200) {

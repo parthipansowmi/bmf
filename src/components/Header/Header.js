@@ -8,11 +8,12 @@ import Navigation from '../Navigation';
 import logoUrl from './bmf.png';
 
 function Header() {
+  //console.log("HTTP QUERY: "+query);
   return (
     <div className={s.root}>
       <div className={s.container}>
         
-        <Link className={s.brand} to="/">
+        <Link className={s.brand} to="/home">
           <img src={logoUrl} width="38" height="38" align="left" alt="React" />
           <span className={s.brandTxt}>Dream True Solutions</span>
         </Link>

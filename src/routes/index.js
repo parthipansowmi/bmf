@@ -30,6 +30,7 @@ export default {
 
   children: [
     home,
+    logout,
     contact,
     login,
     providerlogin,
@@ -48,11 +49,12 @@ export default {
     linkprovider,
     content,
     error,
-    logout
+
   ],
 
   async action({ next, render, context }) {
     const component = await next();
+    //console.log("User: "+context.user);
     
     if (component === undefined) return component;
     return render(

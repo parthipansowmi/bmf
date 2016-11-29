@@ -1,5 +1,6 @@
 import React from 'react';
 import Logout from './Logout';
+import Login from '../login/Login';
 import { host, apihost} from '../../config';
 
 var message = 'Thanks for visiting our website. You have Sucessfully Logged out '
@@ -18,6 +19,7 @@ export default {
     var body = await deleteSession();
     console.log("Session deleted");
     return <Logout message={message} redirectlink={href} message1={message1} />;
+    //return <Login />;
    
   },
 

@@ -13,6 +13,7 @@ class App extends Component {
     context: PropTypes.shape({
       insertCss: PropTypes.func,
       setTitle: PropTypes.func,
+      setUser: PropTypes.func,
       setMeta: PropTypes.func,
     }),
     children: PropTypes.element.isRequired,
@@ -22,6 +23,7 @@ class App extends Component {
   static childContextTypes = {
     insertCss: PropTypes.func.isRequired,
     setTitle: PropTypes.func.isRequired,
+    setUser: PropTypes.func.isRequired,
     setMeta: PropTypes.func.isRequired,
   };
 
@@ -30,10 +32,11 @@ class App extends Component {
     return {
       insertCss: context.insertCss || emptyFunction,
       setTitle: context.setTitle || emptyFunction,
+      setUser: context.setUser || emptyFunction,
       setMeta: context.setMeta || emptyFunction,
     };
   }
-
+ 
   componentWillMount() {
     const { insertCss } = this.props.context;
     this.removeCss = insertCss(s);

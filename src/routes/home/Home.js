@@ -14,9 +14,12 @@ import Link from '../../components/Link';
 import cx from 'classnames';
 
 const title = 'Welcome to World of Opporunity';
+const user = 'Customer';
 
 function Home({ sessionid }, context) {
+ context.setUser(user);
  context.setTitle(title);
+ 
   var logoutlink = "/logout?sessionid="+sessionid;
   var bookinglink = "/booking?sessionid="+sessionid;
   return (
@@ -42,6 +45,6 @@ function Home({ sessionid }, context) {
 }
 
 
-Home.contextTypes = { setTitle: PropTypes.func.isRequired };
+Home.contextTypes = { setTitle: PropTypes.func.isRequired, setUser: PropTypes.func.isRequired };
 
 export default withStyles(s)(Home);

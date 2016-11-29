@@ -13,9 +13,10 @@ import s from './VerifyPass.css';
 import me from '../../data/queries/me.js';
 
 const title = 'Verify Credential';
+const user = 'Customer'
 
 function VerifyPass({message, sessionid}, props, context) {
- 
+  context.setUser(user);
   context.setTitle(title);
   
   return (
