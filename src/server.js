@@ -101,6 +101,7 @@ app.get('*', async (req, res, next) => {
         setTitle: value => (data.title = value),
         setUser: value => (data.user = value),
         setMeta: (key, value) => (data[key] = value),
+        getUser: (key) => (data[key]),        
       },
       render(component, status = 200) {
         css = [];

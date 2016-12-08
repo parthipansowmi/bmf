@@ -200,7 +200,7 @@ module.exports =
                         statusCode = 200;
                         template = __webpack_require__(194); // eslint-disable-line global-require
   
-                        data = { title: '', description: '', css: '', body: '', entry: 'assets.main.js' }; //assets.main.js
+                        data = { title: '', description: '', user: '', css: '', body: '', entry: 'assets.main.js' }; //assets.main.js
                         //var sess = req.session;
   
                         if (false) {
@@ -219,8 +219,14 @@ module.exports =
                             setTitle: function setTitle(value) {
                               return data.title = value;
                             },
+                            setUser: function setUser(value) {
+                              return data.user = value;
+                            },
                             setMeta: function setMeta(key, value) {
                               return data[key] = value;
+                            },
+                            getUser: function getUser(key) {
+                              return data[key];
                             }
                           },
                           render: function render(component) {
@@ -1701,7 +1707,7 @@ module.exports =
   
     path: '/',
   
-    children: [_home2.default, _contact2.default, _login2.default, _providerlogin2.default, _verifypass2.default, _verifyproviderlogin2.default, _forgotpass2.default, _changepassword2.default, _updatepass2.default, _register2.default, _savecustomer2.default, _serviceprovider2.default, _saveprovider2.default, _booking2.default, _providerlist2.default, _savebooking2.default, _linkprovider2.default, _content2.default, _error2.default, _logout2.default],
+    children: [_home2.default, _logout2.default, _contact2.default, _login2.default, _providerlogin2.default, _verifypass2.default, _verifyproviderlogin2.default, _forgotpass2.default, _changepassword2.default, _updatepass2.default, _register2.default, _savecustomer2.default, _serviceprovider2.default, _saveprovider2.default, _booking2.default, _providerlist2.default, _savebooking2.default, _linkprovider2.default, _content2.default, _error2.default],
   
     action: function action(_ref) {
       var _this = this;
@@ -1721,21 +1727,23 @@ module.exports =
               case 2:
                 component = _context.sent;
   
+                console.log("User: " + context.getUser('user'));
+  
                 if (!(component === undefined)) {
-                  _context.next = 5;
+                  _context.next = 6;
                   break;
                 }
   
                 return _context.abrupt('return', component);
   
-              case 5:
+              case 6:
                 return _context.abrupt('return', render(_react2.default.createElement(
                   _App2.default,
                   { context: context },
                   component
                 )));
   
-              case 6:
+              case 7:
               case 'end':
                 return _context.stop();
             }
@@ -1822,7 +1830,9 @@ module.exports =
         return {
           insertCss: context.insertCss || _emptyFunction2.default,
           setTitle: context.setTitle || _emptyFunction2.default,
-          setMeta: context.setMeta || _emptyFunction2.default
+          setUser: context.setUser || _emptyFunction2.default,
+          setMeta: context.setMeta || _emptyFunction2.default,
+          getUser: context.getUser || _emptyFunction2.default
         };
       }
     }, {
@@ -1857,7 +1867,9 @@ module.exports =
     context: _react.PropTypes.shape({
       insertCss: _react.PropTypes.func,
       setTitle: _react.PropTypes.func,
-      setMeta: _react.PropTypes.func
+      setUser: _react.PropTypes.func,
+      setMeta: _react.PropTypes.func,
+      getUser: _react.PropTypes.func
     }),
     children: _react.PropTypes.element.isRequired,
     error: _react.PropTypes.object
@@ -1865,7 +1877,9 @@ module.exports =
   App.childContextTypes = {
     insertCss: _react.PropTypes.func.isRequired,
     setTitle: _react.PropTypes.func.isRequired,
-    setMeta: _react.PropTypes.func.isRequired
+    setUser: _react.PropTypes.func.isRequired,
+    setMeta: _react.PropTypes.func.isRequired,
+    getUser: _react.PropTypes.func.isRequired
   };
   exports.default = App;
 
@@ -2219,6 +2233,7 @@ module.exports =
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
   function Header() {
+    //console.log("HTTP QUERY: "+query);
     return _react2.default.createElement(
       'div',
       { className: _Header2.default.root },
@@ -3111,10 +3126,14 @@ module.exports =
                                                  * LICENSE.txt file in the root directory of this source tree.
                                                  */
   
+  var user = 'Customer';
+  
   function Home(_ref, context) {
     var sessionid = _ref.sessionid;
   
     context.setTitle(title);
+    context.setUser(user);
+    // context.getUser('user');
     var logoutlink = "/logout?sessionid=" + sessionid;
     var bookinglink = "/booking?sessionid=" + sessionid;
     return _react2.default.createElement(
@@ -3161,7 +3180,7 @@ module.exports =
     );
   }
   
-  Home.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  Home.contextTypes = { setTitle: _react.PropTypes.func.isRequired, setUser: _react.PropTypes.func.isRequired };
   
   exports.default = (0, _withStyles2.default)(_Home2.default)(Home);
 
@@ -5377,22 +5396,14 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  /**
-   * React Starter Kit (https://www.reactstarterkit.com/)
-   *
-   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE.txt file in the root directory of this source tree.
-   */
-  
   var title = 'Verify Credential';
+  var user = 'Customer';
   
   function VerifyPass(_ref, props, context) {
     var message = _ref.message,
         sessionid = _ref.sessionid;
   
-  
+    context.setUser(user);
     context.setTitle(title);
   
     return _react2.default.createElement(
@@ -5414,7 +5425,7 @@ module.exports =
         _react2.default.createElement(
           'a',
           { href: redirectlink },
-          'Clicke Here to Login '
+          'Click Here to Login '
         ),
         _react2.default.createElement('input', {
           id: 'sessionid',
@@ -6691,7 +6702,7 @@ module.exports =
   
   
   // module
-  exports.push([module.id, " .Serviceprovider_root_3Ll {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Serviceprovider_container_c6Z {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height:100x\n}\n\n.Serviceprovider_lead_35E {\n  font-size: 1.25em;\n}\n\n.Serviceprovider_formGroup_3-S {\n  margin-bottom: 20px;\n  \n}\n\n.Serviceprovider_label_15b {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.Serviceprovider_input_354 {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n}\n\n.Serviceprovider_input_354:focus {\n  border-color: red;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Serviceprovider_button_vnx {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Serviceprovider_button_vnx:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Serviceprovider_button_vnx:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Serviceprovider_leftContainer_31v {\n   float:left;\n}\n\n.Serviceprovider_rightContainer_2M6 {\n   float:right;\n}\n\n.Serviceprovider_icon_1-O {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Serviceprovider_lineThrough_2lM {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Serviceprovider_lineThrough_2lM::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Serviceprovider_lineThrough_2lM::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n.Serviceprovider_squaredOne_5rn {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  margin: 20px auto;\n  background: #fcfff4;\n  background: -webkit-gradient(linear, left top, left bottom, from(top), color-stop(0%, #fcfff4), color-stop(40%, #dfe5d7), to(#b3bead));\n  background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n          box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n  label {\n    width: 20px;\n    height: 20px;\n    position: absolute;\n    top: 4px;\n    left: 4px;\n    cursor: pointer;\n    background: -webkit-gradient(linear, left top, left bottom, from(#222), to(#45484d));\n    background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);\n    background: -o-linear-gradient(top, #222 0%, #45484d 100%);\n    background: linear-gradient(top, #222 0%, #45484d 100%);\n    -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);\n            box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1)\n  }\n  label:after {\n    content: '';\n    width: 16px;\n    height: 16px;\n    position: absolute;\n    top: 2px;\n    left: 2px;\n    background: $activeColor;\n    background: -webkit-gradient(linear, left top, left bottom, from(top), color-stop(0%, $activeColor), to($darkenColor));\n    background: -webkit-linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    background: -o-linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n            box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n    opacity: 0;\n  }\n  label:hover::after {\n    opacity: 0.3;\n  }\n  input[type=checkbox] {\n    visibility: hidden   \n  }\n  input[type=checkbox]:checked + label:after {\n    opacity: 1;\n  } \n}\n\nhtml {\n  min-height: 100%;\n}\n\nbody {\n  min-height: 100vh;\n}", "", {"version":3,"sources":["/./routes/serviceprovider/Serviceprovider.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;CAChB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;EACzE,SAAS;EACT,cAAc;CACf;;AAED;EACE,kBAAkB;EAClB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;GACG,WAAW;CACb;;AAED;GACG,YAAY;CACd;;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb;;AAED;EACE,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,oBAAoB;EACpB,uIAAwE;EAAxE,gFAAwE;EAAxE,2EAAwE;EAAxE,wEAAwE;EACxE,yEAAiE;UAAjE,iEAAiE;EACjE;IACE,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,UAAU;IACV,gBAAgB;IAChB,qFAAwD;IAAxD,gEAAwD;IAAxD,2DAAwD;IAAxD,wDAAwD;IACxD,uFAA+E;YAA/E,8EAA+E;GAgBhF;EAfC;IACE,YAAY;IACZ,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,UAAU;IACV,yBAAyB;IACzB,uHAAqE;IAArE,6EAAqE;IAArE,wEAAqE;IAArE,qEAAqE;IACrE,yEAAiE;YAAjE,iEAAiE;IACjE,WAAW;GACZ;EACD;IACE,aAAa;GACd;EAEH;IACE,kBAAmB;GAIpB;EAHC;IACE,WAAW;GACZ;CAEJ;;AAED;EACE,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB","file":"Serviceprovider.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height:100x\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n}\n\n.input:focus {\n  border-color: red;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.leftContainer {\n   float:left;\n}\n\n.rightContainer {\n   float:right;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n.squaredOne {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  margin: 20px auto;\n  background: #fcfff4;\n  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n  label {\n    width: 20px;\n    height: 20px;\n    position: absolute;\n    top: 4px;\n    left: 4px;\n    cursor: pointer;\n    background: linear-gradient(top, #222 0%, #45484d 100%);\n    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);\n    &:after {\n      content: '';\n      width: 16px;\n      height: 16px;\n      position: absolute;\n      top: 2px;\n      left: 2px;\n      background: $activeColor;\n      background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n      opacity: 0;\n    }\n    &:hover::after {\n      opacity: 0.3;\n    }\n  }\n  input[type=checkbox] {\n    visibility: hidden;\n    &:checked + label:after {\n      opacity: 1;\n    }   \n  } \n}\n\nhtml {\n  min-height: 100%;\n}\n\nbody {\n  min-height: 100vh;\n}"],"sourceRoot":"webpack://"}]);
+  exports.push([module.id, " .Serviceprovider_root_3Ll {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Serviceprovider_container_c6Z {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height:100x\n}\n\n.Serviceprovider_lead_35E {\n  font-size: 1.25em;\n}\n\n.Serviceprovider_formGroup_3-S {\n  margin-bottom: 20px;\n  \n}\n\n.Serviceprovider_label_15b {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.Serviceprovider_input_354 {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n}\n\n.Serviceprovider_input_354:focus {\n  border-color: red;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Serviceprovider_button_vnx {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Serviceprovider_button_vnx:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Serviceprovider_button_vnx:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Serviceprovider_leftContainer_31v {\n   float:left;\n}\n\n.Serviceprovider_rightContainer_2M6 {\n   float:right;\n}\n\n.Serviceprovider_icon_1-O {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Serviceprovider_lineThrough_2lM {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Serviceprovider_lineThrough_2lM::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Serviceprovider_lineThrough_2lM::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n.Serviceprovider_squaredOne_5rn {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  margin: 20px auto;\n  background: #fcfff4;\n  background: -webkit-gradient(linear, left top, left bottom, from(#fcfff4), color-stop(40%, #dfe5d7), to(#b3bead));\n  background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n          box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n  label {\n    width: 20px;\n    height: 20px;\n    position: absolute;\n    top: 4px;\n    left: 4px;\n    cursor: pointer;\n    background: -webkit-gradient(linear, left top, left bottom, from(top), color-stop(0%, #222), to(#45484d));\n    background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);\n    background: -o-linear-gradient(top, #222 0%, #45484d 100%);\n    background: linear-gradient(top, #222 0%, #45484d 100%);\n    -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);\n            box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1)\n  }\n  label:after {\n    content: '';\n    width: 16px;\n    height: 16px;\n    position: absolute;\n    top: 2px;\n    left: 2px;\n    background: $activeColor;\n    background: -webkit-gradient(linear, left top, left bottom, from($activeColor), to($darkenColor));\n    background: -webkit-linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    background: -o-linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n            box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n    opacity: 0;\n  }\n  label:hover::after {\n    opacity: 0.3;\n  }\n  input[type=checkbox] {\n    visibility: hidden   \n  }\n  input[type=checkbox]:checked + label:after {\n    opacity: 1;\n  } \n}\n\nhtml {\n  min-height: 100%;\n}\n\nbody {\n  min-height: 100vh;\n}", "", {"version":3,"sources":["/./routes/serviceprovider/Serviceprovider.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;CAChB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;EACzE,SAAS;EACT,cAAc;CACf;;AAED;EACE,kBAAkB;EAClB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;GACG,WAAW;CACb;;AAED;GACG,YAAY;CACd;;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb;;AAED;EACE,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,oBAAoB;EACpB,kHAAwE;EAAxE,gFAAwE;EAAxE,2EAAwE;EAAxE,wEAAwE;EACxE,yEAAiE;UAAjE,iEAAiE;EACjE;IACE,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,UAAU;IACV,gBAAgB;IAChB,0GAAwD;IAAxD,gEAAwD;IAAxD,2DAAwD;IAAxD,wDAAwD;IACxD,uFAA+E;YAA/E,8EAA+E;GAgBhF;EAfC;IACE,YAAY;IACZ,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,UAAU;IACV,yBAAyB;IACzB,kGAAqE;IAArE,6EAAqE;IAArE,wEAAqE;IAArE,qEAAqE;IACrE,yEAAiE;YAAjE,iEAAiE;IACjE,WAAW;GACZ;EACD;IACE,aAAa;GACd;EAEH;IACE,kBAAmB;GAIpB;EAHC;IACE,WAAW;GACZ;CAEJ;;AAED;EACE,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB","file":"Serviceprovider.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height:100x\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n}\n\n.input:focus {\n  border-color: red;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.leftContainer {\n   float:left;\n}\n\n.rightContainer {\n   float:right;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n.squaredOne {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  margin: 20px auto;\n  background: #fcfff4;\n  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n  label {\n    width: 20px;\n    height: 20px;\n    position: absolute;\n    top: 4px;\n    left: 4px;\n    cursor: pointer;\n    background: linear-gradient(top, #222 0%, #45484d 100%);\n    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);\n    &:after {\n      content: '';\n      width: 16px;\n      height: 16px;\n      position: absolute;\n      top: 2px;\n      left: 2px;\n      background: $activeColor;\n      background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n      opacity: 0;\n    }\n    &:hover::after {\n      opacity: 0.3;\n    }\n  }\n  input[type=checkbox] {\n    visibility: hidden;\n    &:checked + label:after {\n      opacity: 1;\n    }   \n  } \n}\n\nhtml {\n  min-height: 100%;\n}\n\nbody {\n  min-height: 100vh;\n}"],"sourceRoot":"webpack://"}]);
   
   // exports
   exports.locals = {
@@ -9168,6 +9179,10 @@ module.exports =
   
   var _Logout2 = _interopRequireDefault(_Logout);
   
+  var _Login = __webpack_require__(87);
+  
+  var _Login2 = _interopRequireDefault(_Login);
+  
   var _config = __webpack_require__(20);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -9343,7 +9358,7 @@ module.exports =
   
   
   // module
-  exports.push([module.id, " .Logout_root_3lw {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Logout_container_Wra {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Logout_lead_RHc {\n  font-size: 1.25em;\n}\n\n.Logout_formGroup_2i2 {\n  margin-bottom: 20px;\n  \n}\n\n.Logout_label_3-A {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n", "", {"version":3,"sources":["/./routes/logout/Logout.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb","file":"Logout.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n"],"sourceRoot":"webpack://"}]);
+  exports.push([module.id, " .Logout_root_3lw {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Logout_container_Wra {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Logout_lead_RHc {\n  font-size: 1.25em;\n}\n\n.Logout_formGroup_2i2 {\n  margin-bottom: 20px;\n  \n}\n\n.Logout_label_3-A {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n", "", {"version":3,"sources":["/./routes/logout/Logout.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb","file":"Logout.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n"],"sourceRoot":"webpack://"}]);
   
   // exports
   exports.locals = {

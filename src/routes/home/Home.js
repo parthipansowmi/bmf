@@ -17,9 +17,9 @@ const title = 'Welcome to World of Opporunity';
 const user = 'Customer';
 
 function Home({ sessionid }, context) {
- context.setUser(user);
- context.setTitle(title);
- 
+  context.setTitle(title);
+  context.setUser(user);
+ // context.getUser('user');
   var logoutlink = "/logout?sessionid="+sessionid;
   var bookinglink = "/booking?sessionid="+sessionid;
   return (

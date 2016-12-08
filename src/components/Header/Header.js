@@ -13,7 +13,7 @@ function Header() {
     <div className={s.root}>
       <div className={s.container}>
         
-        <Link className={s.brand} to="/home">
+        <Link className={s.brand} to="/">
           <img src={logoUrl} width="38" height="38" align="left" alt="React" />
           <span className={s.brandTxt}>Dream True Solutions</span>
         </Link>

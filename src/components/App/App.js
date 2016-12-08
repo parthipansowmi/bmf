@@ -15,6 +15,7 @@ class App extends Component {
       setTitle: PropTypes.func,
       setUser: PropTypes.func,
       setMeta: PropTypes.func,
+      getUser: PropTypes.func,
     }),
     children: PropTypes.element.isRequired,
     error: PropTypes.object,
@@ -25,6 +26,7 @@ class App extends Component {
     setTitle: PropTypes.func.isRequired,
     setUser: PropTypes.func.isRequired,
     setMeta: PropTypes.func.isRequired,
+    getUser: PropTypes.func.isRequired,
   };
 
   getChildContext() {
@@ -34,6 +36,7 @@ class App extends Component {
       setTitle: context.setTitle || emptyFunction,
       setUser: context.setUser || emptyFunction,
       setMeta: context.setMeta || emptyFunction,
+      getUser: context.getUser || emptyFunction,
     };
   }
  
