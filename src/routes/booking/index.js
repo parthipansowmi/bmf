@@ -23,7 +23,6 @@ export default {
        }        
        else
         return  <Booking sessionid={sessionid}/>;
-
     
   },
 

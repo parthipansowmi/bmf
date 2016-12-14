@@ -7,7 +7,7 @@ import home from './home';
 import contact from './contact';
 import login from './login';
 import register from './register';
-import savecustomer from './savecustomer'
+import savecustomer from './savecustomer';
 import content from './content';
 import error from './error';
 import verifypass from './verifypass'

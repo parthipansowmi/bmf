@@ -10,8 +10,9 @@
 import React from 'react';
 import Savecustomer from './Savecustomer';
 import Login from '../Login';
-import { host, apihost } from '../../config';
+import { host, apihost, smsAPIKey } from '../../config';
 var request = require('request');
+var SMSmessage = 'Thanks for your Registration. Use your email id for login';
 
 var message = 'Sucessfully Registered. '
 var href = `http://${host}/login`;
@@ -52,7 +53,11 @@ export default {
         password = await getPassword();
         console.log("generated Password: "+password);
         console.log("Status--getPassword: "+status);
-        var login = await saveLogin(password);      
+        var login = await saveLogin(password);
+        console.log("Calling SendEmail");
+        var mail = await sendEmail();
+        console.log("Calling sendSMS");
+        var sms = await sendSMS();   
       }
        
      }
@@ -176,4 +181,64 @@ function saveLogin(password) {
     }
   });
 });
+}
+
+async function sendSMS() {
+  console.log('calling API - sendSMS method');
+  
+  var url = `http://${apihost}/sendSMS?authkey=`+ smsAPIKey+'&mobiles='+ phone +'&message='+SMSmessage+'&sender=DTSBMF&route=4&country=91';
+  console.log("URL: " + url);
+   return new Promise(function(resolve, reject) {
+  request(url, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log('Inside sendSMS - Response from API (body)' + body);
+
+   if (error) {
+      console.log("Error in Sending SMS");
+      status = false;
+      return reject(error);
+    }
+
+  if (body == 'true')
+        status = true;
+        resolve(body)
+    }
+    
+      });
+   });
+}
+
+
+function sendEmail() {
+  console.log('calling API - sendEmail');
+  var url = `http://${apihost}/sendmail`;
+  console.log("URL: " + url);
+
+  var subject = "Your Registration for our service";
+  var message = "<b>Thank you for Register. </b> <br> <b> Assuring best service. Your password for login is: "+password+"<b> ";
+  var formdata = { 
+  tomail: email, 
+  subject: subject, 
+  message: message
+};
+  
+  //data = JSON.stringify('{\"tomail\": \"'+email+'\", \"subject\": '+subject+'\", \"message\": \" '+message+'\"}');
+  console.log("Data: "+formdata);
+  return new Promise(function(resolve, reject) {
+  request.post(url, { form: formdata }, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log('Inside sendEmail - Response from API (body)' + body);
+
+      if (body == 'true')
+        resolve(body)
+        status = true;
+    }
+    if (error) {
+      console.log("Error in Sending Mail");
+      status = false;
+      return reject(error);
+    }
+
+  });
+   });
 }
