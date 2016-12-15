@@ -9,7 +9,7 @@ const title = 'Changing Password';
 
 
 
-function Changepassword({email, message}, context) {
+function Changepassword({email, passCode, message}, context) {
   console.log("Changepassword: "+email);
   context.setTitle(title);
   return (
@@ -56,6 +56,12 @@ function Changepassword({email, message}, context) {
               type="hidden"
               name="email"
               value = {email}
+              />
+              <input   
+              id="code"
+              type="hidden"
+              name="code"
+              value = {passCode}
               />
           </div>
           <script>

@@ -18,9 +18,12 @@ export default {
     var body = await checkCode(code, email);
     var enddate = new Date();
     var difftime = enddate.getTime()-startdate.getTime();
-   console.log("Execution Time:"+ difftime);
+    console.log("Execution Time:"+ difftime);
     if ( status )     
-      return <Changepassword email={email} />;
+     {
+        return <Changepassword email={email} passCode={code} />;
+     }
+      
     else
      return <Login />;
 
@@ -56,6 +59,8 @@ function checkCode(code, email) {
  });
  
 }
+
+
 
 
 

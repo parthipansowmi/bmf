@@ -4,6 +4,7 @@ import Changepassword from '../changepassword/Changepassword';
 import { apihost } from '../../config';
 var status = true;
 var message = 'Password Sucessfully Updated'
+var passcode; 
 
 export default {
 
@@ -14,9 +15,11 @@ export default {
     var email = query.email;
     var newpass = query.newpass;
     var confirmpass = query.confirmpass;
+    passcode = query.code;
     console.log("Email ID:" + email);
     console.log("New Password: " + newpass);
     console.log("Confirm Password: " + confirmpass);
+    console.log("Passcode - Update Password module:"+ passcode);
     if ( newpass != confirmpass)
      {
        message = "Password Not matching"
@@ -27,7 +30,10 @@ export default {
     if ( status = false)
       message = ' Error in updating password';
     else
-      message = 'Password Sucessfully Updated'
+     {
+      message = 'Password Sucessfully Updated';
+      var deletecode = await deletePassCode();
+     }
       
      return <Updatepass message={message}/>
   }
@@ -69,3 +75,31 @@ function updatePassword(newpass, email) {
 
 }
 
+function deletePassCode() {
+  var request = require('request');
+  console.log('Check Code - calling API');
+  var url = `http://${apihost}/removeCode?code=` +passcode;
+  console.log("deletePassCode - URL: " + url);
+  
+  return new Promise(function(resolve, reject) {
+  request.delete(url, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log('deletePassCode- Response from API' + body);
+
+      if ( body == 'true')
+          status = true;
+      else
+          status = false;
+     resolve(body);
+    }
+    else {
+      status = false;
+      console.log("deletePassCode -API Server not running: "+error);
+      return reject(error);
+    }
+    console.log("deletePassCode - Returning from API call")
+  });
+
+ });
+ 
+}
