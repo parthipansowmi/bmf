@@ -15,6 +15,7 @@
     "classnames": "^2.2.5",
     "cookie-parser": "1.4.2",
     "core-js": "2.4.0",
+    "date-fns": "^1.20.1",
     "download": "^5.0.2",
     "eventemitter3": "1.2.0",
     "express": "^4.13.4",

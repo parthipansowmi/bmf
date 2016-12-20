@@ -18,9 +18,9 @@ function Login( {sessionid}, context ) {
     <div className={s.root}>
       <div className={s.container}>
         <h1>{title}</h1>
-        <p className={s.lead}>Log in with your username or company email address.</p>
-        <div className={s.formGroup}>
-          <a className={s.facebook} href="/login/facebook">
+       <p className={s.lead}>Log in with your username or personal email address.</p>
+       <div className={s.formGroup}>
+         <a className={s.facebook} href="/login/facebook">
             <svg
               className={s.icon}
               width="10"
@@ -80,7 +80,7 @@ function Login( {sessionid}, context ) {
             <span>Log in with Twitter</span>
           </a>
         </div>
-        <strong className={s.lineThrough}>OR</strong>
+<strong className={s.lineThrough}>OR</strong>
 
         <form name="form1" method="get"  action="verifypass" >
           <div className={s.formGroup}>

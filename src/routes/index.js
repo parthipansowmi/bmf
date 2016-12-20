@@ -23,6 +23,7 @@ import linkprovider from './linkprovider'
 import verifyproviderlogin from './verifyproviderlogin'
 import providerlist from './providerlist';
 import logout from './logout';
+import bookinglist from './bookinglist';
 export default {
 
   path: '/',
@@ -31,6 +32,7 @@ export default {
   children: [
     home,
     logout,
+    bookinglist,
     contact,
     login,
     providerlogin,

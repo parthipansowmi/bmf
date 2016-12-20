@@ -112,7 +112,7 @@ module.exports =
   
   var _routes2 = _interopRequireDefault(_routes);
   
-  var _assets = __webpack_require__(171);
+  var _assets = __webpack_require__(175);
   
   var _assets2 = _interopRequireDefault(_assets);
   
@@ -120,9 +120,9 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var mongodb = __webpack_require__(192); // eslint-disable-line import/no-unresolved
+  var mongodb = __webpack_require__(196); // eslint-disable-line import/no-unresolved
   
-  var session = __webpack_require__(193);
+  var session = __webpack_require__(197);
   
   var app = (0, _express2.default)();
   app.use(session({
@@ -198,7 +198,7 @@ module.exports =
                       case 0:
                         css = [];
                         statusCode = 200;
-                        template = __webpack_require__(194); // eslint-disable-line global-require
+                        template = __webpack_require__(198); // eslint-disable-line global-require
   
                         data = { title: '', description: '', user: '', css: '', body: '', entry: 'assets.main.js' }; //assets.main.js
                         //var sess = req.session;
@@ -286,7 +286,7 @@ module.exports =
   app.use(function (err, req, res, next) {
     // eslint-disable-line no-unused-vars
     console.log(pe.render(err)); // eslint-disable-line no-console
-    var template = __webpack_require__(196); // eslint-disable-line global-require
+    var template = __webpack_require__(200); // eslint-disable-line global-require
     var statusCode = err.status || 500;
     res.status(statusCode);
     res.send(template({
@@ -1700,14 +1700,17 @@ module.exports =
   
   var _logout2 = _interopRequireDefault(_logout);
   
+  var _bookinglist = __webpack_require__(171);
+  
+  var _bookinglist2 = _interopRequireDefault(_bookinglist);
+  
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  // Child routes
   exports.default = {
   
     path: '/',
   
-    children: [_home2.default, _logout2.default, _contact2.default, _login2.default, _providerlogin2.default, _verifypass2.default, _verifyproviderlogin2.default, _forgotpass2.default, _changepassword2.default, _updatepass2.default, _register2.default, _savecustomer2.default, _serviceprovider2.default, _saveprovider2.default, _booking2.default, _providerlist2.default, _savebooking2.default, _linkprovider2.default, _content2.default, _error2.default],
+    children: [_home2.default, _logout2.default, _bookinglist2.default, _contact2.default, _login2.default, _providerlogin2.default, _verifypass2.default, _verifyproviderlogin2.default, _forgotpass2.default, _changepassword2.default, _updatepass2.default, _register2.default, _savecustomer2.default, _serviceprovider2.default, _saveprovider2.default, _booking2.default, _providerlist2.default, _savebooking2.default, _linkprovider2.default, _content2.default, _error2.default],
   
     action: function action(_ref) {
       var _this = this;
@@ -1727,23 +1730,21 @@ module.exports =
               case 2:
                 component = _context.sent;
   
-                console.log("User: " + context.getUser('user'));
-  
                 if (!(component === undefined)) {
-                  _context.next = 6;
+                  _context.next = 5;
                   break;
                 }
   
                 return _context.abrupt('return', component);
   
-              case 6:
+              case 5:
                 return _context.abrupt('return', render(_react2.default.createElement(
                   _App2.default,
                   { context: context },
                   component
                 )));
   
-              case 7:
+              case 6:
               case 'end':
                 return _context.stop();
             }
@@ -1752,6 +1753,8 @@ module.exports =
       }))();
     }
   };
+  
+  // Child routes
 
 /***/ },
 /* 43 */
@@ -3296,7 +3299,7 @@ module.exports =
         _react2.default.createElement(
           'p',
           { className: _Login2.default.lead },
-          'Log in with your username or company email address.'
+          'Log in with your username or personal email address.'
         ),
         _react2.default.createElement(
           'div',
@@ -4077,6 +4080,48 @@ module.exports =
   
   var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
   
+  var sendSMS = function () {
+    var _ref3 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2() {
+      var url;
+      return _regenerator2.default.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              console.log('calling API - sendSMS method');
+  
+              url = 'http://' + _config.apihost + '/sendSMS?authkey=' + _config.smsAPIKey + '&mobiles=' + phone + '&message=' + SMSmessage + '&sender=DTSBMF&route=4&country=91';
+  
+              console.log("URL: " + url);
+              return _context2.abrupt('return', new _promise2.default(function (resolve, reject) {
+                request(url, function (error, response, body) {
+                  if (!error && response.statusCode == 200) {
+                    console.log('Inside sendSMS - Response from API (body)' + body);
+  
+                    if (error) {
+                      console.log("Error in Sending SMS");
+                      status = false;
+                      return reject(error);
+                    }
+  
+                    if (body == 'true') status = true;
+                    resolve(body);
+                  }
+                });
+              }));
+  
+            case 4:
+            case 'end':
+              return _context2.stop();
+          }
+        }
+      }, _callee2, this);
+    }));
+  
+    return function sendSMS() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  
   var _react = __webpack_require__(43);
   
   var _react2 = _interopRequireDefault(_react);
@@ -4103,6 +4148,7 @@ module.exports =
    */
   
   var request = __webpack_require__(92);
+  var SMSmessage = 'Thanks for your Registration. Use your email id for login';
   
   var message = 'Sucessfully Registered. ';
   var href = 'http://' + _config.host + '/login';
@@ -4126,7 +4172,7 @@ module.exports =
       var query = _ref.query;
       var path = _ref2.path;
       return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
-        var body, customerdata, login;
+        var body, customerdata, login, mail, sms;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -4150,7 +4196,7 @@ module.exports =
                 console.log("Response: " + body);
   
                 if (!(body == 'false')) {
-                  _context.next = 28;
+                  _context.next = 36;
                   break;
                 }
   
@@ -4164,7 +4210,7 @@ module.exports =
                 console.log("Status--saveCustomerData: " + status);
   
                 if (!(customerdata == 'true')) {
-                  _context.next = 28;
+                  _context.next = 36;
                   break;
                 }
   
@@ -4182,7 +4228,21 @@ module.exports =
               case 27:
                 login = _context.sent;
   
-              case 28:
+                console.log("Calling SendEmail");
+                _context.next = 31;
+                return sendEmail();
+  
+              case 31:
+                mail = _context.sent;
+  
+                console.log("Calling sendSMS");
+                _context.next = 35;
+                return sendSMS();
+  
+              case 35:
+                sms = _context.sent;
+  
+              case 36:
   
                 if (!status) {
                   message = 'Error in Saving Customer Data';
@@ -4193,7 +4253,7 @@ module.exports =
                 console.log("Href: " + href);
                 return _context.abrupt('return', _react2.default.createElement(_Savecustomer2.default, { message: message, redirectlink: href, message1: message1 }));
   
-              case 31:
+              case 39:
               case 'end':
                 return _context.stop();
             }
@@ -4293,6 +4353,38 @@ module.exports =
           status = false;
           console.log("saveLoging -API Server not running: ") + error;
           return error;
+        }
+      });
+    });
+  }
+  
+  function sendEmail() {
+    console.log('calling API - sendEmail');
+    var url = 'http://' + _config.apihost + '/sendmail';
+    console.log("URL: " + url);
+  
+    var subject = "Your Registration for our service";
+    var message = "<b>Thank you for Register. </b> <br> <b> Assuring best service. Your password for login is: " + password + "<b> ";
+    var formdata = {
+      tomail: email,
+      subject: subject,
+      message: message
+    };
+  
+    //data = JSON.stringify('{\"tomail\": \"'+email+'\", \"subject\": '+subject+'\", \"message\": \" '+message+'\"}');
+    console.log("Data: " + formdata);
+    return new _promise2.default(function (resolve, reject) {
+      request.post(url, { form: formdata }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside sendEmail - Response from API (body)' + body);
+  
+          if (body == 'true') resolve(body);
+          status = true;
+        }
+        if (error) {
+          console.log("Error in Sending Mail");
+          status = false;
+          return reject(error);
         }
       });
     });
@@ -4578,7 +4670,7 @@ module.exports =
         _react2.default.createElement(
           'p',
           { className: _Login2.default.lead },
-          'Log in with your username or company email address.'
+          'Log in with your username or personal email address.'
         ),
         _react2.default.createElement(
           'div',
@@ -5935,7 +6027,7 @@ module.exports =
                   break;
                 }
   
-                return _context.abrupt('return', _react2.default.createElement(_Changepassword2.default, { email: email }));
+                return _context.abrupt('return', _react2.default.createElement(_Changepassword2.default, { email: email, passCode: code }));
   
               case 14:
                 return _context.abrupt('return', _react2.default.createElement(_Login2.default, null));
@@ -6006,6 +6098,7 @@ module.exports =
   
   function Changepassword(_ref, context) {
     var email = _ref.email,
+        passCode = _ref.passCode,
         message = _ref.message;
   
     console.log("Changepassword: " + email);
@@ -6075,6 +6168,12 @@ module.exports =
               type: 'hidden',
               name: 'email',
               value: email
+            }),
+            _react2.default.createElement('input', {
+              id: 'code',
+              type: 'hidden',
+              name: 'code',
+              value: passCode
             })
           ),
           _react2.default.createElement('script', null)
@@ -6184,6 +6283,7 @@ module.exports =
   
   var status = true;
   var message = 'Password Sucessfully Updated';
+  var passcode;
   
   exports.default = {
   
@@ -6195,7 +6295,7 @@ module.exports =
       var query = _ref.query;
       var path = _ref2.path;
       return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
-        var email, newpass, confirmpass, body;
+        var email, newpass, confirmpass, body, deletecode;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -6204,30 +6304,48 @@ module.exports =
                 newpass = query.newpass;
                 confirmpass = query.confirmpass;
   
+                passcode = query.code;
                 console.log("Email ID:" + email);
                 console.log("New Password: " + newpass);
                 console.log("Confirm Password: " + confirmpass);
+                console.log("Passcode - Update Password module:" + passcode);
   
                 if (!(newpass != confirmpass)) {
-                  _context.next = 9;
+                  _context.next = 11;
                   break;
                 }
   
                 message = "Password Not matching";
                 return _context.abrupt('return', _react2.default.createElement(_Changepassword2.default, { email: email, message: message }));
   
-              case 9:
-                _context.next = 11;
+              case 11:
+                _context.next = 13;
                 return updatePassword(newpass, email);
   
-              case 11:
+              case 13:
                 body = _context.sent;
   
-                if (status = false) message = ' Error in updating password';else message = 'Password Sucessfully Updated';
+                if (!(status = false)) {
+                  _context.next = 18;
+                  break;
+                }
   
+                message = ' Error in updating password';
+                _context.next = 22;
+                break;
+  
+              case 18:
+                message = 'Password Sucessfully Updated';
+                _context.next = 21;
+                return deletePassCode();
+  
+              case 21:
+                deletecode = _context.sent;
+  
+              case 22:
                 return _context.abrupt('return', _react2.default.createElement(_Updatepass2.default, { message: message }));
   
-              case 14:
+              case 23:
               case 'end':
                 return _context.stop();
             }
@@ -6263,6 +6381,29 @@ module.exports =
           console.log("Change Password -API Server not running: ") + error;
           return reject(error);
         }
+      });
+    });
+  }
+  
+  function deletePassCode() {
+    var request = __webpack_require__(92);
+    console.log('Check Code - calling API');
+    var url = 'http://' + _config.apihost + '/removeCode?code=' + passcode;
+    console.log("deletePassCode - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request.delete(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('deletePassCode- Response from API' + body);
+  
+          if (body == 'true') status = true;else status = false;
+          resolve(body);
+        } else {
+          status = false;
+          console.log("deletePassCode -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("deletePassCode - Returning from API call");
       });
     });
   }
@@ -6414,15 +6555,6 @@ module.exports =
   var _Serviceprovider2 = _interopRequireDefault(_Serviceprovider);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  /**
-   * React Starter Kit (https://www.reactstarterkit.com/)
-   *
-   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE.txt file in the root directory of this source tree.
-   */
   
   exports.default = {
   
@@ -6702,7 +6834,7 @@ module.exports =
   
   
   // module
-  exports.push([module.id, " .Serviceprovider_root_3Ll {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Serviceprovider_container_c6Z {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height:100x\n}\n\n.Serviceprovider_lead_35E {\n  font-size: 1.25em;\n}\n\n.Serviceprovider_formGroup_3-S {\n  margin-bottom: 20px;\n  \n}\n\n.Serviceprovider_label_15b {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.Serviceprovider_input_354 {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n}\n\n.Serviceprovider_input_354:focus {\n  border-color: red;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Serviceprovider_button_vnx {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Serviceprovider_button_vnx:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Serviceprovider_button_vnx:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Serviceprovider_leftContainer_31v {\n   float:left;\n}\n\n.Serviceprovider_rightContainer_2M6 {\n   float:right;\n}\n\n.Serviceprovider_icon_1-O {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Serviceprovider_lineThrough_2lM {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Serviceprovider_lineThrough_2lM::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Serviceprovider_lineThrough_2lM::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n.Serviceprovider_squaredOne_5rn {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  margin: 20px auto;\n  background: #fcfff4;\n  background: -webkit-gradient(linear, left top, left bottom, from(#fcfff4), color-stop(40%, #dfe5d7), to(#b3bead));\n  background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n          box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n  label {\n    width: 20px;\n    height: 20px;\n    position: absolute;\n    top: 4px;\n    left: 4px;\n    cursor: pointer;\n    background: -webkit-gradient(linear, left top, left bottom, from(top), color-stop(0%, #222), to(#45484d));\n    background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);\n    background: -o-linear-gradient(top, #222 0%, #45484d 100%);\n    background: linear-gradient(top, #222 0%, #45484d 100%);\n    -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);\n            box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1)\n  }\n  label:after {\n    content: '';\n    width: 16px;\n    height: 16px;\n    position: absolute;\n    top: 2px;\n    left: 2px;\n    background: $activeColor;\n    background: -webkit-gradient(linear, left top, left bottom, from($activeColor), to($darkenColor));\n    background: -webkit-linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    background: -o-linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n            box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n    opacity: 0;\n  }\n  label:hover::after {\n    opacity: 0.3;\n  }\n  input[type=checkbox] {\n    visibility: hidden   \n  }\n  input[type=checkbox]:checked + label:after {\n    opacity: 1;\n  } \n}\n\nhtml {\n  min-height: 100%;\n}\n\nbody {\n  min-height: 100vh;\n}", "", {"version":3,"sources":["/./routes/serviceprovider/Serviceprovider.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;CAChB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;EACzE,SAAS;EACT,cAAc;CACf;;AAED;EACE,kBAAkB;EAClB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;GACG,WAAW;CACb;;AAED;GACG,YAAY;CACd;;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb;;AAED;EACE,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,oBAAoB;EACpB,kHAAwE;EAAxE,gFAAwE;EAAxE,2EAAwE;EAAxE,wEAAwE;EACxE,yEAAiE;UAAjE,iEAAiE;EACjE;IACE,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,UAAU;IACV,gBAAgB;IAChB,0GAAwD;IAAxD,gEAAwD;IAAxD,2DAAwD;IAAxD,wDAAwD;IACxD,uFAA+E;YAA/E,8EAA+E;GAgBhF;EAfC;IACE,YAAY;IACZ,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,UAAU;IACV,yBAAyB;IACzB,kGAAqE;IAArE,6EAAqE;IAArE,wEAAqE;IAArE,qEAAqE;IACrE,yEAAiE;YAAjE,iEAAiE;IACjE,WAAW;GACZ;EACD;IACE,aAAa;GACd;EAEH;IACE,kBAAmB;GAIpB;EAHC;IACE,WAAW;GACZ;CAEJ;;AAED;EACE,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB","file":"Serviceprovider.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height:100x\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n}\n\n.input:focus {\n  border-color: red;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.leftContainer {\n   float:left;\n}\n\n.rightContainer {\n   float:right;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n.squaredOne {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  margin: 20px auto;\n  background: #fcfff4;\n  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n  label {\n    width: 20px;\n    height: 20px;\n    position: absolute;\n    top: 4px;\n    left: 4px;\n    cursor: pointer;\n    background: linear-gradient(top, #222 0%, #45484d 100%);\n    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);\n    &:after {\n      content: '';\n      width: 16px;\n      height: 16px;\n      position: absolute;\n      top: 2px;\n      left: 2px;\n      background: $activeColor;\n      background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n      opacity: 0;\n    }\n    &:hover::after {\n      opacity: 0.3;\n    }\n  }\n  input[type=checkbox] {\n    visibility: hidden;\n    &:checked + label:after {\n      opacity: 1;\n    }   \n  } \n}\n\nhtml {\n  min-height: 100%;\n}\n\nbody {\n  min-height: 100vh;\n}"],"sourceRoot":"webpack://"}]);
+  exports.push([module.id, " .Serviceprovider_root_3Ll {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Serviceprovider_container_c6Z {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height:100x\n}\n\n.Serviceprovider_lead_35E {\n  font-size: 1.25em;\n}\n\n.Serviceprovider_formGroup_3-S {\n  margin-bottom: 20px;\n  \n}\n\n.Serviceprovider_label_15b {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.Serviceprovider_input_354 {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n}\n\n.Serviceprovider_input_354:focus {\n  border-color: red;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Serviceprovider_button_vnx {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Serviceprovider_button_vnx:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Serviceprovider_button_vnx:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Serviceprovider_leftContainer_31v {\n   float:left;\n}\n\n.Serviceprovider_rightContainer_2M6 {\n   float:right;\n}\n\n.Serviceprovider_icon_1-O {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Serviceprovider_lineThrough_2lM {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Serviceprovider_lineThrough_2lM::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Serviceprovider_lineThrough_2lM::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n.Serviceprovider_squaredOne_5rn {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  margin: 20px auto;\n  background: #fcfff4;\n  background: -webkit-gradient(linear, left top, left bottom, from(top), color-stop(0%, #fcfff4), color-stop(40%, #dfe5d7), to(#b3bead));\n  background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n          box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n  label {\n    width: 20px;\n    height: 20px;\n    position: absolute;\n    top: 4px;\n    left: 4px;\n    cursor: pointer;\n    background: -webkit-gradient(linear, left top, left bottom, from(#222), to(#45484d));\n    background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);\n    background: -o-linear-gradient(top, #222 0%, #45484d 100%);\n    background: linear-gradient(top, #222 0%, #45484d 100%);\n    -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);\n            box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1)\n  }\n  label:after {\n    content: '';\n    width: 16px;\n    height: 16px;\n    position: absolute;\n    top: 2px;\n    left: 2px;\n    background: $activeColor;\n    background: -webkit-gradient(linear, left top, left bottom, from(top), color-stop(0%, $activeColor), to($darkenColor));\n    background: -webkit-linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    background: -o-linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n            box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n    opacity: 0;\n  }\n  label:hover::after {\n    opacity: 0.3;\n  }\n  input[type=checkbox] {\n    visibility: hidden   \n  }\n  input[type=checkbox]:checked + label:after {\n    opacity: 1;\n  } \n}\n\nhtml {\n  min-height: 100%;\n}\n\nbody {\n  min-height: 100vh;\n}", "", {"version":3,"sources":["/./routes/serviceprovider/Serviceprovider.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;CAChB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;EACzE,SAAS;EACT,cAAc;CACf;;AAED;EACE,kBAAkB;EAClB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;GACG,WAAW;CACb;;AAED;GACG,YAAY;CACd;;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb;;AAED;EACE,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,oBAAoB;EACpB,uIAAwE;EAAxE,gFAAwE;EAAxE,2EAAwE;EAAxE,wEAAwE;EACxE,yEAAiE;UAAjE,iEAAiE;EACjE;IACE,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,UAAU;IACV,gBAAgB;IAChB,qFAAwD;IAAxD,gEAAwD;IAAxD,2DAAwD;IAAxD,wDAAwD;IACxD,uFAA+E;YAA/E,8EAA+E;GAgBhF;EAfC;IACE,YAAY;IACZ,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,UAAU;IACV,yBAAyB;IACzB,uHAAqE;IAArE,6EAAqE;IAArE,wEAAqE;IAArE,qEAAqE;IACrE,yEAAiE;YAAjE,iEAAiE;IACjE,WAAW;GACZ;EACD;IACE,aAAa;GACd;EAEH;IACE,kBAAmB;GAIpB;EAHC;IACE,WAAW;GACZ;CAEJ;;AAED;EACE,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB","file":"Serviceprovider.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height:100x\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 26px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n}\n\n.input:focus {\n  border-color: red;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 50%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 14px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.leftContainer {\n   float:left;\n}\n\n.rightContainer {\n   float:right;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n.squaredOne {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  margin: 20px auto;\n  background: #fcfff4;\n  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n  label {\n    width: 20px;\n    height: 20px;\n    position: absolute;\n    top: 4px;\n    left: 4px;\n    cursor: pointer;\n    background: linear-gradient(top, #222 0%, #45484d 100%);\n    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);\n    &:after {\n      content: '';\n      width: 16px;\n      height: 16px;\n      position: absolute;\n      top: 2px;\n      left: 2px;\n      background: $activeColor;\n      background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n      opacity: 0;\n    }\n    &:hover::after {\n      opacity: 0.3;\n    }\n  }\n  input[type=checkbox] {\n    visibility: hidden;\n    &:checked + label:after {\n      opacity: 1;\n    }   \n  } \n}\n\nhtml {\n  min-height: 100%;\n}\n\nbody {\n  min-height: 100vh;\n}"],"sourceRoot":"webpack://"}]);
   
   // exports
   exports.locals = {
@@ -9373,7 +9505,374 @@ module.exports =
 /* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var extend = __webpack_require__(172);
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _promise = __webpack_require__(83);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Bookinglist = __webpack_require__(172);
+  
+  var _Bookinglist2 = _interopRequireDefault(_Bookinglist);
+  
+  var _config = __webpack_require__(20);
+  
+  var _Login = __webpack_require__(87);
+  
+  var _Login2 = _interopRequireDefault(_Login);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var sessionid;
+  var email;
+  
+  exports.default = {
+  
+    path: '/bookinglist',
+  
+    action: function action(_ref, _ref2) {
+      var _this = this;
+  
+      var query = _ref.query;
+      var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var body, bookingdata;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+  
+                sessionid = query.sessionid;
+                console.log("Sessionid - index.js - Home " + sessionid);
+  
+                email = query.email;
+                console.log("customer Email: " + email);
+  
+                if (!(sessionid === undefined || sessionid == '')) {
+                  _context.next = 9;
+                  break;
+                }
+  
+                _context.next = 7;
+                return getSessionid();
+  
+              case 7:
+                body = _context.sent;
+                return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: body }));
+  
+              case 9:
+                _context.next = 11;
+                return getBookingData();
+  
+              case 11:
+                bookingdata = _context.sent;
+                return _context.abrupt('return', _react2.default.createElement(_Bookinglist2.default, { Bookingdata: bookingdata, customeremail: email, sessionid: sessionid }));
+  
+              case 13:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    }
+  };
+  
+  
+  function getBookingData() {
+    var request = __webpack_require__(92);
+  
+    console.log('calling API');
+    var url = 'http://' + _config.apihost + '/getBookingHistory?email=' + email;
+    console.log("URL: " + url);
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside getBookingData Response from API (body)' + body);
+          //Bookinglist = body;
+          // console.log("Bookinglist: "+Bookinglist);
+          resolve(body);
+        } else {
+          console.log("Error Object: " + error);
+          return reject(error);
+        }
+      });
+    });
+  }
+  
+  function getSessionid() {
+    var request = __webpack_require__(92);
+    console.log('genSessionid - calling API');
+    var url = 'http://' + _config.apihost + '/genSessionid';
+    console.log("getSeesionid - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('genSessionid - Response from API' + body);
+          //sessionid = body;
+          resolve(body);
+        } else {
+  
+          console.log("genSessionid -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("getSessionid - Returning from API call");
+      });
+    });
+  }
+
+/***/ },
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Bookinglist = __webpack_require__(173);
+  
+  var _Bookinglist2 = _interopRequireDefault(_Bookinglist);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'Service booking Search';
+  
+  function Bookinglist(_ref, props, context) {
+    var Bookingdata = _ref.Bookingdata,
+        customeremail = _ref.customeremail,
+        sessionid = _ref.sessionid;
+  
+    //context.setTitle(title);
+  
+    var bookingdata = JSON.parse(Bookingdata);
+  
+    console.log("booking Data: " + bookingdata);
+    return _react2.default.createElement(
+      'div',
+      { className: _Bookinglist2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Bookinglist2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          'My Booking'
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'form',
+            { name: 'form1' },
+            _react2.default.createElement(
+              'div',
+              { className: _Bookinglist2.default.formGroup },
+              _react2.default.createElement(
+                'table',
+                null,
+                _react2.default.createElement(
+                  'caption',
+                  null,
+                  'Service Providers'
+                ),
+                _react2.default.createElement(
+                  'thead',
+                  null,
+                  _react2.default.createElement(
+                    'tr',
+                    null,
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Email'
+                    ),
+                    _react2.default.createElement('th', null),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Booking Date'
+                    ),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Function Date'
+                    ),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Mobile'
+                    ),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Status'
+                    ),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Event Type'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'tbody',
+                  null,
+                  bookingdata.map(function (obj, index) {
+                    return _react2.default.createElement(
+                      'tr',
+                      { key: index },
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        _react2.default.createElement('input', { type: 'radio', name: 'customeremail', value: obj.email }),
+                        ' '
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        _react2.default.createElement('input', { id: 'email', type: 'hidden', value: obj.email }),
+                        obj.email,
+                        ' '
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        obj.bookingdate
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        obj.functiondate
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        obj.mobile,
+                        ' '
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        obj.status
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        obj.eventtype
+                      )
+                    );
+                  })
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('input', { type: 'hidden', name: 'customeremail', value: customeremail }),
+              _react2.default.createElement('input', { type: 'hidden', name: 'sessionid', value: sessionid })
+            )
+          )
+        )
+      )
+    );
+  }
+  
+  Bookinglist.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Bookinglist2.default)(Bookinglist);
+
+/***/ },
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(174);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Bookinglist.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Bookinglist.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, " .Bookinglist_root_W57 {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Bookinglist_container_27i {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height:100x\n}\n\nhtml {\n  min-height: 100%;\n}\n\nbody {\n  min-height: 100vh;\n}\n\ntable, th, td {\n  border: 1px solid black;\n}\n\ntr:hover {background-color: #f5f5f5}\n\nth {\n  background-color: #4CAF50;\n  color: white;\n}\n\n.Bookinglist_button_2HE {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 30%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Bookinglist_button_2HE:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Bookinglist_button_2HE:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\ndiv {\n  overflow-x:visible;\n   \n}\n\n.Bookinglist_formGroup_2hT {\n  margin-bottom: 15px;\n}", "", {"version":3,"sources":["/./routes/bookinglist/Bookinglist.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;CAChB;;AAID;EACE,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,wBAAwB;CACzB;;AACD,UAAU,yBAAyB,CAAC;;AACpC;EACE,0BAA0B;EAC1B,aAAa;CACd;;AACD;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;EACE,mBAAmB;;CAEpB;;AAGD;EACE,oBAAoB;CACrB","file":"Bookinglist.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height:100x\n}\n\n\n\nhtml {\n  min-height: 100%;\n}\n\nbody {\n  min-height: 100vh;\n}\n\ntable, th, td {\n  border: 1px solid black;\n} \ntr:hover {background-color: #f5f5f5}\nth {\n  background-color: #4CAF50;\n  color: white;\n}\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 30%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\ndiv {\n  overflow-x:visible;\n   \n}\n\n\n.formGroup {\n  margin-bottom: 15px;\n}"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Bookinglist_root_W57",
+  	"container": "Bookinglist_container_27i",
+  	"button": "Bookinglist_button_2HE",
+  	"formGroup": "Bookinglist_formGroup_2hT"
+  };
+
+/***/ },
+/* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+  var extend = __webpack_require__(176);
   
   function Assets(options) {
     if (!(this instanceof Assets)) {
@@ -9385,7 +9884,7 @@ module.exports =
   }
   
   ['data', 'path', 'size', 'url'].forEach(function (resolver) {
-    Assets[resolver] = __webpack_require__(173)("./" + resolver);
+    Assets[resolver] = __webpack_require__(177)("./" + resolver);
     Assets.prototype[resolver] = function (path, callback) {
       return Assets[resolver](path, this.options, callback);
     };
@@ -9395,42 +9894,42 @@ module.exports =
 
 
 /***/ },
-/* 172 */
+/* 176 */
 /***/ function(module, exports) {
 
   module.exports = require("lodash/object/extend");
 
 /***/ },
-/* 173 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
   var map = {
-  	"./__utils__/composeAbsolutePathname": 174,
-  	"./__utils__/composeAbsolutePathname.js": 174,
-  	"./__utils__/composeQueryString": 178,
-  	"./__utils__/composeQueryString.js": 178,
-  	"./__utils__/composeRelativePathname": 179,
-  	"./__utils__/composeRelativePathname.js": 179,
-  	"./__utils__/convertPathToUrl": 175,
-  	"./__utils__/convertPathToUrl.js": 175,
-  	"./__utils__/defaultCachebuster": 180,
-  	"./__utils__/defaultCachebuster.js": 180,
-  	"./__utils__/encodeBuffer": 181,
-  	"./__utils__/encodeBuffer.js": 181,
-  	"./__utils__/ensureTrailingSlash": 176,
-  	"./__utils__/ensureTrailingSlash.js": 176,
-  	"./__utils__/exists": 182,
-  	"./__utils__/exists.js": 182,
-  	"./data": 183,
-  	"./data.js": 183,
-  	"./index": 171,
-  	"./index.js": 171,
-  	"./path": 185,
-  	"./path.js": 185,
-  	"./size": 189,
-  	"./size.js": 189,
-  	"./url": 191,
-  	"./url.js": 191
+  	"./__utils__/composeAbsolutePathname": 178,
+  	"./__utils__/composeAbsolutePathname.js": 178,
+  	"./__utils__/composeQueryString": 182,
+  	"./__utils__/composeQueryString.js": 182,
+  	"./__utils__/composeRelativePathname": 183,
+  	"./__utils__/composeRelativePathname.js": 183,
+  	"./__utils__/convertPathToUrl": 179,
+  	"./__utils__/convertPathToUrl.js": 179,
+  	"./__utils__/defaultCachebuster": 184,
+  	"./__utils__/defaultCachebuster.js": 184,
+  	"./__utils__/encodeBuffer": 185,
+  	"./__utils__/encodeBuffer.js": 185,
+  	"./__utils__/ensureTrailingSlash": 180,
+  	"./__utils__/ensureTrailingSlash.js": 180,
+  	"./__utils__/exists": 186,
+  	"./__utils__/exists.js": 186,
+  	"./data": 187,
+  	"./data.js": 187,
+  	"./index": 175,
+  	"./index.js": 175,
+  	"./path": 189,
+  	"./path.js": 189,
+  	"./size": 193,
+  	"./size.js": 193,
+  	"./url": 195,
+  	"./url.js": 195
   };
   function webpackContext(req) {
   	return __webpack_require__(webpackContextResolve(req));
@@ -9443,17 +9942,17 @@ module.exports =
   };
   webpackContext.resolve = webpackContextResolve;
   module.exports = webpackContext;
-  webpackContext.id = 173;
+  webpackContext.id = 177;
 
 
 /***/ },
-/* 174 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(175);
-  var ensureTrailingSlash = __webpack_require__(176);
+  var convertPathToUrl = __webpack_require__(179);
+  var ensureTrailingSlash = __webpack_require__(180);
   var path = __webpack_require__(4);
-  var url = __webpack_require__(177);
+  var url = __webpack_require__(181);
   
   module.exports = function (baseUrl, basePath, resolvedPath) {
     var from = ensureTrailingSlash(baseUrl);
@@ -9463,7 +9962,7 @@ module.exports =
 
 
 /***/ },
-/* 175 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
   var sep = __webpack_require__(4).sep;
@@ -9474,12 +9973,12 @@ module.exports =
 
 
 /***/ },
-/* 176 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(175);
+  var convertPathToUrl = __webpack_require__(179);
   var path = __webpack_require__(4);
-  var url = __webpack_require__(177);
+  var url = __webpack_require__(181);
   
   module.exports = function (urlStr) {
     var urlObj = url.parse(urlStr);
@@ -9489,13 +9988,13 @@ module.exports =
 
 
 /***/ },
-/* 177 */
+/* 181 */
 /***/ function(module, exports) {
 
   module.exports = require("url");
 
 /***/ },
-/* 178 */
+/* 182 */
 /***/ function(module, exports) {
 
   module.exports = function (current, addon) {
@@ -9507,10 +10006,10 @@ module.exports =
 
 
 /***/ },
-/* 179 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(175);
+  var convertPathToUrl = __webpack_require__(179);
   var path = __webpack_require__(4);
   
   module.exports = function (basePath, relativeTo, resolvedPath) {
@@ -9521,7 +10020,7 @@ module.exports =
 
 
 /***/ },
-/* 180 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
   var fs = __webpack_require__(32);
@@ -9533,7 +10032,7 @@ module.exports =
 
 
 /***/ },
-/* 181 */
+/* 185 */
 /***/ function(module, exports) {
 
   module.exports = function (buffer, mediaType) {
@@ -9545,7 +10044,7 @@ module.exports =
 
 
 /***/ },
-/* 182 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
   var fs = __webpack_require__(32);
@@ -9558,16 +10057,16 @@ module.exports =
 
 
 /***/ },
-/* 183 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var encodeBuffer = __webpack_require__(181);
-  var extend = __webpack_require__(172);
+  var encodeBuffer = __webpack_require__(185);
+  var extend = __webpack_require__(176);
   var fs = __webpack_require__(32);
-  var mime = __webpack_require__(184);
+  var mime = __webpack_require__(188);
   var Promise = __webpack_require__(33);
-  var resolvePath = __webpack_require__(185);
-  var url = __webpack_require__(177);
+  var resolvePath = __webpack_require__(189);
+  var url = __webpack_require__(181);
   
   var preadFile = Promise.promisify(fs.readFile);
   
@@ -9598,20 +10097,20 @@ module.exports =
 
 
 /***/ },
-/* 184 */
+/* 188 */
 /***/ function(module, exports) {
 
   module.exports = require("mime");
 
 /***/ },
-/* 185 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var async = __webpack_require__(186);
-  var exists = __webpack_require__(182);
-  var extend = __webpack_require__(172);
-  var flatten = __webpack_require__(187);
-  var glob = __webpack_require__(188);
+  var async = __webpack_require__(190);
+  var exists = __webpack_require__(186);
+  var extend = __webpack_require__(176);
+  var flatten = __webpack_require__(191);
+  var glob = __webpack_require__(192);
   var path = __webpack_require__(4);
   var Promise = __webpack_require__(33);
   
@@ -9656,30 +10155,30 @@ module.exports =
 
 
 /***/ },
-/* 186 */
+/* 190 */
 /***/ function(module, exports) {
 
   module.exports = require("async");
 
 /***/ },
-/* 187 */
+/* 191 */
 /***/ function(module, exports) {
 
   module.exports = require("lodash/array/flatten");
 
 /***/ },
-/* 188 */
+/* 192 */
 /***/ function(module, exports) {
 
   module.exports = require("glob");
 
 /***/ },
-/* 189 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var calipers = __webpack_require__(190)('webp', 'png', 'jpeg', 'gif', 'svg');
+  var calipers = __webpack_require__(194)('webp', 'png', 'jpeg', 'gif', 'svg');
   var Promise = __webpack_require__(33);
-  var resolvePath = __webpack_require__(185);
+  var resolvePath = __webpack_require__(189);
   
   module.exports = function (to, options, callback) {
     if (typeof options === 'function') {
@@ -9702,22 +10201,22 @@ module.exports =
 
 
 /***/ },
-/* 190 */
+/* 194 */
 /***/ function(module, exports) {
 
   module.exports = require("calipers");
 
 /***/ },
-/* 191 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var composeAbsolutePathname = __webpack_require__(174);
-  var composeQueryString = __webpack_require__(178);
-  var composeRelativePathname = __webpack_require__(179);
-  var defaultCachebuster = __webpack_require__(180);
-  var extend = __webpack_require__(172);
-  var resolvePath = __webpack_require__(185);
-  var url = __webpack_require__(177);
+  var composeAbsolutePathname = __webpack_require__(178);
+  var composeQueryString = __webpack_require__(182);
+  var composeRelativePathname = __webpack_require__(183);
+  var defaultCachebuster = __webpack_require__(184);
+  var extend = __webpack_require__(176);
+  var resolvePath = __webpack_require__(189);
+  var url = __webpack_require__(181);
   
   module.exports = function (to, options, callback) {
     if (typeof options === 'function') {
@@ -9767,22 +10266,22 @@ module.exports =
 
 
 /***/ },
-/* 192 */
+/* 196 */
 /***/ function(module, exports) {
 
   module.exports = require("mongodb");
 
 /***/ },
-/* 193 */
+/* 197 */
 /***/ function(module, exports) {
 
   module.exports = require("express-session");
 
 /***/ },
-/* 194 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var jade = __webpack_require__(195);
+  var jade = __webpack_require__(199);
   
   module.exports = function template(locals) {
   var jade_debug = [ new jade.DebugItem( 1, "C:\\dtsolutions\\bmfApp\\src\\views\\index.jade" ) ];
@@ -9885,7 +10384,7 @@ module.exports =
   }
 
 /***/ },
-/* 195 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -10137,10 +10636,10 @@ module.exports =
 
 
 /***/ },
-/* 196 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var jade = __webpack_require__(195);
+  var jade = __webpack_require__(199);
   
   module.exports = function template(locals) {
   var jade_debug = [ new jade.DebugItem( 1, "C:\\dtsolutions\\bmfApp\\src\\views\\error.jade" ) ];
