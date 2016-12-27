@@ -39,7 +39,7 @@ export default {
      if (validLogin == 'true') {
       var body = await SaveSessionData();
       console.log(" Going to Home Page");
-      return <Home sessionid={sessionid} />;
+      return <Home sessionid={sessionid} email={userEmail}/>;
     }
 
     else {

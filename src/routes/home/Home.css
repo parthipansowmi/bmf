@@ -13,6 +13,11 @@
   max-height: 400px
 }
 
+
+html {
+  box-sizing: border-box;
+}
+
 .link {
   display: inline-flex;
   padding: 13px 13px;

@@ -6,6 +6,10 @@
   padding-right: 20px;
 }
 
+html {
+  box-sizing: border-box;
+}
+
 .container {
   margin: 0 auto;
   padding: 0 0 40px;

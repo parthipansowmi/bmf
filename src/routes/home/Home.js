@@ -16,7 +16,7 @@ import cx from 'classnames';
 const title = 'Welcome to World of Opporunity';
 const user = 'Customer';
 
-function Home({ sessionid }, context) {
+function Home({ sessionid, email }, context) {
   context.setTitle(title);
   context.setUser(user);
  // context.getUser('user');
@@ -39,6 +39,12 @@ function Home({ sessionid }, context) {
               type="hidden"
               name="sessionid"
               value={sessionid}
+              />
+      <input
+              id="email"
+              type="hidden"
+              name="email"
+              value={email}
               />
     </div>
   );
