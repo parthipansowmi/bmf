@@ -12,7 +12,7 @@ var year = date.getFullYear();
 var currentdate = day + '/' + month + '/' + year;
 
 
-function Booking({sessionid}, context) {
+function Booking({sessionid, bookingid}, context) {
   context.setTitle(title);
   return (
     <div className={s.root}>
@@ -78,7 +78,7 @@ function Booking({sessionid}, context) {
               id="catering"
               type="checkbox"
               name="catering"
-              
+                           
               />
             <br/>
             <label className={s.label} htmlFor="Travel">
@@ -108,7 +108,12 @@ function Booking({sessionid}, context) {
               name="sessionid"
               value={sessionid}
               />
-    
+            <input
+              id="bookingid"
+              type="hidden"
+              name="bookingid"
+              value={bookingid}
+              />
           </div>
           <div className={s.formGroup}>
             <button className={s.button}  value="submit" type="submit" >

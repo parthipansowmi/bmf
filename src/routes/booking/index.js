@@ -14,6 +14,8 @@ export default {
     var date = new Date();
     var currentdate = date.getDate() + '/' + date.getMonth()+1 + '/' + date.getFullYear();
     var sessionid = query.sessionid;
+    
+    console.log("Booking Id: "+bookingid);
     console.log("Sessionid - index.js - Booking : "+sessionid);
        if ( sessionid === undefined || sessionid == '')
        {
@@ -22,7 +24,11 @@ export default {
          return <Login sessionid = {body}/>
        }        
        else
-        return  <Booking sessionid={sessionid}/>;
+        {
+          var bookingid = Math.floor(1000000 + Math.random() * 9000000);
+          return  <Booking sessionid={sessionid} bookingid={bookingid} />;
+        }
+        
     
   },
 

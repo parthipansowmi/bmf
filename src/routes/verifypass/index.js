@@ -39,7 +39,8 @@ export default {
      if (validLogin == 'true') {
       var body = await SaveSessionData();
       console.log(" Going to Home Page");
-      return <Home sessionid={sessionid} email={userEmail}/>;
+      var bookinglist = await getBookingData();
+      return <Home sessionid={sessionid} email={userEmail} bookinglist={bookinglist} />;
     }
 
     else {
@@ -103,4 +104,27 @@ return new Promise(function(resolve, reject) {
  
   console.log('returning');
    });
+}
+
+function getBookingData() {
+  var request = require('request');
+ 
+  console.log('calling API');
+  var url = `http://${apihost}/getBookingHistory?email=`+userEmail;
+  console.log("URL: " + url);
+  return new Promise(function(resolve, reject) {
+    request(url,  function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log('Inside getBookingData Response from API (body)' + body);
+      resolve(body);    
+    }
+    else
+    {
+      console.log("Error Object: "+error);
+      return reject(error);
+    }
+
+  });
+
+  });
 }

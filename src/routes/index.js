@@ -24,6 +24,8 @@ import verifyproviderlogin from './verifyproviderlogin'
 import providerlist from './providerlist';
 import logout from './logout';
 import bookinglist from './bookinglist';
+import cancelbooking from './cancelbooking';
+
 export default {
 
   path: '/',
@@ -46,6 +48,7 @@ export default {
     serviceprovider,    
     saveprovider,
     booking,
+    cancelbooking,
     providerlist,
     savebooking,
     linkprovider,

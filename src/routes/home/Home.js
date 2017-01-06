@@ -16,14 +16,34 @@ import cx from 'classnames';
 const title = 'Welcome to World of Opporunity';
 const user = 'Customer';
 
-function Home({ sessionid, email }, context) {
+function Home({ sessionid, email, bookinglist }, context) {
   context.setTitle(title);
   context.setUser(user);
  // context.getUser('user');
   var logoutlink = "/logout?sessionid="+sessionid;
   var bookinglink = "/booking?sessionid="+sessionid;
+  var bookingdata = JSON.parse(bookinglist);
   return (
-    <div >
+   /* <div className={s.root}>
+      <div className={s.container}>
+        <h1>{title}</h1>*/
+    <div className={s.cards} >
+     <div className={s.card}>
+      <header>
+        <h2>Search Provider</h2>
+      </header>
+      <br/>
+      <br/>
+      <input type="text" id="category" name="category" />
+      <br/>
+      <br/>
+        <button  id="search" name="search">search</button>         
+    </div>
+
+    <div className={s.card}>
+    <header>
+        <h2>Service Booking</h2>
+      </header>
       <Link className={s.link} to={bookinglink}>Home Function</Link>
       
       <Link className={s.link} to="/contact">Astrology</Link>
@@ -33,7 +53,7 @@ function Home({ sessionid, email }, context) {
       <Link className={s.link} to="/register">Catering</Link>
       <br/>
       <Link className={s.link} to={logoutlink} >Logout</Link>
-      <span className={s.spacer}> | </span>
+            
       <input
               id="sessionid"
               type="hidden"
@@ -47,6 +67,54 @@ function Home({ sessionid, email }, context) {
               value={email}
               />
     </div>
+    <div className={s.card}>
+    <header>
+        <h2>Booking History</h2>
+      </header>
+      <form name="form1" method="put" action="cancelbooking" >
+    <table>
+        <caption>Your Booking</caption>
+          <thead>
+          <tr>
+          <th>Select</th><th>Booking ID</th><th>Booking Date</th><th>Event Date</th><th>Event</th><th>E-mail</th><th>Phone</th><th>Status</th>
+          </tr>
+          </thead>
+          <tbody>
+         
+           { bookingdata.map((obj, index) => (
+          <tr key={index}>
+            <td><input type="radio" name="bookingid" value={obj.bookingid} /> </td>
+            <td> {obj.bookingid}</td>
+            <td> {obj.dateofbooking}</td>
+            <td> {obj.functiondate} </td>
+            <td> {obj.eventtype} </td>
+            <td> {obj.email} </td>
+            <td>{obj.mobile}</td>
+            <td> {obj.status}</td>            
+          </tr>
+           ))}
+           </tbody>
+        </table>
+        <input
+              id="sessionid"
+              type="hidden"
+              name="sessionid"
+              value={sessionid}
+              />
+        <button  value="" type="submit" >
+         Cancel
+        </button>
+
+        <button  value="" type="submit" >
+         Change Date
+       </button>
+       
+       </form>
+    </div>
+          
+    
+    </div>
+    
   );
 }
 

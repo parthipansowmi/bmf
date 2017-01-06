@@ -47,8 +47,11 @@ async  action({query}, {path}) {
       href = `http://${host}/booking`;
       message1 = 'Click here to Re-booking';
     }
-   
-   return <LinkProvider message={message} redirectlink={href} message1={message1} sessionid={sessionid}/>;
+   else
+   {
+     href=`http://${host}/home?sessionid=`+sessionid+'&email='+customeremail;
+   }
+      return <LinkProvider message={message} redirectlink={href} message1={message1} sessionid={sessionid}/>;
   },
 
 };

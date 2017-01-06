@@ -5,13 +5,15 @@ import Login from '../login/Login'
 import { apihost } from '../../config';
 
 var sessionid;
+var email;
 
 export default {
 
-  path: '/',
+  path: '/home',
 
   async action({query}, {path}) {
     sessionid = query.sessionid;
+    email=query.email;
     console.log("Sessionid - index.js - Home "+sessionid);
        if ( sessionid === undefined || sessionid == '')
        {
@@ -19,7 +21,10 @@ export default {
          return <Login sessionid = {body}/>
        }        
        else
-        return <Home  sessionid={sessionid}/>;
+       {
+        var bookinglist = await getBookingData();
+        return <Home  sessionid={sessionid} bookinglist={bookinglist} email={email}/>;
+       }
   },
 
 };
@@ -47,4 +52,27 @@ function getSessionid() {
 
  });
  
+}
+
+function getBookingData() {
+  var request = require('request');
+ 
+  console.log('calling API');
+  var url = `http://${apihost}/getBookingHistory?email=`+email;
+  console.log("URL: " + url);
+  return new Promise(function(resolve, reject) {
+    request(url,  function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log('Inside getBookingData Response from API (body)' + body);
+      resolve(body);    
+    }
+    else
+    {
+      console.log("Error Object: "+error);
+      return reject(error);
+    }
+
+  });
+
+  });
 }
