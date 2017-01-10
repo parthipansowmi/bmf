@@ -23,9 +23,7 @@ export default {
   async action({query}, {path} ) {
 
     console.log("inside the verifypass");
-   // var sess = request.session;
-    //session.sessionid = query.sessionid;
-    //console.log("Session ID: "+query.sessionid);
+   
     userEmail = query.usernameOrEmail;
     password = query.password;
     sessionid = query.sessionid;

@@ -14,7 +14,7 @@ import s from './Providerlist.css';
 const title = 'Service Provider Search';
 
 
-function Providerlist({providerlist, customeremail, sessionid}, props, context) {
+function Providerlist({providerlist, customeremail, sessionid, bookingid}, props, context) {
   //context.setTitle(title);
   
    var providerdata = JSON.parse(providerlist);  
@@ -39,6 +39,7 @@ function Providerlist({providerlist, customeremail, sessionid}, props, context) 
           <tr key={index}>
           <td><input type="radio" name="provideremail" value={obj.email} /> </td>
             <td> <input id="email" type="hidden" value={obj.email}/>{obj.email} </td>
+            <td> <input id="phone" type="hidden" value={obj.phone}/></td>
             <td> {obj.firstname}</td>
             <td> {obj.lname} </td>
             <td> {obj.address}</td>
@@ -54,6 +55,7 @@ function Providerlist({providerlist, customeremail, sessionid}, props, context) 
          <br></br>
          <input type="hidden" name="customeremail"  value={customeremail} />
          <input type="hidden" name="sessionid"  value={sessionid} />
+         <input type="hidden" name="bookingid"  value={bookingid} />
          <button   className={s.button}  type="submit" >
              Submit
          </button>

@@ -27,6 +27,8 @@ async  action({query}, {path}) {
     console.log("Query String - index.js - linkprovider: " + JSON.stringify(query));
     var provideremail = query.provideremail;
     var customeremail = query.customeremail;
+    var providerphone = query.phone;
+    var bookingid = query.bookingid;
 
     var sessionid = query.sessionid;
     console.log("Sessionid - index.js - Home "+sessionid);
@@ -36,7 +38,7 @@ async  action({query}, {path}) {
          return <Login sessionid = {body}/>
        }
 
-    var url = `http://${apihost}/updateProviderLink?provideremail=`+provideremail+'&email='+customeremail;
+    var url = `http://${apihost}/updateProviderLink?provideremail=`+provideremail+'&email='+customeremail+'&phone='+providerphone+'&bookingid='+bookingid;
     console.log("Link Provider - Provider Email: "+provideremail);
     console.log("Link Provider - Customer Email: "+customeremail);
     console.log("URL: " + url);

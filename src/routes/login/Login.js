@@ -13,7 +13,7 @@ const title = 'Entering Credentials';
 
 function Login( {sessionid}, context ) {
   context.setTitle(title);
-  console.log("Login.js-SessionId: "+{sessionid});
+  console.log("Login.js-SessionId: "+sessionid);
   return (
     <div className={s.root}>
       <div className={s.container}>

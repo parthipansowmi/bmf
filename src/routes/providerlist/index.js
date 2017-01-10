@@ -14,7 +14,7 @@ export default {
  async action({query}, {path}) {
 
    sessionid = query.sessionid;
-   console.log("Sessionid - index.js - Home "+sessionid);
+   console.log("Sessionid - index.js - Providerlist "+sessionid);
    if ( sessionid === undefined || sessionid == '')
        {
          var body = await getSessionid();

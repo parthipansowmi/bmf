@@ -84,6 +84,7 @@ function Home({ sessionid, email, bookinglist }, context) {
            { bookingdata.map((obj, index) => (
           <tr key={index}>
             <td><input type="radio" name="bookingid" value={obj.bookingid} /> </td>
+            <input type="hidden" name="mobile" value={obj.mobile} />            
             <td> {obj.bookingid}</td>
             <td> {obj.dateofbooking}</td>
             <td> {obj.functiondate} </td>
@@ -100,6 +101,12 @@ function Home({ sessionid, email, bookinglist }, context) {
               type="hidden"
               name="sessionid"
               value={sessionid}
+              />
+             < input
+              id="email"
+              type="hidden"
+              name="email"
+              value={email}
               />
         <button  value="" type="submit" >
          Cancel

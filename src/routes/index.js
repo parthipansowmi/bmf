@@ -25,6 +25,7 @@ import providerlist from './providerlist';
 import logout from './logout';
 import bookinglist from './bookinglist';
 import cancelbooking from './cancelbooking';
+import changebookingdate from './changebookingdate'
 
 export default {
 
@@ -49,6 +50,7 @@ export default {
     saveprovider,
     booking,
     cancelbooking,
+    changebookingdate,
     providerlist,
     savebooking,
     linkprovider,

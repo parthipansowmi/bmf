@@ -2,7 +2,7 @@ import React from 'react';
 import Cancelbooking from './Cancelbooking';
 import Providerlist from '../providerlist/Providerlist';
 import Login from '../Login';
-import { host, apihost, smsAPIKey, SMSmessage } from '../../config';
+import { host, apihost, smsAPIKey } from '../../config';
 var request = require('request');
 
 var message = 'Booking done Sucessfully  '
@@ -11,6 +11,7 @@ var message1 = 'Click here to login'
 var status = true;
 var email;
 var phone;
+var providermoboil;
 var sessionid;
 var id;
 
@@ -20,10 +21,12 @@ path: '/cancelbooking',
 
  async action({query}, {path}) {
     console.log("Query String - index.js - Cancelbooking: " + JSON.stringify(query));
-    phone = query.mobile;
+   // phone = query.mobile;
     email = query.email;
-    id = query._id;
+    id = query.bookingid;
+    phone = query.mobile;
     console.log("Email: "+email);
+    console.log("Customer Mobile: "+phone);
     sessionid = query.sessionid;
     console.log("Sessionid - index.js - Cancelbooking "+sessionid);
 
@@ -49,7 +52,7 @@ path: '/cancelbooking',
     else
     {
       message = 'Sucessfully canceled  the Event';
-      href = `http://${host}/`;
+      href = href=`http://${host}/home?sessionid=`+sessionid+'&email='+email;
       message1 = 'Click here to Home Page.';
     }
    return <Cancelbooking message={message} redirectlink={href} message1={message1} sessionid = {sessionid} />;
@@ -70,6 +73,7 @@ return new Promise(function(resolve, reject) {
 
       if (body == 'true')
         status = true;
+      else status = false;
         resolve(body);
         //sendSMS();
       //var result = await sendEmail();
@@ -88,7 +92,7 @@ return new Promise(function(resolve, reject) {
 
 async function sendSMS() {
   console.log('calling API - sendSMS method');
-  
+  var SMSmessage = 'We cancelled your booking with id '+id+', Provider please login to view the details';
   var url = `http://${apihost}/sendSMS?authkey=`+ smsAPIKey+'&mobiles='+ phone +'&message='+SMSmessage+'&sender=DTSBMF&route=4&country=91';
   console.log("URL: " + url);
    return new Promise(function(resolve, reject) {
@@ -117,8 +121,8 @@ function sendEmail() {
   var url = `http://${apihost}/sendmail`;
   console.log("URL: " + url);
 
-  var subject = "Your booking for the event in BMY";
-  var message = "<b>Thank you for booking and service provider will get in touch shortly. </b> <br> <b> Your Booking id is <b> ";
+  var subject = "Your booking for the event Cancelled as per your requst";
+  var message = "<b>Thank you for the booking and We continue to provider best service. ";
   var formdata = { 
   tomail: email, 
   subject: subject, 
