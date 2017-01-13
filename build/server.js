@@ -112,7 +112,7 @@ module.exports =
   
   var _routes2 = _interopRequireDefault(_routes);
   
-  var _assets = __webpack_require__(175);
+  var _assets = __webpack_require__(184);
   
   var _assets2 = _interopRequireDefault(_assets);
   
@@ -120,9 +120,9 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var mongodb = __webpack_require__(196); // eslint-disable-line import/no-unresolved
+  var mongodb = __webpack_require__(205); // eslint-disable-line import/no-unresolved
   
-  var session = __webpack_require__(197);
+  var session = __webpack_require__(206);
   
   var app = (0, _express2.default)();
   app.use(session({
@@ -198,7 +198,7 @@ module.exports =
                       case 0:
                         css = [];
                         statusCode = 200;
-                        template = __webpack_require__(198); // eslint-disable-line global-require
+                        template = __webpack_require__(207); // eslint-disable-line global-require
   
                         data = { title: '', description: '', user: '', css: '', body: '', entry: 'assets.main.js' }; //assets.main.js
                         //var sess = req.session;
@@ -286,7 +286,7 @@ module.exports =
   app.use(function (err, req, res, next) {
     // eslint-disable-line no-unused-vars
     console.log(pe.render(err)); // eslint-disable-line no-console
-    var template = __webpack_require__(200); // eslint-disable-line global-require
+    var template = __webpack_require__(209); // eslint-disable-line global-require
     var statusCode = err.status || 500;
     res.status(statusCode);
     res.send(template({
@@ -1704,13 +1704,21 @@ module.exports =
   
   var _bookinglist2 = _interopRequireDefault(_bookinglist);
   
+  var _cancelbooking = __webpack_require__(175);
+  
+  var _cancelbooking2 = _interopRequireDefault(_cancelbooking);
+  
+  var _changebookingdate = __webpack_require__(180);
+  
+  var _changebookingdate2 = _interopRequireDefault(_changebookingdate);
+  
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
   exports.default = {
   
     path: '/',
   
-    children: [_home2.default, _logout2.default, _bookinglist2.default, _contact2.default, _login2.default, _providerlogin2.default, _verifypass2.default, _verifyproviderlogin2.default, _forgotpass2.default, _changepassword2.default, _updatepass2.default, _register2.default, _savecustomer2.default, _serviceprovider2.default, _saveprovider2.default, _booking2.default, _providerlist2.default, _savebooking2.default, _linkprovider2.default, _content2.default, _error2.default],
+    children: [_home2.default, _logout2.default, _bookinglist2.default, _contact2.default, _login2.default, _providerlogin2.default, _verifypass2.default, _verifyproviderlogin2.default, _forgotpass2.default, _changepassword2.default, _updatepass2.default, _register2.default, _savecustomer2.default, _serviceprovider2.default, _saveprovider2.default, _booking2.default, _cancelbooking2.default, _changebookingdate2.default, _providerlist2.default, _savebooking2.default, _linkprovider2.default, _content2.default, _error2.default],
   
     action: function action(_ref) {
       var _this = this;
@@ -3015,10 +3023,11 @@ module.exports =
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
   var sessionid;
+  var email;
   
   exports.default = {
   
-    path: '/',
+    path: '/home',
   
     action: function action(_ref, _ref2) {
       var _this = this;
@@ -3026,30 +3035,36 @@ module.exports =
       var query = _ref.query;
       var path = _ref2.path;
       return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
-        var body;
+        var body, bookinglist;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 sessionid = query.sessionid;
+                email = query.email;
                 console.log("Sessionid - index.js - Home " + sessionid);
   
                 if (!(sessionid === undefined || sessionid == '')) {
-                  _context.next = 9;
+                  _context.next = 10;
                   break;
                 }
   
-                _context.next = 5;
+                _context.next = 6;
                 return getSessionid();
   
-              case 5:
+              case 6:
                 body = _context.sent;
                 return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: body }));
   
-              case 9:
-                return _context.abrupt('return', _react2.default.createElement(_Home2.default, { sessionid: sessionid }));
-  
               case 10:
+                _context.next = 12;
+                return getBookingData();
+  
+              case 12:
+                bookinglist = _context.sent;
+                return _context.abrupt('return', _react2.default.createElement(_Home2.default, { sessionid: sessionid, bookinglist: bookinglist, email: email }));
+  
+              case 14:
               case 'end':
                 return _context.stop();
             }
@@ -3078,6 +3093,25 @@ module.exports =
           return reject(error);
         }
         console.log("getSessionid - Returning from API call");
+      });
+    });
+  }
+  
+  function getBookingData() {
+    var request = __webpack_require__(92);
+  
+    console.log('calling API');
+    var url = 'http://' + _config.apihost + '/getBookingHistory?email=' + email;
+    console.log("URL: " + url);
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside getBookingData Response from API (body)' + body);
+          resolve(body);
+        } else {
+          console.log("Error Object: " + error);
+          return reject(error);
+        }
       });
     });
   }
@@ -3133,60 +3167,258 @@ module.exports =
   
   function Home(_ref, context) {
     var sessionid = _ref.sessionid,
-        email = _ref.email;
+        email = _ref.email,
+        bookinglist = _ref.bookinglist;
   
     context.setTitle(title);
     context.setUser(user);
     // context.getUser('user');
     var logoutlink = "/logout?sessionid=" + sessionid;
     var bookinglink = "/booking?sessionid=" + sessionid;
-    return _react2.default.createElement(
-      'div',
-      null,
+    var bookingdata = JSON.parse(bookinglist);
+    return (
+      //<div className={s.root}>
+      // <div className={s.container}>
+      //   <h1>{title}</h1>
+  
       _react2.default.createElement(
-        _Link2.default,
-        { className: _Home2.default.link, to: bookinglink },
-        'Home Function'
-      ),
-      _react2.default.createElement(
-        _Link2.default,
-        { className: _Home2.default.link, to: '/contact' },
-        'Astrology'
-      ),
-      _react2.default.createElement('br', null),
-      _react2.default.createElement(
-        _Link2.default,
-        { className: _Home2.default.link, to: '/' },
-        'Marriage Services'
-      ),
-      _react2.default.createElement(
-        _Link2.default,
-        { className: _Home2.default.link, to: '/register' },
-        'Catering'
-      ),
-      _react2.default.createElement('br', null),
-      _react2.default.createElement(
-        _Link2.default,
-        { className: _Home2.default.link, to: logoutlink },
-        'Logout'
-      ),
-      _react2.default.createElement(
-        'span',
-        { className: _Home2.default.spacer },
-        ' | '
-      ),
-      _react2.default.createElement('input', {
-        id: 'sessionid',
-        type: 'hidden',
-        name: 'sessionid',
-        value: sessionid
-      }),
-      _react2.default.createElement('input', {
-        id: 'email',
-        type: 'hidden',
-        name: 'email',
-        value: email
-      })
+        'div',
+        { className: _Home2.default.cards },
+        _react2.default.createElement(
+          'div',
+          { className: _Home2.default.card },
+          _react2.default.createElement(
+            'header',
+            null,
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Search Provider'
+            )
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement('input', { type: 'text', id: 'category', name: 'category' }),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'button',
+            { id: 'search', name: 'search' },
+            'search'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _Home2.default.card },
+          _react2.default.createElement(
+            'header',
+            null,
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Service Booking'
+            )
+          ),
+          _react2.default.createElement(
+            _Link2.default,
+            { className: _Home2.default.link, to: bookinglink },
+            'Home Function'
+          ),
+          _react2.default.createElement(
+            _Link2.default,
+            { className: _Home2.default.link, to: '/contact' },
+            'Astrology'
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            _Link2.default,
+            { className: _Home2.default.link, to: '/' },
+            'Marriage Services'
+          ),
+          _react2.default.createElement(
+            _Link2.default,
+            { className: _Home2.default.link, to: '/register' },
+            'Catering'
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            _Link2.default,
+            { className: _Home2.default.link, to: logoutlink },
+            'Logout'
+          ),
+          _react2.default.createElement('input', {
+            id: 'sessionid',
+            type: 'hidden',
+            name: 'sessionid',
+            value: sessionid
+          }),
+          _react2.default.createElement('input', {
+            id: 'email',
+            type: 'hidden',
+            name: 'email',
+            value: email
+          })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _Home2.default.card },
+          _react2.default.createElement(
+            'header',
+            null,
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Booking History'
+            )
+          ),
+          _react2.default.createElement(
+            'form',
+            { name: 'form1', method: 'put', action: 'cancelbooking' },
+            _react2.default.createElement(
+              'table',
+              null,
+              _react2.default.createElement(
+                'caption',
+                null,
+                'Your Booking'
+              ),
+              _react2.default.createElement(
+                'thead',
+                null,
+                _react2.default.createElement(
+                  'tr',
+                  null,
+                  _react2.default.createElement(
+                    'th',
+                    null,
+                    'Select'
+                  ),
+                  _react2.default.createElement(
+                    'th',
+                    null,
+                    'Booking ID'
+                  ),
+                  _react2.default.createElement(
+                    'th',
+                    null,
+                    'Booking Date'
+                  ),
+                  _react2.default.createElement(
+                    'th',
+                    null,
+                    'Event Date'
+                  ),
+                  _react2.default.createElement(
+                    'th',
+                    null,
+                    'Event'
+                  ),
+                  _react2.default.createElement(
+                    'th',
+                    null,
+                    'E-mail'
+                  ),
+                  _react2.default.createElement(
+                    'th',
+                    null,
+                    'Phone'
+                  ),
+                  _react2.default.createElement(
+                    'th',
+                    null,
+                    'Status'
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                'tbody',
+                null,
+                bookingdata.map(function (obj, index) {
+                  return _react2.default.createElement(
+                    'tr',
+                    { key: index },
+                    _react2.default.createElement(
+                      'td',
+                      null,
+                      _react2.default.createElement('input', { type: 'radio', name: 'bookingid', value: obj.bookingid, checked: true }),
+                      ' '
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      null,
+                      ' ',
+                      obj.bookingid
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      null,
+                      ' ',
+                      obj.dateofbooking
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      null,
+                      ' ',
+                      obj.functiondate,
+                      ' '
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      null,
+                      ' ',
+                      obj.eventtype,
+                      ' '
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      null,
+                      ' ',
+                      obj.email,
+                      ' '
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      null,
+                      obj.mobile
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      null,
+                      ' ',
+                      obj.status
+                    )
+                  );
+                })
+              )
+            ),
+            _react2.default.createElement('input', {
+              id: 'sessionid',
+              type: 'hidden',
+              name: 'sessionid',
+              value: sessionid
+            }),
+            _react2.default.createElement('input', {
+              id: 'email',
+              type: 'hidden',
+              name: 'email',
+              value: email
+            }),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('input', { type: 'radio', name: 'manage', value: 'cancel', checked: true }),
+            'Cancel',
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('input', { type: 'radio', name: 'manage', value: 'changedate' }),
+            'Changedate',
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              'button',
+              { value: 'change', type: 'submit' },
+              'submit'
+            )
+          )
+        )
+      )
     );
   }
   
@@ -3237,7 +3469,7 @@ module.exports =
   
   
   // module
-  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.Home_root_3mf {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Home_container_2ac {\n  margin: 2cm 4cm 3cm 4cm auto;\n  padding: 10 10 100px;\n  max-width: 1000px;\n  max-height: 400px\n}\n\nhtml {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n\n.Home_link_1qG {\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  padding: 13px 13px;\n  text-decoration: none;\n  text-align: center;\n  font-size: 1.125em; /* ~18px */\n}\n\n.Home_link_1qG,\n.Home_link_1qG:active,\n.Home_link_1qG:visited {\n  color: rgba(0, 0, 255, 0.6);\n}\n\n.Home_link_1qG:hover {\n  color: rgba(0, 255, 0, 1);\n}\n\n.Home_highlight_30M {\n  margin-right: 8px;\n  margin-left: 8px;\n  border-radius: 3px;\n  background: rgba(0, 0, 0, 0.15);\n  color: #fff;\n}\n\n.Home_highlight_30M:hover {\n  background: rgba(0, 0, 0, 0.3);\n}\n\n.Home_spacer_3yS {\n  color: rgba(255, 255, 255, 0.3);\n}\n\n\n\n\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/home/Home.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,6BAA6B;EAC7B,qBAAqB;EACrB,kBAAoC;EACpC,iBAAiB;CAClB;;AAGD;EACE,+BAAuB;UAAvB,uBAAuB;CACxB;;AAED;EACE,4BAAqB;EAArB,6BAAqB;EAArB,4BAAqB;EAArB,qBAAqB;EACrB,mBAAmB;EACnB,sBAAsB;EACtB,mBAAmB;EACnB,mBAAmB,CAAC,WAAW;CAChC;;AAED;;;EAGE,4BAA4B;CAC7B;;AAED;EACE,0BAA0B;CAC3B;;AAED;EACE,kBAAkB;EAClB,iBAAiB;EACjB,mBAAmB;EACnB,gCAAgC;EAChC,YAAY;CACb;;AAED;EACE,+BAA+B;CAChC;;AAED;EACE,gCAAgC;CACjC","file":"Home.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 2cm 4cm 3cm 4cm auto;\n  padding: 10 10 100px;\n  max-width: var(--max-content-width);\n  max-height: 400px\n}\n\n\nhtml {\n  box-sizing: border-box;\n}\n\n.link {\n  display: inline-flex;\n  padding: 13px 13px;\n  text-decoration: none;\n  text-align: center;\n  font-size: 1.125em; /* ~18px */\n}\n\n.link,\n.link:active,\n.link:visited {\n  color: rgba(0, 0, 255, 0.6);\n}\n\n.link:hover {\n  color: rgba(0, 255, 0, 1);\n}\n\n.highlight {\n  margin-right: 8px;\n  margin-left: 8px;\n  border-radius: 3px;\n  background: rgba(0, 0, 0, 0.15);\n  color: #fff;\n}\n\n.highlight:hover {\n  background: rgba(0, 0, 0, 0.3);\n}\n\n.spacer {\n  color: rgba(255, 255, 255, 0.3);\n}\n\n\n\n\n"],"sourceRoot":"webpack://"}]);
+  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.Home_root_3mf {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Home_container_2ac {\n  margin: 2cm 4cm 3cm 4cm auto;\n  padding: 10 10 100px;\n  max-width: 1000px;\n  \n}\n\n.Home_link_1qG {\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  padding: 13px 13px;\n  text-decoration: none;\n  text-align: center;\n  font-size: 1.125em; /* ~18px */\n}\n\n.Home_link_1qG,\n.Home_link_1qG:active,\n.Home_link_1qG:visited {\n  color: rgba(0, 0, 255, 0.6);\n}\n\n.Home_link_1qG:hover {\n  color: rgba(0, 255, 0, 1);\n}\n\n.Home_highlight_30M {\n  margin-right: 8px;\n  margin-left: 8px;\n  border-radius: 3px;\n  background: rgba(0, 0, 0, 0.15);\n  color: #fff;\n}\n\n.Home_highlight_30M:hover {\n  background: rgba(0, 0, 0, 0.3);\n}\n\n.Home_spacer_3yS {\n  color: rgba(255, 255, 255, 0.3);\n}\n\n.Home_cards_2Jk {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  margin: 0 auto;\n  max-width: 1200px;\n\n}\n\n.Home_card_1uI {\n  margin: 0 5px;\n  -webkit-box-flex: 0;\n  -webkit-flex: 0 0 300px;\n      -ms-flex: 0 0 300px;\n          flex: 0 0 300px;\n}\n\nhtml {\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box;\n}\n\n*, *:before, *:after {\n  -webkit-box-sizing: inherit;\n          box-sizing: inherit;\n}\n\nbody {\n  font: 1em/1.1 Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  background-color: #fafafa;\n}\n\nimg {\n  max-width: 100%;\n}\n\n.Home_card_1uI {\n  background-color: #fff;\n  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);\n          box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);\n}\n\n.Home_card_1uI header {\n  padding: 10px;\n  background-color: rgb(131,112,255);\n  color: #fff;\n}\n\n.Home_card_1uI header h2 {\n  font-size: 14.4px;\n  font-size: 0.9rem;\n  font-weight: normal;\n  margin: 0;\n  padding: 0;\n}\n\n.Home_card_1uI .Home_body_14B {\n  padding: 5px;\n  font-size: 4.8px;\n  font-size: .3rem;\n  color: #757575;\n}\n\ntable, th, td {\n  border: 1px solid black;\n\n}\n\ntr:hover {background-color: #f5f5f5}\n\nth {\n  background-color: #4CAF50;\n  color: white;\n}\n\nth, td {\n    padding: 5px;\n    text-align: left;\n}\n\nbutton {\n  display: inline-block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 10px 6px;\n  padding: 5px 16px;\n  width: 30%;\n  outline: 10;\n  border: 4px solid #373277;\n\n  border-radius: 12px;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: inherit;\n  font-size: 12px;\n  line-height: 1.3333333;\n  cursor: pointer; \n  float: inherit;\n  \n}\n\nbutton:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\nbutton:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/home/Home.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,6BAA6B;EAC7B,qBAAqB;EACrB,kBAAoC;;CAErC;;AAID;EACE,4BAAqB;EAArB,6BAAqB;EAArB,4BAAqB;EAArB,qBAAqB;EACrB,mBAAmB;EACnB,sBAAsB;EACtB,mBAAmB;EACnB,mBAAmB,CAAC,WAAW;CAChC;;AAED;;;EAGE,4BAA4B;CAC7B;;AAED;EACE,0BAA0B;CAC3B;;AAED;EACE,kBAAkB;EAClB,iBAAiB;EACjB,mBAAmB;EACnB,gCAAgC;EAChC,YAAY;CACb;;AAED;EACE,+BAA+B;CAChC;;AAED;EACE,gCAAgC;CACjC;;AAED;EACE,qBAAc;EAAd,sBAAc;EAAd,qBAAc;EAAd,cAAc;EACd,eAAe;EACf,kBAAkB;;CAEnB;;AAED;EACE,cAAc;EACd,oBAAgB;EAAhB,wBAAgB;MAAhB,oBAAgB;UAAhB,gBAAgB;CACjB;;AAED;EACE,gCAAwB;UAAxB,wBAAwB;CACzB;;AACD;EACE,4BAAoB;UAApB,oBAAoB;CACrB;;AAED;EACE,qEAAqE;EACrE,0BAA0B;CAC3B;;AAED;EACE,gBAAgB;CACjB;;AAED;EACE,uBAAuB;EACvB,0GAAkG;UAAlG,kGAAkG;CACnG;;AAED;EACE,cAAc;EACd,mCAAmC;EACnC,YAAY;CACb;;AAED;EACE,kBAAkB;EAAlB,kBAAkB;EAClB,oBAAoB;EACpB,UAAU;EACV,WAAW;CACZ;;AAED;EACE,aAAa;EACb,iBAAiB;EAAjB,iBAAiB;EACjB,eAAe;CAChB;;AAED;EACE,wBAAwB;;CAEzB;;AACD,UAAU,yBAAyB,CAAC;;AACpC;EACE,0BAA0B;EAC1B,aAAa;CACd;;AACD;IACI,aAAa;IACb,iBAAiB;CACpB;;AAED;EACE,sBAAsB;EACtB,+BAAuB;UAAvB,uBAAuB;EACvB,iBAAiB;EACjB,kBAAkB;EAClB,WAAW;EACX,YAAY;EACZ,0BAA0B;;EAE1B,oBAAoB;EACpB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,yBAAyB;EACzB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;EAChB,eAAe;;CAEhB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C","file":"Home.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 2cm 4cm 3cm 4cm auto;\n  padding: 10 10 100px;\n  max-width: var(--max-content-width);\n  \n}\n\n\n\n.link {\n  display: inline-flex;\n  padding: 13px 13px;\n  text-decoration: none;\n  text-align: center;\n  font-size: 1.125em; /* ~18px */\n}\n\n.link,\n.link:active,\n.link:visited {\n  color: rgba(0, 0, 255, 0.6);\n}\n\n.link:hover {\n  color: rgba(0, 255, 0, 1);\n}\n\n.highlight {\n  margin-right: 8px;\n  margin-left: 8px;\n  border-radius: 3px;\n  background: rgba(0, 0, 0, 0.15);\n  color: #fff;\n}\n\n.highlight:hover {\n  background: rgba(0, 0, 0, 0.3);\n}\n\n.spacer {\n  color: rgba(255, 255, 255, 0.3);\n}\n\n.cards {\n  display: flex;\n  margin: 0 auto;\n  max-width: 1200px;\n\n}\n\n.card {\n  margin: 0 5px;\n  flex: 0 0 300px;\n}\n\nhtml {\n  box-sizing: content-box;\n}\n*, *:before, *:after {\n  box-sizing: inherit;\n}\n\nbody {\n  font: 1em/1.1 Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  background-color: #fafafa;\n}\n\nimg {\n  max-width: 100%;\n}\n\n.card {\n  background-color: #fff;\n  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);\n}\n\n.card header {\n  padding: 10px;\n  background-color: rgb(131,112,255);\n  color: #fff;\n}\n\n.card header h2 {\n  font-size: 0.9rem;\n  font-weight: normal;\n  margin: 0;\n  padding: 0;\n}\n\n.card .body {\n  padding: 5px;\n  font-size: .3rem;\n  color: #757575;\n}\n\ntable, th, td {\n  border: 1px solid black;\n\n} \ntr:hover {background-color: #f5f5f5}\nth {\n  background-color: #4CAF50;\n  color: white;\n}\nth, td {\n    padding: 5px;\n    text-align: left;\n}\n\nbutton {\n  display: inline-block;\n  box-sizing: border-box;\n  margin: 10px 6px;\n  padding: 5px 16px;\n  width: 30%;\n  outline: 10;\n  border: 4px solid #373277;\n\n  border-radius: 12px;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: inherit;\n  font-size: 12px;\n  line-height: 1.3333333;\n  cursor: pointer; \n  float: inherit;\n  \n}\n\nbutton:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\nbutton:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n"],"sourceRoot":"webpack://"}]);
   
   // exports
   exports.locals = {
@@ -3245,7 +3477,10 @@ module.exports =
   	"container": "Home_container_2ac",
   	"link": "Home_link_1qG",
   	"highlight": "Home_highlight_30M",
-  	"spacer": "Home_spacer_3yS"
+  	"spacer": "Home_spacer_3yS",
+  	"cards": "Home_cards_2Jk",
+  	"card": "Home_card_1uI",
+  	"body": "Home_body_14B"
   };
 
 /***/ },
@@ -3291,7 +3526,7 @@ module.exports =
     var sessionid = _ref.sessionid;
   
     context.setTitle(title);
-    console.log("Login.js-SessionId: " + { sessionid: sessionid });
+    console.log("Login.js-SessionId: " + sessionid);
     return _react2.default.createElement(
       'div',
       { className: _Login2.default.root },
@@ -4662,7 +4897,7 @@ module.exports =
     var sessionid = _ref.sessionid;
   
     context.setTitle(title);
-    console.log("Login.js-SessionId: " + { sessionid: sessionid });
+    console.log("Login.js-SessionId: " + sessionid);
     return _react2.default.createElement(
       'div',
       { className: _Login2.default.root },
@@ -5362,16 +5597,14 @@ module.exports =
       var query = _ref.query;
       var path = _ref2.path;
       return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
-        var body;
+        var body, bookinglist;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
   
                 console.log("inside the verifypass");
-                // var sess = request.session;
-                //session.sessionid = query.sessionid;
-                //console.log("Session ID: "+query.sessionid);
+  
                 userEmail = query.usernameOrEmail;
                 password = query.password;
                 sessionid = query.sessionid;
@@ -5389,7 +5622,7 @@ module.exports =
                 console.log("Result from API call: " + validLogin);
   
                 if (!(validLogin == 'true')) {
-                  _context.next = 20;
+                  _context.next = 23;
                   break;
                 }
   
@@ -5400,13 +5633,18 @@ module.exports =
                 body = _context.sent;
   
                 console.log(" Going to Home Page");
-                return _context.abrupt('return', _react2.default.createElement(_Home2.default, { sessionid: sessionid, email: userEmail }));
+                _context.next = 19;
+                return getBookingData();
   
-              case 20:
+              case 19:
+                bookinglist = _context.sent;
+                return _context.abrupt('return', _react2.default.createElement(_Home2.default, { sessionid: sessionid, email: userEmail, bookinglist: bookinglist }));
+  
+              case 23:
                 console.log(" Invalid Credential return to Login Page");
                 return _context.abrupt('return', _react2.default.createElement(_Login2.default, null));
   
-              case 22:
+              case 25:
               case 'end':
                 return _context.stop();
             }
@@ -5464,6 +5702,25 @@ module.exports =
       });
   
       console.log('returning');
+    });
+  }
+  
+  function getBookingData() {
+    var request = __webpack_require__(92);
+  
+    console.log('calling API');
+    var url = 'http://' + _config.apihost + '/getBookingHistory?email=' + userEmail;
+    console.log("URL: " + url);
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside getBookingData Response from API (body)' + body);
+          resolve(body);
+        } else {
+          console.log("Error Object: " + error);
+          return reject(error);
+        }
+      });
     });
   }
 
@@ -7246,7 +7503,7 @@ module.exports =
   
       var query = _ref.query;
       return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
-        var date, currentdate, sessionid, body;
+        var date, currentdate, sessionid, body, bookingid;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -7255,26 +7512,29 @@ module.exports =
                 currentdate = date.getDate() + '/' + date.getMonth() + 1 + '/' + date.getFullYear();
                 sessionid = query.sessionid;
   
+  
+                console.log("Booking Id: " + bookingid);
                 console.log("Sessionid - index.js - Booking : " + sessionid);
   
                 if (!(sessionid === undefined || sessionid == '')) {
-                  _context.next = 12;
+                  _context.next = 13;
                   break;
                 }
   
-                _context.next = 7;
+                _context.next = 8;
                 return getSessionid();
   
-              case 7:
+              case 8:
                 body = _context.sent;
   
                 console.log("Sessionid: " + body);
                 return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: body }));
   
-              case 12:
-                return _context.abrupt('return', _react2.default.createElement(_Booking2.default, { sessionid: sessionid }));
-  
               case 13:
+                bookingid = Math.floor(1000000 + Math.random() * 9000000);
+                return _context.abrupt('return', _react2.default.createElement(_Booking2.default, { sessionid: sessionid, bookingid: bookingid }));
+  
+              case 15:
               case 'end':
                 return _context.stop();
             }
@@ -7340,7 +7600,8 @@ module.exports =
   var currentdate = day + '/' + month + '/' + year;
   
   function Booking(_ref, context) {
-    var sessionid = _ref.sessionid;
+    var sessionid = _ref.sessionid,
+        bookingid = _ref.bookingid;
   
     context.setTitle(title);
     return _react2.default.createElement(
@@ -7498,6 +7759,12 @@ module.exports =
               type: 'hidden',
               name: 'sessionid',
               value: sessionid
+            }),
+            _react2.default.createElement('input', {
+              id: 'bookingid',
+              type: 'hidden',
+              name: 'bookingid',
+              value: bookingid
             })
           ),
           _react2.default.createElement(
@@ -7676,7 +7943,7 @@ module.exports =
   var status = true;
   var email;
   var phone;
-  var zipcode;
+  var bookingid;
   var providerlist;
   var sessionid;
   
@@ -7690,7 +7957,7 @@ module.exports =
       var query = _ref.query;
       var path = _ref2.path;
       return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
-        var sessionbody, body, mail, sms;
+        var sessionbody, body, mail;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -7700,45 +7967,41 @@ module.exports =
                 email = query.email;
                 console.log("Email: " + email);
                 sessionid = query.sessionid;
+                bookingid = query.bookingid;
                 console.log("Sessionid - index.js - Savebooking " + sessionid);
   
                 if (!(sessionid === undefined || sessionid == '')) {
-                  _context.next = 11;
+                  _context.next = 12;
                   break;
                 }
   
-                _context.next = 9;
+                _context.next = 10;
                 return getSessionid();
   
-              case 9:
+              case 10:
                 sessionbody = _context.sent;
                 return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: sessionbody }));
   
-              case 11:
-                _context.next = 13;
+              case 12:
+                _context.next = 14;
                 return SavebookingData(query);
   
-              case 13:
+              case 14:
                 body = _context.sent;
   
                 console.log("Calling SendEmail");
-                _context.next = 17;
+                _context.next = 18;
                 return sendEmail();
   
-              case 17:
+              case 18:
                 mail = _context.sent;
   
                 console.log("Calling sendSMS");
-                _context.next = 21;
-                return sendSMS();
-  
-              case 21:
-                sms = _context.sent;
-  
+                // var sms = await sendSMS();
                 console.log("Body: " + body);
   
                 if (status) {
-                  _context.next = 30;
+                  _context.next = 28;
                   break;
                 }
   
@@ -7747,17 +8010,17 @@ module.exports =
                 message1 = 'Click here to Register.';
                 return _context.abrupt('return', _react2.default.createElement(_Savebooking2.default, { message: message, redirectlink: href, message1: message1, sessionid: sessionid }));
   
-              case 30:
-                _context.next = 32;
+              case 28:
+                _context.next = 30;
                 return getProviderData();
   
-              case 32:
+              case 30:
                 providerlist = _context.sent;
   
                 console.log("Service Provider List: " + providerlist);
-                return _context.abrupt('return', _react2.default.createElement(_Providerlist2.default, { providerlist: providerlist, customeremail: email, sessionid: sessionid }));
+                return _context.abrupt('return', _react2.default.createElement(_Providerlist2.default, { providerlist: providerlist, customeremail: email, sessionid: sessionid, bookingid: bookingid }));
   
-              case 35:
+              case 33:
               case 'end':
                 return _context.stop();
             }
@@ -7801,7 +8064,7 @@ module.exports =
     console.log("URL: " + url);
   
     var subject = "Your booking for the event in BMY";
-    var message = "<b>Thank you for booking and service provider will get in touch shortly. </b> <br> <b> Your Booking id is <b> ";
+    var message = "<b>Thank you for booking and service provider will get in touch shortly. </b> <br> <b> Your Booking id is <b> " + bookingid;
     var formdata = {
       tomail: email,
       subject: subject,
@@ -8043,7 +8306,8 @@ module.exports =
   function Providerlist(_ref, props, context) {
     var providerlist = _ref.providerlist,
         customeremail = _ref.customeremail,
-        sessionid = _ref.sessionid;
+        sessionid = _ref.sessionid,
+        bookingid = _ref.bookingid;
   
     //context.setTitle(title);
   
@@ -8142,10 +8406,7 @@ module.exports =
                       _react2.default.createElement(
                         'td',
                         null,
-                        ' ',
-                        _react2.default.createElement('input', { id: 'email', type: 'hidden', value: obj.email }),
-                        obj.email,
-                        ' '
+                        obj.email
                       ),
                       _react2.default.createElement(
                         'td',
@@ -8188,6 +8449,7 @@ module.exports =
               _react2.default.createElement('br', null),
               _react2.default.createElement('input', { type: 'hidden', name: 'customeremail', value: customeremail }),
               _react2.default.createElement('input', { type: 'hidden', name: 'sessionid', value: sessionid }),
+              _react2.default.createElement('input', { type: 'hidden', name: 'bookingid', value: bookingid }),
               _react2.default.createElement(
                 'button',
                 { className: _Providerlist2.default.button, type: 'submit' },
@@ -8540,7 +8802,7 @@ module.exports =
       var query = _ref.query;
       var path = _ref2.path;
       return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
-        var provideremail, customeremail, sessionid, body, url, result;
+        var provideremail, customeremail, providerphone, bookingid, sessionid, providerrec, body, url, result;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -8548,32 +8810,43 @@ module.exports =
                 console.log("Query String - index.js - linkprovider: " + (0, _stringify2.default)(query));
                 provideremail = query.provideremail;
                 customeremail = query.customeremail;
+                bookingid = query.bookingid;
                 sessionid = query.sessionid;
+                _context.t0 = JSON;
+                _context.next = 8;
+                return getProviderRecord(provideremail);
   
+              case 8:
+                _context.t1 = _context.sent;
+                providerrec = _context.t0.parse.call(_context.t0, _context.t1);
+  
+                console.log("Provider Record: " + providerrec);
+                providerphone = providerrec[0].phone;
+                console.log("Provider Phone: " + providerphone);
                 console.log("Sessionid - index.js - Home " + sessionid);
   
                 if (!(sessionid === undefined || sessionid == '')) {
-                  _context.next = 10;
+                  _context.next = 19;
                   break;
                 }
   
-                _context.next = 8;
+                _context.next = 17;
                 return getSessionid();
   
-              case 8:
+              case 17:
                 body = _context.sent;
                 return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: body }));
   
-              case 10:
-                url = 'http://' + _config.apihost + '/updateProviderLink?provideremail=' + provideremail + '&email=' + customeremail;
+              case 19:
+                url = 'http://' + _config.apihost + '/updateProviderLink?provideremail=' + provideremail + '&email=' + customeremail + '&phone=' + providerphone + '&bookingid=' + bookingid;
   
                 console.log("Link Provider - Provider Email: " + provideremail);
                 console.log("Link Provider - Customer Email: " + customeremail);
                 console.log("URL: " + url);
-                _context.next = 16;
+                _context.next = 25;
                 return LinkProviderData(url);
   
-              case 16:
+              case 25:
                 result = _context.sent;
   
                 console.log("Return from LinkProviderData");
@@ -8581,11 +8854,12 @@ module.exports =
                   message = 'Error in Saving Booking Data';
                   href = 'http://' + _config.host + '/booking';
                   message1 = 'Click here to Re-booking';
+                } else {
+                  href = 'http://' + _config.host + '/home?sessionid=' + sessionid + '&email=' + customeremail;
                 }
-  
                 return _context.abrupt('return', _react2.default.createElement(_LinkProvider2.default, { message: message, redirectlink: href, message1: message1, sessionid: sessionid }));
   
-              case 20:
+              case 29:
               case 'end':
                 return _context.stop();
             }
@@ -8619,7 +8893,7 @@ module.exports =
     });
   }
   
-  function getSessionid() {
+  function getSessionid(email) {
     var request = __webpack_require__(92);
     console.log('genSessionid - calling API');
     var url = 'http://' + _config.apihost + '/genSessionid';
@@ -8634,6 +8908,28 @@ module.exports =
         } else {
   
           console.log("genSessionid -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("getSessionid - Returning from API call");
+      });
+    });
+  }
+  
+  function getProviderRecord(email) {
+    var request = __webpack_require__(92);
+    console.log('getProviderRecord - linkProvider - calling API');
+    var url = 'http://' + _config.apihost + '/getProvider?email=' + email;
+    console.log("getSeesionid - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('getProviderRecord - linkProvider - Response from API' + body);
+          //sessionid = body;
+          resolve(body);
+        } else {
+  
+          console.log("getProviderRecord - linkProvider -API Server not running: " + error);
           return reject(error);
         }
         console.log("getSessionid - Returning from API call");
@@ -9207,7 +9503,7 @@ module.exports =
               case 0:
   
                 sessionid = query.sessionid;
-                console.log("Sessionid - index.js - Home " + sessionid);
+                console.log("Sessionid - index.js - Providerlist " + sessionid);
   
                 if (!(sessionid === undefined || sessionid == '')) {
                   _context.next = 7;
@@ -9879,7 +10175,1010 @@ module.exports =
 /* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var extend = __webpack_require__(176);
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _promise = __webpack_require__(83);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _stringify = __webpack_require__(55);
+  
+  var _stringify2 = _interopRequireDefault(_stringify);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var sendSMS = function () {
+    var _ref3 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2() {
+      var mobiles, SMSmessage, url;
+      return _regenerator2.default.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              console.log('calling API - sendSMS method');
+              mobiles = phone + ',' + providermobile;
+  
+              console.log("Mobiles: " + mobiles);
+              SMSmessage = 'We cancelled your booking with id ' + id + ', booking please login to view the details';
+              url = 'http://' + _config.apihost + '/sendSMS?authkey=' + _config.smsAPIKey + '&mobiles=' + mobiles + '&message=' + SMSmessage + '&sender=DTSBMF&route=4&country=91';
+  
+              console.log("URL: " + url);
+              return _context2.abrupt('return', new _promise2.default(function (resolve, reject) {
+                request(url, function (error, response, body) {
+                  if (!error && response.statusCode == 200) {
+                    console.log('Inside sendSMS - Response from API (body)' + body);
+  
+                    if (error) {
+                      console.log("Error in Sending SMS");
+                      status = false;
+                      return reject(error);
+                    }
+  
+                    if (body == 'true') status = true;
+                    resolve(body);
+                  }
+                });
+              }));
+  
+            case 7:
+            case 'end':
+              return _context2.stop();
+          }
+        }
+      }, _callee2, this);
+    }));
+  
+    return function sendSMS() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Cancelbooking = __webpack_require__(176);
+  
+  var _Cancelbooking2 = _interopRequireDefault(_Cancelbooking);
+  
+  var _bookinglist = __webpack_require__(179);
+  
+  var _bookinglist2 = _interopRequireDefault(_bookinglist);
+  
+  var _Login = __webpack_require__(106);
+  
+  var _Login2 = _interopRequireDefault(_Login);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var request = __webpack_require__(92);
+  
+  var message = 'Booking done Sucessfully  ';
+  var href = 'http://' + _config.host + '/';
+  var message1 = 'Click here to login';
+  var status = true;
+  var email;
+  var phone;
+  var providermobile;
+  var providermail;
+  var sessionid;
+  var id;
+  
+  exports.default = {
+  
+    path: '/cancelbooking',
+  
+    action: function action(_ref, _ref2) {
+      var _this = this;
+  
+      var query = _ref.query;
+      var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var bookingrec, sessionbody, body, mail;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                console.log("Query String - index.js - Cancelbooking: " + (0, _stringify2.default)(query));
+                // phone = query.mobile;
+                email = query.email;
+                id = query.bookingid;
+                // phone = query.mobile;
+                console.log("Email: " + email);
+                console.log("Customer Mobile: " + phone);
+  
+                _context.t0 = JSON;
+                _context.next = 8;
+                return getBookingRecord();
+  
+              case 8:
+                _context.t1 = _context.sent;
+                bookingrec = _context.t0.parse.call(_context.t0, _context.t1);
+  
+                console.log("booking Record: " + bookingrec);
+                providermobile = bookingrec[0].providerphone;
+                phone = bookingrec[0].mobile;
+                console.log("Customer Mobile: " + phone);
+                providermail = bookingrec[0].provideremail;
+  
+                console.log("Provider Phone: " + providermobile);
+                console.log("Provider Email: " + providermail);
+  
+                sessionid = query.sessionid;
+                //console.log("Sessionid - index.js - Cancelbooking "+sessionid);
+  
+                if (!(sessionid === undefined || sessionid == '')) {
+                  _context.next = 23;
+                  break;
+                }
+  
+                _context.next = 21;
+                return getSessionid();
+  
+              case 21:
+                sessionbody = _context.sent;
+                return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: sessionbody }));
+  
+              case 23:
+                _context.next = 25;
+                return Cancelevent();
+  
+              case 25:
+                body = _context.sent;
+  
+                console.log("Calling SendEmail");
+                _context.next = 29;
+                return sendEmail();
+  
+              case 29:
+                mail = _context.sent;
+  
+                // console.log("Calling sendSMS");
+                //var sms = await sendSMS();
+                console.log("Body: " + body);
+                if (!status) {
+                  message = 'Unable to cancelling  the Event';
+                  href = 'http://' + _config.host + '/';
+                  message1 = 'Click here to Register.';
+                } else {
+                  message = 'Sucessfully canceled  the Event';
+                  href = href = 'http://' + _config.host + '/home?sessionid=' + sessionid + '&email=' + email;
+                  message1 = 'Click here to Home Page.';
+                }
+                return _context.abrupt('return', _react2.default.createElement(_Cancelbooking2.default, { message: message, redirectlink: href, message1: message1, sessionid: sessionid }));
+  
+              case 33:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    }
+  };
+  
+  
+  function Cancelevent() {
+  
+    console.log('calling API - SavebookingData method');
+    var url = 'http://' + _config.apihost + '/cancelBooking?id=' + id;
+    console.log("URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request.put(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside Cancelbooking Response from API (body)' + body);
+  
+          if (body == 'true') status = true;else status = false;
+          resolve(body);
+          //sendSMS();
+          //var result = await sendEmail();
+        }
+        if (error) {
+          console.log("Error in storing customer data");
+          status = false;
+          return reject(error);
+        }
+      });
+  
+      console.log('returning');
+    });
+  }
+  
+  function sendEmail() {
+    console.log('calling API - sendEmail');
+    var url = 'http://' + _config.apihost + '/sendmail';
+    console.log("URL: " + url);
+  
+    var subject = "Your booking for the event with id: " + id + " has been cancelled";
+    var message = "<b>Your booking for the event Cancelled as per your requst. Thank you for the booking and We continue to provide our best service. ";
+    var formdata = {
+      tomail: email + ' ,' + providermail,
+      subject: subject,
+      message: message
+    };
+  
+    //data = JSON.stringify('{\"tomail\": \"'+email+'\", \"subject\": '+subject+'\", \"message\": \" '+message+'\"}');
+    console.log("Data: " + formdata);
+    return new _promise2.default(function (resolve, reject) {
+      request.post(url, { form: formdata }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside sendEmail - Response from API (body)' + body);
+  
+          if (body == 'true') resolve(body);
+          status = true;
+        }
+        if (error) {
+          console.log("Error in Sending Mail");
+          status = false;
+          return reject(error);
+        }
+      });
+    });
+  }
+  
+  function getSessionid() {
+    var request = __webpack_require__(92);
+    console.log('genSessionid - calling API');
+    var url = 'http://' + _config.apihost + '/genSessionid';
+    console.log("getSeesionid - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('genSessionid - Response from API' + body);
+          //sessionid = body;
+          resolve(body);
+        } else {
+  
+          console.log("genSessionid -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("getSessionid - Returning from API call");
+      });
+    });
+  }
+  
+  function getBookingRecord() {
+    var request = __webpack_require__(92);
+    console.log('getBookingRecord - linkbooking - calling API');
+    var url = 'http://' + _config.apihost + '/getbookingrec?email=' + email + '&bookingid=' + id;
+    console.log("getSeesionid - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('getBookingRecord - linkbooking - Response from API' + body);
+          //sessionid = body;
+          resolve(body);
+        } else {
+  
+          console.log("getBookingRecord - linkbooking -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("getBookingRecord - Returning from API call");
+      });
+    });
+  }
+
+/***/ },
+/* 176 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Cancelbooking = __webpack_require__(177);
+  
+  var _Cancelbooking2 = _interopRequireDefault(_Cancelbooking);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'Cancel Booking'; /**
+                                 * React Starter Kit (https://www.reactstarterkit.com/)
+                                 *
+                                 * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+                                 *
+                                 * This source code is licensed under the MIT license found in the
+                                 * LICENSE.txt file in the root directory of this source tree.
+                                 */
+  
+  function Cancelbooking(_ref, context) {
+    var message = _ref.message,
+        redirectlink = _ref.redirectlink,
+        message1 = _ref.message1,
+        sessionid = _ref.sessionid;
+  
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      { className: _Cancelbooking2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Cancelbooking2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          message
+        ),
+        _react2.default.createElement(
+          'a',
+          { href: redirectlink },
+          message1,
+          ' '
+        ),
+        _react2.default.createElement('input', {
+          id: 'sessionid',
+          type: 'hidden',
+          name: 'sessionid',
+          value: sessionid
+        })
+      )
+    );
+  }
+  
+  Cancelbooking.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Cancelbooking2.default)(Cancelbooking);
+
+/***/ },
+/* 177 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(178);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Cancelbooking.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Cancelbooking.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, " .Cancelbooking_root_3yO {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Cancelbooking_container_3Po {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Cancelbooking_lead_2Lq {\n  font-size: 1.25em;\n}\n\n.Cancelbooking_formGroup_275 {\n  margin-bottom: 20px;\n  \n}\n\n.Cancelbooking_label_2u_ {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.Cancelbooking_input_oj0 {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.Cancelbooking_input_oj0:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Cancelbooking_button_Cpv {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Cancelbooking_button_Cpv:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Cancelbooking_button_Cpv:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Cancelbooking_icon_1XT {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Cancelbooking_lineThrough_30u {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Cancelbooking_lineThrough_30u::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Cancelbooking_lineThrough_30u::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n#Cancelbooking_lastname_poF{\n    max-width:100px;\n    float:left;\n}\n\n.Cancelbooking_div_1WF {\n  float:right;\n}\n\n#Cancelbooking_leftContainer_3ka {\n   float:left;\n}\n\n#Cancelbooking_rightContainer_72a {\n   float:right;\n}", "", {"version":3,"sources":["/./routes/cancelbooking/Cancelbooking.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAID;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb;;AACD;IACI,gBAAgB;IAChB,WAAW;CACd;;AAED;EACE,YAAY;CACb;;AAED;GACG,WAAW;CACb;;AAED;GACG,YAAY;CACd","file":"Cancelbooking.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n#lastname{\n    max-width:100px;\n    float:left;\n}\n\n.div {\n  float:right;\n}\n\n#leftContainer {\n   float:left;\n}\n\n#rightContainer {\n   float:right;\n}"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Cancelbooking_root_3yO",
+  	"container": "Cancelbooking_container_3Po",
+  	"lead": "Cancelbooking_lead_2Lq",
+  	"formGroup": "Cancelbooking_formGroup_275",
+  	"label": "Cancelbooking_label_2u_",
+  	"input": "Cancelbooking_input_oj0",
+  	"button": "Cancelbooking_button_Cpv",
+  	"icon": "Cancelbooking_icon_1XT",
+  	"lineThrough": "Cancelbooking_lineThrough_30u",
+  	"lastname": "Cancelbooking_lastname_poF",
+  	"div": "Cancelbooking_div_1WF",
+  	"leftContainer": "Cancelbooking_leftContainer_3ka",
+  	"rightContainer": "Cancelbooking_rightContainer_72a"
+  };
+
+/***/ },
+/* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Bookinglist = __webpack_require__(173);
+  
+  var _Bookinglist2 = _interopRequireDefault(_Bookinglist);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'Service booking Search';
+  
+  function Bookinglist(_ref, props, context) {
+    var Bookingdata = _ref.Bookingdata,
+        customeremail = _ref.customeremail,
+        sessionid = _ref.sessionid;
+  
+    //context.setTitle(title);
+  
+    var bookingdata = JSON.parse(Bookingdata);
+  
+    console.log("booking Data: " + bookingdata);
+    return _react2.default.createElement(
+      'div',
+      { className: _Bookinglist2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Bookinglist2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          'My Booking'
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'form',
+            { name: 'form1' },
+            _react2.default.createElement(
+              'div',
+              { className: _Bookinglist2.default.formGroup },
+              _react2.default.createElement(
+                'table',
+                null,
+                _react2.default.createElement(
+                  'caption',
+                  null,
+                  'Service Providers'
+                ),
+                _react2.default.createElement(
+                  'thead',
+                  null,
+                  _react2.default.createElement(
+                    'tr',
+                    null,
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Email'
+                    ),
+                    _react2.default.createElement('th', null),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Booking Date'
+                    ),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Function Date'
+                    ),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Mobile'
+                    ),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Status'
+                    ),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Event Type'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'tbody',
+                  null,
+                  bookingdata.map(function (obj, index) {
+                    return _react2.default.createElement(
+                      'tr',
+                      { key: index },
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        _react2.default.createElement('input', { type: 'radio', name: 'customeremail', value: obj.email }),
+                        ' '
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        _react2.default.createElement('input', { id: 'email', type: 'hidden', value: obj.email }),
+                        obj.email,
+                        ' '
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        obj.bookingdate
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        obj.functiondate
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        obj.mobile,
+                        ' '
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        obj.status
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        obj.eventtype
+                      )
+                    );
+                  })
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('input', { type: 'hidden', name: 'customeremail', value: customeremail }),
+              _react2.default.createElement('input', { type: 'hidden', name: 'sessionid', value: sessionid })
+            )
+          )
+        )
+      )
+    );
+  }
+  
+  Bookinglist.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Bookinglist2.default)(Bookinglist);
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _promise = __webpack_require__(83);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _stringify = __webpack_require__(55);
+  
+  var _stringify2 = _interopRequireDefault(_stringify);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var sendSMS = function () {
+    var _ref3 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2() {
+      var url;
+      return _regenerator2.default.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              console.log('calling API - sendSMS method');
+  
+              url = 'http://' + _config.apihost + '/sendSMS?authkey=' + _config.smsAPIKey + '&mobiles=' + phone + '&message=' + _config.SMSmessage + '&sender=DTSBMF&route=4&country=91';
+  
+              console.log("URL: " + url);
+              return _context2.abrupt('return', new _promise2.default(function (resolve, reject) {
+                request(url, function (error, response, body) {
+                  if (!error && response.statusCode == 200) {
+                    console.log('Inside sendSMS - Response from API (body)' + body);
+  
+                    if (error) {
+                      console.log("Error in Sending SMS");
+                      status = false;
+                      return reject(error);
+                    }
+  
+                    if (body == 'true') status = true;
+                    resolve(body);
+                  }
+                });
+              }));
+  
+            case 4:
+            case 'end':
+              return _context2.stop();
+          }
+        }
+      }, _callee2, this);
+    }));
+  
+    return function sendSMS() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Changebookingdate = __webpack_require__(181);
+  
+  var _Changebookingdate2 = _interopRequireDefault(_Changebookingdate);
+  
+  var _Providerlist = __webpack_require__(150);
+  
+  var _Providerlist2 = _interopRequireDefault(_Providerlist);
+  
+  var _Login = __webpack_require__(106);
+  
+  var _Login2 = _interopRequireDefault(_Login);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var request = __webpack_require__(92);
+  
+  var message = 'Booking done Sucessfully  ';
+  var href = 'http://' + _config.host + '/';
+  var message1 = 'Click here to login';
+  var status = true;
+  var email;
+  var phone;
+  var sessionid;
+  var id;
+  
+  exports.default = {
+  
+    path: '/changebookingdate',
+  
+    action: function action(_ref, _ref2) {
+      var _this = this;
+  
+      var query = _ref.query;
+      var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var sessionbody, body;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                console.log("Query String - index.js - Changebookingdate: " + (0, _stringify2.default)(query));
+                // phone = query.mobile;
+                email = query.email;
+                id = query.bookingid;
+                // console.log("Email: "+email);
+                sessionid = query.sessionid;
+                console.log("Sessionid - index.js - Changebookingdate " + sessionid);
+  
+                if (!(sessionid === undefined || sessionid == '')) {
+                  _context.next = 10;
+                  break;
+                }
+  
+                _context.next = 8;
+                return getSessionid();
+  
+              case 8:
+                sessionbody = _context.sent;
+                return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: sessionbody }));
+  
+              case 10:
+                _context.next = 12;
+                return Changedate();
+  
+              case 12:
+                body = _context.sent;
+  
+                /*console.log("Calling SendEmail");
+                var mail = await sendEmail();
+                console.log("Calling sendSMS");
+                var sms = await sendSMS();
+                console.log("Body: "+body);*/
+                if (!status) {
+                  message = 'Unable to Change booking date  the Event';
+                  href = 'http://' + _config.host + '/';
+                  message1 = 'Click here to Register.';
+                } else {
+                  message = 'Sucessfully booking date  the Event';
+                  href = 'http://' + _config.host + '/home';
+                  message1 = 'Click here to Home Page.';
+                }
+                return _context.abrupt('return', _react2.default.createElement(_Changebookingdate2.default, { message: message, redirectlink: href, message1: message1, sessionid: sessionid }));
+  
+              case 15:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    }
+  };
+  
+  
+  function Changedate() {
+  
+    console.log('calling API - SavebookingData method');
+    var url = 'http://' + _config.apihost + '/Changebookingdate?id=' + id;
+    console.log("URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request.put(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside Changebookingdate Response from API (body)' + body);
+  
+          if (body == 'true') status = true;else status = false;
+          resolve(body);
+          //sendSMS();
+          //var result = await sendEmail();
+        }
+        if (error) {
+          console.log("Error in storing customer data");
+          status = false;
+          return reject(error);
+        }
+      });
+  
+      console.log('returning');
+    });
+  }
+  
+  function sendEmail() {
+    console.log('calling API - sendEmail');
+    var url = 'http://' + _config.apihost + '/sendmail';
+    console.log("URL: " + url);
+  
+    var subject = "Your booking for the event in BMY";
+    var message = "<b>Thank you for booking and service provider will get in touch shortly. </b> <br> <b> Your Booking id is <b> ";
+    var formdata = {
+      tomail: email,
+      subject: subject,
+      message: message
+    };
+  
+    //data = JSON.stringify('{\"tomail\": \"'+email+'\", \"subject\": '+subject+'\", \"message\": \" '+message+'\"}');
+    console.log("Data: " + formdata);
+    return new _promise2.default(function (resolve, reject) {
+      request.post(url, { form: formdata }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside sendEmail - Response from API (body)' + body);
+  
+          if (body == 'true') resolve(body);
+          status = true;
+        }
+        if (error) {
+          console.log("Error in Sending Mail");
+          status = false;
+          return reject(error);
+        }
+      });
+    });
+  }
+  
+  function getSessionid() {
+    var request = __webpack_require__(92);
+    console.log('genSessionid - calling API');
+    var url = 'http://' + _config.apihost + '/genSessionid';
+    console.log("getSeesionid - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('genSessionid - Response from API' + body);
+          //sessionid = body;
+          resolve(body);
+        } else {
+  
+          console.log("genSessionid -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("getSessionid - Returning from API call");
+      });
+    });
+  }
+
+/***/ },
+/* 181 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Changebookingdate = __webpack_require__(182);
+  
+  var _Changebookingdate2 = _interopRequireDefault(_Changebookingdate);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'Change Booking Date'; /**
+                                      * React Starter Kit (https://www.reactstarterkit.com/)
+                                      *
+                                      * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+                                      *
+                                      * This source code is licensed under the MIT license found in the
+                                      * LICENSE.txt file in the root directory of this source tree.
+                                      */
+  
+  function Changebookingdate(_ref, context) {
+    var message = _ref.message,
+        redirectlink = _ref.redirectlink,
+        message1 = _ref.message1,
+        sessionid = _ref.sessionid;
+  
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      { className: _Changebookingdate2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Changebookingdate2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          message
+        ),
+        _react2.default.createElement(
+          'a',
+          { href: redirectlink },
+          message1,
+          ' '
+        ),
+        _react2.default.createElement('input', {
+          id: 'sessionid',
+          type: 'hidden',
+          name: 'sessionid',
+          value: sessionid
+        })
+      )
+    );
+  }
+  
+  Changebookingdate.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Changebookingdate2.default)(Changebookingdate);
+
+/***/ },
+/* 182 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(183);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Changebookingdate.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Changebookingdate.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 183 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, " .Changebookingdate_root_2cu {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Changebookingdate_container_YVr {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Changebookingdate_lead_31T {\n  font-size: 1.25em;\n}\n\n.Changebookingdate_formGroup_2VX {\n  margin-bottom: 20px;\n  \n}\n\n.Changebookingdate_label_2a0 {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.Changebookingdate_input_3Bm {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.Changebookingdate_input_3Bm:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Changebookingdate_button_1ma {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Changebookingdate_button_1ma:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Changebookingdate_button_1ma:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Changebookingdate_icon_3HY {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Changebookingdate_lineThrough_tyl {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Changebookingdate_lineThrough_tyl::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Changebookingdate_lineThrough_tyl::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n#Changebookingdate_lastname_KfY{\n    max-width:100px;\n    float:left;\n}\n\n.Changebookingdate_div_2Ly {\n  float:right;\n}\n\n#Changebookingdate_leftContainer_uyC {\n   float:left;\n}\n\n#Changebookingdate_rightContainer_2Ko {\n   float:right;\n}", "", {"version":3,"sources":["/./routes/changebookingdate/Changebookingdate.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAID;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb;;AACD;IACI,gBAAgB;IAChB,WAAW;CACd;;AAED;EACE,YAAY;CACb;;AAED;GACG,WAAW;CACb;;AAED;GACG,YAAY;CACd","file":"Changebookingdate.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n#lastname{\n    max-width:100px;\n    float:left;\n}\n\n.div {\n  float:right;\n}\n\n#leftContainer {\n   float:left;\n}\n\n#rightContainer {\n   float:right;\n}"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Changebookingdate_root_2cu",
+  	"container": "Changebookingdate_container_YVr",
+  	"lead": "Changebookingdate_lead_31T",
+  	"formGroup": "Changebookingdate_formGroup_2VX",
+  	"label": "Changebookingdate_label_2a0",
+  	"input": "Changebookingdate_input_3Bm",
+  	"button": "Changebookingdate_button_1ma",
+  	"icon": "Changebookingdate_icon_3HY",
+  	"lineThrough": "Changebookingdate_lineThrough_tyl",
+  	"lastname": "Changebookingdate_lastname_KfY",
+  	"div": "Changebookingdate_div_2Ly",
+  	"leftContainer": "Changebookingdate_leftContainer_uyC",
+  	"rightContainer": "Changebookingdate_rightContainer_2Ko"
+  };
+
+/***/ },
+/* 184 */
+/***/ function(module, exports, __webpack_require__) {
+
+  var extend = __webpack_require__(185);
   
   function Assets(options) {
     if (!(this instanceof Assets)) {
@@ -9891,7 +11190,7 @@ module.exports =
   }
   
   ['data', 'path', 'size', 'url'].forEach(function (resolver) {
-    Assets[resolver] = __webpack_require__(177)("./" + resolver);
+    Assets[resolver] = __webpack_require__(186)("./" + resolver);
     Assets.prototype[resolver] = function (path, callback) {
       return Assets[resolver](path, this.options, callback);
     };
@@ -9901,42 +11200,42 @@ module.exports =
 
 
 /***/ },
-/* 176 */
+/* 185 */
 /***/ function(module, exports) {
 
   module.exports = require("lodash/object/extend");
 
 /***/ },
-/* 177 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
   var map = {
-  	"./__utils__/composeAbsolutePathname": 178,
-  	"./__utils__/composeAbsolutePathname.js": 178,
-  	"./__utils__/composeQueryString": 182,
-  	"./__utils__/composeQueryString.js": 182,
-  	"./__utils__/composeRelativePathname": 183,
-  	"./__utils__/composeRelativePathname.js": 183,
-  	"./__utils__/convertPathToUrl": 179,
-  	"./__utils__/convertPathToUrl.js": 179,
-  	"./__utils__/defaultCachebuster": 184,
-  	"./__utils__/defaultCachebuster.js": 184,
-  	"./__utils__/encodeBuffer": 185,
-  	"./__utils__/encodeBuffer.js": 185,
-  	"./__utils__/ensureTrailingSlash": 180,
-  	"./__utils__/ensureTrailingSlash.js": 180,
-  	"./__utils__/exists": 186,
-  	"./__utils__/exists.js": 186,
-  	"./data": 187,
-  	"./data.js": 187,
-  	"./index": 175,
-  	"./index.js": 175,
-  	"./path": 189,
-  	"./path.js": 189,
-  	"./size": 193,
-  	"./size.js": 193,
-  	"./url": 195,
-  	"./url.js": 195
+  	"./__utils__/composeAbsolutePathname": 187,
+  	"./__utils__/composeAbsolutePathname.js": 187,
+  	"./__utils__/composeQueryString": 191,
+  	"./__utils__/composeQueryString.js": 191,
+  	"./__utils__/composeRelativePathname": 192,
+  	"./__utils__/composeRelativePathname.js": 192,
+  	"./__utils__/convertPathToUrl": 188,
+  	"./__utils__/convertPathToUrl.js": 188,
+  	"./__utils__/defaultCachebuster": 193,
+  	"./__utils__/defaultCachebuster.js": 193,
+  	"./__utils__/encodeBuffer": 194,
+  	"./__utils__/encodeBuffer.js": 194,
+  	"./__utils__/ensureTrailingSlash": 189,
+  	"./__utils__/ensureTrailingSlash.js": 189,
+  	"./__utils__/exists": 195,
+  	"./__utils__/exists.js": 195,
+  	"./data": 196,
+  	"./data.js": 196,
+  	"./index": 184,
+  	"./index.js": 184,
+  	"./path": 198,
+  	"./path.js": 198,
+  	"./size": 202,
+  	"./size.js": 202,
+  	"./url": 204,
+  	"./url.js": 204
   };
   function webpackContext(req) {
   	return __webpack_require__(webpackContextResolve(req));
@@ -9949,17 +11248,17 @@ module.exports =
   };
   webpackContext.resolve = webpackContextResolve;
   module.exports = webpackContext;
-  webpackContext.id = 177;
+  webpackContext.id = 186;
 
 
 /***/ },
-/* 178 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(179);
-  var ensureTrailingSlash = __webpack_require__(180);
+  var convertPathToUrl = __webpack_require__(188);
+  var ensureTrailingSlash = __webpack_require__(189);
   var path = __webpack_require__(4);
-  var url = __webpack_require__(181);
+  var url = __webpack_require__(190);
   
   module.exports = function (baseUrl, basePath, resolvedPath) {
     var from = ensureTrailingSlash(baseUrl);
@@ -9969,7 +11268,7 @@ module.exports =
 
 
 /***/ },
-/* 179 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
   var sep = __webpack_require__(4).sep;
@@ -9980,12 +11279,12 @@ module.exports =
 
 
 /***/ },
-/* 180 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(179);
+  var convertPathToUrl = __webpack_require__(188);
   var path = __webpack_require__(4);
-  var url = __webpack_require__(181);
+  var url = __webpack_require__(190);
   
   module.exports = function (urlStr) {
     var urlObj = url.parse(urlStr);
@@ -9995,13 +11294,13 @@ module.exports =
 
 
 /***/ },
-/* 181 */
+/* 190 */
 /***/ function(module, exports) {
 
   module.exports = require("url");
 
 /***/ },
-/* 182 */
+/* 191 */
 /***/ function(module, exports) {
 
   module.exports = function (current, addon) {
@@ -10013,10 +11312,10 @@ module.exports =
 
 
 /***/ },
-/* 183 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(179);
+  var convertPathToUrl = __webpack_require__(188);
   var path = __webpack_require__(4);
   
   module.exports = function (basePath, relativeTo, resolvedPath) {
@@ -10027,7 +11326,7 @@ module.exports =
 
 
 /***/ },
-/* 184 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
   var fs = __webpack_require__(32);
@@ -10039,7 +11338,7 @@ module.exports =
 
 
 /***/ },
-/* 185 */
+/* 194 */
 /***/ function(module, exports) {
 
   module.exports = function (buffer, mediaType) {
@@ -10051,7 +11350,7 @@ module.exports =
 
 
 /***/ },
-/* 186 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
   var fs = __webpack_require__(32);
@@ -10064,16 +11363,16 @@ module.exports =
 
 
 /***/ },
-/* 187 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var encodeBuffer = __webpack_require__(185);
-  var extend = __webpack_require__(176);
+  var encodeBuffer = __webpack_require__(194);
+  var extend = __webpack_require__(185);
   var fs = __webpack_require__(32);
-  var mime = __webpack_require__(188);
+  var mime = __webpack_require__(197);
   var Promise = __webpack_require__(33);
-  var resolvePath = __webpack_require__(189);
-  var url = __webpack_require__(181);
+  var resolvePath = __webpack_require__(198);
+  var url = __webpack_require__(190);
   
   var preadFile = Promise.promisify(fs.readFile);
   
@@ -10104,20 +11403,20 @@ module.exports =
 
 
 /***/ },
-/* 188 */
+/* 197 */
 /***/ function(module, exports) {
 
   module.exports = require("mime");
 
 /***/ },
-/* 189 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var async = __webpack_require__(190);
-  var exists = __webpack_require__(186);
-  var extend = __webpack_require__(176);
-  var flatten = __webpack_require__(191);
-  var glob = __webpack_require__(192);
+  var async = __webpack_require__(199);
+  var exists = __webpack_require__(195);
+  var extend = __webpack_require__(185);
+  var flatten = __webpack_require__(200);
+  var glob = __webpack_require__(201);
   var path = __webpack_require__(4);
   var Promise = __webpack_require__(33);
   
@@ -10162,30 +11461,30 @@ module.exports =
 
 
 /***/ },
-/* 190 */
+/* 199 */
 /***/ function(module, exports) {
 
   module.exports = require("async");
 
 /***/ },
-/* 191 */
+/* 200 */
 /***/ function(module, exports) {
 
   module.exports = require("lodash/array/flatten");
 
 /***/ },
-/* 192 */
+/* 201 */
 /***/ function(module, exports) {
 
   module.exports = require("glob");
 
 /***/ },
-/* 193 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var calipers = __webpack_require__(194)('webp', 'png', 'jpeg', 'gif', 'svg');
+  var calipers = __webpack_require__(203)('webp', 'png', 'jpeg', 'gif', 'svg');
   var Promise = __webpack_require__(33);
-  var resolvePath = __webpack_require__(189);
+  var resolvePath = __webpack_require__(198);
   
   module.exports = function (to, options, callback) {
     if (typeof options === 'function') {
@@ -10208,22 +11507,22 @@ module.exports =
 
 
 /***/ },
-/* 194 */
+/* 203 */
 /***/ function(module, exports) {
 
   module.exports = require("calipers");
 
 /***/ },
-/* 195 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var composeAbsolutePathname = __webpack_require__(178);
-  var composeQueryString = __webpack_require__(182);
-  var composeRelativePathname = __webpack_require__(183);
-  var defaultCachebuster = __webpack_require__(184);
-  var extend = __webpack_require__(176);
-  var resolvePath = __webpack_require__(189);
-  var url = __webpack_require__(181);
+  var composeAbsolutePathname = __webpack_require__(187);
+  var composeQueryString = __webpack_require__(191);
+  var composeRelativePathname = __webpack_require__(192);
+  var defaultCachebuster = __webpack_require__(193);
+  var extend = __webpack_require__(185);
+  var resolvePath = __webpack_require__(198);
+  var url = __webpack_require__(190);
   
   module.exports = function (to, options, callback) {
     if (typeof options === 'function') {
@@ -10273,22 +11572,22 @@ module.exports =
 
 
 /***/ },
-/* 196 */
+/* 205 */
 /***/ function(module, exports) {
 
   module.exports = require("mongodb");
 
 /***/ },
-/* 197 */
+/* 206 */
 /***/ function(module, exports) {
 
   module.exports = require("express-session");
 
 /***/ },
-/* 198 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var jade = __webpack_require__(199);
+  var jade = __webpack_require__(208);
   
   module.exports = function template(locals) {
   var jade_debug = [ new jade.DebugItem( 1, "C:\\dtsolutions\\bmfApp\\src\\views\\index.jade" ) ];
@@ -10391,7 +11690,7 @@ module.exports =
   }
 
 /***/ },
-/* 199 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -10643,10 +11942,10 @@ module.exports =
 
 
 /***/ },
-/* 200 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var jade = __webpack_require__(199);
+  var jade = __webpack_require__(208);
   
   module.exports = function template(locals) {
   var jade_debug = [ new jade.DebugItem( 1, "C:\\dtsolutions\\bmfApp\\src\\views\\error.jade" ) ];

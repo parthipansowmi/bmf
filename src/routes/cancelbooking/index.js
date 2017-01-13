@@ -1,6 +1,6 @@
 import React from 'react';
 import Cancelbooking from './Cancelbooking';
-import Providerlist from '../providerlist/Providerlist';
+import bookinglist from '../bookinglist/bookinglist';
 import Login from '../Login';
 import { host, apihost, smsAPIKey } from '../../config';
 var request = require('request');
@@ -11,7 +11,8 @@ var message1 = 'Click here to login'
 var status = true;
 var email;
 var phone;
-var providermoboil;
+var providermobile;
+var providermail;
 var sessionid;
 var id;
 
@@ -24,11 +25,22 @@ path: '/cancelbooking',
    // phone = query.mobile;
     email = query.email;
     id = query.bookingid;
-    phone = query.mobile;
+   // phone = query.mobile;
     console.log("Email: "+email);
     console.log("Customer Mobile: "+phone);
+
+    var bookingrec = JSON.parse(await getBookingRecord());
+    console.log("booking Record: "+bookingrec);
+    providermobile = bookingrec[0].providerphone;
+    phone = bookingrec[0].mobile;
+    console.log("Customer Mobile: "+phone);
+    providermail = bookingrec[0].provideremail;
+
+    console.log("Provider Phone: "+providermobile);
+    console.log("Provider Email: "+providermail);
+
     sessionid = query.sessionid;
-    console.log("Sessionid - index.js - Cancelbooking "+sessionid);
+    //console.log("Sessionid - index.js - Cancelbooking "+sessionid);
 
     if ( sessionid === undefined || sessionid == '')
        {
@@ -40,8 +52,8 @@ path: '/cancelbooking',
     var body = await Cancelevent();
     console.log("Calling SendEmail");
     var mail = await sendEmail();
-    console.log("Calling sendSMS");
-    var sms = await sendSMS();
+   // console.log("Calling sendSMS");
+    //var sms = await sendSMS();
     console.log("Body: "+body);
     if (!status) {
       message = 'Unable to cancelling  the Event';
@@ -92,8 +104,10 @@ return new Promise(function(resolve, reject) {
 
 async function sendSMS() {
   console.log('calling API - sendSMS method');
-  var SMSmessage = 'We cancelled your booking with id '+id+', Provider please login to view the details';
-  var url = `http://${apihost}/sendSMS?authkey=`+ smsAPIKey+'&mobiles='+ phone +'&message='+SMSmessage+'&sender=DTSBMF&route=4&country=91';
+  var mobiles = phone+','+providermobile;
+  console.log("Mobiles: "+mobiles);
+  var SMSmessage = 'We cancelled your booking with id '+id+', booking please login to view the details';
+  var url = `http://${apihost}/sendSMS?authkey=`+ smsAPIKey+'&mobiles='+ mobiles +'&message='+SMSmessage+'&sender=DTSBMF&route=4&country=91';
   console.log("URL: " + url);
    return new Promise(function(resolve, reject) {
   request(url, function (error, response, body) {
@@ -121,10 +135,10 @@ function sendEmail() {
   var url = `http://${apihost}/sendmail`;
   console.log("URL: " + url);
 
-  var subject = "Your booking for the event Cancelled as per your requst";
-  var message = "<b>Thank you for the booking and We continue to provider best service. ";
+  var subject = "Your booking for the event with id: "+id+" has been cancelled";
+  var message = "<b>Your booking for the event Cancelled as per your requst. Thank you for the booking and We continue to provide our best service. ";
   var formdata = { 
-  tomail: email, 
+  tomail: email+' ,'+providermail, 
   subject: subject, 
   message: message
 };
@@ -170,6 +184,31 @@ function getSessionid() {
       return reject(error);
     }
     console.log("getSessionid - Returning from API call")
+  });
+
+ });
+ 
+}
+
+function getBookingRecord() {
+  var request = require('request');
+  console.log('getBookingRecord - linkbooking - calling API');
+  var url = `http://${apihost}/getbookingrec?email=`+email+'&bookingid='+id;
+  console.log("getSeesionid - URL: " + url);
+  
+  return new Promise(function(resolve, reject) {
+  request(url, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log('getBookingRecord - linkbooking - Response from API' + body);
+      //sessionid = body;
+      resolve(body);
+    }
+    else {
+      
+      console.log("getBookingRecord - linkbooking -API Server not running: "+error);
+      return reject(error);
+    }
+    console.log("getBookingRecord - Returning from API call")
   });
 
  });

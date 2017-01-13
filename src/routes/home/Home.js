@@ -24,9 +24,10 @@ function Home({ sessionid, email, bookinglist }, context) {
   var bookinglink = "/booking?sessionid="+sessionid;
   var bookingdata = JSON.parse(bookinglist);
   return (
-   /* <div className={s.root}>
-      <div className={s.container}>
-        <h1>{title}</h1>*/
+    //<div className={s.root}>
+     // <div className={s.container}>
+     //   <h1>{title}</h1>
+       
     <div className={s.cards} >
      <div className={s.card}>
       <header>
@@ -83,8 +84,7 @@ function Home({ sessionid, email, bookinglist }, context) {
          
            { bookingdata.map((obj, index) => (
           <tr key={index}>
-            <td><input type="radio" name="bookingid" value={obj.bookingid} /> </td>
-            <input type="hidden" name="mobile" value={obj.mobile} />            
+            <td><input type="radio" name="bookingid" value={obj.bookingid} checked /> </td>                
             <td> {obj.bookingid}</td>
             <td> {obj.dateofbooking}</td>
             <td> {obj.functiondate} </td>
@@ -108,23 +108,21 @@ function Home({ sessionid, email, bookinglist }, context) {
               name="email"
               value={email}
               />
-        <button  value="" type="submit" >
-         Cancel
-        </button>
-
-        <button  value="" type="submit" >
-         Change Date
+        <br/>
+        <br/>
+        <input type="radio" name="manage" value="cancel" checked />Cancel<br/>
+        <input type="radio" name="manage" value="changedate"  />Changedate<br/>
+        <button  value="change" type="submit" >
+         submit
        </button>
        
        </form>
-    </div>
-          
+    </div>   
     
     </div>
     
   );
 }
-
 
 Home.contextTypes = { setTitle: PropTypes.func.isRequired, setUser: PropTypes.func.isRequired };
 

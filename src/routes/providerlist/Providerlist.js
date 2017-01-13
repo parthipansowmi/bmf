@@ -17,7 +17,7 @@ const title = 'Service Provider Search';
 function Providerlist({providerlist, customeremail, sessionid, bookingid}, props, context) {
   //context.setTitle(title);
   
-   var providerdata = JSON.parse(providerlist);  
+   var providerdata = JSON.parse(providerlist);
 
    console.log("Provider Data: "+providerdata);
     return (
@@ -38,8 +38,7 @@ function Providerlist({providerlist, customeremail, sessionid, bookingid}, props
            { providerdata.map((obj, index) => (
           <tr key={index}>
           <td><input type="radio" name="provideremail" value={obj.email} /> </td>
-            <td> <input id="email" type="hidden" value={obj.email}/>{obj.email} </td>
-            <td> <input id="phone" type="hidden" value={obj.phone}/></td>
+            <td>{obj.email}</td>
             <td> {obj.firstname}</td>
             <td> {obj.lname} </td>
             <td> {obj.address}</td>

@@ -52,13 +52,13 @@
 .cards {
   display: flex;
   margin: 0 auto;
-  max-width: 1800px;
+  max-width: 1200px;
 
 }
 
 .card {
   margin: 0 5px;
-  flex: 1 0 300px;
+  flex: 0 0 300px;
 }
 
 html {
@@ -97,7 +97,7 @@ img {
 
 .card .body {
   padding: 5px;
-  font-size: .6rem;
+  font-size: .3rem;
   color: #757575;
 }
 
@@ -132,7 +132,7 @@ button {
   font-size: 12px;
   line-height: 1.3333333;
   cursor: pointer; 
-  float: left;
+  float: inherit;
   
 }
 

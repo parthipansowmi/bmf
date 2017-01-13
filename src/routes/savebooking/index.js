@@ -39,8 +39,8 @@ path: '/savebooking',
     console.log("Calling SendEmail");
     var mail = await sendEmail();
     console.log("Calling sendSMS");
-    //var sms = await sendSMS();
-    //console.log("Body: "+body);
+   // var sms = await sendSMS();
+    console.log("Body: "+body);
     if (!status) {
       message = 'Unable to book the Event';
       href = `http://${host}/booking`;
