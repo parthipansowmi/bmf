@@ -21,8 +21,10 @@ function Home({ sessionid, email, bookinglist }, context) {
   context.setUser(user);
  // context.getUser('user');
   var logoutlink = "/logout?sessionid="+sessionid;
-  var bookinglink = "/booking?sessionid="+sessionid;
+  var bookinglink = "/booking?sessionid="+sessionid+"&email="+email;
   var bookingdata = JSON.parse(bookinglist);
+  var size = bookingdata.length;
+  console.log("Size of the booking List: "+size);
   return (
     //<div className={s.root}>
      // <div className={s.container}>
@@ -68,11 +70,13 @@ function Home({ sessionid, email, bookinglist }, context) {
               value={email}
               />
     </div>
+    
     <div className={s.card}>
     <header>
         <h2>Booking History</h2>
       </header>
-      <form name="form1" method="put" action="cancelbooking" >
+      <form name="form1" method="put" action="managebooking" >
+    
     <table>
         <caption>Your Booking</caption>
           <thead>
@@ -83,6 +87,7 @@ function Home({ sessionid, email, bookinglist }, context) {
           <tbody>
          
            { bookingdata.map((obj, index) => (
+                   
           <tr key={index}>
             <td><input type="radio" name="bookingid" value={obj.bookingid} checked /> </td>                
             <td> {obj.bookingid}</td>
@@ -115,11 +120,12 @@ function Home({ sessionid, email, bookinglist }, context) {
         <button  value="change" type="submit" >
          submit
        </button>
-       
-       </form>
-    </div>   
-    
-    </div>
+        </form>
+       </div> 
+      
+    }
+   
+     </div>
     
   );
 }

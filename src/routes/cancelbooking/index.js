@@ -1,7 +1,7 @@
 import React from 'react';
 import Cancelbooking from './Cancelbooking';
 import bookinglist from '../bookinglist/bookinglist';
-import Login from '../Login';
+import Login from '../login/Login';
 import { host, apihost, smsAPIKey } from '../../config';
 var request = require('request');
 

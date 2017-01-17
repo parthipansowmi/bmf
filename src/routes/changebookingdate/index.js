@@ -1,7 +1,6 @@
 import React from 'react';
 import Changebookingdate from './Changebookingdate';
-import Providerlist from '../providerlist/Providerlist';
-import Login from '../Login';
+import Login from '../login/Login';
 import { host, apihost, smsAPIKey, SMSmessage } from '../../config';
 var request = require('request');
 
@@ -9,10 +8,10 @@ var message = 'Booking done Sucessfully  '
 var href = `http://${host}/`;
 var message1 = 'Click here to login'
 var status = true;
-var email;
-var phone;
+var changeddate;
 var sessionid;
 var id;
+var email;
 
 export default {
 
@@ -20,19 +19,21 @@ path: '/changebookingdate',
 
  async action({query}, {path}) {
     console.log("Query String - index.js - Changebookingdate: " + JSON.stringify(query));
-   // phone = query.mobile;
-    email = query.email;
-    id = query.bookingid;
-   // console.log("Email: "+email);
     sessionid = query.sessionid;
     console.log("Sessionid - index.js - Changebookingdate "+sessionid);
 
-    if ( sessionid === undefined || sessionid == '')
+
+     if ( sessionid === undefined || sessionid == '')
        {
          var sessionbody = await getSessionid();
          return <Login sessionid = {sessionbody}/>
        }        
       
+     id = query.bookingid;
+    console.log("Booking Id: "+id);
+    changeddate = query.newdate
+   
+   
        
     var body = await Changedate();
     /*console.log("Calling SendEmail");
@@ -42,14 +43,14 @@ path: '/changebookingdate',
     console.log("Body: "+body);*/
     if (!status) {
       message = 'Unable to Change booking date  the Event';
-      href = `http://${host}/`;
+      href = `http://${host}/home`;
       message1 = 'Click here to Register.';
       
     }
     else
     {
-      message = 'Sucessfully booking date  the Event';
-      href = `http://${host}/home`;
+      message = 'Sucessfully changed booking date for  the Event';
+      href = `http://${host}/home?sessionid=`+sessionid+'&email='+email;
       message1 = 'Click here to Home Page.';
     }
    return <Changebookingdate message={message} redirectlink={href} message1={message1} sessionid = {sessionid} />;
@@ -60,7 +61,7 @@ path: '/changebookingdate',
 function Changedate() {
 
   console.log('calling API - SavebookingData method');
-  var url = `http://${apihost}/Changebookingdate?id=`+id;
+  var url = `http://${apihost}/changedate?id=`+id+'&date='+changeddate;
   console.log("URL: " + url);
 
 return new Promise(function(resolve, reject) {
@@ -167,6 +168,31 @@ function getSessionid() {
       return reject(error);
     }
     console.log("getSessionid - Returning from API call")
+  });
+
+ });
+ 
+}
+
+function getBookingRecord() {
+  var request = require('request');
+  console.log('getBookingRecord - linkbooking - calling API');
+  var url = `http://${apihost}/getbookingrec?email=`+email+'&bookingid='+id;
+  console.log("getSeesionid - URL: " + url);
+  
+  return new Promise(function(resolve, reject) {
+  request(url, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log('getBookingRecord - linkbooking - Response from API' + body);
+      //sessionid = body;
+      resolve(body);
+    }
+    else {
+      
+      console.log("getBookingRecord - linkbooking -API Server not running: "+error);
+      return reject(error);
+    }
+    console.log("getBookingRecord - Returning from API call")
   });
 
  });
