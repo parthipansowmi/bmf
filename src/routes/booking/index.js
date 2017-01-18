@@ -39,6 +39,7 @@ export default {
 
 };
 
+
 function getSessionid() {
   var request = require('request');
   console.log('genSessionid - calling API');

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Providerlist from './Providerlist';
+import Searchprovider from './Searchprovider';
 import { host, apihost } from '../../config';
 import Login from '../login/Login';
 
@@ -9,7 +9,7 @@ import Login from '../login/Login';
 
 export default {
 
-  path: '/providerlist',
+  path: '/searchprovider',
 
  async action({query}, {path}) {
 
