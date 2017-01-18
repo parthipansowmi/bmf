@@ -12,7 +12,7 @@ var year = date.getFullYear();
 var currentdate = day + '/' + month + '/' + year;
 
 
-function Booking({sessionid, bookingid, email}, context) {
+function Booking({sessionid, bookingid, email, phone}, context) {
   context.setTitle(title);
   return (
     <div className={s.root}>
@@ -56,7 +56,7 @@ function Booking({sessionid, bookingid, email}, context) {
               type="email"
               name="email"
               value={email}
-             
+             readOnly
               />
             <label className={s.label} htmlFor="mobile">
               <span>Mobile Number: </span>
@@ -66,7 +66,8 @@ function Booking({sessionid, bookingid, email}, context) {
               id="mobile"
               type="number"
               name="mobile"
-              required
+              value={phone}
+              readOnly
               />
           </div>
 

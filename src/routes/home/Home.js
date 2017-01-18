@@ -38,9 +38,15 @@ function Home({ sessionid, email, bookinglist }, context) {
       <br/>
       <br/>
       <input type="text" id="category" name="category" />
+      
       <br/>
       <br/>
-        <button  id="search" name="search">search</button>         
+      <input type="radio" id="searchterm" name="pincode" />Pincode
+      <br/>
+      <input type="radio" id="searchterm" name="city" />City
+      <br/>
+      <button  id="search" name="search">search</button>
+              
     </div>
 
     <div className={s.card}>
