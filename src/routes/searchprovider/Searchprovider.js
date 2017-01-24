@@ -9,12 +9,12 @@
 
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Providerlist.css';
+import s from './Searchprovider.css';
 
 const title = 'Service Provider Search';
 
 
-function Providerlist({providerlist, customeremail, sessionid, bookingid}, props, context) {
+function Searchprovider({providerlist, customeremail, sessionid}, props, context) {
   //context.setTitle(title);
   
    var providerdata = JSON.parse(providerlist);
@@ -24,7 +24,7 @@ function Providerlist({providerlist, customeremail, sessionid, bookingid}, props
     <div className={s.root}>
       <div className={s.container}>
         <h1>Service Provider Search</h1>
-        <p>Select Provider near by you</p>
+        
         <div>
         <form name="form1" method="put"  action="linkprovider" >
           <div className={s.formGroup}>
@@ -32,12 +32,11 @@ function Providerlist({providerlist, customeremail, sessionid, bookingid}, props
         <caption>Service Providers</caption>
           <thead>
           <tr>
-          <th>Select</th><th>Email</th><th>First Name</th><th>Last Name</th><th>Address</th><th>City</th><th>Phone</th></tr></thead>
+          <th>Email</th><th>First Name</th><th>Last Name</th><th>Address</th><th>City</th><th>Phone</th></tr></thead>
           <tbody>
          
            { providerdata.map((obj, index) => (
           <tr key={index}>
-          <td><input type="radio" name="provideremail" value={obj.email} /> </td>
             <td>{obj.email}</td>
             <td> {obj.firstname}</td>
             <td> {obj.lname} </td>
@@ -54,10 +53,7 @@ function Providerlist({providerlist, customeremail, sessionid, bookingid}, props
          <br></br>
          <input type="hidden" name="customeremail"  value={customeremail} />
          <input type="hidden" name="sessionid"  value={sessionid} />
-         <input type="hidden" name="bookingid"  value={bookingid} />
-         <button   className={s.button}  type="submit" >
-             Submit
-         </button>
+                
         </div>
          </form>
         </div>
@@ -68,6 +64,6 @@ function Providerlist({providerlist, customeremail, sessionid, bookingid}, props
 
 }
 
-Providerlist.contextTypes = { setTitle: PropTypes.func.isRequired };
+Searchprovider.contextTypes = { setTitle: PropTypes.func.isRequired };
 
-export default withStyles(s)(Providerlist);
+export default withStyles(s)(Searchprovider);

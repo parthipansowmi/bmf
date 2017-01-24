@@ -4,6 +4,7 @@ import App from '../components/App';
 
 // Child routes
 import home from './home';
+import search from './searchprovider'
 import contact from './contact';
 import login from './login';
 import register from './register';
@@ -27,6 +28,8 @@ import bookinglist from './bookinglist';
 import cancelbooking from './cancelbooking';
 import changebookingdate from './changebookingdate';
 import managebooking from './managebooking';
+import providerhome from './providerhome';
+import providerlogout from './providerlogout';
 
 export default {
 
@@ -35,11 +38,14 @@ export default {
 
   children: [
     home,
+    search,
     logout,
     bookinglist,
     contact,
     login,
     providerlogin,
+    providerhome,
+    providerlogout,
     verifypass,
     verifyproviderlogin,
     forgotpass,

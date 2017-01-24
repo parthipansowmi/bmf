@@ -8,7 +8,8 @@ import Link from '../../components/Link'
 
 const title = 'Entering Credentials';
 
-function Providerlogin(props, context) {
+function Providerlogin({sessionid}, context) {
+  console.log("ProviderLogin.js-SessionId: "+sessionid);
   context.setTitle(title);
   
   return (
@@ -41,6 +42,12 @@ function Providerlogin(props, context) {
               type="password"
               name="password"
               required="required"
+              />
+              <input
+              id="sessionid"
+              type="hidden"
+              name="sessionid"
+              value={sessionid}
               />
 
           </div>

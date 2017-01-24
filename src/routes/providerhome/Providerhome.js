@@ -9,14 +9,14 @@
 
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Home.css';
+import s from './Providerhome.css';
 import Link from '../../components/Link';
 import cx from 'classnames';
 
 const title = 'Welcome to World of Opporunity';
 const user = 'Customer';
 
-function Home({ sessionid, email, bookinglist }, context) {
+function Providerhome({ sessionid, email, bookinglist }, context) {
   context.setTitle(title);
   context.setUser(user);
  // context.getUser('user');
@@ -67,7 +67,7 @@ function Home({ sessionid, email, bookinglist }, context) {
     <header>
         <h2>Service Booking</h2>
       </header>
-      <Link className={s.link} to={bookinglink}>Home Function</Link>
+      <Link className={s.link} to={bookinglink}>Providerhome Function</Link>
       
       <Link className={s.link} to="/contact">Astrology</Link>
      <br/>
@@ -150,6 +150,6 @@ function Home({ sessionid, email, bookinglist }, context) {
   );
 }
 
-Home.contextTypes = { setTitle: PropTypes.func.isRequired, setUser: PropTypes.func.isRequired };
+Providerhome.contextTypes = { setTitle: PropTypes.func.isRequired, setUser: PropTypes.func.isRequired };
 
-export default withStyles(s)(Home);
+export default withStyles(s)(Providerhome);

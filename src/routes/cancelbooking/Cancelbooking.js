@@ -20,6 +20,8 @@ function Cancelbooking({message, redirectlink, message1, sessionid}, context) {
       <div className={s.container}>
         <h1>{title}</h1>
         <p>{message}</p>
+        <script>
+        </script>
         <a href={redirectlink}>{message1} </a>
          <input
               id="sessionid"
