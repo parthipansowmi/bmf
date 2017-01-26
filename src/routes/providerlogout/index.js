@@ -1,24 +1,24 @@
 import React from 'react';
-import Logout from './Logout';
-import Login from '../login/Login';
+import Providerlogout from './Providerlogout';
+import Login from '../providerlogin/Providerlogin';
 import { host, apihost} from '../../config';
 
 var message = 'Thanks for visiting our website. You have Sucessfully Logged out '
 var message1 = 'Click here to login';
-var href = `http://${host}/login`;
+var href = `http://${host}/providerlogin`;
 var status;
 var sessionid;
 
 export default {
 
-  path: '/logout',
+  path: '/providerlogout',
 
  async action({query}, {path}) {
     sessionid = query.sessionid;
     console.log("Logout - index.js - Sessionid: "+sessionid);
     var body = await deleteSession();
     console.log("Session deleted");
-    return <Logout message={message} redirectlink={href} message1={message1} />;
+    return <Providerlogout message={message} redirectlink={href} message1={message1} />;
     //return <Login />;
    
   },

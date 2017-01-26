@@ -1,20 +1,22 @@
 
 import React from 'react';
-import Home from './Providerhome';
-import Login from '../providerlogin/Providerlogin'
+import Providerhome from './Providerhome';
+import Providerlogin from '../providerlogin/Providerlogin'
 import { apihost } from '../../config';
 
 var sessionid;
 var email;
+var provider="provider";
 
 export default {
 
-  path: '/home',
+  path: '/providerhome',
 
   async action({query}, {path}) {
     sessionid = query.sessionid;
     email=query.email;
-    console.log("Sessionid - index.js - Home "+sessionid);
+
+    console.log("Sessionid - index.js - Providerhome "+sessionid);
        if ( sessionid === undefined || sessionid == '')
        {
          var body = await getSessionid();
@@ -23,7 +25,7 @@ export default {
        else
        {
         var bookinglist = await getBookingData();
-        return <Providerhome  sessionid={sessionid} bookinglist={bookinglist} email={email} type="provider"/>;
+        return <Providerhome  sessionid={sessionid} bookinglist={bookinglist} email={email} provider={provider}/>;
        }
   },
 
@@ -58,7 +60,7 @@ function getBookingData() {
   var request = require('request');
  
   console.log('calling API');
-  var url = `http://${apihost}/getBookingHistory?email=`+email;
+  var url = `http://${apihost}/getbookingrecbyprovider?email=`+email;
   console.log("URL: " + url);
   return new Promise(function(resolve, reject) {
     request(url,  function (error, response, body) {

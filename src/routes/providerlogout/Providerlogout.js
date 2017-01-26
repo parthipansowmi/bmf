@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Logout.css';
+import s from './Providerlogout.css';
 
-const title = 'Logout';
+const title = 'Provider Logout';
 
 function Logout({message, redirectlink, message1}, context) {
   context.setTitle(title);

@@ -19,7 +19,7 @@ function Booking({sessionid, bookingid, email, phone}, context) {
       <div className={s.container}>
         <h1>{title}</h1>
         <form name="form1" method="put" action="savebooking" >
-          <div className= {s.rightContainer}>
+          <div className= {s.leftContainer}>
           <input id="status" type="hidden"  value="booked" name="status" />
             <label className={s.label} htmlFor="dateofbooking">
               Date of Booking:
@@ -46,7 +46,7 @@ function Booking({sessionid, bookingid, email, phone}, context) {
               />
           </div>
 
-          <div>
+          <div >
             <label className={s.label} htmlFor="email">
               <span>E-mail: </span>
             </label>

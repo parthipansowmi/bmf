@@ -16,19 +16,19 @@ import cx from 'classnames';
 const title = 'Welcome to World of Opporunity';
 const user = 'Customer';
 
-function Providerhome({ sessionid, email, bookinglist }, context) {
+function Providerhome({ sessionid,  bookinglist, email, provider }, context) {
   context.setTitle(title);
   context.setUser(user);
  // context.getUser('user');
-  var logoutlink = "/logout?sessionid="+sessionid;
+  var logoutlink = "/providerlogout?sessionid="+sessionid;
   var bookinglink = "/booking?sessionid="+sessionid+"&email="+email;
   var bookingdata = JSON.parse(bookinglist);
   var size = bookingdata.length;
   console.log("Size of the booking List: "+size);
   return (
     //<div className={s.root}>
-     // <div className={s.container}>
-     //   <h1>{title}</h1>
+     //<div className={s.container}>
+    //   <h1>{title}</h1>
        
     <div className={s.cards} >
      <div className={s.card}>
@@ -101,7 +101,7 @@ function Providerhome({ sessionid, email, bookinglist }, context) {
         <caption>Your Booking</caption>
           <thead>
           <tr>
-          <th>Select</th><th>Booking ID</th><th>Booking Date</th><th>Event Date</th><th>Event</th><th>E-mail</th><th>Phone</th><th>Status</th>
+          <th>Select</th><th>Booking ID</th><th>Booking Date</th><th>Event Date</th><th>Event</th><th>Customer E-mail</th><th>Customer Mobile</th><th>Status</th>
           </tr>
           </thead>
           <tbody>
@@ -133,20 +133,20 @@ function Providerhome({ sessionid, email, bookinglist }, context) {
               name="email"
               value={email}
               />
+              <input type="hidden" name="provider" value="provider" />
         <br/>
         <br/>
         <input type="radio" name="manage" value="cancel" checked />Cancel<br/>
-        <input type="radio" name="manage" value="changedate"  />Changedate<br/>
+        <input type="radio" name="manage" value="close"  />Close Booking<br/>
+        
         <button  value="change" type="submit" >
          submit
        </button>
         </form>
        </div> 
-      
-    }
-   
-     </div>
     
+     </div>
+         
   );
 }
 

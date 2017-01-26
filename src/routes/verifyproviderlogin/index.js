@@ -30,13 +30,14 @@ export default {
     sessionid = query.sessionid;
     console.log(userEmail);
     console.log(password);
+    console.log("Session Id: "+sessionid);
    
     console.log('calling checkLogin');
     var body = await checklogin();
     console.log("Result from API call: "+validLogin)
      if (validLogin == 'true') {
       var body = await SaveSessionData();
-      console.log(" Going to Home Page");
+      console.log(" Going to Provider Home Page");
       var bookinglist = await getBookingData();
       return <Providerhome sessionid={sessionid} email={userEmail} bookinglist={bookinglist} />;
     }
@@ -112,7 +113,7 @@ function getBookingData() {
   var request = require('request');
  
   console.log('calling API');
-  var url = `http://${apihost}/getBookingHistory?email=`+userEmail;
+  var url = `http://${apihost}/getbookingrecbyprovider?email=`+userEmail;
   console.log("URL: " + url);
   return new Promise(function(resolve, reject) {
     request(url,  function (error, response, body) {
