@@ -31,7 +31,7 @@ function Providerhome({ sessionid,  bookinglist, email, provider }, context) {
     //   <h1>{title}</h1>
        
     <div className={s.cards} >
-     <div className={s.card}>
+     <div className={s.card} >
       <header>
         <h2>Search Provider</h2>
       </header>
@@ -67,15 +67,11 @@ function Providerhome({ sessionid,  bookinglist, email, provider }, context) {
     <header>
         <h2>Service Booking</h2>
       </header>
-      <Link className={s.link} to={bookinglink}>Providerhome Function</Link>
+      <Link className={s.link} to={bookinglink}>Edit Profile</Link>
       
-      <Link className={s.link} to="/contact">Astrology</Link>
+      <Link className={s.link} to="/contact">Add New Service</Link>
      <br/>
-      <Link className={s.link } to="/">Marriage Services</Link>
-      
-      <Link className={s.link} to="/register">Catering</Link>
-      <br/>
-      <Link className={s.link} to={logoutlink} >Logout</Link>
+            <Link className={s.link} to={logoutlink} >Logout</Link>
             
       <input
               id="sessionid"

@@ -1,30 +1,26 @@
 import React from 'react';
-import Forgotpass from './Forgotpass';
-import Login from '../login/Login';
-//import Providerlogin from '../providerlogin/Providerlogin'
+import Provideforgotpass from './Providerforgotpass';
+import Providerlogin from '../providerlogin/Providerlogin'
 import { apihost, host } from '../../config';
 var request = require('request');
 
 var status = 'false';
 var errormessage = '';
 //var user;
-var href;
-var message;
-var message1;
 
 export default {
 
-  path: '/forgotpass',
+  path: '/providerforgotpass',
 
   async action({query}, {path}) {
     var email = query.email;
-    //user = query.user;
+  // user = query.user;
 
     console.log("Email ID:" + email);
-    //console.log("User: "+user);
+   // console.log("User: "+user);
 
     if (typeof email === 'undefined')
-      return <Forgotpass />;
+      return <Provideforgotpass />;
     else {
 
         var  validlogin = await checkLogin(email);
@@ -42,14 +38,13 @@ export default {
     console.log("Status: "+status);
     if (status == true)
     {
-      
-        console.log("Redirected to Login Page");
-        return <Login />;
+      console.log("Redirected to Login Page");
+      return <Providerlogin />;
     }      
     else
     {
       console.log("Error in Reseting password request");
-      return <Forgotpass errormessage={errormessage} />;
+      return <Providerforgotpass errormessage={errormessage} />;
     }
       
   }
@@ -62,7 +57,7 @@ function sendEmail(email, code) {
   console.log("URL: " + url);
 
   var subject = "Your Password Reset";
-  var href = `http://${host}/changepassword?code=`+code+'&userEmail='+email;
+  var href = `http://${host}/providerchangepassword?code=`+code+'&userEmail='+email;
   console.log("Href: "+href);
   var message = '<b>We received your request for password Reset. <a href="'+href+ '" >Click here to reset password</a> ';
   var formdata = { 
@@ -132,14 +127,15 @@ function storePasscode(email, code) {
 
 function checkLogin(email) {
   
-  console.log('calling API - checkLogin - forgotpass');
-  var url = `http://${apihost}/findemail?email=` + email;
+  console.log('calling API');
   
+  var url = `http://${apihost}/checkemail?email=` + email;  
   console.log("URL: " + url);
+
   return new Promise(function (resolve, reject) {
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      console.log('Response from API: - Forgot Passwor - Cutomer' + body);
+      console.log('Response from API: ' + body);
       if ( body == 'true')
         status = true;
       resolve(body);

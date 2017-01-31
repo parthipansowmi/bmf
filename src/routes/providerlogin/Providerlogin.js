@@ -55,9 +55,9 @@ function Providerlogin({sessionid}, context) {
             <button className={s.button1}   type="submit" >
               Log in
             </button>
-            <Link  to="/forgotpass">Forgot Password</Link>
+            <Link  to="/providerforgotpass">Forgot Password</Link>
             <span className={s.spacer}> | </span>
-            <Link  to="/register">Sign Up</Link>
+            <Link  to="/serviceprovider">Sign Up</Link>
           </div>
         </form>
       </div>

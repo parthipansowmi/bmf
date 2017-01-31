@@ -1,16 +1,16 @@
 import React from 'react';
-import Updatepass from './Updatepass';
-import Changepassword from '../changepassword/Changepassword';
-import { host, apihost } from '../../config';
+import Updateproviderpass from './Updateproviderpass';
+import Providerchangepassword from '../providerchangepassword/Providerchangepassword';
+import {host, apihost } from '../../config';
 var status = true;
 var message = 'Password Sucessfully Updated'
-var href = `http://${host}/login`;
+var href = `http://${host}/providerlogin`;
 var message1 = 'Click here to login'
 var passcode; 
 
 export default {
 
-  path: '/updatepass',
+  path: '/updateproviderpass',
 
  async action({query}, {path}) {
 
@@ -25,7 +25,7 @@ export default {
     if ( newpass != confirmpass)
      {
        message = "Password Not matching"
-       return <Changepassword email ={email} message={message}/>;
+       return <Providerchangepassword email ={email} message={message}/>;
      } 
     
     var body = await updatePassword(newpass, email);
@@ -37,7 +37,7 @@ export default {
       var deletecode = await deletePassCode();
      }
       
-     return <Updatepass message={message} message1={message1} redirectlink={href}/>
+     return <Updateproviderpass message={message} message1={message1} redirectlink={href}/>
   }
 
 };
@@ -45,17 +45,17 @@ export default {
 
 function updatePassword(newpass, email) {
   var request = require('request');
-  console.log("Inside updatePassword method email: " + email);
-  console.log("Inside updatePassword method Password: " + newpass);
+  console.log("Inside Updateproviderpassword method email: " + email);
+  console.log("Inside Updateproviderpassword method Password: " + newpass);
   console.log('calling API');
-  var url = `http://${apihost}/updatecred?newpass=`+newpass+'&email='+email;
-  console.log("Update Password - URL: " + url);
+  var url = `http://${apihost}/updatelogin?newpass=`+newpass+'&email='+email;
+  console.log("Update Updateproviderpass Password - URL: " + url);
 
   return new Promise(function(resolve, reject) {
   
   request.put(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      console.log('Change Password - Response from API' + body);
+      console.log('Change Password - Updateproviderpass - Response from API' + body);
       if ( body == 'true') {
             status = true;
           }
@@ -68,7 +68,7 @@ function updatePassword(newpass, email) {
     }
   else {
       status = false;
-      console.log("Change Password -API Server not running: ")+error;
+      console.log("Updateproviderpass - API Server not running: ")+error;
       return reject(error);
     }
   });

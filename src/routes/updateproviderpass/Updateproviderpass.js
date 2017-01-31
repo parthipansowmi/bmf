@@ -9,25 +9,24 @@
 
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './updatepass.css';
-import Link from '../../components/Link'
+import s from './Updateproviderpass.css';
+//import Link from '../../components/Link'
 
-const title = 'Update Password';
+const title = 'Update Provider Password';
 
-function Updatepass({message, message1, redirectlink}, context) {
+function Updateproviderpass({message, message1, redirectlink}, context) {
   context.setTitle(title);
       return (
        <div className={s.root}>
       <div className={s.container}>
         <h1>{title}</h1>
         <p>{message}</p>
-        <a href={redirectlink}>{message1} </a>
-                 
+        <a href={redirectlink}>{message1} </a>     
       </div>
     </div>
   );
 }
 
-Updatepass.contextTypes = { setTitle: PropTypes.func.isRequired };
+Updateproviderpass.contextTypes = { setTitle: PropTypes.func.isRequired };
 
-export default withStyles(s)(Updatepass);
+export default withStyles(s)(Updateproviderpass);

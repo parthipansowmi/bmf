@@ -8,11 +8,11 @@ import search from './searchprovider'
 import contact from './contact';
 import login from './login';
 import register from './register';
+import forgotpass from './forgotpass'
 import savecustomer from './savecustomer';
 import content from './content';
 import error from './error';
 import verifypass from './verifypass'
-import forgotpass from './forgotpass'
 import changepassword from './changepassword'
 import updatepass from './updatepass'
 import serviceprovider from './serviceprovider'
@@ -20,6 +20,9 @@ import saveprovider from './saveprovider'
 import booking from './booking';
 import savebooking from './savebooking'
 import providerlogin from './providerlogin'
+import providerforgotpass from './providerforgotpass'
+import providerchangepassword from './providerchangepassword'
+import updateproviderpass from './updateproviderpass'
 import linkprovider from './linkprovider'
 import verifyproviderlogin from './verifyproviderlogin'
 import providerlist from './providerlist';
@@ -30,6 +33,7 @@ import changebookingdate from './changebookingdate';
 import managebooking from './managebooking';
 import providerhome from './providerhome';
 import providerlogout from './providerlogout';
+
 
 export default {
 
@@ -50,7 +54,10 @@ export default {
     verifyproviderlogin,
     forgotpass,
     changepassword,
+    providerforgotpass,
+    providerchangepassword,
     updatepass,
+    updateproviderpass,
     register,
     savecustomer,
     serviceprovider,    

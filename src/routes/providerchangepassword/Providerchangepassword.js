@@ -2,7 +2,7 @@
 
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './changepassword.css';
+import s from './providerchangepassword.css';
 import Link from '../../components/Link'
 
 const title = 'Changing Password';
@@ -19,7 +19,7 @@ function Changepassword({email, passCode, message}, context) {
         <script type="text/javascript" src="../scripts/passwordmatch.js">
          
         </script>
-        <form name="form1" method="put" action="updatepass" >
+        <form name="form1" method="put" action="updateproviderpass" >
         
           <div className={s.formGroup}>
             <label className={s.label} htmlFor="password">
