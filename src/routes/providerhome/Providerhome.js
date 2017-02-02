@@ -21,7 +21,8 @@ function Providerhome({ sessionid,  bookinglist, email, provider }, context) {
   context.setUser(user);
  // context.getUser('user');
   var logoutlink = "/providerlogout?sessionid="+sessionid;
-  var bookinglink = "/booking?sessionid="+sessionid+"&email="+email;
+  var updateEmail = "/changeprovideremail?sessionid="+sessionid+"&email="+email;
+  var updatePhone = "/updateproviderphone?sessionid="+sessionid+"&email="+email;
   var bookingdata = JSON.parse(bookinglist);
   var size = bookingdata.length;
   console.log("Size of the booking List: "+size);
@@ -67,8 +68,8 @@ function Providerhome({ sessionid,  bookinglist, email, provider }, context) {
     <header>
         <h2>Service Booking</h2>
       </header>
-      <Link className={s.link} to={bookinglink}>Edit Profile</Link>
-      
+      <Link className={s.link} to={updateEmail}>Change E-mail</Link>
+      <Link className={s.link} to={updatePhone}>Change Mobile No</Link>
       <Link className={s.link} to="/contact">Add New Service</Link>
      <br/>
             <Link className={s.link} to={logoutlink} >Logout</Link>
