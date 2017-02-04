@@ -2,69 +2,56 @@
 
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './changepassword.css';
-import Link from '../../components/Link'
-
-const title = 'Changing Password';
+import s from './changeproviderphone.css';
+const title = 'Changing Provider Phone';
 
 
 
-function Changepassword({email, passCode, message}, context) {
-  console.log("Changepassword: "+email);
+function Changeproviderphone({email, phone}, context) {
+  console.log("Changeproviderphone: "+email);
   context.setTitle(title);
   return (
     <div className={s.root}>
       <div className={s.container}>
         <h1>{title}</h1>
-        <script type="text/javascript" src="../scripts/passwordmatch.js">
-         
-        </script>
-        <form name="form1" method="put" action="updatepass" >
+        
+        <form name="form1" method="put" action="confirmOTP" >
         
           <div className={s.formGroup}>
-            <label className={s.label} htmlFor="password">
-              New Password:
+            <label className={s.label} htmlFor="phone">
+              Current phone:
             </label>
             <input
               className={s.input}
-              id="newpass"
-              type="password"
-              name="newpass"
-              autoFocus
-              required
+              id="oldphone"
+              type="text"
+              name="oldphone"
+              value={phone}
+              readOnly
               />
-          </div>
-          <div className={s.formGroup}>
-            <label className={s.label} htmlFor="password">
-              Confirm Password:
+                    
+            <label className={s.label} htmlFor="newphone">
+              New phone:
             </label>
             <input
               className={s.input}
-              id="confirmpass"
-              type="password"
-              name="confirmpass"              
+              id="newphone"
+              type="text"
+              name="newphone"              
               />
-              <label className={s.label1} htmlFor="message">
-              {message}
-            </label>
-          </div>
-          <div className={s.formGroup}>
-            <button className={s.button}    value="Change Password" type="submit" >
-              Change Password
-            </button>
-            <input
-              className={s.input}
+          
+           <input   
               id="email"
               type="hidden"
               name="email"
               value = {email}
               />
-              <input   
-              id="code"
-              type="hidden"
-              name="code"
-              value = {passCode}
-              />
+         </div> 
+          <div className={s.formGroup}>
+            <button className={s.button}    value="Change phone" type="submit" >
+              Change phone
+            </button>
+            
           </div>
           <script>
           </script>
@@ -76,6 +63,6 @@ function Changepassword({email, passCode, message}, context) {
   );
 }
 
-Changepassword.contextTypes = { setTitle: PropTypes.func.isRequired };
+Changeproviderphone.contextTypes = { setTitle: PropTypes.func.isRequired };
 
-export default withStyles(s)(Changepassword);
+export default withStyles(s)(Changeproviderphone);

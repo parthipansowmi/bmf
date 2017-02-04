@@ -112,7 +112,7 @@ module.exports =
   
   var _routes2 = _interopRequireDefault(_routes);
   
-  var _assets = __webpack_require__(184);
+  var _assets = __webpack_require__(230);
   
   var _assets2 = _interopRequireDefault(_assets);
   
@@ -120,9 +120,9 @@ module.exports =
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var mongodb = __webpack_require__(205); // eslint-disable-line import/no-unresolved
+  var mongodb = __webpack_require__(251); // eslint-disable-line import/no-unresolved
   
-  var session = __webpack_require__(206);
+  var session = __webpack_require__(252);
   
   var app = (0, _express2.default)();
   app.use(session({
@@ -198,7 +198,7 @@ module.exports =
                       case 0:
                         css = [];
                         statusCode = 200;
-                        template = __webpack_require__(207); // eslint-disable-line global-require
+                        template = __webpack_require__(253); // eslint-disable-line global-require
   
                         data = { title: '', description: '', user: '', css: '', body: '', entry: 'assets.main.js' }; //assets.main.js
                         //var sess = req.session;
@@ -286,7 +286,7 @@ module.exports =
   app.use(function (err, req, res, next) {
     // eslint-disable-line no-unused-vars
     console.log(pe.render(err)); // eslint-disable-line no-console
-    var template = __webpack_require__(209); // eslint-disable-line global-require
+    var template = __webpack_require__(255); // eslint-disable-line global-require
     var statusCode = err.status || 500;
     res.status(statusCode);
     res.send(template({
@@ -1624,93 +1624,141 @@ module.exports =
   
   var _home2 = _interopRequireDefault(_home);
   
-  var _contact = __webpack_require__(93);
+  var _searchprovider = __webpack_require__(93);
+  
+  var _searchprovider2 = _interopRequireDefault(_searchprovider);
+  
+  var _contact = __webpack_require__(100);
   
   var _contact2 = _interopRequireDefault(_contact);
   
-  var _login = __webpack_require__(97);
+  var _login = __webpack_require__(104);
   
   var _login2 = _interopRequireDefault(_login);
   
-  var _register = __webpack_require__(98);
+  var _register = __webpack_require__(105);
   
   var _register2 = _interopRequireDefault(_register);
   
-  var _savecustomer = __webpack_require__(102);
-  
-  var _savecustomer2 = _interopRequireDefault(_savecustomer);
-  
-  var _content = __webpack_require__(110);
-  
-  var _content2 = _interopRequireDefault(_content);
-  
-  var _error = __webpack_require__(114);
-  
-  var _error2 = _interopRequireDefault(_error);
-  
-  var _verifypass = __webpack_require__(118);
-  
-  var _verifypass2 = _interopRequireDefault(_verifypass);
-  
-  var _forgotpass = __webpack_require__(122);
+  var _forgotpass = __webpack_require__(109);
   
   var _forgotpass2 = _interopRequireDefault(_forgotpass);
   
-  var _changepassword = __webpack_require__(126);
+  var _savecustomer = __webpack_require__(113);
+  
+  var _savecustomer2 = _interopRequireDefault(_savecustomer);
+  
+  var _content = __webpack_require__(121);
+  
+  var _content2 = _interopRequireDefault(_content);
+  
+  var _error = __webpack_require__(125);
+  
+  var _error2 = _interopRequireDefault(_error);
+  
+  var _verifypass = __webpack_require__(129);
+  
+  var _verifypass2 = _interopRequireDefault(_verifypass);
+  
+  var _changepassword = __webpack_require__(133);
   
   var _changepassword2 = _interopRequireDefault(_changepassword);
   
-  var _updatepass = __webpack_require__(130);
+  var _updatepass = __webpack_require__(137);
   
   var _updatepass2 = _interopRequireDefault(_updatepass);
   
-  var _serviceprovider = __webpack_require__(134);
+  var _serviceprovider = __webpack_require__(141);
   
   var _serviceprovider2 = _interopRequireDefault(_serviceprovider);
   
-  var _saveprovider = __webpack_require__(138);
+  var _saveprovider = __webpack_require__(145);
   
   var _saveprovider2 = _interopRequireDefault(_saveprovider);
   
-  var _booking = __webpack_require__(142);
+  var _booking = __webpack_require__(149);
   
   var _booking2 = _interopRequireDefault(_booking);
   
-  var _savebooking = __webpack_require__(146);
+  var _savebooking = __webpack_require__(153);
   
   var _savebooking2 = _interopRequireDefault(_savebooking);
   
-  var _providerlogin = __webpack_require__(153);
+  var _providerlogin = __webpack_require__(157);
   
   var _providerlogin2 = _interopRequireDefault(_providerlogin);
   
-  var _linkprovider = __webpack_require__(157);
+  var _providerforgotpass = __webpack_require__(161);
+  
+  var _providerforgotpass2 = _interopRequireDefault(_providerforgotpass);
+  
+  var _providerchangepassword = __webpack_require__(166);
+  
+  var _providerchangepassword2 = _interopRequireDefault(_providerchangepassword);
+  
+  var _updateproviderpass = __webpack_require__(170);
+  
+  var _updateproviderpass2 = _interopRequireDefault(_updateproviderpass);
+  
+  var _linkprovider = __webpack_require__(174);
   
   var _linkprovider2 = _interopRequireDefault(_linkprovider);
   
-  var _verifyproviderlogin = __webpack_require__(161);
+  var _verifyproviderlogin = __webpack_require__(178);
   
   var _verifyproviderlogin2 = _interopRequireDefault(_verifyproviderlogin);
   
-  var _providerlist = __webpack_require__(166);
+  var _providerlist = __webpack_require__(182);
   
   var _providerlist2 = _interopRequireDefault(_providerlist);
   
-  var _logout = __webpack_require__(167);
+  var _logout = __webpack_require__(183);
   
   var _logout2 = _interopRequireDefault(_logout);
   
-  var _bookinglist = __webpack_require__(171);
+  var _bookinglist = __webpack_require__(187);
   
   var _bookinglist2 = _interopRequireDefault(_bookinglist);
   
-  var _cancelbooking = __webpack_require__(175);
+  var _cancelbooking = __webpack_require__(191);
   
   var _cancelbooking2 = _interopRequireDefault(_cancelbooking);
   
-  var _changebookingdate = __webpack_require__(180);
+  var _changebookingdate = __webpack_require__(196);
   
   var _changebookingdate2 = _interopRequireDefault(_changebookingdate);
+  
+  var _managebooking = __webpack_require__(200);
+  
+  var _managebooking2 = _interopRequireDefault(_managebooking);
+  
+  var _providerhome = __webpack_require__(205);
+  
+  var _providerhome2 = _interopRequireDefault(_providerhome);
+  
+  var _providerlogout = __webpack_require__(206);
+  
+  var _providerlogout2 = _interopRequireDefault(_providerlogout);
+  
+  var _changeprovideremail = __webpack_require__(210);
+  
+  var _changeprovideremail2 = _interopRequireDefault(_changeprovideremail);
+  
+  var _changeproviderphone = __webpack_require__(214);
+  
+  var _changeproviderphone2 = _interopRequireDefault(_changeproviderphone);
+  
+  var _updateprovideremail = __webpack_require__(218);
+  
+  var _updateprovideremail2 = _interopRequireDefault(_updateprovideremail);
+  
+  var _updateproviderphone = __webpack_require__(222);
+  
+  var _updateproviderphone2 = _interopRequireDefault(_updateproviderphone);
+  
+  var _confirmOTP = __webpack_require__(226);
+  
+  var _confirmOTP2 = _interopRequireDefault(_confirmOTP);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
@@ -1718,7 +1766,7 @@ module.exports =
   
     path: '/',
   
-    children: [_home2.default, _logout2.default, _bookinglist2.default, _contact2.default, _login2.default, _providerlogin2.default, _verifypass2.default, _verifyproviderlogin2.default, _forgotpass2.default, _changepassword2.default, _updatepass2.default, _register2.default, _savecustomer2.default, _serviceprovider2.default, _saveprovider2.default, _booking2.default, _cancelbooking2.default, _changebookingdate2.default, _providerlist2.default, _savebooking2.default, _linkprovider2.default, _content2.default, _error2.default],
+    children: [_home2.default, _searchprovider2.default, _logout2.default, _bookinglist2.default, _contact2.default, _login2.default, _providerlogin2.default, _providerhome2.default, _providerlogout2.default, _verifypass2.default, _verifyproviderlogin2.default, _forgotpass2.default, _changepassword2.default, _providerforgotpass2.default, _providerchangepassword2.default, _changeprovideremail2.default, _changeproviderphone2.default, _updatepass2.default, _updateproviderpass2.default, _updateprovideremail2.default, _confirmOTP2.default, _updateproviderphone2.default, _register2.default, _savecustomer2.default, _serviceprovider2.default, _saveprovider2.default, _booking2.default, _managebooking2.default, _cancelbooking2.default, _changebookingdate2.default, _providerlist2.default, _savebooking2.default, _linkprovider2.default, _content2.default, _error2.default],
   
     action: function action(_ref) {
       var _this = this;
@@ -3174,8 +3222,10 @@ module.exports =
     context.setUser(user);
     // context.getUser('user');
     var logoutlink = "/logout?sessionid=" + sessionid;
-    var bookinglink = "/booking?sessionid=" + sessionid;
+    var bookinglink = "/booking?sessionid=" + sessionid + "&email=" + email;
     var bookingdata = JSON.parse(bookinglist);
+    var size = bookingdata.length;
+    console.log("Size of the booking List: " + size);
     return (
       //<div className={s.root}>
       // <div className={s.container}>
@@ -3198,13 +3248,34 @@ module.exports =
           ),
           _react2.default.createElement('br', null),
           _react2.default.createElement('br', null),
-          _react2.default.createElement('input', { type: 'text', id: 'category', name: 'category' }),
-          _react2.default.createElement('br', null),
-          _react2.default.createElement('br', null),
           _react2.default.createElement(
-            'button',
-            { id: 'search', name: 'search' },
-            'search'
+            'form',
+            { name: 'searchform', method: 'get', action: 'searchprovider' },
+            _react2.default.createElement('input', { type: 'text', id: 'category', name: 'category' }),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('input', { type: 'radio', name: 'searchterm', value: 'pincode' }),
+            'Pincode',
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('input', { type: 'radio', name: 'searchterm', value: 'city' }),
+            'City',
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              'button',
+              { className: _Home2.default.button, value: 'Search', type: 'submit' },
+              'Search'
+            ),
+            _react2.default.createElement('input', { id: 'sessionid',
+              type: 'hidden',
+              name: 'sessionid',
+              value: sessionid
+            }),
+            _react2.default.createElement('input', {
+              id: 'email',
+              type: 'hidden',
+              name: 'email',
+              value: email
+            })
           )
         ),
         _react2.default.createElement(
@@ -3273,7 +3344,7 @@ module.exports =
           ),
           _react2.default.createElement(
             'form',
-            { name: 'form1', method: 'put', action: 'cancelbooking' },
+            { name: 'form1', method: 'get', action: 'managebooking' },
             _react2.default.createElement(
               'table',
               null,
@@ -3417,7 +3488,8 @@ module.exports =
               'submit'
             )
           )
-        )
+        ),
+        '}'
       )
     );
   }
@@ -3469,7 +3541,7 @@ module.exports =
   
   
   // module
-  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.Home_root_3mf {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Home_container_2ac {\n  margin: 2cm 4cm 3cm 4cm auto;\n  padding: 10 10 100px;\n  max-width: 1000px;\n  \n}\n\n.Home_link_1qG {\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  padding: 13px 13px;\n  text-decoration: none;\n  text-align: center;\n  font-size: 1.125em; /* ~18px */\n}\n\n.Home_link_1qG,\n.Home_link_1qG:active,\n.Home_link_1qG:visited {\n  color: rgba(0, 0, 255, 0.6);\n}\n\n.Home_link_1qG:hover {\n  color: rgba(0, 255, 0, 1);\n}\n\n.Home_highlight_30M {\n  margin-right: 8px;\n  margin-left: 8px;\n  border-radius: 3px;\n  background: rgba(0, 0, 0, 0.15);\n  color: #fff;\n}\n\n.Home_highlight_30M:hover {\n  background: rgba(0, 0, 0, 0.3);\n}\n\n.Home_spacer_3yS {\n  color: rgba(255, 255, 255, 0.3);\n}\n\n.Home_cards_2Jk {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  margin: 0 auto;\n  max-width: 1200px;\n\n}\n\n.Home_card_1uI {\n  margin: 0 5px;\n  -webkit-box-flex: 0;\n  -webkit-flex: 0 0 300px;\n      -ms-flex: 0 0 300px;\n          flex: 0 0 300px;\n}\n\nhtml {\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box;\n}\n\n*, *:before, *:after {\n  -webkit-box-sizing: inherit;\n          box-sizing: inherit;\n}\n\nbody {\n  font: 1em/1.1 Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  background-color: #fafafa;\n}\n\nimg {\n  max-width: 100%;\n}\n\n.Home_card_1uI {\n  background-color: #fff;\n  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);\n          box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);\n}\n\n.Home_card_1uI header {\n  padding: 10px;\n  background-color: rgb(131,112,255);\n  color: #fff;\n}\n\n.Home_card_1uI header h2 {\n  font-size: 14.4px;\n  font-size: 0.9rem;\n  font-weight: normal;\n  margin: 0;\n  padding: 0;\n}\n\n.Home_card_1uI .Home_body_14B {\n  padding: 5px;\n  font-size: 4.8px;\n  font-size: .3rem;\n  color: #757575;\n}\n\ntable, th, td {\n  border: 1px solid black;\n\n}\n\ntr:hover {background-color: #f5f5f5}\n\nth {\n  background-color: #4CAF50;\n  color: white;\n}\n\nth, td {\n    padding: 5px;\n    text-align: left;\n}\n\nbutton {\n  display: inline-block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 10px 6px;\n  padding: 5px 16px;\n  width: 30%;\n  outline: 10;\n  border: 4px solid #373277;\n\n  border-radius: 12px;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: inherit;\n  font-size: 12px;\n  line-height: 1.3333333;\n  cursor: pointer; \n  float: inherit;\n  \n}\n\nbutton:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\nbutton:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/home/Home.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,6BAA6B;EAC7B,qBAAqB;EACrB,kBAAoC;;CAErC;;AAID;EACE,4BAAqB;EAArB,6BAAqB;EAArB,4BAAqB;EAArB,qBAAqB;EACrB,mBAAmB;EACnB,sBAAsB;EACtB,mBAAmB;EACnB,mBAAmB,CAAC,WAAW;CAChC;;AAED;;;EAGE,4BAA4B;CAC7B;;AAED;EACE,0BAA0B;CAC3B;;AAED;EACE,kBAAkB;EAClB,iBAAiB;EACjB,mBAAmB;EACnB,gCAAgC;EAChC,YAAY;CACb;;AAED;EACE,+BAA+B;CAChC;;AAED;EACE,gCAAgC;CACjC;;AAED;EACE,qBAAc;EAAd,sBAAc;EAAd,qBAAc;EAAd,cAAc;EACd,eAAe;EACf,kBAAkB;;CAEnB;;AAED;EACE,cAAc;EACd,oBAAgB;EAAhB,wBAAgB;MAAhB,oBAAgB;UAAhB,gBAAgB;CACjB;;AAED;EACE,gCAAwB;UAAxB,wBAAwB;CACzB;;AACD;EACE,4BAAoB;UAApB,oBAAoB;CACrB;;AAED;EACE,qEAAqE;EACrE,0BAA0B;CAC3B;;AAED;EACE,gBAAgB;CACjB;;AAED;EACE,uBAAuB;EACvB,0GAAkG;UAAlG,kGAAkG;CACnG;;AAED;EACE,cAAc;EACd,mCAAmC;EACnC,YAAY;CACb;;AAED;EACE,kBAAkB;EAAlB,kBAAkB;EAClB,oBAAoB;EACpB,UAAU;EACV,WAAW;CACZ;;AAED;EACE,aAAa;EACb,iBAAiB;EAAjB,iBAAiB;EACjB,eAAe;CAChB;;AAED;EACE,wBAAwB;;CAEzB;;AACD,UAAU,yBAAyB,CAAC;;AACpC;EACE,0BAA0B;EAC1B,aAAa;CACd;;AACD;IACI,aAAa;IACb,iBAAiB;CACpB;;AAED;EACE,sBAAsB;EACtB,+BAAuB;UAAvB,uBAAuB;EACvB,iBAAiB;EACjB,kBAAkB;EAClB,WAAW;EACX,YAAY;EACZ,0BAA0B;;EAE1B,oBAAoB;EACpB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,yBAAyB;EACzB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;EAChB,eAAe;;CAEhB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C","file":"Home.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 2cm 4cm 3cm 4cm auto;\n  padding: 10 10 100px;\n  max-width: var(--max-content-width);\n  \n}\n\n\n\n.link {\n  display: inline-flex;\n  padding: 13px 13px;\n  text-decoration: none;\n  text-align: center;\n  font-size: 1.125em; /* ~18px */\n}\n\n.link,\n.link:active,\n.link:visited {\n  color: rgba(0, 0, 255, 0.6);\n}\n\n.link:hover {\n  color: rgba(0, 255, 0, 1);\n}\n\n.highlight {\n  margin-right: 8px;\n  margin-left: 8px;\n  border-radius: 3px;\n  background: rgba(0, 0, 0, 0.15);\n  color: #fff;\n}\n\n.highlight:hover {\n  background: rgba(0, 0, 0, 0.3);\n}\n\n.spacer {\n  color: rgba(255, 255, 255, 0.3);\n}\n\n.cards {\n  display: flex;\n  margin: 0 auto;\n  max-width: 1200px;\n\n}\n\n.card {\n  margin: 0 5px;\n  flex: 0 0 300px;\n}\n\nhtml {\n  box-sizing: content-box;\n}\n*, *:before, *:after {\n  box-sizing: inherit;\n}\n\nbody {\n  font: 1em/1.1 Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  background-color: #fafafa;\n}\n\nimg {\n  max-width: 100%;\n}\n\n.card {\n  background-color: #fff;\n  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);\n}\n\n.card header {\n  padding: 10px;\n  background-color: rgb(131,112,255);\n  color: #fff;\n}\n\n.card header h2 {\n  font-size: 0.9rem;\n  font-weight: normal;\n  margin: 0;\n  padding: 0;\n}\n\n.card .body {\n  padding: 5px;\n  font-size: .3rem;\n  color: #757575;\n}\n\ntable, th, td {\n  border: 1px solid black;\n\n} \ntr:hover {background-color: #f5f5f5}\nth {\n  background-color: #4CAF50;\n  color: white;\n}\nth, td {\n    padding: 5px;\n    text-align: left;\n}\n\nbutton {\n  display: inline-block;\n  box-sizing: border-box;\n  margin: 10px 6px;\n  padding: 5px 16px;\n  width: 30%;\n  outline: 10;\n  border: 4px solid #373277;\n\n  border-radius: 12px;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: inherit;\n  font-size: 12px;\n  line-height: 1.3333333;\n  cursor: pointer; \n  float: inherit;\n  \n}\n\nbutton:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\nbutton:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n"],"sourceRoot":"webpack://"}]);
+  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.Home_root_3mf {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Home_container_2ac {\n  margin: 2cm 4cm 3cm 4cm auto;\n  padding: 10 10 100px;\n  max-width: 1000px;\n  \n}\n\n.Home_link_1qG {\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  padding: 13px 13px;\n  text-decoration: none;\n  text-align: center;\n  font-size: 1.125em; /* ~18px */\n}\n\n.Home_link_1qG,\n.Home_link_1qG:active,\n.Home_link_1qG:visited {\n  color: rgba(0, 0, 255, 0.6);\n}\n\n.Home_link_1qG:hover {\n  color: rgba(0, 255, 0, 1);\n}\n\n.Home_highlight_30M {\n  margin-right: 8px;\n  margin-left: 8px;\n  border-radius: 3px;\n  background: rgba(0, 0, 0, 0.15);\n  color: #fff;\n}\n\n.Home_highlight_30M:hover {\n  background: rgba(0, 0, 0, 0.3);\n}\n\n.Home_spacer_3yS {\n  color: rgba(255, 255, 255, 0.3);\n}\n\n.Home_cards_2Jk {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  margin: 0 auto;\n  max-width: 1200px;\n\n}\n\n.Home_card_1uI {\n  margin: 0 5px;\n  -webkit-box-flex: 0;\n  -webkit-flex: 0 0 300px;\n      -ms-flex: 0 0 300px;\n          flex: 0 0 300px;\n}\n\nhtml {\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box;\n}\n\n*, *:before, *:after {\n  -webkit-box-sizing: inherit;\n          box-sizing: inherit;\n}\n\nbody {\n  font: 1em/1.1 Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  background-color: #fafafa;\n}\n\nimg {\n  max-width: 100%;\n}\n\n.Home_card_1uI {\n  background-color: #fff;\n  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);\n          box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);\n}\n\n.Home_card_1uI header {\n  padding: 10px;\n  background-color: rgb(131,112,255);\n  color: #fff;\n}\n\n.Home_card_1uI header h2 {\n  font-size: 14.4px;\n  font-size: 0.9rem;\n  font-weight: normal;\n  margin: 0;\n  padding: 0;\n}\n\n.Home_card_1uI .Home_body_14B {\n  padding: 5px;\n  font-size: 4.8px;\n  font-size: .3rem;\n  color: #757575;\n}\n\ntable, th, td {\n  border: 1px solid black;\n\n}\n\ntr:hover {background-color: #f5f5f5}\n\nth {\n  background-color: #4CAF50;\n  color: white;\n}\n\nth, td {\n    padding: 5px;\n    text-align: left;\n}\n\nbutton {\n  \n  -webkit-box-sizing: border-box;\n  \n          box-sizing: border-box;\n  margin: 10px 6px;\n  padding: 5px 16px;\n  width: 30%;\n  outline: 10;\n  border: 4px solid #373277;\n\n  border-radius: 12px;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: inherit;\n  font-size: 12px;\n  line-height: 1.3333333;\n  cursor: pointer; \n  float: inherit;\n  \n}\n\nbutton:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\nbutton:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/home/Home.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,6BAA6B;EAC7B,qBAAqB;EACrB,kBAAoC;;CAErC;;AAID;EACE,4BAAqB;EAArB,6BAAqB;EAArB,4BAAqB;EAArB,qBAAqB;EACrB,mBAAmB;EACnB,sBAAsB;EACtB,mBAAmB;EACnB,mBAAmB,CAAC,WAAW;CAChC;;AAED;;;EAGE,4BAA4B;CAC7B;;AAED;EACE,0BAA0B;CAC3B;;AAED;EACE,kBAAkB;EAClB,iBAAiB;EACjB,mBAAmB;EACnB,gCAAgC;EAChC,YAAY;CACb;;AAED;EACE,+BAA+B;CAChC;;AAED;EACE,gCAAgC;CACjC;;AAED;EACE,qBAAc;EAAd,sBAAc;EAAd,qBAAc;EAAd,cAAc;EACd,eAAe;EACf,kBAAkB;;CAEnB;;AAED;EACE,cAAc;EACd,oBAAgB;EAAhB,wBAAgB;MAAhB,oBAAgB;UAAhB,gBAAgB;CACjB;;AAED;EACE,gCAAwB;UAAxB,wBAAwB;CACzB;;AACD;EACE,4BAAoB;UAApB,oBAAoB;CACrB;;AAED;EACE,qEAAqE;EACrE,0BAA0B;CAC3B;;AAED;EACE,gBAAgB;CACjB;;AAED;EACE,uBAAuB;EACvB,0GAAkG;UAAlG,kGAAkG;CACnG;;AAED;EACE,cAAc;EACd,mCAAmC;EACnC,YAAY;CACb;;AAED;EACE,kBAAkB;EAAlB,kBAAkB;EAClB,oBAAoB;EACpB,UAAU;EACV,WAAW;CACZ;;AAED;EACE,aAAa;EACb,iBAAiB;EAAjB,iBAAiB;EACjB,eAAe;CAChB;;AAED;EACE,wBAAwB;;CAEzB;;AACD,UAAU,yBAAyB,CAAC;;AACpC;EACE,0BAA0B;EAC1B,aAAa;CACd;;AACD;IACI,aAAa;IACb,iBAAiB;CACpB;;AAED;;EAEE,+BAAuB;;UAAvB,uBAAuB;EACvB,iBAAiB;EACjB,kBAAkB;EAClB,WAAW;EACX,YAAY;EACZ,0BAA0B;;EAE1B,oBAAoB;EACpB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,yBAAyB;EACzB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;EAChB,eAAe;;CAEhB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C","file":"Home.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 2cm 4cm 3cm 4cm auto;\n  padding: 10 10 100px;\n  max-width: var(--max-content-width);\n  \n}\n\n\n\n.link {\n  display: inline-flex;\n  padding: 13px 13px;\n  text-decoration: none;\n  text-align: center;\n  font-size: 1.125em; /* ~18px */\n}\n\n.link,\n.link:active,\n.link:visited {\n  color: rgba(0, 0, 255, 0.6);\n}\n\n.link:hover {\n  color: rgba(0, 255, 0, 1);\n}\n\n.highlight {\n  margin-right: 8px;\n  margin-left: 8px;\n  border-radius: 3px;\n  background: rgba(0, 0, 0, 0.15);\n  color: #fff;\n}\n\n.highlight:hover {\n  background: rgba(0, 0, 0, 0.3);\n}\n\n.spacer {\n  color: rgba(255, 255, 255, 0.3);\n}\n\n.cards {\n  display: flex;\n  margin: 0 auto;\n  max-width: 1200px;\n\n}\n\n.card {\n  margin: 0 5px;\n  flex: 0 0 300px;\n}\n\nhtml {\n  box-sizing: content-box;\n}\n*, *:before, *:after {\n  box-sizing: inherit;\n}\n\nbody {\n  font: 1em/1.1 Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  background-color: #fafafa;\n}\n\nimg {\n  max-width: 100%;\n}\n\n.card {\n  background-color: #fff;\n  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);\n}\n\n.card header {\n  padding: 10px;\n  background-color: rgb(131,112,255);\n  color: #fff;\n}\n\n.card header h2 {\n  font-size: 0.9rem;\n  font-weight: normal;\n  margin: 0;\n  padding: 0;\n}\n\n.card .body {\n  padding: 5px;\n  font-size: .3rem;\n  color: #757575;\n}\n\ntable, th, td {\n  border: 1px solid black;\n\n} \ntr:hover {background-color: #f5f5f5}\nth {\n  background-color: #4CAF50;\n  color: white;\n}\nth, td {\n    padding: 5px;\n    text-align: left;\n}\n\nbutton {\n  \n  box-sizing: border-box;\n  margin: 10px 6px;\n  padding: 5px 16px;\n  width: 30%;\n  outline: 10;\n  border: 4px solid #373277;\n\n  border-radius: 12px;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: inherit;\n  font-size: 12px;\n  line-height: 1.3333333;\n  cursor: pointer; \n  float: inherit;\n  \n}\n\nbutton:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\nbutton:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n"],"sourceRoot":"webpack://"}]);
   
   // exports
   exports.locals = {
@@ -3791,24 +3863,181 @@ module.exports =
     value: true
   });
   
+  var _promise = __webpack_require__(83);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
   var _react = __webpack_require__(43);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Contact = __webpack_require__(94);
+  var _Searchprovider = __webpack_require__(94);
   
-  var _Contact2 = _interopRequireDefault(_Contact);
+  var _Searchprovider2 = _interopRequireDefault(_Searchprovider);
+  
+  var _config = __webpack_require__(20);
+  
+  var _Providerlist = __webpack_require__(97);
+  
+  var _Providerlist2 = _interopRequireDefault(_Providerlist);
+  
+  var _Login = __webpack_require__(87);
+  
+  var _Login2 = _interopRequireDefault(_Login);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
+  var providerlist;
+  var sessionid;
+  var category;
+  
   exports.default = {
   
-    path: '/contact',
+    path: '/searchprovider',
   
-    action: function action() {
-      return _react2.default.createElement(_Contact2.default, null);
+    action: function action(_ref, _ref2) {
+      var _this = this;
+  
+      var query = _ref.query;
+      var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var customeremail, body, searchterm;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+  
+                sessionid = query.sessionid;
+                customeremail = query.email;
+  
+                console.log("Sessionid - index.js - SearchProvider " + sessionid);
+  
+                if (!(sessionid === undefined || sessionid == '')) {
+                  _context.next = 8;
+                  break;
+                }
+  
+                _context.next = 6;
+                return getSessionid();
+  
+              case 6:
+                body = _context.sent;
+                return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: body }));
+  
+              case 8:
+                searchterm = query.searchterm;
+  
+                category = query.category;
+                console.log("Search Term: " + searchterm);
+                console.log("Category: " + category);
+  
+                if (!(searchterm == 'pincode')) {
+                  _context.next = 18;
+                  break;
+                }
+  
+                _context.next = 15;
+                return getProviderDataByPincode(category);
+  
+              case 15:
+                providerlist = _context.sent;
+                _context.next = 21;
+                break;
+  
+              case 18:
+                _context.next = 20;
+                return getProviderDataByCity(category);
+  
+              case 20:
+                providerlist = _context.sent;
+  
+              case 21:
+                console.log("Body: " + body);
+  
+                console.log("customer Email: " + customeremail);
+                return _context.abrupt('return', _react2.default.createElement(_Searchprovider2.default, { providerlist: providerlist, customeremail: customeremail, sessionid: sessionid }));
+  
+              case 24:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
     }
   };
+  
+  
+  function getProviderDataByCity(searchterm) {
+    var request = __webpack_require__(92);
+  
+    console.log('calling API');
+    var url = 'http://' + _config.apihost + '/searchbycity?city=' + category;
+    console.log("URL: " + url);
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside getProviderData Response from API (body)' + body);
+          //providerlist = body;
+          console.log("Providerlist: " + providerlist);
+          resolve(body);
+        } else {
+          console.log("Error Object: " + error);
+          return reject(error);
+        }
+      });
+    });
+  }
+  
+  function getProviderDataByPincode(searchterm) {
+    var request = __webpack_require__(92);
+  
+    console.log('calling API - getProviderDataByPincode');
+    var url = 'http://' + _config.apihost + '/searchbypincode?pincode=' + category;
+    console.log("URL: " + url);
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside getProviderData Response from API (body)' + body);
+          providerlist = body;
+          console.log("Providerlist: " + providerlist);
+          resolve(body);
+        } else {
+          console.log("Error Object: " + error);
+          return reject(error);
+        }
+      });
+    });
+  }
+  function getSessionid() {
+    var request = __webpack_require__(92);
+    console.log('genSessionid - calling API');
+    var url = 'http://' + _config.apihost + '/genSessionid';
+    console.log("getSeesionid - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('genSessionid - Response from API' + body);
+          //sessionid = body;
+          resolve(body);
+        } else {
+  
+          console.log("genSessionid -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("getSessionid - Returning from API call");
+      });
+    });
+  }
 
 /***/ },
 /* 94 */
@@ -3828,7 +4057,511 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Contact = __webpack_require__(95);
+  var _Searchprovider = __webpack_require__(95);
+  
+  var _Searchprovider2 = _interopRequireDefault(_Searchprovider);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'Service Provider Search'; /**
+                                          * React Starter Kit (https://www.reactstarterkit.com/)
+                                          *
+                                          * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+                                          *
+                                          * This source code is licensed under the MIT license found in the
+                                          * LICENSE.txt file in the root directory of this source tree.
+                                          */
+  
+  function Searchprovider(_ref, props, context) {
+    var providerlist = _ref.providerlist,
+        customeremail = _ref.customeremail,
+        sessionid = _ref.sessionid;
+  
+    //context.setTitle(title);
+  
+    var providerdata = JSON.parse(providerlist);
+  
+    console.log("Provider Data: " + providerdata);
+    return _react2.default.createElement(
+      'div',
+      { className: _Searchprovider2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Searchprovider2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          'Service Provider Search'
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'form',
+            { name: 'form1', method: 'put', action: 'linkprovider' },
+            _react2.default.createElement(
+              'div',
+              { className: _Searchprovider2.default.formGroup },
+              _react2.default.createElement(
+                'table',
+                null,
+                _react2.default.createElement(
+                  'caption',
+                  null,
+                  'Service Providers'
+                ),
+                _react2.default.createElement(
+                  'thead',
+                  null,
+                  _react2.default.createElement(
+                    'tr',
+                    null,
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Email'
+                    ),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'First Name'
+                    ),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Last Name'
+                    ),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Address'
+                    ),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'City'
+                    ),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Phone'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'tbody',
+                  null,
+                  providerdata.map(function (obj, index) {
+                    return _react2.default.createElement(
+                      'tr',
+                      { key: index },
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        obj.email
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        obj.firstname
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        obj.lname,
+                        ' '
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        obj.address
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        obj.city
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        obj.phone
+                      )
+                    );
+                  })
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('input', { type: 'hidden', name: 'customeremail', value: customeremail }),
+              _react2.default.createElement('input', { type: 'hidden', name: 'sessionid', value: sessionid })
+            )
+          )
+        )
+      )
+    );
+  }
+  
+  Searchprovider.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Searchprovider2.default)(Searchprovider);
+
+/***/ },
+/* 95 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(96);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Searchprovider.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Searchprovider.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 96 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, " .Searchprovider_root_3jF {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Searchprovider_container_2TS {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height:100x\n}\n\nhtml {\n  min-height: 100%;\n}\n\nbody {\n  min-height: 100vh;\n}\n\ntable, th, td {\n  border: 1px solid black;\n}\n\ntr:hover {background-color: #f5f5f5}\n\nth {\n  background-color: #4CAF50;\n  color: white;\n}\n\n.Searchprovider_button_2VI {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 30%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Searchprovider_button_2VI:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Searchprovider_button_2VI:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\ndiv {\n  overflow-x:visible;\n   \n}\n\n.Searchprovider_formGroup_2-g {\n  margin-bottom: 15px;\n}", "", {"version":3,"sources":["/./routes/searchprovider/Searchprovider.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;CAChB;;AAID;EACE,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,wBAAwB;CACzB;;AACD,UAAU,yBAAyB,CAAC;;AACpC;EACE,0BAA0B;EAC1B,aAAa;CACd;;AACD;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;EACE,mBAAmB;;CAEpB;;AAGD;EACE,oBAAoB;CACrB","file":"Searchprovider.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height:100x\n}\n\n\n\nhtml {\n  min-height: 100%;\n}\n\nbody {\n  min-height: 100vh;\n}\n\ntable, th, td {\n  border: 1px solid black;\n} \ntr:hover {background-color: #f5f5f5}\nth {\n  background-color: #4CAF50;\n  color: white;\n}\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 30%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\ndiv {\n  overflow-x:visible;\n   \n}\n\n\n.formGroup {\n  margin-bottom: 15px;\n}"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Searchprovider_root_3jF",
+  	"container": "Searchprovider_container_2TS",
+  	"button": "Searchprovider_button_2VI",
+  	"formGroup": "Searchprovider_formGroup_2-g"
+  };
+
+/***/ },
+/* 97 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Providerlist = __webpack_require__(98);
+  
+  var _Providerlist2 = _interopRequireDefault(_Providerlist);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'Service Provider Search'; /**
+                                          * React Starter Kit (https://www.reactstarterkit.com/)
+                                          *
+                                          * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+                                          *
+                                          * This source code is licensed under the MIT license found in the
+                                          * LICENSE.txt file in the root directory of this source tree.
+                                          */
+  
+  function Providerlist(_ref, props, context) {
+    var providerlist = _ref.providerlist,
+        customeremail = _ref.customeremail,
+        sessionid = _ref.sessionid,
+        bookingid = _ref.bookingid;
+  
+    //context.setTitle(title);
+  
+    var providerdata = JSON.parse(providerlist);
+  
+    console.log("Provider Data: " + providerdata);
+    return _react2.default.createElement(
+      'div',
+      { className: _Providerlist2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Providerlist2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          'Service Provider Search'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Select Provider near by you'
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'form',
+            { name: 'form1', method: 'put', action: 'linkprovider' },
+            _react2.default.createElement(
+              'div',
+              { className: _Providerlist2.default.formGroup },
+              _react2.default.createElement(
+                'table',
+                null,
+                _react2.default.createElement(
+                  'caption',
+                  null,
+                  'Service Providers'
+                ),
+                _react2.default.createElement(
+                  'thead',
+                  null,
+                  _react2.default.createElement(
+                    'tr',
+                    null,
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Select'
+                    ),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Email'
+                    ),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'First Name'
+                    ),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Last Name'
+                    ),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Address'
+                    ),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'City'
+                    ),
+                    _react2.default.createElement(
+                      'th',
+                      null,
+                      'Phone'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'tbody',
+                  null,
+                  providerdata.map(function (obj, index) {
+                    return _react2.default.createElement(
+                      'tr',
+                      { key: index },
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        _react2.default.createElement('input', { type: 'radio', name: 'provideremail', value: obj.email }),
+                        ' '
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        obj.email
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        obj.firstname
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        obj.lname,
+                        ' '
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        obj.address
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        obj.city
+                      ),
+                      _react2.default.createElement(
+                        'td',
+                        null,
+                        obj.phone
+                      )
+                    );
+                  })
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('input', { type: 'hidden', name: 'customeremail', value: customeremail }),
+              _react2.default.createElement('input', { type: 'hidden', name: 'sessionid', value: sessionid }),
+              _react2.default.createElement('input', { type: 'hidden', name: 'bookingid', value: bookingid }),
+              _react2.default.createElement(
+                'button',
+                { className: _Providerlist2.default.button, type: 'submit' },
+                'Submit'
+              )
+            )
+          )
+        )
+      )
+    );
+  }
+  
+  Providerlist.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Providerlist2.default)(Providerlist);
+
+/***/ },
+/* 98 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(99);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Providerlist.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Providerlist.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 99 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, " .Providerlist_root_2fr {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Providerlist_container_3Q4 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height:100x\n}\n\nhtml {\n  min-height: 100%;\n}\n\nbody {\n  min-height: 100vh;\n}\n\ntable, th, td {\n  border: 1px solid black;\n}\n\ntr:hover {background-color: #f5f5f5}\n\nth {\n  background-color: #4CAF50;\n  color: white;\n}\n\n.Providerlist_button_Tyf {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 30%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Providerlist_button_Tyf:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Providerlist_button_Tyf:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\ndiv {\n  overflow-x:visible;\n   \n}\n\n.Providerlist_formGroup_2cf {\n  margin-bottom: 15px;\n}", "", {"version":3,"sources":["/./routes/providerlist/Providerlist.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;CAChB;;AAID;EACE,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,wBAAwB;CACzB;;AACD,UAAU,yBAAyB,CAAC;;AACpC;EACE,0BAA0B;EAC1B,aAAa;CACd;;AACD;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;EACE,mBAAmB;;CAEpB;;AAGD;EACE,oBAAoB;CACrB","file":"Providerlist.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height:100x\n}\n\n\n\nhtml {\n  min-height: 100%;\n}\n\nbody {\n  min-height: 100vh;\n}\n\ntable, th, td {\n  border: 1px solid black;\n} \ntr:hover {background-color: #f5f5f5}\nth {\n  background-color: #4CAF50;\n  color: white;\n}\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 30%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\ndiv {\n  overflow-x:visible;\n   \n}\n\n\n.formGroup {\n  margin-bottom: 15px;\n}"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Providerlist_root_2fr",
+  	"container": "Providerlist_container_3Q4",
+  	"button": "Providerlist_button_Tyf",
+  	"formGroup": "Providerlist_formGroup_2cf"
+  };
+
+/***/ },
+/* 100 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Contact = __webpack_require__(101);
+  
+  var _Contact2 = _interopRequireDefault(_Contact);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  exports.default = {
+  
+    path: '/contact',
+  
+    action: function action() {
+      return _react2.default.createElement(_Contact2.default, null);
+    }
+  };
+
+/***/ },
+/* 101 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Contact = __webpack_require__(102);
   
   var _Contact2 = _interopRequireDefault(_Contact);
   
@@ -3863,11 +4596,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Contact2.default)(Contact);
 
 /***/ },
-/* 95 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(96);
+      var content = __webpack_require__(103);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -3897,7 +4630,7 @@ module.exports =
     
 
 /***/ },
-/* 96 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -3914,7 +4647,7 @@ module.exports =
   };
 
 /***/ },
-/* 97 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4005,7 +4738,7 @@ module.exports =
   }
 
 /***/ },
-/* 98 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4018,7 +4751,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Register = __webpack_require__(99);
+  var _Register = __webpack_require__(106);
   
   var _Register2 = _interopRequireDefault(_Register);
   
@@ -4043,7 +4776,7 @@ module.exports =
   };
 
 /***/ },
-/* 99 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4060,7 +4793,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Register = __webpack_require__(100);
+  var _Register = __webpack_require__(107);
   
   var _Register2 = _interopRequireDefault(_Register);
   
@@ -4235,11 +4968,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Register2.default)(Register);
 
 /***/ },
-/* 100 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(101);
+      var content = __webpack_require__(108);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -4269,7 +5002,7 @@ module.exports =
     
 
 /***/ },
-/* 101 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -4297,7 +5030,373 @@ module.exports =
   };
 
 /***/ },
-/* 102 */
+/* 109 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _promise = __webpack_require__(83);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Forgotpass = __webpack_require__(110);
+  
+  var _Forgotpass2 = _interopRequireDefault(_Forgotpass);
+  
+  var _Login = __webpack_require__(87);
+  
+  var _Login2 = _interopRequireDefault(_Login);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var request = __webpack_require__(92);
+  //import Providerlogin from '../providerlogin/Providerlogin'
+  
+  
+  var status = 'false';
+  var errormessage = '';
+  //var user;
+  var href;
+  var message;
+  var message1;
+  
+  exports.default = {
+  
+    path: '/forgotpass',
+  
+    action: function action(_ref, _ref2) {
+      var _this = this;
+  
+      var query = _ref.query;
+      var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var email, validlogin, code, body, result;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                email = query.email;
+                //user = query.user;
+  
+                console.log("Email ID:" + email);
+                //console.log("User: "+user);
+  
+                if (!(typeof email === 'undefined')) {
+                  _context.next = 6;
+                  break;
+                }
+  
+                return _context.abrupt('return', _react2.default.createElement(_Forgotpass2.default, null));
+  
+              case 6:
+                _context.next = 8;
+                return checkLogin(email);
+  
+              case 8:
+                validlogin = _context.sent;
+  
+                console.log("ValidLogin:" + validlogin);
+  
+                if (!(validlogin == 'true')) {
+                  _context.next = 20;
+                  break;
+                }
+  
+                code = passwordCode(6);
+  
+                console.log("Passcode: " + code);
+                _context.next = 15;
+                return sendEmail(email, code);
+  
+              case 15:
+                body = _context.sent;
+  
+                if (!(body == 'true')) {
+                  _context.next = 20;
+                  break;
+                }
+  
+                _context.next = 19;
+                return storePasscode(email, code);
+  
+              case 19:
+                result = _context.sent;
+  
+              case 20:
+                console.log("Status: " + status);
+  
+                if (!(status == true)) {
+                  _context.next = 26;
+                  break;
+                }
+  
+                console.log("Redirected to Login Page");
+                return _context.abrupt('return', _react2.default.createElement(_Login2.default, null));
+  
+              case 26:
+                console.log("Error in Reseting password request");
+                return _context.abrupt('return', _react2.default.createElement(_Forgotpass2.default, { errormessage: errormessage }));
+  
+              case 28:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    }
+  };
+  
+  
+  function sendEmail(email, code) {
+    console.log('calling API - sendEmail');
+    var url = 'http://' + _config.apihost + '/sendmail';
+    console.log("URL: " + url);
+  
+    var subject = "Your Password Reset";
+    var href = 'http://' + _config.host + '/changepassword?code=' + code + '&userEmail=' + email;
+    console.log("Href: " + href);
+    var message = '<b>We received your request for password Reset. <a href="' + href + '" >Click here to reset password</a> ';
+    var formdata = {
+      tomail: email,
+      subject: subject,
+      message: message
+    };
+  
+    console.log("Data: " + formdata);
+    return new _promise2.default(function (resolve, reject) {
+      request.post(url, { form: formdata }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside sendEmail - Response from API (body)' + body);
+  
+          if (body == 'true') status = true;else status = false;
+          resolve(body);
+        } else if (error) {
+          console.log("Error in Sending Mail");
+          status = false;
+          return reject(error);
+        }
+      });
+    });
+  }
+  
+  function passwordCode(length) {
+    var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^*()-+<>ABCDEFGHIJKLMNOP1234567890";
+    var pass = "";
+    for (var x = 0; x < length; x++) {
+      var i = Math.floor(Math.random() * chars.length);
+      pass += chars.charAt(i);
+    }
+    return pass;
+  }
+  
+  function storePasscode(email, code) {
+  
+    console.log("Inside storePasscode method email: " + email);
+    console.log("Inside storePasscode method Code: " + code);
+    console.log('calling API');
+    var url = 'http://' + _config.apihost + '/storePasscode';
+    console.log("URL: " + url);
+    return new _promise2.default(function (resolve, reject) {
+      request.post(url, { form: { email: email, code: code } }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside StorePasscode Response from API (body)' + body);
+  
+          if (body == 'true') status = true;
+          resolve(body);
+        } else {
+          console.log("Error in storing passcode");
+          status = false;
+          return reject(error);
+        }
+      });
+    });
+  }
+  
+  function checkLogin(email) {
+  
+    console.log('calling API - checkLogin - forgotpass');
+    var url = 'http://' + _config.apihost + '/findemail?email=' + email;
+  
+    console.log("URL: " + url);
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Response from API: - Forgot Passwor - Cutomer' + body);
+          if (body == 'true') status = true;
+          resolve(body);
+        } else {
+          status = 'false';
+          console.log("API Server not running: " + error);
+          return reject(error);
+        }
+        console.log('Returning');
+      });
+    });
+  }
+
+/***/ },
+/* 110 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Forgotpass = __webpack_require__(111);
+  
+  var _Forgotpass2 = _interopRequireDefault(_Forgotpass);
+  
+  var _Link = __webpack_require__(61);
+  
+  var _Link2 = _interopRequireDefault(_Link);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'Changing Password';
+  
+  function Forgotpass(props, context) {
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      { className: _Forgotpass2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Forgotpass2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'form',
+          { name: 'form1', method: 'put', action: 'forgotpass' },
+          _react2.default.createElement(
+            'div',
+            { className: _Forgotpass2.default.formGroup },
+            _react2.default.createElement(
+              'label',
+              { className: _Forgotpass2.default.label, htmlFor: 'email' },
+              'Email:'
+            ),
+            _react2.default.createElement('input', {
+              className: _Forgotpass2.default.input,
+              id: 'email',
+              type: 'email',
+              name: 'email',
+              placeholder: 'Enter E-mail',
+              required: 'required'
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _Forgotpass2.default.formGroup },
+            _react2.default.createElement(
+              'button',
+              { className: _Forgotpass2.default.button, type: 'submit' },
+              'Send Reset Email'
+            )
+          )
+        )
+      )
+    );
+  }
+  
+  Forgotpass.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Forgotpass2.default)(Forgotpass);
+
+/***/ },
+/* 111 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(112);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Forgotpass.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Forgotpass.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 112 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.Forgotpass_root_2bx {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Forgotpass_container_2z1 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Forgotpass_lead_3Qz {\n  font-size: 1.25em;\n}\n\n.Forgotpass_formGroup_xHr {\n  margin-bottom: 20px;\n}\n\n.Forgotpass_label_1Je {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.Forgotpass_input_hyq {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.Forgotpass_input_hyq:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Forgotpass_button_7B_ {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Forgotpass_button_7B_:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Forgotpass_button_7B_:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Forgotpass_facebook_2eZ {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n\n.Forgotpass_facebook_2eZ:hover {\n  background: #2d4373;\n}\n\n.Forgotpass_google_TMn {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n\n.Forgotpass_google_TMn:hover {\n  background: #c23321;\n}\n\n.Forgotpass_twitter_XfU {\n  border-color: #55acee;\n  background: #55acee;\n}\n\n.Forgotpass_twitter_XfU:hover {\n  background: #2795e9;\n}\n\n.Forgotpass_icon_2y1 {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Forgotpass_lineThrough_34a {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Forgotpass_lineThrough_34a::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Forgotpass_lineThrough_34a::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/forgotpass/Forgotpass.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Forgotpass.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Forgotpass_root_2bx",
+  	"container": "Forgotpass_container_2z1",
+  	"lead": "Forgotpass_lead_3Qz",
+  	"formGroup": "Forgotpass_formGroup_xHr",
+  	"label": "Forgotpass_label_1Je",
+  	"input": "Forgotpass_input_hyq",
+  	"button": "Forgotpass_button_7B_",
+  	"facebook": "Forgotpass_facebook_2eZ Forgotpass_button_7B_",
+  	"google": "Forgotpass_google_TMn Forgotpass_button_7B_",
+  	"twitter": "Forgotpass_twitter_XfU Forgotpass_button_7B_",
+  	"icon": "Forgotpass_icon_2y1",
+  	"lineThrough": "Forgotpass_lineThrough_34a"
+  };
+
+/***/ },
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4368,11 +5467,11 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Savecustomer = __webpack_require__(103);
+  var _Savecustomer = __webpack_require__(114);
   
   var _Savecustomer2 = _interopRequireDefault(_Savecustomer);
   
-  var _Login = __webpack_require__(106);
+  var _Login = __webpack_require__(117);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -4633,7 +5732,7 @@ module.exports =
   }
 
 /***/ },
-/* 103 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4650,7 +5749,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Savecustomer = __webpack_require__(104);
+  var _Savecustomer = __webpack_require__(115);
   
   var _Savecustomer2 = _interopRequireDefault(_Savecustomer);
   
@@ -4702,11 +5801,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Savecustomer2.default)(Savecustomer);
 
 /***/ },
-/* 104 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(105);
+      var content = __webpack_require__(116);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -4736,7 +5835,7 @@ module.exports =
     
 
 /***/ },
-/* 105 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -4764,7 +5863,7 @@ module.exports =
   };
 
 /***/ },
-/* 106 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4789,7 +5888,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Login = __webpack_require__(107);
+  var _Login = __webpack_require__(118);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -4855,7 +5954,7 @@ module.exports =
   }
 
 /***/ },
-/* 107 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -4876,7 +5975,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Login = __webpack_require__(108);
+  var _Login = __webpack_require__(119);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -5073,11 +6172,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Login2.default)(Login);
 
 /***/ },
-/* 108 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(109);
+      var content = __webpack_require__(120);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -5107,7 +6206,7 @@ module.exports =
     
 
 /***/ },
-/* 109 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -5135,7 +6234,7 @@ module.exports =
   };
 
 /***/ },
-/* 110 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5160,7 +6259,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Content = __webpack_require__(111);
+  var _Content = __webpack_require__(122);
   
   var _Content2 = _interopRequireDefault(_Content);
   
@@ -5237,7 +6336,7 @@ module.exports =
   };
 
 /***/ },
-/* 111 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5274,7 +6373,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Content = __webpack_require__(112);
+  var _Content = __webpack_require__(123);
   
   var _Content2 = _interopRequireDefault(_Content);
   
@@ -5326,11 +6425,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Content2.default)(Content);
 
 /***/ },
-/* 112 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(113);
+      var content = __webpack_require__(124);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -5360,7 +6459,7 @@ module.exports =
     
 
 /***/ },
-/* 113 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -5377,7 +6476,7 @@ module.exports =
   };
 
 /***/ },
-/* 114 */
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5394,7 +6493,7 @@ module.exports =
   
   var _App2 = _interopRequireDefault(_App);
   
-  var _ErrorPage = __webpack_require__(115);
+  var _ErrorPage = __webpack_require__(126);
   
   var _ErrorPage2 = _interopRequireDefault(_ErrorPage);
   
@@ -5418,7 +6517,7 @@ module.exports =
   };
 
 /***/ },
-/* 115 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5435,7 +6534,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _ErrorPage = __webpack_require__(116);
+  var _ErrorPage = __webpack_require__(127);
   
   var _ErrorPage2 = _interopRequireDefault(_ErrorPage);
   
@@ -5484,11 +6583,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_ErrorPage2.default)(ErrorPage);
 
 /***/ },
-/* 116 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(117);
+      var content = __webpack_require__(128);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -5518,7 +6617,7 @@ module.exports =
     
 
 /***/ },
-/* 117 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -5532,7 +6631,7 @@ module.exports =
 
 
 /***/ },
-/* 118 */
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5557,7 +6656,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Verifypass = __webpack_require__(119);
+  var _Verifypass = __webpack_require__(130);
   
   var _Verifypass2 = _interopRequireDefault(_Verifypass);
   
@@ -5565,7 +6664,7 @@ module.exports =
   
   var _Login2 = _interopRequireDefault(_Login);
   
-  var _ErrorPage = __webpack_require__(115);
+  var _ErrorPage = __webpack_require__(126);
   
   var _ErrorPage2 = _interopRequireDefault(_ErrorPage);
   
@@ -5725,7 +6824,7 @@ module.exports =
   }
 
 /***/ },
-/* 119 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5742,7 +6841,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _VerifyPass = __webpack_require__(120);
+  var _VerifyPass = __webpack_require__(131);
   
   var _VerifyPass2 = _interopRequireDefault(_VerifyPass);
   
@@ -5798,11 +6897,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_VerifyPass2.default)(VerifyPass);
 
 /***/ },
-/* 120 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(121);
+      var content = __webpack_require__(132);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -5832,7 +6931,7 @@ module.exports =
     
 
 /***/ },
-/* 121 */
+/* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -5859,7 +6958,7 @@ module.exports =
   };
 
 /***/ },
-/* 122 */
+/* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -5884,365 +6983,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Forgotpass = __webpack_require__(123);
-  
-  var _Forgotpass2 = _interopRequireDefault(_Forgotpass);
-  
-  var _Login = __webpack_require__(87);
-  
-  var _Login2 = _interopRequireDefault(_Login);
-  
-  var _config = __webpack_require__(20);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var request = __webpack_require__(92);
-  
-  var status = 'false';
-  var errormessage = '';
-  
-  exports.default = {
-  
-    path: '/forgotpass',
-  
-    action: function action(_ref, _ref2) {
-      var _this = this;
-  
-      var query = _ref.query;
-      var path = _ref2.path;
-      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
-        var email, validlogin, code, body, result;
-        return _regenerator2.default.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                email = query.email;
-  
-  
-                console.log("Email ID:" + email);
-  
-                if (!(typeof email === 'undefined')) {
-                  _context.next = 6;
-                  break;
-                }
-  
-                return _context.abrupt('return', _react2.default.createElement(_Forgotpass2.default, null));
-  
-              case 6:
-                _context.next = 8;
-                return checkLogin(email);
-  
-              case 8:
-                validlogin = _context.sent;
-  
-                console.log("ValidLogin:" + validlogin);
-  
-                if (!(validlogin == 'true')) {
-                  _context.next = 20;
-                  break;
-                }
-  
-                code = passwordCode(6);
-  
-                console.log("Passcode: " + code);
-                _context.next = 15;
-                return sendEmail(email, code);
-  
-              case 15:
-                body = _context.sent;
-  
-                if (!(body == 'true')) {
-                  _context.next = 20;
-                  break;
-                }
-  
-                _context.next = 19;
-                return storePasscode(email, code);
-  
-              case 19:
-                result = _context.sent;
-  
-              case 20:
-                console.log("Status: " + status);
-  
-                if (!(status == true)) {
-                  _context.next = 26;
-                  break;
-                }
-  
-                console.log("Redirected to Login Page");
-                return _context.abrupt('return', _react2.default.createElement(_Login2.default, null));
-  
-              case 26:
-                console.log("Error in Reseting password request");
-                return _context.abrupt('return', _react2.default.createElement(_Forgotpass2.default, { errormessage: errormessage }));
-  
-              case 28:
-              case 'end':
-                return _context.stop();
-            }
-          }
-        }, _callee, _this);
-      }))();
-    }
-  };
-  
-  
-  function sendEmail(email, code) {
-    console.log('calling API - sendEmail');
-    var url = 'http://' + _config.apihost + '/sendmail';
-    console.log("URL: " + url);
-  
-    var subject = "Your Password Reset";
-    var href = 'http://' + _config.host + '/changepassword?code=' + code + '&userEmail=' + email;
-    console.log("Href: " + href);
-    var message = '<b>We received your request for password Reset. <a href="' + href + '" >Click here to reset password</a> ';
-    var formdata = {
-      tomail: email,
-      subject: subject,
-      message: message
-    };
-  
-    console.log("Data: " + formdata);
-    return new _promise2.default(function (resolve, reject) {
-      request.post(url, { form: formdata }, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-          console.log('Inside sendEmail - Response from API (body)' + body);
-  
-          if (body == 'true') status = true;else status = false;
-          resolve(body);
-        } else if (error) {
-          console.log("Error in Sending Mail");
-          status = false;
-          return reject(error);
-        }
-      });
-    });
-  }
-  
-  function passwordCode(length) {
-    var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^*()-+<>ABCDEFGHIJKLMNOP1234567890";
-    var pass = "";
-    for (var x = 0; x < length; x++) {
-      var i = Math.floor(Math.random() * chars.length);
-      pass += chars.charAt(i);
-    }
-    return pass;
-  }
-  
-  function storePasscode(email, code) {
-  
-    console.log("Inside storePasscode method email: " + email);
-    console.log("Inside storePasscode method Code: " + code);
-    console.log('calling API');
-    var url = 'http://' + _config.apihost + '/storePasscode';
-    console.log("URL: " + url);
-    return new _promise2.default(function (resolve, reject) {
-      request.post(url, { form: { email: email, code: code } }, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-          console.log('Inside StorePasscode Response from API (body)' + body);
-  
-          if (body == 'true') status = true;
-          resolve(body);
-        } else {
-          console.log("Error in storing passcode");
-          status = false;
-          return reject(error);
-        }
-      });
-    });
-  }
-  
-  function checkLogin(email) {
-  
-    console.log('calling API');
-    var url = 'http://' + _config.apihost + '/findemail?email=' + email;
-    console.log("URL: " + url);
-    return new _promise2.default(function (resolve, reject) {
-      request(url, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-          console.log('Response from API: ' + body);
-          if (body == 'true') status = true;
-          resolve(body);
-        } else {
-          status = 'false';
-          console.log("API Server not running: " + error);
-          return reject(error);
-        }
-        console.log('Returning');
-      });
-    });
-  }
-
-/***/ },
-/* 123 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(43);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _withStyles = __webpack_require__(58);
-  
-  var _withStyles2 = _interopRequireDefault(_withStyles);
-  
-  var _Forgotpass = __webpack_require__(124);
-  
-  var _Forgotpass2 = _interopRequireDefault(_Forgotpass);
-  
-  var _Link = __webpack_require__(61);
-  
-  var _Link2 = _interopRequireDefault(_Link);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var title = 'Changing Password';
-  
-  function Forgotpass(props, context) {
-    context.setTitle(title);
-    return _react2.default.createElement(
-      'div',
-      { className: _Forgotpass2.default.root },
-      _react2.default.createElement(
-        'div',
-        { className: _Forgotpass2.default.container },
-        _react2.default.createElement(
-          'h1',
-          null,
-          title
-        ),
-        _react2.default.createElement(
-          'form',
-          { name: 'form1', method: 'put', action: 'forgotpass' },
-          _react2.default.createElement(
-            'div',
-            { className: _Forgotpass2.default.formGroup },
-            _react2.default.createElement(
-              'label',
-              { className: _Forgotpass2.default.label, htmlFor: 'email' },
-              'Email:'
-            ),
-            _react2.default.createElement('input', {
-              className: _Forgotpass2.default.input,
-              id: 'email',
-              type: 'email',
-              name: 'email',
-              placeholder: 'Enter E-mail',
-              required: 'required'
-            })
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: _Forgotpass2.default.formGroup },
-            _react2.default.createElement(
-              'button',
-              { className: _Forgotpass2.default.button, type: 'submit' },
-              'Send Reset Email'
-            )
-          )
-        )
-      )
-    );
-  }
-  
-  Forgotpass.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
-  
-  exports.default = (0, _withStyles2.default)(_Forgotpass2.default)(Forgotpass);
-
-/***/ },
-/* 124 */
-/***/ function(module, exports, __webpack_require__) {
-
-  
-      var content = __webpack_require__(125);
-      var insertCss = __webpack_require__(54);
-  
-      if (typeof content === 'string') {
-        content = [[module.id, content, '']];
-      }
-  
-      module.exports = content.locals || {};
-      module.exports._getCss = function() { return content.toString(); };
-      module.exports._insertCss = function(options) { return insertCss(content, options) };
-    
-      // Hot Module Replacement
-      // https://webpack.github.io/docs/hot-module-replacement
-      // Only activated in browser context
-      if (false) {
-        var removeCss = function() {};
-        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Forgotpass.css", function() {
-          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Forgotpass.css");
-  
-          if (typeof content === 'string') {
-            content = [[module.id, content, '']];
-          }
-  
-          removeCss = insertCss(content, { replace: true });
-        });
-        module.hot.dispose(function() { removeCss(); });
-      }
-    
-
-/***/ },
-/* 125 */
-/***/ function(module, exports, __webpack_require__) {
-
-  exports = module.exports = __webpack_require__(53)();
-  // imports
-  
-  
-  // module
-  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.Forgotpass_root_2bx {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Forgotpass_container_2z1 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Forgotpass_lead_3Qz {\n  font-size: 1.25em;\n}\n\n.Forgotpass_formGroup_xHr {\n  margin-bottom: 20px;\n}\n\n.Forgotpass_label_1Je {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.Forgotpass_input_hyq {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.Forgotpass_input_hyq:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Forgotpass_button_7B_ {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Forgotpass_button_7B_:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Forgotpass_button_7B_:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Forgotpass_facebook_2eZ {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n\n.Forgotpass_facebook_2eZ:hover {\n  background: #2d4373;\n}\n\n.Forgotpass_google_TMn {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n\n.Forgotpass_google_TMn:hover {\n  background: #c23321;\n}\n\n.Forgotpass_twitter_XfU {\n  border-color: #55acee;\n  background: #55acee;\n}\n\n.Forgotpass_twitter_XfU:hover {\n  background: #2795e9;\n}\n\n.Forgotpass_icon_2y1 {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Forgotpass_lineThrough_34a {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Forgotpass_lineThrough_34a::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Forgotpass_lineThrough_34a::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/forgotpass/Forgotpass.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Forgotpass.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n"],"sourceRoot":"webpack://"}]);
-  
-  // exports
-  exports.locals = {
-  	"root": "Forgotpass_root_2bx",
-  	"container": "Forgotpass_container_2z1",
-  	"lead": "Forgotpass_lead_3Qz",
-  	"formGroup": "Forgotpass_formGroup_xHr",
-  	"label": "Forgotpass_label_1Je",
-  	"input": "Forgotpass_input_hyq",
-  	"button": "Forgotpass_button_7B_",
-  	"facebook": "Forgotpass_facebook_2eZ Forgotpass_button_7B_",
-  	"google": "Forgotpass_google_TMn Forgotpass_button_7B_",
-  	"twitter": "Forgotpass_twitter_XfU Forgotpass_button_7B_",
-  	"icon": "Forgotpass_icon_2y1",
-  	"lineThrough": "Forgotpass_lineThrough_34a"
-  };
-
-/***/ },
-/* 126 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _promise = __webpack_require__(83);
-  
-  var _promise2 = _interopRequireDefault(_promise);
-  
-  var _regenerator = __webpack_require__(1);
-  
-  var _regenerator2 = _interopRequireDefault(_regenerator);
-  
-  var _asyncToGenerator2 = __webpack_require__(2);
-  
-  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-  
-  var _react = __webpack_require__(43);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _Changepassword = __webpack_require__(127);
+  var _Changepassword = __webpack_require__(134);
   
   var _Changepassword2 = _interopRequireDefault(_Changepassword);
   
@@ -6331,7 +7072,7 @@ module.exports =
   }
 
 /***/ },
-/* 127 */
+/* 134 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -6348,7 +7089,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _changepassword = __webpack_require__(128);
+  var _changepassword = __webpack_require__(135);
   
   var _changepassword2 = _interopRequireDefault(_changepassword);
   
@@ -6378,6 +7119,7 @@ module.exports =
           null,
           title
         ),
+        _react2.default.createElement('script', { type: 'text/javascript', src: '../scripts/passwordmatch.js' }),
         _react2.default.createElement(
           'form',
           { name: 'form1', method: 'put', action: 'updatepass' },
@@ -6451,11 +7193,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_changepassword2.default)(Changepassword);
 
 /***/ },
-/* 128 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(129);
+      var content = __webpack_require__(136);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -6485,7 +7227,7 @@ module.exports =
     
 
 /***/ },
-/* 129 */
+/* 136 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -6508,7 +7250,7 @@ module.exports =
   };
 
 /***/ },
-/* 130 */
+/* 137 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -6533,11 +7275,11 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Updatepass = __webpack_require__(131);
+  var _Updatepass = __webpack_require__(138);
   
   var _Updatepass2 = _interopRequireDefault(_Updatepass);
   
-  var _Changepassword = __webpack_require__(127);
+  var _Changepassword = __webpack_require__(134);
   
   var _Changepassword2 = _interopRequireDefault(_Changepassword);
   
@@ -6547,6 +7289,8 @@ module.exports =
   
   var status = true;
   var message = 'Password Sucessfully Updated';
+  var href = 'http://' + _config.host + '/login';
+  var message1 = 'Click here to login';
   var passcode;
   
   exports.default = {
@@ -6607,7 +7351,7 @@ module.exports =
                 deletecode = _context.sent;
   
               case 22:
-                return _context.abrupt('return', _react2.default.createElement(_Updatepass2.default, { message: message }));
+                return _context.abrupt('return', _react2.default.createElement(_Updatepass2.default, { message: message, message1: message1, redirectlink: href }));
   
               case 23:
               case 'end':
@@ -6673,7 +7417,7 @@ module.exports =
   }
 
 /***/ },
-/* 131 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -6690,7 +7434,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _updatepass = __webpack_require__(132);
+  var _updatepass = __webpack_require__(139);
   
   var _updatepass2 = _interopRequireDefault(_updatepass);
   
@@ -6712,7 +7456,9 @@ module.exports =
   var title = 'Update Password';
   
   function Updatepass(_ref, context) {
-    var message = _ref.message;
+    var message = _ref.message,
+        message1 = _ref.message1,
+        redirectlink = _ref.redirectlink;
   
     context.setTitle(title);
     return _react2.default.createElement(
@@ -6730,6 +7476,12 @@ module.exports =
           'p',
           null,
           message
+        ),
+        _react2.default.createElement(
+          'a',
+          { href: redirectlink },
+          message1,
+          ' '
         )
       )
     );
@@ -6740,11 +7492,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_updatepass2.default)(Updatepass);
 
 /***/ },
-/* 132 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(133);
+      var content = __webpack_require__(140);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -6774,7 +7526,7 @@ module.exports =
     
 
 /***/ },
-/* 133 */
+/* 140 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -6801,7 +7553,7 @@ module.exports =
   };
 
 /***/ },
-/* 134 */
+/* 141 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -6814,7 +7566,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Serviceprovider = __webpack_require__(135);
+  var _Serviceprovider = __webpack_require__(142);
   
   var _Serviceprovider2 = _interopRequireDefault(_Serviceprovider);
   
@@ -6830,7 +7582,7 @@ module.exports =
   };
 
 /***/ },
-/* 135 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -6847,7 +7599,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Serviceprovider = __webpack_require__(136);
+  var _Serviceprovider = __webpack_require__(143);
   
   var _Serviceprovider2 = _interopRequireDefault(_Serviceprovider);
   
@@ -7056,11 +7808,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Serviceprovider2.default)(Serviceprovider);
 
 /***/ },
-/* 136 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(137);
+      var content = __webpack_require__(144);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -7090,7 +7842,7 @@ module.exports =
     
 
 /***/ },
-/* 137 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -7117,7 +7869,7 @@ module.exports =
   };
 
 /***/ },
-/* 138 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7146,11 +7898,11 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Saveprovider = __webpack_require__(139);
+  var _Saveprovider = __webpack_require__(146);
   
   var _Saveprovider2 = _interopRequireDefault(_Saveprovider);
   
-  var _Login = __webpack_require__(106);
+  var _Login = __webpack_require__(117);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -7326,7 +8078,7 @@ module.exports =
   }
 
 /***/ },
-/* 139 */
+/* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7343,7 +8095,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Saveprovider = __webpack_require__(140);
+  var _Saveprovider = __webpack_require__(147);
   
   var _Saveprovider2 = _interopRequireDefault(_Saveprovider);
   
@@ -7395,11 +8147,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Saveprovider2.default)(Saveprovider);
 
 /***/ },
-/* 140 */
+/* 147 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(141);
+      var content = __webpack_require__(148);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -7429,7 +8181,7 @@ module.exports =
     
 
 /***/ },
-/* 141 */
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -7457,7 +8209,7 @@ module.exports =
   };
 
 /***/ },
-/* 142 */
+/* 149 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7482,7 +8234,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Booking = __webpack_require__(143);
+  var _Booking = __webpack_require__(150);
   
   var _Booking2 = _interopRequireDefault(_Booking);
   
@@ -7503,7 +8255,7 @@ module.exports =
   
       var query = _ref.query;
       return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
-        var date, currentdate, sessionid, body, bookingid;
+        var date, currentdate, sessionid, email, customerrec, customermobile, body, bookingid;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -7511,30 +8263,41 @@ module.exports =
                 date = new Date();
                 currentdate = date.getDate() + '/' + date.getMonth() + 1 + '/' + date.getFullYear();
                 sessionid = query.sessionid;
+                email = query.email;
+                _context.t0 = JSON;
+                _context.next = 7;
+                return getCustomerRecord(email);
   
+              case 7:
+                _context.t1 = _context.sent;
+                customerrec = _context.t0.parse.call(_context.t0, _context.t1);
   
-                console.log("Booking Id: " + bookingid);
+                console.log("booking Record: " + customerrec);
+                customermobile = customerrec[0].phone;
+  
+                //console.log("Booking Id: "+bookingid);
+  
                 console.log("Sessionid - index.js - Booking : " + sessionid);
   
                 if (!(sessionid === undefined || sessionid == '')) {
-                  _context.next = 13;
+                  _context.next = 20;
                   break;
                 }
   
-                _context.next = 8;
+                _context.next = 15;
                 return getSessionid();
   
-              case 8:
+              case 15:
                 body = _context.sent;
   
                 console.log("Sessionid: " + body);
                 return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: body }));
   
-              case 13:
+              case 20:
                 bookingid = Math.floor(1000000 + Math.random() * 9000000);
-                return _context.abrupt('return', _react2.default.createElement(_Booking2.default, { sessionid: sessionid, bookingid: bookingid }));
+                return _context.abrupt('return', _react2.default.createElement(_Booking2.default, { sessionid: sessionid, bookingid: bookingid, email: email, phone: customermobile }));
   
-              case 15:
+              case 22:
               case 'end':
                 return _context.stop();
             }
@@ -7566,9 +8329,31 @@ module.exports =
       });
     });
   }
+  
+  function getCustomerRecord(email) {
+    var request = __webpack_require__(92);
+    console.log('getCustomerRecord - calling API');
+    var url = 'http://' + _config.apihost + '/getCustomer?email=' + email;
+    console.log("getCustomerRecord - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('getCustomerRecord - linkbooking - Response from API' + body);
+          //sessionid = body;
+          resolve(body);
+        } else {
+  
+          console.log("getCustomerRecord - linkbooking -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("getCustomerRecord - Returning from API call");
+      });
+    });
+  }
 
 /***/ },
-/* 143 */
+/* 150 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7585,7 +8370,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Booking = __webpack_require__(144);
+  var _Booking = __webpack_require__(151);
   
   var _Booking2 = _interopRequireDefault(_Booking);
   
@@ -7601,7 +8386,9 @@ module.exports =
   
   function Booking(_ref, context) {
     var sessionid = _ref.sessionid,
-        bookingid = _ref.bookingid;
+        bookingid = _ref.bookingid,
+        email = _ref.email,
+        phone = _ref.phone;
   
     context.setTitle(title);
     return _react2.default.createElement(
@@ -7620,7 +8407,7 @@ module.exports =
           { name: 'form1', method: 'put', action: 'savebooking' },
           _react2.default.createElement(
             'div',
-            { className: _Booking2.default.rightContainer },
+            { className: _Booking2.default.leftContainer },
             _react2.default.createElement('input', { id: 'status', type: 'hidden', value: 'booked', name: 'status' }),
             _react2.default.createElement(
               'label',
@@ -7670,7 +8457,8 @@ module.exports =
               id: 'email',
               type: 'email',
               name: 'email',
-              required: true
+              value: email,
+              readOnly: true
             }),
             _react2.default.createElement(
               'label',
@@ -7686,7 +8474,8 @@ module.exports =
               id: 'mobile',
               type: 'number',
               name: 'mobile',
-              required: true
+              value: phone,
+              readOnly: true
             })
           ),
           _react2.default.createElement(
@@ -7786,11 +8575,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Booking2.default)(Booking);
 
 /***/ },
-/* 144 */
+/* 151 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(145);
+      var content = __webpack_require__(152);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -7820,7 +8609,7 @@ module.exports =
     
 
 /***/ },
-/* 145 */
+/* 152 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -7828,7 +8617,7 @@ module.exports =
   
   
   // module
-  exports.push([module.id, " .Booking_root_16d {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Booking_container_3w7 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Booking_lead_oXi {\n  font-size: 1.25em;\n}\n\n.Booking_formGroup_1Wc {\n  margin-bottom: 20px;\n  \n}\n\n.Booking_label_yqN {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.Booking_input_b9l {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n}\n\n.Booking_input_b9l:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Booking_button_1QB {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #483288;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor:  pointer;\n}\n\n.Booking_button_1QB:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Booking_button_1QB:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Booking_leftContainer_3QX {\n   float:left;\n}\n\n.Booking_rightContainer_35N {\n   float:right;\n}\n\n.Booking_icon_1b7 {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Booking_lineThrough_SuZ {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Booking_lineThrough_SuZ::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Booking_lineThrough_SuZ::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n#Booking_lastname_1vn{\n    max-width:100px;\n    float:left;\n}\n\n.Booking_squaredOne_2tF {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  margin: 20px auto;\n  background: #fcfff4;\n  background: -webkit-gradient(linear, left top, left bottom, from(#fcfff4), color-stop(40%, #dfe5d7), to(#b3bead));\n  background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n          box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n  label {\n    width: 20px;\n    height: 20px;\n    position: absolute;\n    top: 4px;\n    left: 4px;\n    cursor: pointer;\n    background: -webkit-gradient(linear, left top, left bottom, from(top), color-stop(0%, #222), to(#45484d));\n    background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);\n    background: -o-linear-gradient(top, #222 0%, #45484d 100%);\n    background: linear-gradient(top, #222 0%, #45484d 100%);\n    -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);\n            box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1)\n  }\n  label:after {\n    content: '';\n    width: 16px;\n    height: 16px;\n    position: absolute;\n    top: 2px;\n    left: 2px;\n    background: $activeColor;\n    background: -webkit-gradient(linear, left top, left bottom, from($activeColor), to($darkenColor));\n    background: -webkit-linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    background: -o-linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n            box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n    opacity: 0;\n  }\n  label:hover::after {\n    opacity: 0.3;\n  }\n  input[type=checkbox] {\n    visibility: hidden   \n  }\n  input[type=checkbox]:checked + label:after {\n    opacity: 1;\n  } \n}", "", {"version":3,"sources":["/./routes/booking/Booking.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;EACzE,SAAS;EACT,cAAc;CACf;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,iBAAiB;CAClB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;GACG,WAAW;CACb;;AAED;GACG,YAAY;CACd;;AAGD;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb;;AACD;IACI,gBAAgB;IAChB,WAAW;CACd;;AAED;EACE,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,oBAAoB;EACpB,kHAAwE;EAAxE,gFAAwE;EAAxE,2EAAwE;EAAxE,wEAAwE;EACxE,yEAAiE;UAAjE,iEAAiE;EACjE;IACE,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,UAAU;IACV,gBAAgB;IAChB,0GAAwD;IAAxD,gEAAwD;IAAxD,2DAAwD;IAAxD,wDAAwD;IACxD,uFAA+E;YAA/E,8EAA+E;GAgBhF;EAfC;IACE,YAAY;IACZ,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,UAAU;IACV,yBAAyB;IACzB,kGAAqE;IAArE,6EAAqE;IAArE,wEAAqE;IAArE,qEAAqE;IACrE,yEAAiE;YAAjE,iEAAiE;IACjE,WAAW;GACZ;EACD;IACE,aAAa;GACd;EAEH;IACE,kBAAmB;GAIpB;EAHC;IACE,WAAW;GACZ;CAEJ","file":"Booking.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #483288;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor:  pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.leftContainer {\n   float:left;\n}\n\n.rightContainer {\n   float:right;\n}\n\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n#lastname{\n    max-width:100px;\n    float:left;\n}\n\n.squaredOne {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  margin: 20px auto;\n  background: #fcfff4;\n  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n  label {\n    width: 20px;\n    height: 20px;\n    position: absolute;\n    top: 4px;\n    left: 4px;\n    cursor: pointer;\n    background: linear-gradient(top, #222 0%, #45484d 100%);\n    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);\n    &:after {\n      content: '';\n      width: 16px;\n      height: 16px;\n      position: absolute;\n      top: 2px;\n      left: 2px;\n      background: $activeColor;\n      background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n      opacity: 0;\n    }\n    &:hover::after {\n      opacity: 0.3;\n    }\n  }\n  input[type=checkbox] {\n    visibility: hidden;\n    &:checked + label:after {\n      opacity: 1;\n    }   \n  } \n}"],"sourceRoot":"webpack://"}]);
+  exports.push([module.id, " .Booking_root_16d {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Booking_container_3w7 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Booking_lead_oXi {\n  font-size: 1.25em;\n}\n\n.Booking_formGroup_1Wc {\n  margin-bottom: 20px;\n  \n}\n\n.Booking_label_yqN {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.Booking_input_b9l {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n  \n}\n\n.Booking_input_b9l:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Booking_button_1QB {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #483288;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor:  pointer;\n}\n\n.Booking_button_1QB:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Booking_button_1QB:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Booking_leftContainer_3QX {\n   float:left;\n}\n\n.Booking_rightContainer_35N {\n   float:right;\n}\n\n.Booking_icon_1b7 {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Booking_lineThrough_SuZ {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Booking_lineThrough_SuZ::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Booking_lineThrough_SuZ::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n#Booking_lastname_1vn{\n    max-width:100px;\n    float:left;\n}\n\n.Booking_squaredOne_2tF {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  margin: 20px auto;\n  background: #fcfff4;\n  background: -webkit-gradient(linear, left top, left bottom, from(#fcfff4), color-stop(40%, #dfe5d7), to(#b3bead));\n  background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n          box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n  label {\n    width: 20px;\n    height: 20px;\n    position: absolute;\n    top: 4px;\n    left: 4px;\n    cursor: pointer;\n    background: -webkit-gradient(linear, left top, left bottom, from(top), color-stop(0%, #222), to(#45484d));\n    background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);\n    background: -o-linear-gradient(top, #222 0%, #45484d 100%);\n    background: linear-gradient(top, #222 0%, #45484d 100%);\n    -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);\n            box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1)\n  }\n  label:after {\n    content: '';\n    width: 16px;\n    height: 16px;\n    position: absolute;\n    top: 2px;\n    left: 2px;\n    background: $activeColor;\n    background: -webkit-gradient(linear, left top, left bottom, from($activeColor), to($darkenColor));\n    background: -webkit-linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    background: -o-linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n    -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n            box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n    opacity: 0;\n  }\n  label:hover::after {\n    opacity: 0.3;\n  }\n  input[type=checkbox] {\n    visibility: hidden   \n  }\n  input[type=checkbox]:checked + label:after {\n    opacity: 1;\n  } \n}", "", {"version":3,"sources":["/./routes/booking/Booking.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;EACzE,SAAS;EACT,cAAc;;CAEf;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,iBAAiB;CAClB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;GACG,WAAW;CACb;;AAED;GACG,YAAY;CACd;;AAGD;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb;;AACD;IACI,gBAAgB;IAChB,WAAW;CACd;;AAED;EACE,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,oBAAoB;EACpB,kHAAwE;EAAxE,gFAAwE;EAAxE,2EAAwE;EAAxE,wEAAwE;EACxE,yEAAiE;UAAjE,iEAAiE;EACjE;IACE,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,UAAU;IACV,gBAAgB;IAChB,0GAAwD;IAAxD,gEAAwD;IAAxD,2DAAwD;IAAxD,wDAAwD;IACxD,uFAA+E;YAA/E,8EAA+E;GAgBhF;EAfC;IACE,YAAY;IACZ,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,SAAS;IACT,UAAU;IACV,yBAAyB;IACzB,kGAAqE;IAArE,6EAAqE;IAArE,wEAAqE;IAArE,qEAAqE;IACrE,yEAAiE;YAAjE,iEAAiE;IACjE,WAAW;GACZ;EACD;IACE,aAAa;GACd;EAEH;IACE,kBAAmB;GAIpB;EAHC;IACE,WAAW;GACZ;CAEJ","file":"Booking.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  size: 15;\n  max-width: 30; \n  \n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #483288;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor:  pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.leftContainer {\n   float:left;\n}\n\n.rightContainer {\n   float:right;\n}\n\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n#lastname{\n    max-width:100px;\n    float:left;\n}\n\n.squaredOne {\n  width: 28px;\n  height: 28px;\n  position: relative;\n  margin: 20px auto;\n  background: #fcfff4;\n  background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);\n  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n  label {\n    width: 20px;\n    height: 20px;\n    position: absolute;\n    top: 4px;\n    left: 4px;\n    cursor: pointer;\n    background: linear-gradient(top, #222 0%, #45484d 100%);\n    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);\n    &:after {\n      content: '';\n      width: 16px;\n      height: 16px;\n      position: absolute;\n      top: 2px;\n      left: 2px;\n      background: $activeColor;\n      background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);\n      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);\n      opacity: 0;\n    }\n    &:hover::after {\n      opacity: 0.3;\n    }\n  }\n  input[type=checkbox] {\n    visibility: hidden;\n    &:checked + label:after {\n      opacity: 1;\n    }   \n  } \n}"],"sourceRoot":"webpack://"}]);
   
   // exports
   exports.locals = {
@@ -7848,7 +8637,7 @@ module.exports =
   };
 
 /***/ },
-/* 146 */
+/* 153 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -7873,61 +8662,19 @@ module.exports =
   
   var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
   
-  var sendSMS = function () {
-    var _ref3 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2() {
-      var url;
-      return _regenerator2.default.wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              console.log('calling API - sendSMS method');
-  
-              url = 'http://' + _config.apihost + '/sendSMS?authkey=' + _config.smsAPIKey + '&mobiles=' + phone + '&message=' + _config.SMSmessage + '&sender=DTSBMF&route=4&country=91';
-  
-              console.log("URL: " + url);
-              return _context2.abrupt('return', new _promise2.default(function (resolve, reject) {
-                request(url, function (error, response, body) {
-                  if (!error && response.statusCode == 200) {
-                    console.log('Inside sendSMS - Response from API (body)' + body);
-  
-                    if (error) {
-                      console.log("Error in Sending SMS");
-                      status = false;
-                      return reject(error);
-                    }
-  
-                    if (body == 'true') status = true;
-                    resolve(body);
-                  }
-                });
-              }));
-  
-            case 4:
-            case 'end':
-              return _context2.stop();
-          }
-        }
-      }, _callee2, this);
-    }));
-  
-    return function sendSMS() {
-      return _ref3.apply(this, arguments);
-    };
-  }();
-  
   var _react = __webpack_require__(43);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Savebooking = __webpack_require__(147);
+  var _Savebooking = __webpack_require__(154);
   
   var _Savebooking2 = _interopRequireDefault(_Savebooking);
   
-  var _Providerlist = __webpack_require__(150);
+  var _Providerlist = __webpack_require__(97);
   
   var _Providerlist2 = _interopRequireDefault(_Providerlist);
   
-  var _Login = __webpack_require__(106);
+  var _Login = __webpack_require__(117);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -8058,6 +8805,29 @@ module.exports =
     });
   }
   
+  function sendSMS() {
+    console.log('calling API - sendSMS method');
+  
+    var url = 'http://' + _config.apihost + '/sendSMS?authkey=' + _config.smsAPIKey + '&mobiles=' + phone + '&message=' + _config.SMSmessage + '&sender=DTSBMF&route=4&country=91';
+    console.log("URL: " + url);
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside sendSMS - Response from API (body)' + body);
+  
+          if (error) {
+            console.log("Error in Sending SMS");
+            status = false;
+            return reject(error);
+          }
+  
+          if (body == 'true') status = true;
+          resolve(body);
+        }
+      });
+    });
+  }
+  
   function sendEmail() {
     console.log('calling API - sendEmail');
     var url = 'http://' + _config.apihost + '/sendmail';
@@ -8133,7 +8903,7 @@ module.exports =
   }
 
 /***/ },
-/* 147 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -8150,7 +8920,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Savebooking = __webpack_require__(148);
+  var _Savebooking = __webpack_require__(155);
   
   var _Savebooking2 = _interopRequireDefault(_Savebooking);
   
@@ -8209,11 +8979,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Savebooking2.default)(Savebooking);
 
 /***/ },
-/* 148 */
+/* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(149);
+      var content = __webpack_require__(156);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -8243,7 +9013,7 @@ module.exports =
     
 
 /***/ },
-/* 149 */
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -8271,7 +9041,7 @@ module.exports =
   };
 
 /***/ },
-/* 150 */
+/* 157 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -8280,262 +9050,27 @@ module.exports =
     value: true
   });
   
-  var _react = __webpack_require__(43);
+  var _promise = __webpack_require__(83);
   
-  var _react2 = _interopRequireDefault(_react);
+  var _promise2 = _interopRequireDefault(_promise);
   
-  var _withStyles = __webpack_require__(58);
+  var _regenerator = __webpack_require__(1);
   
-  var _withStyles2 = _interopRequireDefault(_withStyles);
+  var _regenerator2 = _interopRequireDefault(_regenerator);
   
-  var _Providerlist = __webpack_require__(151);
+  var _asyncToGenerator2 = __webpack_require__(2);
   
-  var _Providerlist2 = _interopRequireDefault(_Providerlist);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var title = 'Service Provider Search'; /**
-                                          * React Starter Kit (https://www.reactstarterkit.com/)
-                                          *
-                                          * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-                                          *
-                                          * This source code is licensed under the MIT license found in the
-                                          * LICENSE.txt file in the root directory of this source tree.
-                                          */
-  
-  function Providerlist(_ref, props, context) {
-    var providerlist = _ref.providerlist,
-        customeremail = _ref.customeremail,
-        sessionid = _ref.sessionid,
-        bookingid = _ref.bookingid;
-  
-    //context.setTitle(title);
-  
-    var providerdata = JSON.parse(providerlist);
-  
-    console.log("Provider Data: " + providerdata);
-    return _react2.default.createElement(
-      'div',
-      { className: _Providerlist2.default.root },
-      _react2.default.createElement(
-        'div',
-        { className: _Providerlist2.default.container },
-        _react2.default.createElement(
-          'h1',
-          null,
-          'Service Provider Search'
-        ),
-        _react2.default.createElement(
-          'p',
-          null,
-          'Select Provider near by you'
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(
-            'form',
-            { name: 'form1', method: 'put', action: 'linkprovider' },
-            _react2.default.createElement(
-              'div',
-              { className: _Providerlist2.default.formGroup },
-              _react2.default.createElement(
-                'table',
-                null,
-                _react2.default.createElement(
-                  'caption',
-                  null,
-                  'Service Providers'
-                ),
-                _react2.default.createElement(
-                  'thead',
-                  null,
-                  _react2.default.createElement(
-                    'tr',
-                    null,
-                    _react2.default.createElement(
-                      'th',
-                      null,
-                      'Select'
-                    ),
-                    _react2.default.createElement(
-                      'th',
-                      null,
-                      'Email'
-                    ),
-                    _react2.default.createElement(
-                      'th',
-                      null,
-                      'First Name'
-                    ),
-                    _react2.default.createElement(
-                      'th',
-                      null,
-                      'Last Name'
-                    ),
-                    _react2.default.createElement(
-                      'th',
-                      null,
-                      'Address'
-                    ),
-                    _react2.default.createElement(
-                      'th',
-                      null,
-                      'City'
-                    ),
-                    _react2.default.createElement(
-                      'th',
-                      null,
-                      'Phone'
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'tbody',
-                  null,
-                  providerdata.map(function (obj, index) {
-                    return _react2.default.createElement(
-                      'tr',
-                      { key: index },
-                      _react2.default.createElement(
-                        'td',
-                        null,
-                        _react2.default.createElement('input', { type: 'radio', name: 'provideremail', value: obj.email }),
-                        ' '
-                      ),
-                      _react2.default.createElement(
-                        'td',
-                        null,
-                        obj.email
-                      ),
-                      _react2.default.createElement(
-                        'td',
-                        null,
-                        ' ',
-                        obj.firstname
-                      ),
-                      _react2.default.createElement(
-                        'td',
-                        null,
-                        ' ',
-                        obj.lname,
-                        ' '
-                      ),
-                      _react2.default.createElement(
-                        'td',
-                        null,
-                        ' ',
-                        obj.address
-                      ),
-                      _react2.default.createElement(
-                        'td',
-                        null,
-                        ' ',
-                        obj.city
-                      ),
-                      _react2.default.createElement(
-                        'td',
-                        null,
-                        obj.phone
-                      )
-                    );
-                  })
-                )
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              null,
-              _react2.default.createElement('br', null),
-              _react2.default.createElement('input', { type: 'hidden', name: 'customeremail', value: customeremail }),
-              _react2.default.createElement('input', { type: 'hidden', name: 'sessionid', value: sessionid }),
-              _react2.default.createElement('input', { type: 'hidden', name: 'bookingid', value: bookingid }),
-              _react2.default.createElement(
-                'button',
-                { className: _Providerlist2.default.button, type: 'submit' },
-                'Submit'
-              )
-            )
-          )
-        )
-      )
-    );
-  }
-  
-  Providerlist.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
-  
-  exports.default = (0, _withStyles2.default)(_Providerlist2.default)(Providerlist);
-
-/***/ },
-/* 151 */
-/***/ function(module, exports, __webpack_require__) {
-
-  
-      var content = __webpack_require__(152);
-      var insertCss = __webpack_require__(54);
-  
-      if (typeof content === 'string') {
-        content = [[module.id, content, '']];
-      }
-  
-      module.exports = content.locals || {};
-      module.exports._getCss = function() { return content.toString(); };
-      module.exports._insertCss = function(options) { return insertCss(content, options) };
-    
-      // Hot Module Replacement
-      // https://webpack.github.io/docs/hot-module-replacement
-      // Only activated in browser context
-      if (false) {
-        var removeCss = function() {};
-        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Providerlist.css", function() {
-          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Providerlist.css");
-  
-          if (typeof content === 'string') {
-            content = [[module.id, content, '']];
-          }
-  
-          removeCss = insertCss(content, { replace: true });
-        });
-        module.hot.dispose(function() { removeCss(); });
-      }
-    
-
-/***/ },
-/* 152 */
-/***/ function(module, exports, __webpack_require__) {
-
-  exports = module.exports = __webpack_require__(53)();
-  // imports
-  
-  
-  // module
-  exports.push([module.id, " .Providerlist_root_2fr {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Providerlist_container_3Q4 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height:100x\n}\n\nhtml {\n  min-height: 100%;\n}\n\nbody {\n  min-height: 100vh;\n}\n\ntable, th, td {\n  border: 1px solid black;\n}\n\ntr:hover {background-color: #f5f5f5}\n\nth {\n  background-color: #4CAF50;\n  color: white;\n}\n\n.Providerlist_button_Tyf {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 30%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Providerlist_button_Tyf:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Providerlist_button_Tyf:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\ndiv {\n  overflow-x:visible;\n   \n}\n\n.Providerlist_formGroup_2cf {\n  margin-bottom: 15px;\n}", "", {"version":3,"sources":["/./routes/providerlist/Providerlist.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;CAChB;;AAID;EACE,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,wBAAwB;CACzB;;AACD,UAAU,yBAAyB,CAAC;;AACpC;EACE,0BAA0B;EAC1B,aAAa;CACd;;AACD;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,WAAW;EACX,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;EACE,mBAAmB;;CAEpB;;AAGD;EACE,oBAAoB;CACrB","file":"Providerlist.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height:100x\n}\n\n\n\nhtml {\n  min-height: 100%;\n}\n\nbody {\n  min-height: 100vh;\n}\n\ntable, th, td {\n  border: 1px solid black;\n} \ntr:hover {background-color: #f5f5f5}\nth {\n  background-color: #4CAF50;\n  color: white;\n}\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 30%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\ndiv {\n  overflow-x:visible;\n   \n}\n\n\n.formGroup {\n  margin-bottom: 15px;\n}"],"sourceRoot":"webpack://"}]);
-  
-  // exports
-  exports.locals = {
-  	"root": "Providerlist_root_2fr",
-  	"container": "Providerlist_container_3Q4",
-  	"button": "Providerlist_button_Tyf",
-  	"formGroup": "Providerlist_formGroup_2cf"
-  };
-
-/***/ },
-/* 153 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
   
   var _react = __webpack_require__(43);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _providerlogin = __webpack_require__(154);
+  var _providerlogin = __webpack_require__(158);
   
   var _providerlogin2 = _interopRequireDefault(_providerlogin);
+  
+  var _config = __webpack_require__(20);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
@@ -8544,12 +9079,58 @@ module.exports =
     path: '/providerlogin',
   
     action: function action() {
-      return _react2.default.createElement(_providerlogin2.default, null);
+      var _this = this;
+  
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var sessionid;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return getSessionid();
+  
+              case 2:
+                sessionid = _context.sent;
+  
+                console.log("SessionId-Login: " + sessionid);
+                return _context.abrupt('return', _react2.default.createElement(_providerlogin2.default, { sessionid: sessionid }));
+  
+              case 5:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
     }
   };
+  
+  
+  function getSessionid() {
+    var request = __webpack_require__(92);
+    console.log('genSessionid - calling API');
+    var url = 'http://' + _config.apihost + '/genSessionid';
+    console.log("getSeesionid - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('genSessionid - Response from API' + body);
+          //sessionid = body;
+          resolve(body);
+        } else {
+  
+          console.log("genSessionid -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("getSessionid - Returning from API call");
+      });
+    });
+  }
 
 /***/ },
-/* 154 */
+/* 158 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -8570,7 +9151,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Providerlogin = __webpack_require__(155);
+  var _Providerlogin = __webpack_require__(159);
   
   var _Providerlogin2 = _interopRequireDefault(_Providerlogin);
   
@@ -8582,7 +9163,10 @@ module.exports =
   
   var title = 'Entering Credentials';
   
-  function Providerlogin(props, context) {
+  function Providerlogin(_ref, context) {
+    var sessionid = _ref.sessionid;
+  
+    console.log("ProviderLogin.js-SessionId: " + sessionid);
     context.setTitle(title);
   
     return _react2.default.createElement(
@@ -8638,6 +9222,12 @@ module.exports =
                 type: 'password',
                 name: 'password',
                 required: 'required'
+              }),
+              _react2.default.createElement('input', {
+                id: 'sessionid',
+                type: 'hidden',
+                name: 'sessionid',
+                value: sessionid
               })
             ),
             _react2.default.createElement(
@@ -8650,7 +9240,7 @@ module.exports =
               ),
               _react2.default.createElement(
                 _Link2.default,
-                { to: '/forgotpass' },
+                { to: '/providerforgotpass' },
                 'Forgot Password'
               ),
               _react2.default.createElement(
@@ -8660,7 +9250,7 @@ module.exports =
               ),
               _react2.default.createElement(
                 _Link2.default,
-                { to: '/register' },
+                { to: '/serviceprovider' },
                 'Sign Up'
               )
             )
@@ -8675,11 +9265,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Providerlogin2.default)(Providerlogin);
 
 /***/ },
-/* 155 */
+/* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(156);
+      var content = __webpack_require__(160);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -8709,7 +9299,7 @@ module.exports =
     
 
 /***/ },
-/* 156 */
+/* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -8737,7 +9327,1095 @@ module.exports =
   };
 
 /***/ },
-/* 157 */
+/* 161 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _promise = __webpack_require__(83);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Providerforgotpass = __webpack_require__(162);
+  
+  var _Providerforgotpass2 = _interopRequireDefault(_Providerforgotpass);
+  
+  var _Providerlogin = __webpack_require__(165);
+  
+  var _Providerlogin2 = _interopRequireDefault(_Providerlogin);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var request = __webpack_require__(92);
+  
+  var status = 'false';
+  var errormessage = '';
+  //var user;
+  
+  exports.default = {
+  
+    path: '/providerforgotpass',
+  
+    action: function action(_ref, _ref2) {
+      var _this = this;
+  
+      var query = _ref.query;
+      var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var email, validlogin, code, body, result;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                email = query.email;
+                // user = query.user;
+  
+                console.log("Email ID:" + email);
+                // console.log("User: "+user);
+  
+                if (!(typeof email === 'undefined')) {
+                  _context.next = 6;
+                  break;
+                }
+  
+                return _context.abrupt('return', _react2.default.createElement(_Providerforgotpass2.default, null));
+  
+              case 6:
+                _context.next = 8;
+                return checkLogin(email);
+  
+              case 8:
+                validlogin = _context.sent;
+  
+                console.log("ValidLogin:" + validlogin);
+  
+                if (!(validlogin == 'true')) {
+                  _context.next = 20;
+                  break;
+                }
+  
+                code = passwordCode(6);
+  
+                console.log("Passcode: " + code);
+                _context.next = 15;
+                return sendEmail(email, code);
+  
+              case 15:
+                body = _context.sent;
+  
+                if (!(body == 'true')) {
+                  _context.next = 20;
+                  break;
+                }
+  
+                _context.next = 19;
+                return storePasscode(email, code);
+  
+              case 19:
+                result = _context.sent;
+  
+              case 20:
+                console.log("Status: " + status);
+  
+                if (!(status == true)) {
+                  _context.next = 26;
+                  break;
+                }
+  
+                console.log("Redirected to Login Page");
+                return _context.abrupt('return', _react2.default.createElement(_Providerlogin2.default, null));
+  
+              case 26:
+                console.log("Error in Reseting password request");
+                return _context.abrupt('return', _react2.default.createElement(Providerforgotpass, { errormessage: errormessage }));
+  
+              case 28:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    }
+  };
+  
+  
+  function sendEmail(email, code) {
+    console.log('calling API - sendEmail');
+    var url = 'http://' + _config.apihost + '/sendmail';
+    console.log("URL: " + url);
+  
+    var subject = "Your Password Reset";
+    var href = 'http://' + _config.host + '/providerchangepassword?code=' + code + '&userEmail=' + email;
+    console.log("Href: " + href);
+    var message = '<b>We received your request for password Reset. <a href="' + href + '" >Click here to reset password</a> ';
+    var formdata = {
+      tomail: email,
+      subject: subject,
+      message: message
+    };
+  
+    console.log("Data: " + formdata);
+    return new _promise2.default(function (resolve, reject) {
+      request.post(url, { form: formdata }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside sendEmail - Response from API (body)' + body);
+  
+          if (body == 'true') status = true;else status = false;
+          resolve(body);
+        } else if (error) {
+          console.log("Error in Sending Mail");
+          status = false;
+          return reject(error);
+        }
+      });
+    });
+  }
+  
+  function passwordCode(length) {
+    var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^*()-+<>ABCDEFGHIJKLMNOP1234567890";
+    var pass = "";
+    for (var x = 0; x < length; x++) {
+      var i = Math.floor(Math.random() * chars.length);
+      pass += chars.charAt(i);
+    }
+    return pass;
+  }
+  
+  function storePasscode(email, code) {
+  
+    console.log("Inside storePasscode method email: " + email);
+    console.log("Inside storePasscode method Code: " + code);
+    console.log('calling API');
+    var url = 'http://' + _config.apihost + '/storePasscode';
+    console.log("URL: " + url);
+    return new _promise2.default(function (resolve, reject) {
+      request.post(url, { form: { email: email, code: code } }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside StorePasscode Response from API (body)' + body);
+  
+          if (body == 'true') status = true;
+          resolve(body);
+        } else {
+          console.log("Error in storing passcode");
+          status = false;
+          return reject(error);
+        }
+      });
+    });
+  }
+  
+  function checkLogin(email) {
+  
+    console.log('calling API');
+  
+    var url = 'http://' + _config.apihost + '/checkemail?email=' + email;
+    console.log("URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Response from API: ' + body);
+          if (body == 'true') status = true;
+          resolve(body);
+        } else {
+          status = 'false';
+          console.log("API Server not running: " + error);
+          return reject(error);
+        }
+        console.log('Returning');
+      });
+    });
+  }
+
+/***/ },
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Providerforgotpass = __webpack_require__(163);
+  
+  var _Providerforgotpass2 = _interopRequireDefault(_Providerforgotpass);
+  
+  var _Link = __webpack_require__(61);
+  
+  var _Link2 = _interopRequireDefault(_Link);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'Changing Provider Password';
+  
+  function Providerforgotpass(props, context) {
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      { className: _Providerforgotpass2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Providerforgotpass2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'form',
+          { name: 'form1', method: 'put', action: 'providerforgotpass' },
+          _react2.default.createElement(
+            'div',
+            { className: _Providerforgotpass2.default.formGroup },
+            _react2.default.createElement(
+              'label',
+              { className: _Providerforgotpass2.default.label, htmlFor: 'email' },
+              'Email:'
+            ),
+            _react2.default.createElement('input', {
+              className: _Providerforgotpass2.default.input,
+              id: 'email',
+              type: 'email',
+              name: 'email',
+              placeholder: 'Enter E-mail',
+              required: 'required'
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _Providerforgotpass2.default.formGroup },
+            _react2.default.createElement(
+              'button',
+              { className: _Providerforgotpass2.default.button, type: 'submit' },
+              'Send Reset Email'
+            )
+          )
+        )
+      )
+    );
+  }
+  
+  Providerforgotpass.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Providerforgotpass2.default)(Providerforgotpass);
+
+/***/ },
+/* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(164);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Providerforgotpass.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Providerforgotpass.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 164 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.Providerforgotpass_root_grr {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Providerforgotpass_container_1G4 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Providerforgotpass_lead_71y {\n  font-size: 1.25em;\n}\n\n.Providerforgotpass_formGroup_2IW {\n  margin-bottom: 20px;\n}\n\n.Providerforgotpass_label_3Ln {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.Providerforgotpass_input_3Iq {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.Providerforgotpass_input_3Iq:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Providerforgotpass_button_1XQ {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Providerforgotpass_button_1XQ:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Providerforgotpass_button_1XQ:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Providerforgotpass_facebook_37u {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n\n.Providerforgotpass_facebook_37u:hover {\n  background: #2d4373;\n}\n\n.Providerforgotpass_google_20Z {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n\n.Providerforgotpass_google_20Z:hover {\n  background: #c23321;\n}\n\n.Providerforgotpass_twitter_311 {\n  border-color: #55acee;\n  background: #55acee;\n}\n\n.Providerforgotpass_twitter_311:hover {\n  background: #2795e9;\n}\n\n.Providerforgotpass_icon_qg2 {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Providerforgotpass_lineThrough_3Y6 {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Providerforgotpass_lineThrough_3Y6::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Providerforgotpass_lineThrough_3Y6::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/providerforgotpass/Providerforgotpass.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Providerforgotpass.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Providerforgotpass_root_grr",
+  	"container": "Providerforgotpass_container_1G4",
+  	"lead": "Providerforgotpass_lead_71y",
+  	"formGroup": "Providerforgotpass_formGroup_2IW",
+  	"label": "Providerforgotpass_label_3Ln",
+  	"input": "Providerforgotpass_input_3Iq",
+  	"button": "Providerforgotpass_button_1XQ",
+  	"facebook": "Providerforgotpass_facebook_37u Providerforgotpass_button_1XQ",
+  	"google": "Providerforgotpass_google_20Z Providerforgotpass_button_1XQ",
+  	"twitter": "Providerforgotpass_twitter_311 Providerforgotpass_button_1XQ",
+  	"icon": "Providerforgotpass_icon_qg2",
+  	"lineThrough": "Providerforgotpass_lineThrough_3Y6"
+  };
+
+/***/ },
+/* 165 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _reactDom = __webpack_require__(88);
+  
+  var _reactDom2 = _interopRequireDefault(_reactDom);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Providerlogin = __webpack_require__(159);
+  
+  var _Providerlogin2 = _interopRequireDefault(_Providerlogin);
+  
+  var _Link = __webpack_require__(61);
+  
+  var _Link2 = _interopRequireDefault(_Link);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'Entering Credentials';
+  
+  function Providerlogin(_ref, context) {
+    var sessionid = _ref.sessionid;
+  
+    console.log("ProviderLogin.js-SessionId: " + sessionid);
+    context.setTitle(title);
+  
+    return _react2.default.createElement(
+      'div',
+      { className: _Providerlogin2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Providerlogin2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'p',
+          { className: _Providerlogin2.default.lead },
+          'Log in with your username or email address.'
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _Providerlogin2.default.formGroup },
+          _react2.default.createElement(
+            'form',
+            { name: 'form1', method: 'get', action: 'verifyproviderlogin' },
+            _react2.default.createElement(
+              'div',
+              { className: _Providerlogin2.default.formGroup },
+              _react2.default.createElement(
+                'label',
+                { className: _Providerlogin2.default.label, htmlFor: 'usernameOrEmail' },
+                'Username or email address:'
+              ),
+              _react2.default.createElement('input', {
+                className: _Providerlogin2.default.input,
+                id: 'email',
+                type: 'email',
+                name: 'email',
+                required: 'required',
+                autoFocus: true
+              })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: _Providerlogin2.default.formGroup },
+              _react2.default.createElement(
+                'label',
+                { className: _Providerlogin2.default.label, htmlFor: 'password' },
+                'Password:'
+              ),
+              _react2.default.createElement('input', {
+                className: _Providerlogin2.default.input,
+                id: 'password',
+                type: 'password',
+                name: 'password',
+                required: 'required'
+              }),
+              _react2.default.createElement('input', {
+                id: 'sessionid',
+                type: 'hidden',
+                name: 'sessionid',
+                value: sessionid
+              })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: _Providerlogin2.default.formGroup },
+              _react2.default.createElement(
+                'button',
+                { className: _Providerlogin2.default.button1, type: 'submit' },
+                'Log in'
+              ),
+              _react2.default.createElement(
+                _Link2.default,
+                { to: '/providerforgotpass' },
+                'Forgot Password'
+              ),
+              _react2.default.createElement(
+                'span',
+                { className: _Providerlogin2.default.spacer },
+                ' | '
+              ),
+              _react2.default.createElement(
+                _Link2.default,
+                { to: '/serviceprovider' },
+                'Sign Up'
+              )
+            )
+          )
+        )
+      )
+    );
+  }
+  
+  Providerlogin.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Providerlogin2.default)(Providerlogin);
+
+/***/ },
+/* 166 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _promise = __webpack_require__(83);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Providerchangepassword = __webpack_require__(167);
+  
+  var _Providerchangepassword2 = _interopRequireDefault(_Providerchangepassword);
+  
+  var _Providerlogin = __webpack_require__(165);
+  
+  var _Providerlogin2 = _interopRequireDefault(_Providerlogin);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var status = false;
+  
+  exports.default = {
+  
+    path: '/providerchangepassword',
+  
+    action: function action(_ref, _ref2) {
+      var _this = this;
+  
+      var query = _ref.query;
+      var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var email, code, startdate, body, enddate, difftime;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                email = query.userEmail;
+                code = query.code;
+  
+                console.log("Email ID:" + email);
+                startdate = new Date();
+                _context.next = 6;
+                return checkCode(code, email);
+  
+              case 6:
+                body = _context.sent;
+                enddate = new Date();
+                difftime = enddate.getTime() - startdate.getTime();
+  
+                console.log("Execution Time:" + difftime);
+  
+                if (!status) {
+                  _context.next = 14;
+                  break;
+                }
+  
+                return _context.abrupt('return', _react2.default.createElement(_Providerchangepassword2.default, { email: email, passCode: code }));
+  
+              case 14:
+                return _context.abrupt('return', _react2.default.createElement(_Providerlogin2.default, null));
+  
+              case 15:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    }
+  };
+  
+  
+  function checkCode(code, email) {
+    var request = __webpack_require__(92);
+    console.log('Check Code - calling API');
+    var url = 'http://' + _config.apihost + '/getCode?code=' + code + '&userEmail=' + email;
+    console.log("Checkcode - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Checkcode - Response from API' + body);
+  
+          if (body == 'true') status = true;else status = false;
+          resolve(body);
+        } else {
+          status = false;
+          console.log("checkCode -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("Checkecode - Returning from API call");
+      });
+    });
+  }
+
+/***/ },
+/* 167 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _providerchangepassword = __webpack_require__(168);
+  
+  var _providerchangepassword2 = _interopRequireDefault(_providerchangepassword);
+  
+  var _Link = __webpack_require__(61);
+  
+  var _Link2 = _interopRequireDefault(_Link);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'Changing Password';
+  
+  function Changepassword(_ref, context) {
+    var email = _ref.email,
+        passCode = _ref.passCode,
+        message = _ref.message;
+  
+    console.log("Changepassword: " + email);
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      { className: _providerchangepassword2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _providerchangepassword2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement('script', { type: 'text/javascript', src: '../scripts/passwordmatch.js' }),
+        _react2.default.createElement(
+          'form',
+          { name: 'form1', method: 'put', action: 'updateproviderpass' },
+          _react2.default.createElement(
+            'div',
+            { className: _providerchangepassword2.default.formGroup },
+            _react2.default.createElement(
+              'label',
+              { className: _providerchangepassword2.default.label, htmlFor: 'password' },
+              'New Password:'
+            ),
+            _react2.default.createElement('input', {
+              className: _providerchangepassword2.default.input,
+              id: 'newpass',
+              type: 'password',
+              name: 'newpass',
+              autoFocus: true,
+              required: true
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _providerchangepassword2.default.formGroup },
+            _react2.default.createElement(
+              'label',
+              { className: _providerchangepassword2.default.label, htmlFor: 'password' },
+              'Confirm Password:'
+            ),
+            _react2.default.createElement('input', {
+              className: _providerchangepassword2.default.input,
+              id: 'confirmpass',
+              type: 'password',
+              name: 'confirmpass'
+            }),
+            _react2.default.createElement(
+              'label',
+              { className: _providerchangepassword2.default.label1, htmlFor: 'message' },
+              message
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _providerchangepassword2.default.formGroup },
+            _react2.default.createElement(
+              'button',
+              { className: _providerchangepassword2.default.button, value: 'Change Password', type: 'submit' },
+              'Change Password'
+            ),
+            _react2.default.createElement('input', {
+              className: _providerchangepassword2.default.input,
+              id: 'email',
+              type: 'hidden',
+              name: 'email',
+              value: email
+            }),
+            _react2.default.createElement('input', {
+              id: 'code',
+              type: 'hidden',
+              name: 'code',
+              value: passCode
+            })
+          ),
+          _react2.default.createElement('script', null)
+        )
+      )
+    );
+  }
+  
+  Changepassword.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_providerchangepassword2.default)(Changepassword);
+
+/***/ },
+/* 168 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(169);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./providerchangepassword.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./providerchangepassword.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 169 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.providerchangepassword_root_27E {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.providerchangepassword_container_33R {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.providerchangepassword_lead_1Ha {\n  font-size: 1.25em;\n}\n\n.providerchangepassword_formGroup_3eo {\n  margin-bottom: 20px;\n}\n\n.providerchangepassword_label_1SW {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.providerchangepassword_label1_1FM {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 300;\n  color: #FF0000;\n}\n\n.providerchangepassword_input_164 {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.providerchangepassword_input_164:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.providerchangepassword_button_2Bt {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.providerchangepassword_button_2Bt:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.providerchangepassword_button_2Bt:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/providerchangepassword/providerchangepassword.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,eAAe;CAChB;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C","file":"providerchangepassword.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.label1 {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 300;\n  color: #FF0000;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "providerchangepassword_root_27E",
+  	"container": "providerchangepassword_container_33R",
+  	"lead": "providerchangepassword_lead_1Ha",
+  	"formGroup": "providerchangepassword_formGroup_3eo",
+  	"label": "providerchangepassword_label_1SW",
+  	"label1": "providerchangepassword_label1_1FM",
+  	"input": "providerchangepassword_input_164",
+  	"button": "providerchangepassword_button_2Bt"
+  };
+
+/***/ },
+/* 170 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _promise = __webpack_require__(83);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Updateproviderpass = __webpack_require__(171);
+  
+  var _Updateproviderpass2 = _interopRequireDefault(_Updateproviderpass);
+  
+  var _Providerchangepassword = __webpack_require__(167);
+  
+  var _Providerchangepassword2 = _interopRequireDefault(_Providerchangepassword);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var status = true;
+  var message = 'Password Sucessfully Updated';
+  var href = 'http://' + _config.host + '/providerlogin';
+  var message1 = 'Click here to login';
+  var passcode;
+  
+  exports.default = {
+  
+    path: '/updateproviderpass',
+  
+    action: function action(_ref, _ref2) {
+      var _this = this;
+  
+      var query = _ref.query;
+      var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var email, newpass, confirmpass, body, deletecode;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                email = query.email;
+                newpass = query.newpass;
+                confirmpass = query.confirmpass;
+  
+                passcode = query.code;
+                console.log("Email ID:" + email);
+                console.log("New Password: " + newpass);
+                console.log("Confirm Password: " + confirmpass);
+                console.log("Passcode - Update Password module:" + passcode);
+  
+                if (!(newpass != confirmpass)) {
+                  _context.next = 11;
+                  break;
+                }
+  
+                message = "Password Not matching";
+                return _context.abrupt('return', _react2.default.createElement(_Providerchangepassword2.default, { email: email, message: message }));
+  
+              case 11:
+                _context.next = 13;
+                return updatePassword(newpass, email);
+  
+              case 13:
+                body = _context.sent;
+  
+                if (!(status = false)) {
+                  _context.next = 18;
+                  break;
+                }
+  
+                message = ' Error in updating password';
+                _context.next = 22;
+                break;
+  
+              case 18:
+                message = 'Password Sucessfully Updated';
+                _context.next = 21;
+                return deletePassCode();
+  
+              case 21:
+                deletecode = _context.sent;
+  
+              case 22:
+                return _context.abrupt('return', _react2.default.createElement(_Updateproviderpass2.default, { message: message, message1: message1, redirectlink: href }));
+  
+              case 23:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    }
+  };
+  
+  
+  function updatePassword(newpass, email) {
+    var request = __webpack_require__(92);
+    console.log("Inside Updateproviderpassword method email: " + email);
+    console.log("Inside Updateproviderpassword method Password: " + newpass);
+    console.log('calling API');
+    var url = 'http://' + _config.apihost + '/updatelogin?newpass=' + newpass + '&email=' + email;
+    console.log("Update Updateproviderpass Password - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+  
+      request.put(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Change Password - Updateproviderpass - Response from API' + body);
+          if (body == 'true') {
+            status = true;
+          } else {
+            status = false;
+            message = 'Error in updating password';
+          }
+          resolve(body);
+        } else {
+          status = false;
+          console.log("Updateproviderpass - API Server not running: ") + error;
+          return reject(error);
+        }
+      });
+    });
+  }
+  
+  function deletePassCode() {
+    var request = __webpack_require__(92);
+    console.log('Check Code - calling API');
+    var url = 'http://' + _config.apihost + '/removeCode?code=' + passcode;
+    console.log("deletePassCode - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request.delete(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('deletePassCode- Response from API' + body);
+  
+          if (body == 'true') status = true;else status = false;
+          resolve(body);
+        } else {
+          status = false;
+          console.log("deletePassCode -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("deletePassCode - Returning from API call");
+      });
+    });
+  }
+
+/***/ },
+/* 171 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Updateproviderpass = __webpack_require__(172);
+  
+  var _Updateproviderpass2 = _interopRequireDefault(_Updateproviderpass);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  //import Link from '../../components/Link'
+  
+  var title = 'Update Provider Password'; /**
+                                           * React Starter Kit (https://www.reactstarterkit.com/)
+                                           *
+                                           * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+                                           *
+                                           * This source code is licensed under the MIT license found in the
+                                           * LICENSE.txt file in the root directory of this source tree.
+                                           */
+  
+  function Updateproviderpass(_ref, context) {
+    var message = _ref.message,
+        message1 = _ref.message1,
+        redirectlink = _ref.redirectlink;
+  
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      { className: _Updateproviderpass2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Updateproviderpass2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          message
+        ),
+        _react2.default.createElement(
+          'a',
+          { href: redirectlink },
+          message1,
+          ' '
+        )
+      )
+    );
+  }
+  
+  Updateproviderpass.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Updateproviderpass2.default)(Updateproviderpass);
+
+/***/ },
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(173);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Updateproviderpass.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Updateproviderpass.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n.Updateproviderpass_root_3O- {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n.Updateproviderpass_container_2GD {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n.Updateproviderpass_lead_1Os {\n  font-size: 1.25em;\n}\n.Updateproviderpass_formGroup_ru8 {\n  margin-bottom: 20px;\n}\n.Updateproviderpass_label_3cK {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n.Updateproviderpass_input_1PN {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n.Updateproviderpass_input_1PN:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Updateproviderpass_button_1pi {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.Updateproviderpass_button_1pi:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n.Updateproviderpass_button_1pi:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Updateproviderpass_facebook_1Vn {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n.Updateproviderpass_facebook_1Vn:hover {\n  background: #2d4373;\n}\n.Updateproviderpass_google_25L {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n.Updateproviderpass_google_25L:hover {\n  background: #c23321;\n}\n.Updateproviderpass_twitter_3wf {\n  border-color: #55acee;\n  background: #55acee;\n}\n.Updateproviderpass_twitter_3wf:hover {\n  background: #2795e9;\n}\n.Updateproviderpass_icon_3bF {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n.Updateproviderpass_lineThrough_3HX {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n.Updateproviderpass_lineThrough_3HX::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n.Updateproviderpass_lineThrough_3HX::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./routes/updateproviderpass/Updateproviderpass.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;ACLH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;ADbD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;AAED;EACE,kBAAkB;CACnB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;AAGD;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;AAED;EACE,mCAAmC;CACpC;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Updateproviderpass.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n","\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Updateproviderpass_root_3O-",
+  	"container": "Updateproviderpass_container_2GD",
+  	"lead": "Updateproviderpass_lead_1Os",
+  	"formGroup": "Updateproviderpass_formGroup_ru8",
+  	"label": "Updateproviderpass_label_3cK",
+  	"input": "Updateproviderpass_input_1PN",
+  	"button": "Updateproviderpass_button_1pi",
+  	"facebook": "Updateproviderpass_facebook_1Vn Updateproviderpass_button_1pi",
+  	"google": "Updateproviderpass_google_25L Updateproviderpass_button_1pi",
+  	"twitter": "Updateproviderpass_twitter_3wf Updateproviderpass_button_1pi",
+  	"icon": "Updateproviderpass_icon_3bF",
+  	"lineThrough": "Updateproviderpass_lineThrough_3HX"
+  };
+
+/***/ },
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -8766,7 +10444,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _LinkProvider = __webpack_require__(158);
+  var _LinkProvider = __webpack_require__(175);
   
   var _LinkProvider2 = _interopRequireDefault(_LinkProvider);
   
@@ -8938,7 +10616,7 @@ module.exports =
   }
 
 /***/ },
-/* 158 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -8955,7 +10633,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _LinkProvider = __webpack_require__(159);
+  var _LinkProvider = __webpack_require__(176);
   
   var _LinkProvider2 = _interopRequireDefault(_LinkProvider);
   
@@ -9002,11 +10680,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_LinkProvider2.default)(LinkProvider);
 
 /***/ },
-/* 159 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(160);
+      var content = __webpack_require__(177);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -9036,7 +10714,7 @@ module.exports =
     
 
 /***/ },
-/* 160 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -9064,7 +10742,7 @@ module.exports =
   };
 
 /***/ },
-/* 161 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -9089,35 +10767,32 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Verifyproviderlogin = __webpack_require__(162);
-  
-  var _Verifyproviderlogin2 = _interopRequireDefault(_Verifyproviderlogin);
-  
   var _Providerlogin = __webpack_require__(165);
   
   var _Providerlogin2 = _interopRequireDefault(_Providerlogin);
   
-  var _ErrorPage = __webpack_require__(115);
+  var _Providerhome = __webpack_require__(179);
+  
+  var _Providerhome2 = _interopRequireDefault(_Providerhome);
+  
+  var _ErrorPage = __webpack_require__(126);
   
   var _ErrorPage2 = _interopRequireDefault(_ErrorPage);
-  
-  var _Home = __webpack_require__(84);
-  
-  var _Home2 = _interopRequireDefault(_Home);
   
   var _config = __webpack_require__(20);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  var req = __webpack_require__(92);
-  /*var Fiber = require('fibers');
-  var Future = require('fibers/future');
-  var req = Future.wrap(require('request'));*/
+  //import Verifyproviderlogn from './Verifyproviderlogin';
+  var request = __webpack_require__(92);
+  
   var res;
   var userEmail;
   var password;
   var validLogin = true;
   var url;
+  var bookinglist;
+  var sessionid;
   
   exports.default = {
   
@@ -9129,7 +10804,7 @@ module.exports =
       var query = _ref.query;
       var path = _ref2.path;
       return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
-        var body;
+        var body, bookinglist;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -9139,29 +10814,44 @@ module.exports =
                 //console.log(JSON.stringify(query));
                 userEmail = query.email;
                 password = query.password;
+                sessionid = query.sessionid;
                 console.log(userEmail);
                 console.log(password);
+                console.log("Session Id: " + sessionid);
   
                 console.log('calling checkLogin');
-                _context.next = 8;
+                _context.next = 10;
                 return checklogin();
   
-              case 8:
+              case 10:
                 body = _context.sent;
   
-                if (!validLogin) {
-                  _context.next = 14;
+                console.log("Result from API call: " + validLogin);
+  
+                if (!(validLogin == 'true')) {
+                  _context.next = 23;
                   break;
                 }
   
-                console.log(" Going to Home Page");
-                return _context.abrupt('return', _react2.default.createElement(_Home2.default, null));
+                _context.next = 15;
+                return SaveSessionData();
   
-              case 14:
+              case 15:
+                body = _context.sent;
+  
+                console.log(" Going to Provider Home Page");
+                _context.next = 19;
+                return getBookingData();
+  
+              case 19:
+                bookinglist = _context.sent;
+                return _context.abrupt('return', _react2.default.createElement(_Providerhome2.default, { sessionid: sessionid, email: userEmail, bookinglist: bookinglist }));
+  
+              case 23:
                 console.log(" Invalid Credential return to Login Page");
                 return _context.abrupt('return', _react2.default.createElement(_Providerlogin2.default, null));
   
-              case 16:
+              case 25:
               case 'end':
                 return _context.stop();
             }
@@ -9174,25 +10864,76 @@ module.exports =
   
   function checklogin() {
     url = 'http://' + _config.apihost + '/verifylogin?email=' + userEmail + '&password=' + password;
-    console.log("API Endpoing: " + url);
+    console.log("API Endpoing - checklogin : " + url);
   
     return new _promise2.default(function (resolve, reject) {
-      var results = req(url, function (error, response, body) {
+      var results = request(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-          console.log('Response from API' + body);
+          console.log('Response from API - checklogin ' + body);
           validLogin = body;
           resolve(body);
         } else {
-          console.log("Server not responding");
+          console.log("Server not responding - checklogin");
           validLogin = false;
         }
       });
-      console.log("ValidLogin status: " + validLogin);
+      console.log("ValidLogin status: - checklogin" + validLogin);
+    });
+  }
+  
+  function SaveSessionData() {
+  
+    console.log('calling API - SaveSessionData method');
+    var url = 'http://' + _config.apihost + '/addSession';
+    console.log("URL: " + url);
+    var createdate = new Date();
+    var data = {
+      email: userEmail,
+      sessionid: sessionid,
+      creationdate: createdate
+    };
+    console.log("Data: " + data);
+    return new _promise2.default(function (resolve, reject) {
+      request.post(url, { form: data }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside SaveSessionData Response from API (body)' + body);
+  
+          if (body == 'true')
+            //status = true;
+            resolve(body);
+        }
+        if (error) {
+          console.log("Error in storing Session data");
+          // status = false;
+          return reject(error);
+        }
+      });
+  
+      console.log('returning');
+    });
+  }
+  
+  function getBookingData() {
+    var request = __webpack_require__(92);
+  
+    console.log('calling API');
+    var url = 'http://' + _config.apihost + '/getbookingrecbyprovider?email=' + userEmail;
+    console.log("URL: " + url);
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside getBookingData Response from API (body)' + body);
+          resolve(body);
+        } else {
+          console.log("Error Object: " + error);
+          return reject(error);
+        }
+      });
     });
   }
 
 /***/ },
-/* 162 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -9209,61 +10950,318 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Verifyproviderlogin = __webpack_require__(163);
+  var _Providerhome = __webpack_require__(180);
   
-  var _Verifyproviderlogin2 = _interopRequireDefault(_Verifyproviderlogin);
+  var _Providerhome2 = _interopRequireDefault(_Providerhome);
   
-  var _me = __webpack_require__(27);
+  var _Link = __webpack_require__(61);
   
-  var _me2 = _interopRequireDefault(_me);
+  var _Link2 = _interopRequireDefault(_Link);
+  
+  var _classnames = __webpack_require__(69);
+  
+  var _classnames2 = _interopRequireDefault(_classnames);
   
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
   
-  /**
-   * React Starter Kit (https://www.reactstarterkit.com/)
-   *
-   * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE.txt file in the root directory of this source tree.
-   */
+  var title = 'Welcome to World of Opporunity'; /**
+                                                 * React Starter Kit (https://www.reactstarterkit.com/)
+                                                 *
+                                                 * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+                                                 *
+                                                 * This source code is licensed under the MIT license found in the
+                                                 * LICENSE.txt file in the root directory of this source tree.
+                                                 */
   
-  var title = 'Verify Credential';
+  var user = 'Customer';
   
-  function Verifyproviderlogin(props, context) {
+  function Providerhome(_ref, context) {
+    var sessionid = _ref.sessionid,
+        bookinglist = _ref.bookinglist,
+        email = _ref.email,
+        provider = _ref.provider;
   
     context.setTitle(title);
+    context.setUser(user);
+    // context.getUser('user');
+    var logoutlink = "/providerlogout?sessionid=" + sessionid;
+    var updateEmail = "/changeprovideremail?sessionid=" + sessionid + "&email=" + email;
+    var updatePhone = "/changeproviderphone?sessionid=" + sessionid + "&email=" + email;
+    var bookingdata = JSON.parse(bookinglist);
+    var size = bookingdata.length;
+    console.log("Size of the booking List: " + size);
+    return (
+      //<div className={s.root}>
+      //<div className={s.container}>
+      //   <h1>{title}</h1>
   
-    return _react2.default.createElement(
-      'div',
-      { className: _Verifyproviderlogin2.default.root },
       _react2.default.createElement(
         'div',
-        { className: _Verifyproviderlogin2.default.container },
+        { className: _Providerhome2.default.cards },
         _react2.default.createElement(
-          'h1',
-          null,
-          title
+          'div',
+          { className: _Providerhome2.default.card },
+          _react2.default.createElement(
+            'header',
+            null,
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Search Provider'
+            )
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'form',
+            { name: 'searchform', method: 'get', action: 'searchprovider' },
+            _react2.default.createElement('input', { type: 'text', id: 'category', name: 'category' }),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('input', { type: 'radio', name: 'searchterm', value: 'pincode' }),
+            'Pincode',
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('input', { type: 'radio', name: 'searchterm', value: 'city' }),
+            'City',
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              'button',
+              { className: _Providerhome2.default.button, value: 'Search', type: 'submit' },
+              'Search'
+            ),
+            _react2.default.createElement('input', { id: 'sessionid',
+              type: 'hidden',
+              name: 'sessionid',
+              value: sessionid
+            }),
+            _react2.default.createElement('input', {
+              id: 'email',
+              type: 'hidden',
+              name: 'email',
+              value: email
+            })
+          )
         ),
         _react2.default.createElement(
-          'p',
-          null,
-          'Password Verified'
+          'div',
+          { className: _Providerhome2.default.card },
+          _react2.default.createElement(
+            'header',
+            null,
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Service Booking'
+            )
+          ),
+          _react2.default.createElement(
+            _Link2.default,
+            { className: _Providerhome2.default.link, to: updateEmail },
+            'Change E-mail'
+          ),
+          _react2.default.createElement(
+            _Link2.default,
+            { className: _Providerhome2.default.link, to: updatePhone },
+            'Change Mobile No'
+          ),
+          _react2.default.createElement(
+            _Link2.default,
+            { className: _Providerhome2.default.link, to: '/contact' },
+            'Add New Service'
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            _Link2.default,
+            { className: _Providerhome2.default.link, to: logoutlink },
+            'Logout'
+          ),
+          _react2.default.createElement('input', {
+            id: 'sessionid',
+            type: 'hidden',
+            name: 'sessionid',
+            value: sessionid
+          }),
+          _react2.default.createElement('input', {
+            id: 'email',
+            type: 'hidden',
+            name: 'email',
+            value: email
+          })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: _Providerhome2.default.card },
+          _react2.default.createElement(
+            'header',
+            null,
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Booking History'
+            )
+          ),
+          _react2.default.createElement(
+            'form',
+            { name: 'form1', method: 'get', action: 'managebooking' },
+            _react2.default.createElement(
+              'table',
+              null,
+              _react2.default.createElement(
+                'caption',
+                null,
+                'Your Booking'
+              ),
+              _react2.default.createElement(
+                'thead',
+                null,
+                _react2.default.createElement(
+                  'tr',
+                  null,
+                  _react2.default.createElement(
+                    'th',
+                    null,
+                    'Select'
+                  ),
+                  _react2.default.createElement(
+                    'th',
+                    null,
+                    'Booking ID'
+                  ),
+                  _react2.default.createElement(
+                    'th',
+                    null,
+                    'Booking Date'
+                  ),
+                  _react2.default.createElement(
+                    'th',
+                    null,
+                    'Event Date'
+                  ),
+                  _react2.default.createElement(
+                    'th',
+                    null,
+                    'Event'
+                  ),
+                  _react2.default.createElement(
+                    'th',
+                    null,
+                    'Customer E-mail'
+                  ),
+                  _react2.default.createElement(
+                    'th',
+                    null,
+                    'Customer Mobile'
+                  ),
+                  _react2.default.createElement(
+                    'th',
+                    null,
+                    'Status'
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                'tbody',
+                null,
+                bookingdata.map(function (obj, index) {
+                  return _react2.default.createElement(
+                    'tr',
+                    { key: index },
+                    _react2.default.createElement(
+                      'td',
+                      null,
+                      _react2.default.createElement('input', { type: 'radio', name: 'bookingid', value: obj.bookingid, checked: true }),
+                      ' '
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      null,
+                      ' ',
+                      obj.bookingid
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      null,
+                      ' ',
+                      obj.dateofbooking
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      null,
+                      ' ',
+                      obj.functiondate,
+                      ' '
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      null,
+                      ' ',
+                      obj.eventtype,
+                      ' '
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      null,
+                      ' ',
+                      obj.email,
+                      ' '
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      null,
+                      obj.mobile
+                    ),
+                    _react2.default.createElement(
+                      'td',
+                      null,
+                      ' ',
+                      obj.status
+                    )
+                  );
+                })
+              )
+            ),
+            _react2.default.createElement('input', {
+              id: 'sessionid',
+              type: 'hidden',
+              name: 'sessionid',
+              value: sessionid
+            }),
+            _react2.default.createElement('input', {
+              id: 'email',
+              type: 'hidden',
+              name: 'email',
+              value: email
+            }),
+            _react2.default.createElement('input', { type: 'hidden', name: 'provider', value: 'provider' }),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('input', { type: 'radio', name: 'manage', value: 'cancel', checked: true }),
+            'Cancel',
+            _react2.default.createElement('br', null),
+            _react2.default.createElement('input', { type: 'radio', name: 'manage', value: 'close' }),
+            'Close Booking',
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              'button',
+              { value: 'change', type: 'submit' },
+              'submit'
+            )
+          )
         )
       )
     );
   }
   
-  Verifyproviderlogin.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  Providerhome.contextTypes = { setTitle: _react.PropTypes.func.isRequired, setUser: _react.PropTypes.func.isRequired };
   
-  exports.default = (0, _withStyles2.default)(_Verifyproviderlogin2.default)(Verifyproviderlogin);
+  exports.default = (0, _withStyles2.default)(_Providerhome2.default)(Providerhome);
 
 /***/ },
-/* 163 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(164);
+      var content = __webpack_require__(181);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -9279,8 +11277,8 @@ module.exports =
       // Only activated in browser context
       if (false) {
         var removeCss = function() {};
-        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Verifyproviderlogin.css", function() {
-          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Verifyproviderlogin.css");
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Providerhome.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Providerhome.css");
   
           if (typeof content === 'string') {
             content = [[module.id, content, '']];
@@ -9293,7 +11291,7 @@ module.exports =
     
 
 /***/ },
-/* 164 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -9301,152 +11299,22 @@ module.exports =
   
   
   // module
-  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n.Verifyproviderlogin_root_17V {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n.Verifyproviderlogin_container_1HV {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n.Verifyproviderlogin_lead_1lw {\n  font-size: 1.25em;\n}\n.Verifyproviderlogin_formGroup_bCk {\n  margin-bottom: 20px;\n}\n.Verifyproviderlogin_label_qt5 {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n.Verifyproviderlogin_input_2dV {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n.Verifyproviderlogin_input_2dV:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Verifyproviderlogin_button_25r {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.Verifyproviderlogin_button_25r:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n.Verifyproviderlogin_button_25r:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Verifyproviderlogin_facebook_WUa {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n.Verifyproviderlogin_facebook_WUa:hover {\n  background: #2d4373;\n}\n.Verifyproviderlogin_google_2OY {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n.Verifyproviderlogin_google_2OY:hover {\n  background: #c23321;\n}\n.Verifyproviderlogin_twitter_1Xg {\n  border-color: #55acee;\n  background: #55acee;\n}\n.Verifyproviderlogin_twitter_1Xg:hover {\n  background: #2795e9;\n}\n.Verifyproviderlogin_icon_39U {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n.Verifyproviderlogin_lineThrough_2z_ {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n.Verifyproviderlogin_lineThrough_2z_::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n.Verifyproviderlogin_lineThrough_2z_::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./routes/verifyproviderlogin/Verifyproviderlogin.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;ACLH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;ADbD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;AAED;EACE,kBAAkB;CACnB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;AAED;EACE,mCAAmC;CACpC;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Verifyproviderlogin.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n","\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
+  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.Providerhome_root_3Mh {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Providerhome_container_2b2 {\n  margin: 2cm 4cm 3cm 4cm auto;\n  padding: 10 10 100px;\n  max-width: 1000px;\n  \n}\n\n.Providerhome_link_ZJC {\n  display: -webkit-inline-box;\n  display: -webkit-inline-flex;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  padding: 13px 13px;\n  text-decoration: none;\n  text-align: center;\n  font-size: 1.125em; /* ~18px */\n}\n\n.Providerhome_link_ZJC,\n.Providerhome_link_ZJC:active,\n.Providerhome_link_ZJC:visited {\n  color: rgba(0, 0, 255, 0.6);\n}\n\n.Providerhome_link_ZJC:hover {\n  color: rgba(0, 255, 0, 1);\n}\n\n.Providerhome_highlight_2__ {\n  margin-right: 8px;\n  margin-left: 8px;\n  border-radius: 3px;\n  background: rgba(0, 0, 0, 0.15);\n  color: #fff;\n}\n\n.Providerhome_highlight_2__:hover {\n  background: rgba(0, 0, 0, 0.3);\n}\n\n.Providerhome_spacer_3mE {\n  color: rgba(255, 255, 255, 0.3);\n}\n\n.Providerhome_cards_1__ {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  margin: 0 auto;\n  max-width: 1200px;\n\n}\n\n.Providerhome_card_2Yr {\n  margin: 0 5px;\n  -webkit-box-flex: 0;\n  -webkit-flex: 0 0 300px;\n      -ms-flex: 0 0 300px;\n          flex: 0 0 300px;\n}\n\nhtml {\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box;\n}\n\n*, *:before, *:after {\n  -webkit-box-sizing: inherit;\n          box-sizing: inherit;\n}\n\nbody {\n  font: 1em/1.1 Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  background-color: #fafafa;\n}\n\nimg {\n  max-width: 100%;\n}\n\n.Providerhome_card_2Yr {\n  background-color: #fff;\n  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);\n          box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);\n}\n\n.Providerhome_card_2Yr header {\n  padding: 10px;\n  background-color: rgb(131,112,255);\n  color: #fff;\n}\n\n.Providerhome_card_2Yr header h2 {\n  font-size: 14.4px;\n  font-size: 0.9rem;\n  font-weight: normal;\n  margin: 0;\n  padding: 0;\n}\n\n.Providerhome_card_2Yr .Providerhome_body_oXJ {\n  padding: 5px;\n  font-size: 4.8px;\n  font-size: .3rem;\n  color: #757575;\n}\n\ntable, th, td {\n  border: 1px solid black;\n\n}\n\ntr:hover {background-color: #f5f5f5}\n\nth {\n  background-color: #4CAF50;\n  color: white;\n}\n\nth, td {\n    padding: 5px;\n    text-align: left;\n}\n\nbutton {\n  \n  -webkit-box-sizing: border-box;\n  \n          box-sizing: border-box;\n  margin: 10px 6px;\n  padding: 5px 16px;\n  width: 30%;\n  outline: 10;\n  border: 4px solid #373277;\n\n  border-radius: 12px;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: inherit;\n  font-size: 12px;\n  line-height: 1.3333333;\n  cursor: pointer; \n  float: inherit;\n  \n}\n\nbutton:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\nbutton:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/providerhome/Providerhome.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,6BAA6B;EAC7B,qBAAqB;EACrB,kBAAoC;;CAErC;;AAED;EACE,4BAAqB;EAArB,6BAAqB;EAArB,4BAAqB;EAArB,qBAAqB;EACrB,mBAAmB;EACnB,sBAAsB;EACtB,mBAAmB;EACnB,mBAAmB,CAAC,WAAW;CAChC;;AAED;;;EAGE,4BAA4B;CAC7B;;AAED;EACE,0BAA0B;CAC3B;;AAED;EACE,kBAAkB;EAClB,iBAAiB;EACjB,mBAAmB;EACnB,gCAAgC;EAChC,YAAY;CACb;;AAED;EACE,+BAA+B;CAChC;;AAED;EACE,gCAAgC;CACjC;;AAED;EACE,qBAAc;EAAd,sBAAc;EAAd,qBAAc;EAAd,cAAc;EACd,eAAe;EACf,kBAAkB;;CAEnB;;AAED;EACE,cAAc;EACd,oBAAgB;EAAhB,wBAAgB;MAAhB,oBAAgB;UAAhB,gBAAgB;CACjB;;AAED;EACE,gCAAwB;UAAxB,wBAAwB;CACzB;;AACD;EACE,4BAAoB;UAApB,oBAAoB;CACrB;;AAED;EACE,qEAAqE;EACrE,0BAA0B;CAC3B;;AAED;EACE,gBAAgB;CACjB;;AAED;EACE,uBAAuB;EACvB,0GAAkG;UAAlG,kGAAkG;CACnG;;AAED;EACE,cAAc;EACd,mCAAmC;EACnC,YAAY;CACb;;AAED;EACE,kBAAkB;EAAlB,kBAAkB;EAClB,oBAAoB;EACpB,UAAU;EACV,WAAW;CACZ;;AAED;EACE,aAAa;EACb,iBAAiB;EAAjB,iBAAiB;EACjB,eAAe;CAChB;;AAED;EACE,wBAAwB;;CAEzB;;AACD,UAAU,yBAAyB,CAAC;;AACpC;EACE,0BAA0B;EAC1B,aAAa;CACd;;AACD;IACI,aAAa;IACb,iBAAiB;CACpB;;AAED;;EAEE,+BAAuB;;UAAvB,uBAAuB;EACvB,iBAAiB;EACjB,kBAAkB;EAClB,WAAW;EACX,YAAY;EACZ,0BAA0B;;EAE1B,oBAAoB;EACpB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,yBAAyB;EACzB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;EAChB,eAAe;;CAEhB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C","file":"Providerhome.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 2cm 4cm 3cm 4cm auto;\n  padding: 10 10 100px;\n  max-width: var(--max-content-width);\n  \n}\n\n.link {\n  display: inline-flex;\n  padding: 13px 13px;\n  text-decoration: none;\n  text-align: center;\n  font-size: 1.125em; /* ~18px */\n}\n\n.link,\n.link:active,\n.link:visited {\n  color: rgba(0, 0, 255, 0.6);\n}\n\n.link:hover {\n  color: rgba(0, 255, 0, 1);\n}\n\n.highlight {\n  margin-right: 8px;\n  margin-left: 8px;\n  border-radius: 3px;\n  background: rgba(0, 0, 0, 0.15);\n  color: #fff;\n}\n\n.highlight:hover {\n  background: rgba(0, 0, 0, 0.3);\n}\n\n.spacer {\n  color: rgba(255, 255, 255, 0.3);\n}\n\n.cards {\n  display: flex;\n  margin: 0 auto;\n  max-width: 1200px;\n\n}\n\n.card {\n  margin: 0 5px;\n  flex: 0 0 300px;\n}\n\nhtml {\n  box-sizing: content-box;\n}\n*, *:before, *:after {\n  box-sizing: inherit;\n}\n\nbody {\n  font: 1em/1.1 Roboto, \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  background-color: #fafafa;\n}\n\nimg {\n  max-width: 100%;\n}\n\n.card {\n  background-color: #fff;\n  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);\n}\n\n.card header {\n  padding: 10px;\n  background-color: rgb(131,112,255);\n  color: #fff;\n}\n\n.card header h2 {\n  font-size: 0.9rem;\n  font-weight: normal;\n  margin: 0;\n  padding: 0;\n}\n\n.card .body {\n  padding: 5px;\n  font-size: .3rem;\n  color: #757575;\n}\n\ntable, th, td {\n  border: 1px solid black;\n\n} \ntr:hover {background-color: #f5f5f5}\nth {\n  background-color: #4CAF50;\n  color: white;\n}\nth, td {\n    padding: 5px;\n    text-align: left;\n}\n\nbutton {\n  \n  box-sizing: border-box;\n  margin: 10px 6px;\n  padding: 5px 16px;\n  width: 30%;\n  outline: 10;\n  border: 4px solid #373277;\n\n  border-radius: 12px;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: inherit;\n  font-size: 12px;\n  line-height: 1.3333333;\n  cursor: pointer; \n  float: inherit;\n  \n}\n\nbutton:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\nbutton:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n"],"sourceRoot":"webpack://"}]);
   
   // exports
   exports.locals = {
-  	"root": "Verifyproviderlogin_root_17V",
-  	"container": "Verifyproviderlogin_container_1HV",
-  	"lead": "Verifyproviderlogin_lead_1lw",
-  	"formGroup": "Verifyproviderlogin_formGroup_bCk",
-  	"label": "Verifyproviderlogin_label_qt5",
-  	"input": "Verifyproviderlogin_input_2dV",
-  	"button": "Verifyproviderlogin_button_25r",
-  	"facebook": "Verifyproviderlogin_facebook_WUa Verifyproviderlogin_button_25r",
-  	"google": "Verifyproviderlogin_google_2OY Verifyproviderlogin_button_25r",
-  	"twitter": "Verifyproviderlogin_twitter_1Xg Verifyproviderlogin_button_25r",
-  	"icon": "Verifyproviderlogin_icon_39U",
-  	"lineThrough": "Verifyproviderlogin_lineThrough_2z_"
+  	"root": "Providerhome_root_3Mh",
+  	"container": "Providerhome_container_2b2",
+  	"link": "Providerhome_link_ZJC",
+  	"highlight": "Providerhome_highlight_2__",
+  	"spacer": "Providerhome_spacer_3mE",
+  	"cards": "Providerhome_cards_1__",
+  	"card": "Providerhome_card_2Yr",
+  	"body": "Providerhome_body_oXJ"
   };
 
 /***/ },
-/* 165 */
-/***/ function(module, exports, __webpack_require__) {
-
-  'use strict';
-  
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  
-  var _react = __webpack_require__(43);
-  
-  var _react2 = _interopRequireDefault(_react);
-  
-  var _reactDom = __webpack_require__(88);
-  
-  var _reactDom2 = _interopRequireDefault(_reactDom);
-  
-  var _withStyles = __webpack_require__(58);
-  
-  var _withStyles2 = _interopRequireDefault(_withStyles);
-  
-  var _Providerlogin = __webpack_require__(155);
-  
-  var _Providerlogin2 = _interopRequireDefault(_Providerlogin);
-  
-  var _Link = __webpack_require__(61);
-  
-  var _Link2 = _interopRequireDefault(_Link);
-  
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-  
-  var title = 'Entering Credentials';
-  
-  function Providerlogin(props, context) {
-    context.setTitle(title);
-  
-    return _react2.default.createElement(
-      'div',
-      { className: _Providerlogin2.default.root },
-      _react2.default.createElement(
-        'div',
-        { className: _Providerlogin2.default.container },
-        _react2.default.createElement(
-          'h1',
-          null,
-          title
-        ),
-        _react2.default.createElement(
-          'p',
-          { className: _Providerlogin2.default.lead },
-          'Log in with your username or email address.'
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: _Providerlogin2.default.formGroup },
-          _react2.default.createElement(
-            'form',
-            { name: 'form1', method: 'get', action: 'verifyproviderlogin' },
-            _react2.default.createElement(
-              'div',
-              { className: _Providerlogin2.default.formGroup },
-              _react2.default.createElement(
-                'label',
-                { className: _Providerlogin2.default.label, htmlFor: 'usernameOrEmail' },
-                'Username or email address:'
-              ),
-              _react2.default.createElement('input', {
-                className: _Providerlogin2.default.input,
-                id: 'email',
-                type: 'email',
-                name: 'email',
-                required: 'required',
-                autoFocus: true
-              })
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: _Providerlogin2.default.formGroup },
-              _react2.default.createElement(
-                'label',
-                { className: _Providerlogin2.default.label, htmlFor: 'password' },
-                'Password:'
-              ),
-              _react2.default.createElement('input', {
-                className: _Providerlogin2.default.input,
-                id: 'password',
-                type: 'password',
-                name: 'password',
-                required: 'required'
-              })
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: _Providerlogin2.default.formGroup },
-              _react2.default.createElement(
-                'button',
-                { className: _Providerlogin2.default.button1, type: 'submit' },
-                'Log in'
-              ),
-              _react2.default.createElement(
-                _Link2.default,
-                { to: '/forgotpass' },
-                'Forgot Password'
-              ),
-              _react2.default.createElement(
-                'span',
-                { className: _Providerlogin2.default.spacer },
-                ' | '
-              ),
-              _react2.default.createElement(
-                _Link2.default,
-                { to: '/register' },
-                'Sign Up'
-              )
-            )
-          )
-        )
-      )
-    );
-  }
-  
-  Providerlogin.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
-  
-  exports.default = (0, _withStyles2.default)(_Providerlogin2.default)(Providerlogin);
-
-/***/ },
-/* 166 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -9471,7 +11339,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Providerlist = __webpack_require__(150);
+  var _Providerlist = __webpack_require__(97);
   
   var _Providerlist2 = _interopRequireDefault(_Providerlist);
   
@@ -9585,7 +11453,7 @@ module.exports =
   }
 
 /***/ },
-/* 167 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -9610,7 +11478,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Logout = __webpack_require__(168);
+  var _Logout = __webpack_require__(184);
   
   var _Logout2 = _interopRequireDefault(_Logout);
   
@@ -9690,7 +11558,7 @@ module.exports =
   }
 
 /***/ },
-/* 168 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -9707,7 +11575,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Logout = __webpack_require__(169);
+  var _Logout = __webpack_require__(185);
   
   var _Logout2 = _interopRequireDefault(_Logout);
   
@@ -9751,11 +11619,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Logout2.default)(Logout);
 
 /***/ },
-/* 169 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(170);
+      var content = __webpack_require__(186);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -9785,7 +11653,7 @@ module.exports =
     
 
 /***/ },
-/* 170 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -9805,7 +11673,7 @@ module.exports =
   };
 
 /***/ },
-/* 171 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -9830,7 +11698,7 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Bookinglist = __webpack_require__(172);
+  var _Bookinglist = __webpack_require__(188);
   
   var _Bookinglist2 = _interopRequireDefault(_Bookinglist);
   
@@ -9942,7 +11810,7 @@ module.exports =
   }
 
 /***/ },
-/* 172 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -9959,7 +11827,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Bookinglist = __webpack_require__(173);
+  var _Bookinglist = __webpack_require__(189);
   
   var _Bookinglist2 = _interopRequireDefault(_Bookinglist);
   
@@ -10119,11 +11987,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Bookinglist2.default)(Bookinglist);
 
 /***/ },
-/* 173 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(174);
+      var content = __webpack_require__(190);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -10153,7 +12021,7 @@ module.exports =
     
 
 /***/ },
-/* 174 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -10172,7 +12040,7 @@ module.exports =
   };
 
 /***/ },
-/* 175 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -10180,10 +12048,6 @@ module.exports =
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  
-  var _promise = __webpack_require__(83);
-  
-  var _promise2 = _interopRequireDefault(_promise);
   
   var _regenerator = __webpack_require__(1);
   
@@ -10197,64 +12061,19 @@ module.exports =
   
   var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
   
-  var sendSMS = function () {
-    var _ref3 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2() {
-      var mobiles, SMSmessage, url;
-      return _regenerator2.default.wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              console.log('calling API - sendSMS method');
-              mobiles = phone + ',' + providermobile;
-  
-              console.log("Mobiles: " + mobiles);
-              SMSmessage = 'We cancelled your booking with id ' + id + ', booking please login to view the details';
-              url = 'http://' + _config.apihost + '/sendSMS?authkey=' + _config.smsAPIKey + '&mobiles=' + mobiles + '&message=' + SMSmessage + '&sender=DTSBMF&route=4&country=91';
-  
-              console.log("URL: " + url);
-              return _context2.abrupt('return', new _promise2.default(function (resolve, reject) {
-                request(url, function (error, response, body) {
-                  if (!error && response.statusCode == 200) {
-                    console.log('Inside sendSMS - Response from API (body)' + body);
-  
-                    if (error) {
-                      console.log("Error in Sending SMS");
-                      status = false;
-                      return reject(error);
-                    }
-  
-                    if (body == 'true') status = true;
-                    resolve(body);
-                  }
-                });
-              }));
-  
-            case 7:
-            case 'end':
-              return _context2.stop();
-          }
-        }
-      }, _callee2, this);
-    }));
-  
-    return function sendSMS() {
-      return _ref3.apply(this, arguments);
-    };
-  }();
-  
   var _react = __webpack_require__(43);
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Cancelbooking = __webpack_require__(176);
+  var _Cancelbooking = __webpack_require__(192);
   
   var _Cancelbooking2 = _interopRequireDefault(_Cancelbooking);
   
-  var _bookinglist = __webpack_require__(179);
+  var _bookinglist = __webpack_require__(195);
   
   var _bookinglist2 = _interopRequireDefault(_bookinglist);
   
-  var _Login = __webpack_require__(106);
+  var _Login = __webpack_require__(87);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -10285,80 +12104,17 @@ module.exports =
       var query = _ref.query;
       var path = _ref2.path;
       return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
-        var bookingrec, sessionbody, body, mail;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 console.log("Query String - index.js - Cancelbooking: " + (0, _stringify2.default)(query));
-                // phone = query.mobile;
-                email = query.email;
-                id = query.bookingid;
-                // phone = query.mobile;
-                console.log("Email: " + email);
-                console.log("Customer Mobile: " + phone);
-  
-                _context.t0 = JSON;
-                _context.next = 8;
-                return getBookingRecord();
-  
-              case 8:
-                _context.t1 = _context.sent;
-                bookingrec = _context.t0.parse.call(_context.t0, _context.t1);
-  
-                console.log("booking Record: " + bookingrec);
-                providermobile = bookingrec[0].providerphone;
-                phone = bookingrec[0].mobile;
-                console.log("Customer Mobile: " + phone);
-                providermail = bookingrec[0].provideremail;
-  
-                console.log("Provider Phone: " + providermobile);
-                console.log("Provider Email: " + providermail);
-  
-                sessionid = query.sessionid;
-                //console.log("Sessionid - index.js - Cancelbooking "+sessionid);
-  
-                if (!(sessionid === undefined || sessionid == '')) {
-                  _context.next = 23;
-                  break;
-                }
-  
-                _context.next = 21;
-                return getSessionid();
-  
-              case 21:
-                sessionbody = _context.sent;
-                return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: sessionbody }));
-  
-              case 23:
-                _context.next = 25;
-                return Cancelevent();
-  
-              case 25:
-                body = _context.sent;
-  
-                console.log("Calling SendEmail");
-                _context.next = 29;
-                return sendEmail();
-  
-              case 29:
-                mail = _context.sent;
-  
-                // console.log("Calling sendSMS");
-                //var sms = await sendSMS();
-                console.log("Body: " + body);
-                if (!status) {
-                  message = 'Unable to cancelling  the Event';
-                  href = 'http://' + _config.host + '/';
-                  message1 = 'Click here to Register.';
-                } else {
-                  message = 'Sucessfully canceled  the Event';
-                  href = href = 'http://' + _config.host + '/home?sessionid=' + sessionid + '&email=' + email;
-                  message1 = 'Click here to Home Page.';
-                }
+                message = 'Sucessfully canceled  the Event';
+                href = href = 'http://' + _config.host + '/home?sessionid=' + sessionid + '&email=' + email;
+                message1 = 'Click here to Home Page.';
                 return _context.abrupt('return', _react2.default.createElement(_Cancelbooking2.default, { message: message, redirectlink: href, message1: message1, sessionid: sessionid }));
   
-              case 33:
+              case 5:
               case 'end':
                 return _context.stop();
             }
@@ -10367,113 +12123,9 @@ module.exports =
       }))();
     }
   };
-  
-  
-  function Cancelevent() {
-  
-    console.log('calling API - SavebookingData method');
-    var url = 'http://' + _config.apihost + '/cancelBooking?id=' + id;
-    console.log("URL: " + url);
-  
-    return new _promise2.default(function (resolve, reject) {
-      request.put(url, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-          console.log('Inside Cancelbooking Response from API (body)' + body);
-  
-          if (body == 'true') status = true;else status = false;
-          resolve(body);
-          //sendSMS();
-          //var result = await sendEmail();
-        }
-        if (error) {
-          console.log("Error in storing customer data");
-          status = false;
-          return reject(error);
-        }
-      });
-  
-      console.log('returning');
-    });
-  }
-  
-  function sendEmail() {
-    console.log('calling API - sendEmail');
-    var url = 'http://' + _config.apihost + '/sendmail';
-    console.log("URL: " + url);
-  
-    var subject = "Your booking for the event with id: " + id + " has been cancelled";
-    var message = "<b>Your booking for the event Cancelled as per your requst. Thank you for the booking and We continue to provide our best service. ";
-    var formdata = {
-      tomail: email + ' ,' + providermail,
-      subject: subject,
-      message: message
-    };
-  
-    //data = JSON.stringify('{\"tomail\": \"'+email+'\", \"subject\": '+subject+'\", \"message\": \" '+message+'\"}');
-    console.log("Data: " + formdata);
-    return new _promise2.default(function (resolve, reject) {
-      request.post(url, { form: formdata }, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-          console.log('Inside sendEmail - Response from API (body)' + body);
-  
-          if (body == 'true') resolve(body);
-          status = true;
-        }
-        if (error) {
-          console.log("Error in Sending Mail");
-          status = false;
-          return reject(error);
-        }
-      });
-    });
-  }
-  
-  function getSessionid() {
-    var request = __webpack_require__(92);
-    console.log('genSessionid - calling API');
-    var url = 'http://' + _config.apihost + '/genSessionid';
-    console.log("getSeesionid - URL: " + url);
-  
-    return new _promise2.default(function (resolve, reject) {
-      request(url, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-          console.log('genSessionid - Response from API' + body);
-          //sessionid = body;
-          resolve(body);
-        } else {
-  
-          console.log("genSessionid -API Server not running: " + error);
-          return reject(error);
-        }
-        console.log("getSessionid - Returning from API call");
-      });
-    });
-  }
-  
-  function getBookingRecord() {
-    var request = __webpack_require__(92);
-    console.log('getBookingRecord - linkbooking - calling API');
-    var url = 'http://' + _config.apihost + '/getbookingrec?email=' + email + '&bookingid=' + id;
-    console.log("getSeesionid - URL: " + url);
-  
-    return new _promise2.default(function (resolve, reject) {
-      request(url, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-          console.log('getBookingRecord - linkbooking - Response from API' + body);
-          //sessionid = body;
-          resolve(body);
-        } else {
-  
-          console.log("getBookingRecord - linkbooking -API Server not running: " + error);
-          return reject(error);
-        }
-        console.log("getBookingRecord - Returning from API call");
-      });
-    });
-  }
 
 /***/ },
-/* 176 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -10490,7 +12142,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Cancelbooking = __webpack_require__(177);
+  var _Cancelbooking = __webpack_require__(193);
   
   var _Cancelbooking2 = _interopRequireDefault(_Cancelbooking);
   
@@ -10528,6 +12180,7 @@ module.exports =
           null,
           message
         ),
+        _react2.default.createElement('script', null),
         _react2.default.createElement(
           'a',
           { href: redirectlink },
@@ -10549,11 +12202,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Cancelbooking2.default)(Cancelbooking);
 
 /***/ },
-/* 177 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(178);
+      var content = __webpack_require__(194);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -10583,7 +12236,7 @@ module.exports =
     
 
 /***/ },
-/* 178 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -10611,7 +12264,7 @@ module.exports =
   };
 
 /***/ },
-/* 179 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -10628,7 +12281,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Bookinglist = __webpack_require__(173);
+  var _Bookinglist = __webpack_require__(189);
   
   var _Bookinglist2 = _interopRequireDefault(_Bookinglist);
   
@@ -10788,7 +12441,7 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Bookinglist2.default)(Bookinglist);
 
 /***/ },
-/* 180 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -10859,15 +12512,11 @@ module.exports =
   
   var _react2 = _interopRequireDefault(_react);
   
-  var _Changebookingdate = __webpack_require__(181);
+  var _Changebookingdate = __webpack_require__(197);
   
   var _Changebookingdate2 = _interopRequireDefault(_Changebookingdate);
   
-  var _Providerlist = __webpack_require__(150);
-  
-  var _Providerlist2 = _interopRequireDefault(_Providerlist);
-  
-  var _Login = __webpack_require__(106);
+  var _Login = __webpack_require__(87);
   
   var _Login2 = _interopRequireDefault(_Login);
   
@@ -10881,10 +12530,10 @@ module.exports =
   var href = 'http://' + _config.host + '/';
   var message1 = 'Click here to login';
   var status = true;
-  var email;
-  var phone;
+  var changeddate;
   var sessionid;
   var id;
+  var email;
   
   exports.default = {
   
@@ -10902,30 +12551,31 @@ module.exports =
             switch (_context.prev = _context.next) {
               case 0:
                 console.log("Query String - index.js - Changebookingdate: " + (0, _stringify2.default)(query));
-                // phone = query.mobile;
-                email = query.email;
-                id = query.bookingid;
-                // console.log("Email: "+email);
                 sessionid = query.sessionid;
                 console.log("Sessionid - index.js - Changebookingdate " + sessionid);
   
                 if (!(sessionid === undefined || sessionid == '')) {
-                  _context.next = 10;
+                  _context.next = 8;
                   break;
                 }
   
-                _context.next = 8;
+                _context.next = 6;
                 return getSessionid();
   
-              case 8:
+              case 6:
                 sessionbody = _context.sent;
                 return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: sessionbody }));
   
-              case 10:
-                _context.next = 12;
+              case 8:
+  
+                id = query.bookingid;
+                console.log("Booking Id: " + id);
+                changeddate = query.newdate;
+  
+                _context.next = 13;
                 return Changedate();
   
-              case 12:
+              case 13:
                 body = _context.sent;
   
                 /*console.log("Calling SendEmail");
@@ -10935,16 +12585,16 @@ module.exports =
                 console.log("Body: "+body);*/
                 if (!status) {
                   message = 'Unable to Change booking date  the Event';
-                  href = 'http://' + _config.host + '/';
+                  href = 'http://' + _config.host + '/home';
                   message1 = 'Click here to Register.';
                 } else {
-                  message = 'Sucessfully booking date  the Event';
-                  href = 'http://' + _config.host + '/home';
+                  message = 'Sucessfully changed booking date for  the Event';
+                  href = 'http://' + _config.host + '/home?sessionid=' + sessionid + '&email=' + email;
                   message1 = 'Click here to Home Page.';
                 }
                 return _context.abrupt('return', _react2.default.createElement(_Changebookingdate2.default, { message: message, redirectlink: href, message1: message1, sessionid: sessionid }));
   
-              case 15:
+              case 16:
               case 'end':
                 return _context.stop();
             }
@@ -10958,7 +12608,7 @@ module.exports =
   function Changedate() {
   
     console.log('calling API - SavebookingData method');
-    var url = 'http://' + _config.apihost + '/Changebookingdate?id=' + id;
+    var url = 'http://' + _config.apihost + '/changedate?id=' + id + '&date=' + changeddate;
     console.log("URL: " + url);
   
     return new _promise2.default(function (resolve, reject) {
@@ -11035,9 +12685,31 @@ module.exports =
       });
     });
   }
+  
+  function getBookingRecord() {
+    var request = __webpack_require__(92);
+    console.log('getBookingRecord - linkbooking - calling API');
+    var url = 'http://' + _config.apihost + '/getbookingrec?email=' + email + '&bookingid=' + id;
+    console.log("getSeesionid - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('getBookingRecord - linkbooking - Response from API' + body);
+          //sessionid = body;
+          resolve(body);
+        } else {
+  
+          console.log("getBookingRecord - linkbooking -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("getBookingRecord - Returning from API call");
+      });
+    });
+  }
 
 /***/ },
-/* 181 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -11054,7 +12726,7 @@ module.exports =
   
   var _withStyles2 = _interopRequireDefault(_withStyles);
   
-  var _Changebookingdate = __webpack_require__(182);
+  var _Changebookingdate = __webpack_require__(198);
   
   var _Changebookingdate2 = _interopRequireDefault(_Changebookingdate);
   
@@ -11113,11 +12785,11 @@ module.exports =
   exports.default = (0, _withStyles2.default)(_Changebookingdate2.default)(Changebookingdate);
 
 /***/ },
-/* 182 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
   
-      var content = __webpack_require__(183);
+      var content = __webpack_require__(199);
       var insertCss = __webpack_require__(54);
   
       if (typeof content === 'string') {
@@ -11147,7 +12819,7 @@ module.exports =
     
 
 /***/ },
-/* 183 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
   exports = module.exports = __webpack_require__(53)();
@@ -11175,10 +12847,2242 @@ module.exports =
   };
 
 /***/ },
-/* 184 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var extend = __webpack_require__(185);
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _promise = __webpack_require__(83);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _typeof2 = __webpack_require__(201);
+  
+  var _typeof3 = _interopRequireDefault(_typeof2);
+  
+  var _stringify = __webpack_require__(55);
+  
+  var _stringify2 = _interopRequireDefault(_stringify);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var sendSMS = function () {
+    var _ref3 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2() {
+      var mobiles, SMSmessage, url;
+      return _regenerator2.default.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              console.log('calling API - sendSMS method');
+              mobiles = phone + ',' + providermobile;
+  
+              console.log("Mobiles: " + mobiles);
+              SMSmessage = 'We cancelled your booking with id ' + id + ', booking please login to view the details';
+              url = 'http://' + _config.apihost + '/sendSMS?authkey=' + _config.smsAPIKey + '&mobiles=' + mobiles + '&message=' + SMSmessage + '&sender=DTSBMF&route=4&country=91';
+  
+              console.log("URL: " + url);
+              return _context2.abrupt('return', new _promise2.default(function (resolve, reject) {
+                request(url, function (error, response, body) {
+                  if (!error && response.statusCode == 200) {
+                    console.log('Inside sendSMS - Response from API (body)' + body);
+  
+                    if (error) {
+                      console.log("Error in Sending SMS");
+                      status = false;
+                      return reject(error);
+                    }
+  
+                    if (body == 'true') status = true;
+                    resolve(body);
+                  }
+                });
+              }));
+  
+            case 7:
+            case 'end':
+              return _context2.stop();
+          }
+        }
+      }, _callee2, this);
+    }));
+  
+    return function sendSMS() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Managebooking = __webpack_require__(202);
+  
+  var _Managebooking2 = _interopRequireDefault(_Managebooking);
+  
+  var _Login = __webpack_require__(87);
+  
+  var _Login2 = _interopRequireDefault(_Login);
+  
+  var _Cancelbooking = __webpack_require__(192);
+  
+  var _Cancelbooking2 = _interopRequireDefault(_Cancelbooking);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var request = __webpack_require__(92);
+  
+  var message = 'Booking done Sucessfully  ';
+  var href = 'http://' + _config.host + '/';
+  var message1 = 'Click here to login';
+  var status = true;
+  var email;
+  var phone;
+  var providermobile;
+  var providermail;
+  var sessionid;
+  var id;
+  var bookingstatus;
+  var provider;
+  
+  exports.default = {
+  
+    path: '/managebooking',
+  
+    action: function action(_ref, _ref2) {
+      var _this = this;
+  
+      var query = _ref.query;
+      var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var sessionbody, bookingrec, eventdate, body, mail;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                console.log("Query String - index.js - Managebooking: " + (0, _stringify2.default)(query));
+  
+                sessionid = query.sessionid;
+                console.log("Sessionid - index.js - Manage Booking " + sessionid);
+  
+                if (!(sessionid === undefined || sessionid == '')) {
+                  _context.next = 8;
+                  break;
+                }
+  
+                _context.next = 6;
+                return getSessionid();
+  
+              case 6:
+                sessionbody = _context.sent;
+                return _context.abrupt('return', _react2.default.createElement(_Login2.default, { sessionid: sessionbody }));
+  
+              case 8:
+  
+                email = query.email;
+                id = query.bookingid;
+                provider = query.provider;
+                console.log("Provider - Manageing Booking: " + provider);
+  
+                console.log("Email: " + email);
+  
+                _context.t0 = JSON;
+                _context.next = 16;
+                return getBookingRecord();
+  
+              case 16:
+                _context.t1 = _context.sent;
+                bookingrec = _context.t0.parse.call(_context.t0, _context.t1);
+  
+                if (!(query.manage == 'changedate')) {
+                  _context.next = 22;
+                  break;
+                }
+  
+                console.log("Inside the changedate");
+                eventdate = bookingrec[0].functiondate;
+                return _context.abrupt('return', _react2.default.createElement(_Managebooking2.default, { sessionid: sessionid, bookingid: id, eventdate: eventdate }));
+  
+              case 22:
+  
+                if (query.manage == 'close') bookingstatus = "closed";else bookingstatus = "canceled";
+  
+                //var bookingrec = JSON.parse(await getBookingRecord());
+                console.log("booking Record: " + bookingrec);
+                providermobile = bookingrec[0].providerphone;
+                phone = bookingrec[0].mobile;
+                console.log("Customer Mobile: " + phone);
+                providermail = bookingrec[0].provideremail;
+  
+                console.log("Provider Phone: " + providermobile);
+                console.log("Provider Email: " + providermail);
+  
+                _context.next = 32;
+                return updatebookingstatus();
+  
+              case 32:
+                body = _context.sent;
+  
+                console.log("Calling SendEmail");
+                _context.next = 36;
+                return sendEmail();
+  
+              case 36:
+                mail = _context.sent;
+  
+                // console.log("Calling sendSMS");
+                //var sms = await sendSMS();
+                console.log("Body: " + body);
+                if (!status) {
+  
+                  if (bookingstatus == "canceled") message = 'Unable to cancelling  the Event';else message = 'Unable to close  the Event';
+                  href = 'http://' + _config.host + '/';
+                  message1 = 'Click here to Register.';
+                } else {
+                  if (bookingstatus == "canceled") message = 'Sucessfully canceled  the booking';else message = 'Sucessfully closed the booking';
+                  if ((typeof provider === 'undefined' ? 'undefined' : (0, _typeof3.default)(provider)) != undefined) href = href = 'http://' + _config.host + '/providerhome?sessionid=' + sessionid + '&email=' + email;else href = href = 'http://' + _config.host + '/home?sessionid=' + sessionid + '&email=' + email;
+                  message1 = 'Click here to Home Page.';
+                }
+                return _context.abrupt('return', _react2.default.createElement(_Cancelbooking2.default, { message: message, redirectlink: href, message1: message1, sessionid: sessionid }));
+  
+              case 40:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    }
+  };
+  
+  
+  function updatebookingstatus() {
+  
+    console.log('calling API - updatebookingstatus method');
+    var url = 'http://' + _config.apihost + '/updatebookinstatus?id=' + id + '&status=' + bookingstatus;
+    console.log("URL - updatebookingstatus: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request.put(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside updatebookingstatus Response from API (body)' + body);
+  
+          if (body == 'true') status = true;else status = false;
+          resolve(body);
+          //sendSMS();
+          //var result = await sendEmail();
+        }
+        if (error) {
+          console.log("Error in  update event status");
+          status = false;
+          return reject(error);
+        }
+      });
+  
+      console.log('returning');
+    });
+  }
+  
+  function sendEmail() {
+    console.log('calling API - sendEmail');
+    var url = 'http://' + _config.apihost + '/sendmail';
+    console.log("URL: " + url);
+  
+    var subject = "Your booking for the event with id: " + id + " has been cancelled";
+    var message = "<b>Your booking for the event Cancelled as per your requst. Thank you for the booking and We continue to provide our best service. ";
+    var formdata = {
+      tomail: email + ' ,' + providermail,
+      subject: subject,
+      message: message
+    };
+  
+    //data = JSON.stringify('{\"tomail\": \"'+email+'\", \"subject\": '+subject+'\", \"message\": \" '+message+'\"}');
+    console.log("Data: " + formdata);
+    return new _promise2.default(function (resolve, reject) {
+      request.post(url, { form: formdata }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside sendEmail - Response from API (body)' + body);
+  
+          if (body == 'true') resolve(body);
+          status = true;
+        }
+        if (error) {
+          console.log("Error in Sending Mail");
+          status = false;
+          return reject(error);
+        }
+      });
+    });
+  }
+  
+  function getSessionid() {
+    var request = __webpack_require__(92);
+    console.log('genSessionid - calling API');
+    var url = 'http://' + _config.apihost + '/genSessionid';
+    console.log("getSeesionid - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('genSessionid - Response from API' + body);
+          //sessionid = body;
+          resolve(body);
+        } else {
+  
+          console.log("genSessionid -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("getSessionid - Returning from API call");
+      });
+    });
+  }
+  
+  function getBookingRecord() {
+    var request = __webpack_require__(92);
+    console.log('getBookingRecord - linkbooking - calling API');
+    var url = 'http://' + _config.apihost + '/getbookingrec?bookingid=' + id;
+    console.log("getSeesionid - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('getBookingRecord - linkbooking - Response from API' + body);
+          //sessionid = body;
+          resolve(body);
+        } else {
+  
+          console.log("getBookingRecord - linkbooking -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("getBookingRecord - Returning from API call");
+      });
+    });
+  }
+
+/***/ },
+/* 201 */
+/***/ function(module, exports) {
+
+  module.exports = require("babel-runtime/helpers/typeof");
+
+/***/ },
+/* 202 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Managebooking = __webpack_require__(203);
+  
+  var _Managebooking2 = _interopRequireDefault(_Managebooking);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'Manage Booking';
+  
+  function Managebooking(_ref, context) {
+    var sessionid = _ref.sessionid,
+        bookingid = _ref.bookingid,
+        eventdate = _ref.eventdate;
+  
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      { className: _Managebooking2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Managebooking2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'form',
+          { name: 'form1', method: 'put', action: 'changebookingdate' },
+          _react2.default.createElement(
+            'div',
+            { className: _Managebooking2.default.formGroup },
+            _react2.default.createElement(
+              'label',
+              { className: _Managebooking2.default.label, htmlFor: 'currentdate' },
+              'Current Event Date:'
+            ),
+            _react2.default.createElement('input', {
+              className: _Managebooking2.default.input,
+              id: 'currentdate',
+              type: 'text',
+              name: 'currentdate',
+              value: eventdate,
+              readOnly: true
+            }),
+            _react2.default.createElement(
+              'label',
+              { className: _Managebooking2.default.label, htmlFor: 'newdate' },
+              'Select New Date:'
+            ),
+            _react2.default.createElement('input', {
+              className: _Managebooking2.default.input,
+              id: 'newdate',
+              type: 'date',
+              name: 'newdate'
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _Managebooking2.default.formGroup },
+            _react2.default.createElement(
+              'button',
+              { className: _Managebooking2.default.button, value: 'Change Date', type: 'submit' },
+              'Change Event Date'
+            )
+          ),
+          _react2.default.createElement('input', {
+            id: 'sessionid',
+            type: 'hidden',
+            name: 'sessionid',
+            value: sessionid
+          }),
+          _react2.default.createElement('input', {
+            id: 'bookingid',
+            type: 'hidden',
+            name: 'bookingid',
+            value: bookingid
+          })
+        )
+      )
+    );
+  }
+  
+  Managebooking.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Managebooking2.default)(Managebooking);
+
+/***/ },
+/* 203 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(204);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Managebooking.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Managebooking.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 204 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, " .Managebooking_root_27M {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Managebooking_container_3Uw {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Managebooking_lead_30e {\n  font-size: 1.25em;\n}\n\n.Managebooking_formGroup_kwf {\n  margin-bottom: 20px;\n  \n}\n\n.Managebooking_label_r7C {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.Managebooking_input_3a8 {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.Managebooking_input_3a8:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Managebooking_button_1aK {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Managebooking_button_1aK:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Managebooking_button_1aK:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Managebooking_icon_295 {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.Managebooking_lineThrough_Akf {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.Managebooking_lineThrough_Akf::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.Managebooking_lineThrough_Akf::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n\n#Managebooking_lastname_1GH{\n    max-width:100px;\n    float:left;\n}\n\n.Managebooking_div_2m2 {\n  float:right;\n}\n\n#Managebooking_leftContainer_2zl {\n   float:left;\n}\n\n#Managebooking_rightContainer_CfR {\n   float:right;\n}", "", {"version":3,"sources":["/./routes/managebooking/Managebooking.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAID;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb;;AACD;IACI,gBAAgB;IAChB,WAAW;CACd;;AAED;EACE,YAAY;CACb;;AAED;GACG,WAAW;CACb;;AAED;GACG,YAAY;CACd","file":"Managebooking.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n#lastname{\n    max-width:100px;\n    float:left;\n}\n\n.div {\n  float:right;\n}\n\n#leftContainer {\n   float:left;\n}\n\n#rightContainer {\n   float:right;\n}"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Managebooking_root_27M",
+  	"container": "Managebooking_container_3Uw",
+  	"lead": "Managebooking_lead_30e",
+  	"formGroup": "Managebooking_formGroup_kwf",
+  	"label": "Managebooking_label_r7C",
+  	"input": "Managebooking_input_3a8",
+  	"button": "Managebooking_button_1aK",
+  	"icon": "Managebooking_icon_295",
+  	"lineThrough": "Managebooking_lineThrough_Akf",
+  	"lastname": "Managebooking_lastname_1GH",
+  	"div": "Managebooking_div_2m2",
+  	"leftContainer": "Managebooking_leftContainer_2zl",
+  	"rightContainer": "Managebooking_rightContainer_CfR"
+  };
+
+/***/ },
+/* 205 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _promise = __webpack_require__(83);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Providerhome = __webpack_require__(179);
+  
+  var _Providerhome2 = _interopRequireDefault(_Providerhome);
+  
+  var _Providerlogin = __webpack_require__(165);
+  
+  var _Providerlogin2 = _interopRequireDefault(_Providerlogin);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var sessionid;
+  var email;
+  var provider = "provider";
+  
+  exports.default = {
+  
+    path: '/providerhome',
+  
+    action: function action(_ref, _ref2) {
+      var _this = this;
+  
+      var query = _ref.query;
+      var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var body, bookinglist;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                sessionid = query.sessionid;
+                email = query.email;
+  
+                console.log("Sessionid - index.js - Providerhome " + sessionid);
+  
+                if (!(sessionid === undefined || sessionid == '')) {
+                  _context.next = 10;
+                  break;
+                }
+  
+                _context.next = 6;
+                return getSessionid();
+  
+              case 6:
+                body = _context.sent;
+                return _context.abrupt('return', _react2.default.createElement(_Providerlogin2.default, { sessionid: body }));
+  
+              case 10:
+                _context.next = 12;
+                return getBookingData();
+  
+              case 12:
+                bookinglist = _context.sent;
+                return _context.abrupt('return', _react2.default.createElement(_Providerhome2.default, { sessionid: sessionid, bookinglist: bookinglist, email: email, provider: provider }));
+  
+              case 14:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    }
+  };
+  
+  
+  function getSessionid() {
+    var request = __webpack_require__(92);
+    console.log('Home - genSessionid - calling API');
+    var url = 'http://' + _config.apihost + '/genSessionid';
+    console.log("getSeesionid - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('genSessionid - Response from API' + body);
+          //sessionid = body;
+          resolve(body);
+        } else {
+  
+          console.log("genSessionid -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("getSessionid - Returning from API call");
+      });
+    });
+  }
+  
+  function getBookingData() {
+    var request = __webpack_require__(92);
+  
+    console.log('calling API');
+    var url = 'http://' + _config.apihost + '/getbookingrecbyprovider?email=' + email;
+    console.log("URL: " + url);
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside getBookingData Response from API (body)' + body);
+          resolve(body);
+        } else {
+          console.log("Error Object: " + error);
+          return reject(error);
+        }
+      });
+    });
+  }
+
+/***/ },
+/* 206 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _promise = __webpack_require__(83);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Providerlogout = __webpack_require__(207);
+  
+  var _Providerlogout2 = _interopRequireDefault(_Providerlogout);
+  
+  var _Providerlogin = __webpack_require__(165);
+  
+  var _Providerlogin2 = _interopRequireDefault(_Providerlogin);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var message = 'Thanks for visiting our website. You have Sucessfully Logged out ';
+  var message1 = 'Click here to login';
+  var href = 'http://' + _config.host + '/providerlogin';
+  var status;
+  var sessionid;
+  
+  exports.default = {
+  
+    path: '/providerlogout',
+  
+    action: function action(_ref, _ref2) {
+      var _this = this;
+  
+      var query = _ref.query;
+      var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var body;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                sessionid = query.sessionid;
+                console.log("Logout - index.js - Sessionid: " + sessionid);
+                _context.next = 4;
+                return deleteSession();
+  
+              case 4:
+                body = _context.sent;
+  
+                console.log("Session deleted");
+                return _context.abrupt('return', _react2.default.createElement(_Providerlogout2.default, { message: message, redirectlink: href, message1: message1 }));
+  
+              case 7:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    }
+  };
+  
+  
+  function deleteSession() {
+    var request = __webpack_require__(92);
+    console.log('calling API - DeleteSession method');
+    var url = 'http://' + _config.apihost + '/deleteSession?sessionid=' + sessionid;
+    console.log("URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request.put(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside Logout - index.js - deleteSession Response from API (body)' + body);
+  
+          if (body == 'true') status = true;
+          resolve(body);
+        }
+        if (error) {
+          console.log("Error in deleting session data");
+          status = false;
+          return reject(error);
+        }
+        console.log('returning from deleteSession API call');
+      });
+    });
+  }
+
+/***/ },
+/* 207 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Providerlogout = __webpack_require__(208);
+  
+  var _Providerlogout2 = _interopRequireDefault(_Providerlogout);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'Provider Logout';
+  
+  function Logout(_ref, context) {
+    var message = _ref.message,
+        redirectlink = _ref.redirectlink,
+        message1 = _ref.message1;
+  
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      { className: _Providerlogout2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Providerlogout2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          message
+        ),
+        _react2.default.createElement(
+          'a',
+          { href: redirectlink },
+          message1
+        )
+      )
+    );
+  }
+  
+  Logout.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Providerlogout2.default)(Logout);
+
+/***/ },
+/* 208 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(209);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Providerlogout.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Providerlogout.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 209 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, " .Providerlogout_root_2RH {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Providerlogout_container_3St {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height: 800px;\n}\n\n.Providerlogout_lead_2Mx {\n  font-size: 1.25em;\n}\n\n.Providerlogout_formGroup_324 {\n  margin-bottom: 20px;\n  \n}\n\n.Providerlogout_label_2d_ {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n", "", {"version":3,"sources":["/./routes/providerlogout/Providerlogout.css"],"names":[],"mappings":"CAAC;EACC,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;EACjB,kBAAkB;CACnB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;;CAErB;;AAED;;EAEE,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb","file":"Providerlogout.css","sourcesContent":[" .root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n  max-height: 800px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n  \n}\n\n.label {\n  \n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n  float: left;\n}\n"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Providerlogout_root_2RH",
+  	"container": "Providerlogout_container_3St",
+  	"lead": "Providerlogout_lead_2Mx",
+  	"formGroup": "Providerlogout_formGroup_324",
+  	"label": "Providerlogout_label_2d_"
+  };
+
+/***/ },
+/* 210 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Changeprovideremail = __webpack_require__(211);
+  
+  var _Changeprovideremail2 = _interopRequireDefault(_Changeprovideremail);
+  
+  var _Login = __webpack_require__(87);
+  
+  var _Login2 = _interopRequireDefault(_Login);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var status = false;
+  var code;
+  
+  exports.default = {
+  
+    path: '/changeprovideremail',
+  
+    action: function action(_ref, _ref2) {
+      var _this = this;
+  
+      var query = _ref.query;
+      var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var email, sessionid;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                email = query.email;
+                sessionid = query.sessionid;
+  
+                console.log("Email ID:" + email);
+                //var body = await checkCode(code, email);
+  
+                code = "verify";
+                return _context.abrupt('return', _react2.default.createElement(_Changeprovideremail2.default, { email: email, passCode: code, sessionid: sessionid }));
+  
+              case 5:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    }
+  };
+
+/***/ },
+/* 211 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Changeprovideremail = __webpack_require__(212);
+  
+  var _Changeprovideremail2 = _interopRequireDefault(_Changeprovideremail);
+  
+  var _Link = __webpack_require__(61);
+  
+  var _Link2 = _interopRequireDefault(_Link);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'Change Email';
+  
+  function Changeprovideremail(_ref, context) {
+    var email = _ref.email,
+        passCode = _ref.passCode,
+        sessionid = _ref.sessionid;
+  
+    console.log("Changeprovideremail: " + email);
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      { className: _Changeprovideremail2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Changeprovideremail2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'form',
+          { name: 'form1', method: 'put', action: 'updateprovideremail' },
+          _react2.default.createElement(
+            'div',
+            { className: _Changeprovideremail2.default.formGroup },
+            _react2.default.createElement(
+              'label',
+              { className: _Changeprovideremail2.default.label, htmlFor: 'oldemail' },
+              'Current E-mail:'
+            ),
+            _react2.default.createElement('input', {
+              className: _Changeprovideremail2.default.input,
+              id: 'oldemail',
+              type: 'text',
+              name: 'oldemail',
+              value: email,
+              readOnly: true
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _Changeprovideremail2.default.formGroup },
+            _react2.default.createElement(
+              'label',
+              { className: _Changeprovideremail2.default.label, htmlFor: 'newemail' },
+              'New E-mail:'
+            ),
+            _react2.default.createElement('input', {
+              className: _Changeprovideremail2.default.input,
+              id: 'newemail',
+              type: 'email',
+              name: 'newemail'
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _Changeprovideremail2.default.formGroup },
+            _react2.default.createElement(
+              'button',
+              { className: _Changeprovideremail2.default.button, value: 'Change Email', type: 'submit' },
+              'Change Password'
+            ),
+            _react2.default.createElement('input', {
+              id: 'email',
+              type: 'hidden',
+              name: 'email',
+              value: email
+            })
+          ),
+          _react2.default.createElement('script', null)
+        )
+      )
+    );
+  }
+  
+  Changeprovideremail.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Changeprovideremail2.default)(Changeprovideremail);
+
+/***/ },
+/* 212 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(213);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Changeprovideremail.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Changeprovideremail.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 213 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.Changeprovideremail_root_3wA {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.Changeprovideremail_container_2KF {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.Changeprovideremail_lead_321 {\n  font-size: 1.25em;\n}\n\n.Changeprovideremail_formGroup_MrA {\n  margin-bottom: 20px;\n}\n\n.Changeprovideremail_label_2fZ {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.Changeprovideremail_label1_2BG {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 300;\n  color: #FF0000;\n}\n\n.Changeprovideremail_input_1l3 {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.Changeprovideremail_input_1l3:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.Changeprovideremail_button_xve {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.Changeprovideremail_button_xve:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.Changeprovideremail_button_xve:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/changeprovideremail/Changeprovideremail.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,eAAe;CAChB;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C","file":"Changeprovideremail.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.label1 {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 300;\n  color: #FF0000;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Changeprovideremail_root_3wA",
+  	"container": "Changeprovideremail_container_2KF",
+  	"lead": "Changeprovideremail_lead_321",
+  	"formGroup": "Changeprovideremail_formGroup_MrA",
+  	"label": "Changeprovideremail_label_2fZ",
+  	"label1": "Changeprovideremail_label1_2BG",
+  	"input": "Changeprovideremail_input_1l3",
+  	"button": "Changeprovideremail_button_xve"
+  };
+
+/***/ },
+/* 214 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _promise = __webpack_require__(83);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _stringify = __webpack_require__(55);
+  
+  var _stringify2 = _interopRequireDefault(_stringify);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Changeproviderphone = __webpack_require__(215);
+  
+  var _Changeproviderphone2 = _interopRequireDefault(_Changeproviderphone);
+  
+  var _Login = __webpack_require__(87);
+  
+  var _Login2 = _interopRequireDefault(_Login);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var status = false;
+  
+  var email;
+  
+  exports.default = {
+  
+    path: '/changeproviderphone',
+  
+    action: function action(_ref, _ref2) {
+      var _this = this;
+  
+      var query = _ref.query;
+      var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var providerRecord, phone;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+  
+                console.log("Query - Changeproviderphone: " + (0, _stringify2.default)(query));
+                email = query.email;
+                _context.t0 = JSON;
+                _context.next = 5;
+                return getProvider();
+  
+              case 5:
+                _context.t1 = _context.sent;
+                providerRecord = _context.t0.parse.call(_context.t0, _context.t1);
+  
+                console.log("Provider Record: " + providerRecord);
+                phone = providerRecord[0].phone;
+  
+  
+                console.log("Provider Email: " + email);
+                console.log("Provider Old Phone:" + phone);
+  
+                return _context.abrupt('return', _react2.default.createElement(_Changeproviderphone2.default, { email: email, phone: phone }));
+  
+              case 12:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    }
+  };
+  
+  
+  function getProvider() {
+    var request = __webpack_require__(92);
+    console.log('genSessionid - calling API');
+    var url = 'http://' + _config.apihost + '/getProvider?email=' + email;
+    console.log("getProvider - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('getProvider - Response from API' + body);
+          //sessionid = body;
+          resolve(body);
+        } else {
+  
+          console.log("getProvider -API Server not running: " + error);
+          return reject(error);
+        }
+        console.log("getProvider - Returning from API call");
+      });
+    });
+  }
+
+/***/ },
+/* 215 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _changeproviderphone = __webpack_require__(216);
+  
+  var _changeproviderphone2 = _interopRequireDefault(_changeproviderphone);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var title = 'Changing Provider Phone';
+  
+  function Changeproviderphone(_ref, context) {
+    var email = _ref.email,
+        phone = _ref.phone;
+  
+    console.log("Changeproviderphone: " + email);
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      { className: _changeproviderphone2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _changeproviderphone2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'form',
+          { name: 'form1', method: 'put', action: 'confirmOTP' },
+          _react2.default.createElement(
+            'div',
+            { className: _changeproviderphone2.default.formGroup },
+            _react2.default.createElement(
+              'label',
+              { className: _changeproviderphone2.default.label, htmlFor: 'phone' },
+              'Current phone:'
+            ),
+            _react2.default.createElement('input', {
+              className: _changeproviderphone2.default.input,
+              id: 'oldphone',
+              type: 'text',
+              name: 'oldphone',
+              value: phone,
+              readOnly: true
+            }),
+            _react2.default.createElement(
+              'label',
+              { className: _changeproviderphone2.default.label, htmlFor: 'newphone' },
+              'New phone:'
+            ),
+            _react2.default.createElement('input', {
+              className: _changeproviderphone2.default.input,
+              id: 'newphone',
+              type: 'text',
+              name: 'newphone'
+            }),
+            _react2.default.createElement('input', {
+              id: 'email',
+              type: 'hidden',
+              name: 'email',
+              value: email
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _changeproviderphone2.default.formGroup },
+            _react2.default.createElement(
+              'button',
+              { className: _changeproviderphone2.default.button, value: 'Change phone', type: 'submit' },
+              'Change phone'
+            )
+          ),
+          _react2.default.createElement('script', null)
+        )
+      )
+    );
+  }
+  
+  Changeproviderphone.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_changeproviderphone2.default)(Changeproviderphone);
+
+/***/ },
+/* 216 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(217);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./changeproviderphone.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./changeproviderphone.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 217 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.changeproviderphone_root_1jO {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.changeproviderphone_container_jN2 {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.changeproviderphone_lead_3O1 {\n  font-size: 1.25em;\n}\n\n.changeproviderphone_formGroup_2U1 {\n  margin-bottom: 20px;\n}\n\n.changeproviderphone_label_3Ia {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.changeproviderphone_label1_2pd {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 300;\n  color: #FF0000;\n}\n\n.changeproviderphone_input_IjB {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.changeproviderphone_input_IjB:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.changeproviderphone_button_1PG {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.changeproviderphone_button_1PG:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.changeproviderphone_button_1PG:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/changeproviderphone/changeproviderphone.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAED;EACE,kBAAkB;CACnB;;AAED;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;EACjB,eAAe;CAChB;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C","file":"changeproviderphone.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.label1 {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 300;\n  color: #FF0000;\n}\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "changeproviderphone_root_1jO",
+  	"container": "changeproviderphone_container_jN2",
+  	"lead": "changeproviderphone_lead_3O1",
+  	"formGroup": "changeproviderphone_formGroup_2U1",
+  	"label": "changeproviderphone_label_3Ia",
+  	"label1": "changeproviderphone_label1_2pd",
+  	"input": "changeproviderphone_input_IjB",
+  	"button": "changeproviderphone_button_1PG"
+  };
+
+/***/ },
+/* 218 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _promise = __webpack_require__(83);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Updateprovideremail = __webpack_require__(219);
+  
+  var _Updateprovideremail2 = _interopRequireDefault(_Updateprovideremail);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var status = true;
+  var message = 'Email Sucessfully Updated';
+  var href;
+  var message1 = 'Click here to login';
+  var passcode;
+  var request = __webpack_require__(92);
+  
+  exports.default = {
+  
+    path: '/updateprovideremail',
+  
+    action: function action(_ref, _ref2) {
+      var _this = this;
+  
+      var query = _ref.query;
+      var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var email, newemail, body, login, mail;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                console.log("Query: " + query);
+                email = query.oldemail;
+                newemail = query.newemail;
+  
+                passcode = query.code;
+  
+                console.log("Current Email: " + email);
+                console.log("New Email: " + newemail);
+                console.log("Passcode - Update Email module:" + passcode);
+  
+                if (!(passcode == "activate")) {
+                  _context.next = 19;
+                  break;
+                }
+  
+                _context.next = 10;
+                return updateEmail(email, newemail);
+  
+              case 10:
+                body = _context.sent;
+                _context.next = 13;
+                return updatelogin(email, newemail);
+  
+              case 13:
+                login = _context.sent;
+  
+                if (status == false) message = ' Error in updating email';else {
+                  message = 'Email  Sucessfully Updated';
+                }
+                message1 = 'click here to login with new email';
+                href = 'http://' + _config.host + '/providerlogin';
+                _context.next = 27;
+                break;
+  
+              case 19:
+                href = 'http://' + _config.host + '/updateprovideremail?code=activate&newemail=' + newemail + '&oldemail=' + email;
+                console.log("Verify: href:" + href);
+                _context.next = 23;
+                return sendEmail(newemail);
+  
+              case 23:
+                mail = _context.sent;
+  
+                message = "Confirmation mail sent to your new email. ";
+                message1 = "Click here to relogin";
+                href = 'http://' + _config.host + '/providerlogin';
+  
+              case 27:
+                return _context.abrupt('return', _react2.default.createElement(_Updateprovideremail2.default, { message: message, message1: message1, redirectlink: href }));
+  
+              case 28:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    }
+  };
+  
+  
+  function updateEmail(email, newemail) {
+  
+    console.log("Inside Updateprovideremailword method email: " + email);
+    console.log("Inside Updateprovideremailword method New Email: " + newemail);
+    console.log('calling API');
+    var url = 'http://' + _config.apihost + '/updateEmail?email=' + email + '&newemail=' + newemail;
+    console.log("Update Updateprovideremail updateEmail - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+  
+      request.put(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Update Email - Updateprovideremail - Response from API' + body);
+          if (body == 'true') {
+            status = true;
+          } else {
+            status = false;
+            message = 'Error in updating email';
+          }
+          resolve(body);
+        } else {
+          status = false;
+          console.log("Updateprovideremail - API Server not running: ") + error;
+          return reject(error);
+        }
+      });
+    });
+  }
+  
+  function sendEmail(email) {
+    console.log('calling API - sendEmail');
+    var url = 'http://' + _config.apihost + '/sendmail';
+    console.log("URL: " + url);
+  
+    var subject = "Your request for change Email";
+    var message = "<b>You have requested for email change . Click below link to verify to activate email </b> <br> <b> <a href='" + href + "' >Please click the link to activate email</a>  <b> ";
+    var formdata = {
+      tomail: email,
+      subject: subject,
+      message: message
+    };
+  
+    //data = JSON.stringify('{\"tomail\": \"'+email+'\", \"subject\": '+subject+'\", \"message\": \" '+message+'\"}');
+    console.log("Data: " + formdata);
+    return new _promise2.default(function (resolve, reject) {
+      request.post(url, { form: formdata }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside sendEmail - Response from API (body)' + body);
+  
+          if (body == 'true') resolve(body);
+          status = true;
+        }
+        if (error) {
+          console.log("Error in Sending Mail");
+          status = false;
+          return reject(error);
+        }
+      });
+    });
+  }
+  
+  function updatelogin(email, newemail) {
+  
+    console.log("Inside updatelogin method email: " + email);
+    console.log("Inside updatelogin method New Email: " + newemail);
+    console.log('calling API');
+    var url = 'http://' + _config.apihost + '/updatelogin?email=' + email + '&newemail=' + newemail;
+    console.log("Update Updateprovideremail updatelogin - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+  
+      request.put(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Update Login - Updateprovideremail - Response from API' + body);
+          if (body == 'true') {
+            status = true;
+          } else {
+            status = false;
+            message = 'Error in updating password';
+          }
+          resolve(body);
+        } else {
+          status = false;
+          console.log("Updateprovideremail - updatelogin - API Server not running: ") + error;
+          return reject(error);
+        }
+      });
+    });
+  }
+
+/***/ },
+/* 219 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Updateprovideremail = __webpack_require__(220);
+  
+  var _Updateprovideremail2 = _interopRequireDefault(_Updateprovideremail);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  //import Link from '../../components/Link'
+  
+  var title = 'Update Provider Password';
+  
+  function Updateprovideremail(_ref, context) {
+    var message = _ref.message,
+        message1 = _ref.message1,
+        redirectlink = _ref.redirectlink;
+  
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      { className: _Updateprovideremail2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Updateprovideremail2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          message
+        ),
+        _react2.default.createElement(
+          'a',
+          { href: redirectlink },
+          message1,
+          ' '
+        )
+      )
+    );
+  }
+  
+  Updateprovideremail.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Updateprovideremail2.default)(Updateprovideremail);
+
+/***/ },
+/* 220 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(221);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Updateprovideremail.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Updateprovideremail.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 221 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n.Updateprovideremail_root_zUx {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n.Updateprovideremail_container_1yU {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n.Updateprovideremail_lead_ddn {\n  font-size: 1.25em;\n}\n.Updateprovideremail_formGroup_3pr {\n  margin-bottom: 20px;\n}\n.Updateprovideremail_label_2xq {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n.Updateprovideremail_input_1Hg {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n.Updateprovideremail_input_1Hg:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Updateprovideremail_button_1by {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.Updateprovideremail_button_1by:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n.Updateprovideremail_button_1by:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Updateprovideremail_facebook_1fZ {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n.Updateprovideremail_facebook_1fZ:hover {\n  background: #2d4373;\n}\n.Updateprovideremail_google_1ls {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n.Updateprovideremail_google_1ls:hover {\n  background: #c23321;\n}\n.Updateprovideremail_twitter_1Eh {\n  border-color: #55acee;\n  background: #55acee;\n}\n.Updateprovideremail_twitter_1Eh:hover {\n  background: #2795e9;\n}\n.Updateprovideremail_icon_3Kd {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n.Updateprovideremail_lineThrough_3Tb {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n.Updateprovideremail_lineThrough_3Tb::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n.Updateprovideremail_lineThrough_3Tb::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./routes/updateprovideremail/Updateprovideremail.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;ACLH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;ADbD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;AAED;EACE,kBAAkB;CACnB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;AAGD;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;AAED;EACE,mCAAmC;CACpC;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Updateprovideremail.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n","\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Updateprovideremail_root_zUx",
+  	"container": "Updateprovideremail_container_1yU",
+  	"lead": "Updateprovideremail_lead_ddn",
+  	"formGroup": "Updateprovideremail_formGroup_3pr",
+  	"label": "Updateprovideremail_label_2xq",
+  	"input": "Updateprovideremail_input_1Hg",
+  	"button": "Updateprovideremail_button_1by",
+  	"facebook": "Updateprovideremail_facebook_1fZ Updateprovideremail_button_1by",
+  	"google": "Updateprovideremail_google_1ls Updateprovideremail_button_1by",
+  	"twitter": "Updateprovideremail_twitter_1Eh Updateprovideremail_button_1by",
+  	"icon": "Updateprovideremail_icon_3Kd",
+  	"lineThrough": "Updateprovideremail_lineThrough_3Tb"
+  };
+
+/***/ },
+/* 222 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _promise = __webpack_require__(83);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _Updateproviderphone = __webpack_require__(223);
+  
+  var _Updateproviderphone2 = _interopRequireDefault(_Updateproviderphone);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var status = true;
+  var message = 'phone Sucessfully Updated';
+  var href = 'http://' + _config.host + '/providerlogin';
+  var message1 = 'Click here to login';
+  var code;
+  var request = __webpack_require__(92);
+  var phone;
+  var newphone;
+  var email;
+  var otp;
+  
+  exports.default = {
+  
+    path: '/updateproviderphone',
+  
+    action: function action(_ref, _ref2) {
+      var _this = this;
+  
+      var query = _ref.query;
+      var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var updatestatus;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                console.log("Query: " + query);
+  
+                newphone = query.newphone;
+                email = query.email;
+                otp = query.otp;
+                console.log("E-mail : " + phone);
+                console.log("New phone: " + newphone);
+  
+                _context.next = 8;
+                return updatephone();
+  
+              case 8:
+                updatestatus = _context.sent;
+  
+  
+                if (status == 'true') {
+                  message = " Phone sucessfully updated";
+                  message1 = "Click here to relogin";
+                } else {
+                  message = " Phone details not updated. An error occured";
+                  message1 = "Click here to relogin";
+                }
+  
+                return _context.abrupt('return', _react2.default.createElement(_Updateproviderphone2.default, { message: message, message1: message1, redirectlink: href }));
+  
+              case 11:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    }
+  };
+  
+  
+  function updatephone() {
+  
+    console.log("Inside Updateproviderphone - updatephone method email: " + email);
+    console.log("Inside Updateprovider- updatephone method New phone: " + newphone);
+    console.log('calling API');
+    var url = 'http://' + _config.apihost + '/updatephone?email=' + email + '&newphone=' + newphone;
+    console.log("Update Updateproviderphone updatephone - URL: " + url);
+  
+    return new _promise2.default(function (resolve, reject) {
+  
+      request.put(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Update phone - Updateproviderphone - Response from API' + body);
+          if (body == 'true') {
+            status = true;
+          } else {
+            status = false;
+            message = 'Error in updating phone';
+          }
+          resolve(body);
+        } else {
+          status = false;
+          console.log("Updateproviderphone - API Server not running: ") + error;
+          return reject(error);
+        }
+      });
+    });
+  }
+
+/***/ },
+/* 223 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _Updateproviderphone = __webpack_require__(224);
+  
+  var _Updateproviderphone2 = _interopRequireDefault(_Updateproviderphone);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  //import Link from '../../components/Link'
+  
+  var title = 'Update Provider Password';
+  
+  function Updateproviderphone(_ref, context) {
+    var message = _ref.message,
+        message1 = _ref.message1,
+        redirectlink = _ref.redirectlink;
+  
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      { className: _Updateproviderphone2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _Updateproviderphone2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          message
+        ),
+        _react2.default.createElement(
+          'a',
+          { href: redirectlink },
+          message1,
+          ' '
+        )
+      )
+    );
+  }
+  
+  Updateproviderphone.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_Updateproviderphone2.default)(Updateproviderphone);
+
+/***/ },
+/* 224 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(225);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Updateproviderphone.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./Updateproviderphone.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 225 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, "/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n.Updateproviderphone_root_3ep {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n.Updateproviderphone_container_3hP {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n.Updateproviderphone_lead_33S {\n  font-size: 1.25em;\n}\n.Updateproviderphone_formGroup_F0o {\n  margin-bottom: 20px;\n}\n.Updateproviderphone_label_3vs {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n.Updateproviderphone_input_2_M {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n.Updateproviderphone_input_2_M:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Updateproviderphone_button_2b4 {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n.Updateproviderphone_button_2b4:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n.Updateproviderphone_button_2b4:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n.Updateproviderphone_facebook_115 {\n  border-color: #3b5998;\n  background: #3b5998;\n}\n.Updateproviderphone_facebook_115:hover {\n  background: #2d4373;\n}\n.Updateproviderphone_google_2Go {\n  border-color: #dd4b39;\n  background: #dd4b39;\n}\n.Updateproviderphone_google_2Go:hover {\n  background: #c23321;\n}\n.Updateproviderphone_twitter_2CY {\n  border-color: #55acee;\n  background: #55acee;\n}\n.Updateproviderphone_twitter_2CY:hover {\n  background: #2795e9;\n}\n.Updateproviderphone_icon_2Lv {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n.Updateproviderphone_lineThrough_2DY {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n.Updateproviderphone_lineThrough_2DY::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n.Updateproviderphone_lineThrough_2DY::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./routes/updateproviderphone/Updateproviderphone.css","/./components/variables.css"],"names":[],"mappings":"AAAA;;;;;;;GAOG;ACLH;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;ADbD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;AAED;EACE,kBAAkB;CACnB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;AAGD;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;AAED;EACE,mCAAmC;CACpC;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,oBAAoB;CAErB;AAED;EACE,oBAAoB;CACrB;AAED;EACE,sBAAsB;EACtB,yBAAyB;EACzB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;CACpB;AAED;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"Updateproviderphone.css","sourcesContent":["/**\n * React Starter Kit (https://www.reactstarterkit.com/)\n *\n * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE.txt file in the root directory of this source tree.\n */\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.lead {\n  font-size: 1.25em;\n}\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.facebook {\n  border-color: #3b5998;\n  background: #3b5998;\n  composes: button;\n}\n\n.facebook:hover {\n  background: #2d4373;\n}\n\n.google {\n  border-color: #dd4b39;\n  background: #dd4b39;\n  composes: button;\n}\n\n.google:hover {\n  background: #c23321;\n}\n\n.twitter {\n  border-color: #55acee;\n  background: #55acee;\n  composes: button;\n}\n\n.twitter:hover {\n  background: #2795e9;\n}\n\n.icon {\n  display: inline-block;\n  margin: -2px 12px -2px 0;\n  width: 20px;\n  height: 20px;\n  vertical-align: middle;\n  fill: currentColor;\n}\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n","\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "Updateproviderphone_root_3ep",
+  	"container": "Updateproviderphone_container_3hP",
+  	"lead": "Updateproviderphone_lead_33S",
+  	"formGroup": "Updateproviderphone_formGroup_F0o",
+  	"label": "Updateproviderphone_label_3vs",
+  	"input": "Updateproviderphone_input_2_M",
+  	"button": "Updateproviderphone_button_2b4",
+  	"facebook": "Updateproviderphone_facebook_115 Updateproviderphone_button_2b4",
+  	"google": "Updateproviderphone_google_2Go Updateproviderphone_button_2b4",
+  	"twitter": "Updateproviderphone_twitter_2CY Updateproviderphone_button_2b4",
+  	"icon": "Updateproviderphone_icon_2Lv",
+  	"lineThrough": "Updateproviderphone_lineThrough_2DY"
+  };
+
+/***/ },
+/* 226 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _promise = __webpack_require__(83);
+  
+  var _promise2 = _interopRequireDefault(_promise);
+  
+  var _regenerator = __webpack_require__(1);
+  
+  var _regenerator2 = _interopRequireDefault(_regenerator);
+  
+  var _asyncToGenerator2 = __webpack_require__(2);
+  
+  var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _ConfirmOTP = __webpack_require__(227);
+  
+  var _ConfirmOTP2 = _interopRequireDefault(_ConfirmOTP);
+  
+  var _config = __webpack_require__(20);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  var request = __webpack_require__(92);
+  var status = true;
+  var message = 'Password Sucessfully Updated';
+  var href = 'http://' + _config.host + '/providerlogin';
+  var message1 = 'Click here to login';
+  var otp;
+  var SMSmessage;
+  var email;
+  
+  exports.default = {
+  
+    path: '/confirmOTP',
+  
+    action: function action(_ref, _ref2) {
+      var _this = this;
+  
+      var query = _ref.query;
+      var path = _ref2.path;
+      return (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+        var oldphone, newphone, OTP;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+  
+                email = query.email;
+                oldphone = query.oldphone;
+                newphone = query.newphone;
+  
+  
+                otp = Math.floor(1000000 + Math.random() * 9000000);
+                console.log("OTP - Update phone module:" + otp);
+  
+                SMSmessage = " You are requested for mobile number change. Use this OTP " + otp;
+  
+                //var SMS = await sendSMS(newphone);
+                _context.next = 8;
+                return saveOTP();
+  
+              case 8:
+                OTP = _context.sent;
+                return _context.abrupt('return', _react2.default.createElement(_ConfirmOTP2.default, { email: email, newphone: newphone }));
+  
+              case 10:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }))();
+    }
+  };
+  
+  
+  function sendSMS(newphone) {
+    console.log('calling API - sendSMS method');
+  
+    var url = 'http://' + _config.apihost + '/sendSMS?authkey=' + _config.smsAPIKey + '&mobiles=' + newphone + '&message=' + SMSmessage + '&sender=DTSBMF&route=4&country=91';
+    console.log("URL: " + url);
+    return new _promise2.default(function (resolve, reject) {
+      request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          console.log('Inside sendSMS - Response from API (body)' + body);
+  
+          if (error) {
+            console.log("Error in Sending SMS");
+            status = false;
+            return reject(error);
+          }
+  
+          if (body == 'true') status = true;
+          resolve(body);
+        }
+      });
+    });
+  }
+  
+  function saveOTP() {
+  
+    console.log("Inside saveOTP method email: " + email);
+    console.log("Inside saveOTP method Code: " + otp);
+    console.log('calling API');
+    var url = 'http://' + _config.apihost + '/addOTP';
+    console.log("URL - saveOTP: " + url);
+  
+    var formdata = {
+      email: email,
+      otp: otp
+    };
+  
+    return new _promise2.default(function (resolve, reject) {
+      request.post(url, { form: formdata }, function (error, response, body) {
+  
+        if (error) return reject(error);
+        if (!error && response.statusCode == 200) {
+          console.log('Inside saveOTP Response from API (body)' + body);
+          if (body == 'true') {
+            status = true;
+          } else {
+            console.log("Error in storing OTP data");
+            status = false;
+          }
+          resolve(body);
+        }
+        console.log('returning');
+      });
+    });
+  }
+
+/***/ },
+/* 227 */
+/***/ function(module, exports, __webpack_require__) {
+
+  'use strict';
+  
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  
+  var _react = __webpack_require__(43);
+  
+  var _react2 = _interopRequireDefault(_react);
+  
+  var _withStyles = __webpack_require__(58);
+  
+  var _withStyles2 = _interopRequireDefault(_withStyles);
+  
+  var _ConfirmOTP = __webpack_require__(228);
+  
+  var _ConfirmOTP2 = _interopRequireDefault(_ConfirmOTP);
+  
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+  
+  //import Link from '../../components/Link'
+  
+  var title = 'Enter the OTP to validate the phone';
+  
+  function ConfirmOTP(_ref, context) {
+    var email = _ref.email,
+        newphone = _ref.newphone;
+  
+    context.setTitle(title);
+    return _react2.default.createElement(
+      'div',
+      { className: _ConfirmOTP2.default.root },
+      _react2.default.createElement(
+        'div',
+        { className: _ConfirmOTP2.default.container },
+        _react2.default.createElement(
+          'h1',
+          null,
+          title
+        ),
+        _react2.default.createElement(
+          'form',
+          { name: 'form1', method: 'put', action: 'updateproviderphone' },
+          _react2.default.createElement(
+            'div',
+            { className: _ConfirmOTP2.default.formGroup },
+            _react2.default.createElement(
+              'label',
+              { className: _ConfirmOTP2.default.label, htmlFor: 'otp' },
+              'OTP:'
+            ),
+            _react2.default.createElement('input', {
+              className: _ConfirmOTP2.default.input,
+              id: 'otp',
+              type: 'text',
+              name: 'otp',
+              placeholder: 'Enter OTP',
+              required: 'required'
+            }),
+            _react2.default.createElement('input', {
+              id: 'email',
+              type: 'hidden',
+              name: 'email',
+              value: email
+            }),
+            _react2.default.createElement('input', {
+              className: _ConfirmOTP2.default.input,
+              id: 'newphone',
+              type: 'hidden',
+              name: 'newphone',
+              value: newphone
+            })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: _ConfirmOTP2.default.formGroup },
+            _react2.default.createElement(
+              'button',
+              { className: _ConfirmOTP2.default.button, type: 'submit' },
+              'Confirm OTP'
+            )
+          )
+        )
+      )
+    );
+  }
+  
+  ConfirmOTP.contextTypes = { setTitle: _react.PropTypes.func.isRequired };
+  
+  exports.default = (0, _withStyles2.default)(_ConfirmOTP2.default)(ConfirmOTP);
+
+/***/ },
+/* 228 */
+/***/ function(module, exports, __webpack_require__) {
+
+  
+      var content = __webpack_require__(229);
+      var insertCss = __webpack_require__(54);
+  
+      if (typeof content === 'string') {
+        content = [[module.id, content, '']];
+      }
+  
+      module.exports = content.locals || {};
+      module.exports._getCss = function() { return content.toString(); };
+      module.exports._insertCss = function(options) { return insertCss(content, options) };
+    
+      // Hot Module Replacement
+      // https://webpack.github.io/docs/hot-module-replacement
+      // Only activated in browser context
+      if (false) {
+        var removeCss = function() {};
+        module.hot.accept("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./ConfirmOTP.css", function() {
+          content = require("!!./../../../node_modules/css-loader/index.js?{\"sourceMap\":true,\"modules\":true,\"localIdentName\":\"[name]_[local]_[hash:base64:3]\",\"minimize\":false}!./../../../node_modules/postcss-loader/index.js?pack=default!./ConfirmOTP.css");
+  
+          if (typeof content === 'string') {
+            content = [[module.id, content, '']];
+          }
+  
+          removeCss = insertCss(content, { replace: true });
+        });
+        module.hot.dispose(function() { removeCss(); });
+      }
+    
+
+/***/ },
+/* 229 */
+/***/ function(module, exports, __webpack_require__) {
+
+  exports = module.exports = __webpack_require__(53)();
+  // imports
+  
+  
+  // module
+  exports.push([module.id, "\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */  /* Extra small screen / phone */  /* Small screen / tablet */  /* Medium screen / desktop */ /* Large screen / wide desktop */\n}\n\n.ConfirmOTP_root_Rvw {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.ConfirmOTP_container_L7d {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n.ConfirmOTP_formGroup_1mi {\n  margin-bottom: 20px;\n}\n\n.ConfirmOTP_label_1fQ {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n.ConfirmOTP_input_7ie {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;\n}\n\n.ConfirmOTP_input_7ie:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.ConfirmOTP_button_3SF {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.ConfirmOTP_button_3SF:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.ConfirmOTP_button_3SF:focus {\n  border-color: #0074c2;\n  -webkit-box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n          box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.ConfirmOTP_lineThrough_28B {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.ConfirmOTP_lineThrough_28B::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.ConfirmOTP_lineThrough_28B::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n", "", {"version":3,"sources":["/./components/variables.css","/./routes/confirmOTP/ConfirmOTP.css"],"names":[],"mappings":";;AAEA;EACE;;gFAE8E;;EAI9E;;gFAE8E;;EAI9E;;gFAE8E,EAErD,gCAAgC,EAChC,2BAA2B,EAC3B,6BAA6B,CAC7B,iCAAiC;CAC3D;;ACpBD;EACE,mBAAmB;EACnB,oBAAoB;CACrB;;AAED;EACE,eAAe;EACf,kBAAkB;EAClB,iBAAiB;CAClB;;AAGD;EACE,oBAAoB;CACrB;;AAED;EACE,sBAAsB;EACtB,mBAAmB;EACnB,gBAAgB;EAChB,iBAAiB;CAClB;;AAGD;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,WAAW;EACX,uBAAuB;EACvB,kBAAkB;EAClB,iBAAiB;EACjB,yDAAiD;UAAjD,iDAAiD;EACjD,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,yFAAyE;EAAzE,iFAAyE;EAAzE,4EAAyE;EAAzE,yEAAyE;EAAzE,+GAAyE;CAC1E;;AAED;EACE,sBAAsB;EACtB,yFAAiF;UAAjF,iFAAiF;CAClF;;AAED;EACE,eAAe;EACf,+BAAuB;UAAvB,uBAAuB;EACvB,UAAU;EACV,mBAAmB;EACnB,YAAY;EACZ,WAAW;EACX,0BAA0B;EAC1B,iBAAiB;EACjB,oBAAoB;EACpB,YAAY;EACZ,mBAAmB;EACnB,sBAAsB;EACtB,gBAAgB;EAChB,uBAAuB;EACvB,gBAAgB;CACjB;;AAED;EACE,mCAAmC;CACpC;;AAED;EACE,sBAAsB;EACtB,mDAA2C;UAA3C,2CAA2C;CAC5C;;AAGD;EACE,mBAAmB;EACnB,WAAW;EACX,eAAe;EACf,oBAAoB;EACpB,YAAY;EACZ,eAAe;EACf,mBAAmB;EACnB,eAAe;CAChB;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,UAAU;EACV,YAAY;EACZ,iBAAiB;EACjB,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,YAAY;CACb;;AAED;EACE,mBAAmB;EACnB,SAAS;EACT,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,8BAA8B;EAC9B,YAAY;CACb","file":"ConfirmOTP.css","sourcesContent":["\n\n:root {\n  /*\n   * Typography\n   * ======================================================================== */\n\n  --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;\n\n  /*\n   * Layout\n   * ======================================================================== */\n\n  --max-content-width: 1000px;\n\n  /*\n   * Media queries breakpoints\n   * ======================================================================== */\n\n  --screen-xs-min: 480px;  /* Extra small screen / phone */\n  --screen-sm-min: 768px;  /* Small screen / tablet */\n  --screen-md-min: 992px;  /* Medium screen / desktop */\n  --screen-lg-min: 1200px; /* Large screen / wide desktop */\n}\n","\n@import '../../components/variables.css';\n\n.root {\n  padding-left: 20px;\n  padding-right: 20px;\n}\n\n.container {\n  margin: 0 auto;\n  padding: 0 0 40px;\n  max-width: 380px;\n}\n\n\n.formGroup {\n  margin-bottom: 20px;\n}\n\n.label {\n  display: inline-block;\n  margin-bottom: 5px;\n  max-width: 100%;\n  font-weight: 700;\n}\n\n\n.input {\n  display: block;\n  box-sizing: border-box;\n  padding: 10px 16px;\n  width: 100%;\n  height: 46px;\n  outline: 0;\n  border: 1px solid #ccc;\n  border-radius: 10;\n  background: #fff;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  color: #616161;\n  font-size: 18px;\n  line-height: 1.3333333;\n  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;\n}\n\n.input:focus {\n  border-color: #0074c2;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n.button {\n  display: block;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 10px 16px;\n  width: 100%;\n  outline: 0;\n  border: 1px solid #373277;\n  border-radius: 0;\n  background: #373277;\n  color: #fff;\n  text-align: center;\n  text-decoration: none;\n  font-size: 18px;\n  line-height: 1.3333333;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: rgba(54, 50, 119, 0.8);\n}\n\n.button:focus {\n  border-color: #0074c2;\n  box-shadow: 0 0 8px rgba(0, 116, 194, 0.6);\n}\n\n\n.lineThrough {\n  position: relative;\n  z-index: 1;\n  display: block;\n  margin-bottom: 15px;\n  width: 100%;\n  color: #757575;\n  text-align: center;\n  font-size: 80%;\n}\n\n.lineThrough::before {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  z-index: -1;\n  margin-top: -5px;\n  margin-left: -20px;\n  width: 40px;\n  height: 10px;\n  background-color: #fff;\n  content: '';\n}\n\n.lineThrough::after {\n  position: absolute;\n  top: 49%;\n  z-index: -2;\n  display: block;\n  width: 100%;\n  border-bottom: 1px solid #ddd;\n  content: '';\n}\n"],"sourceRoot":"webpack://"}]);
+  
+  // exports
+  exports.locals = {
+  	"root": "ConfirmOTP_root_Rvw",
+  	"container": "ConfirmOTP_container_L7d",
+  	"formGroup": "ConfirmOTP_formGroup_1mi",
+  	"label": "ConfirmOTP_label_1fQ",
+  	"input": "ConfirmOTP_input_7ie",
+  	"button": "ConfirmOTP_button_3SF",
+  	"lineThrough": "ConfirmOTP_lineThrough_28B"
+  };
+
+/***/ },
+/* 230 */
+/***/ function(module, exports, __webpack_require__) {
+
+  var extend = __webpack_require__(231);
   
   function Assets(options) {
     if (!(this instanceof Assets)) {
@@ -11190,7 +15094,7 @@ module.exports =
   }
   
   ['data', 'path', 'size', 'url'].forEach(function (resolver) {
-    Assets[resolver] = __webpack_require__(186)("./" + resolver);
+    Assets[resolver] = __webpack_require__(232)("./" + resolver);
     Assets.prototype[resolver] = function (path, callback) {
       return Assets[resolver](path, this.options, callback);
     };
@@ -11200,42 +15104,42 @@ module.exports =
 
 
 /***/ },
-/* 185 */
+/* 231 */
 /***/ function(module, exports) {
 
   module.exports = require("lodash/object/extend");
 
 /***/ },
-/* 186 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
   var map = {
-  	"./__utils__/composeAbsolutePathname": 187,
-  	"./__utils__/composeAbsolutePathname.js": 187,
-  	"./__utils__/composeQueryString": 191,
-  	"./__utils__/composeQueryString.js": 191,
-  	"./__utils__/composeRelativePathname": 192,
-  	"./__utils__/composeRelativePathname.js": 192,
-  	"./__utils__/convertPathToUrl": 188,
-  	"./__utils__/convertPathToUrl.js": 188,
-  	"./__utils__/defaultCachebuster": 193,
-  	"./__utils__/defaultCachebuster.js": 193,
-  	"./__utils__/encodeBuffer": 194,
-  	"./__utils__/encodeBuffer.js": 194,
-  	"./__utils__/ensureTrailingSlash": 189,
-  	"./__utils__/ensureTrailingSlash.js": 189,
-  	"./__utils__/exists": 195,
-  	"./__utils__/exists.js": 195,
-  	"./data": 196,
-  	"./data.js": 196,
-  	"./index": 184,
-  	"./index.js": 184,
-  	"./path": 198,
-  	"./path.js": 198,
-  	"./size": 202,
-  	"./size.js": 202,
-  	"./url": 204,
-  	"./url.js": 204
+  	"./__utils__/composeAbsolutePathname": 233,
+  	"./__utils__/composeAbsolutePathname.js": 233,
+  	"./__utils__/composeQueryString": 237,
+  	"./__utils__/composeQueryString.js": 237,
+  	"./__utils__/composeRelativePathname": 238,
+  	"./__utils__/composeRelativePathname.js": 238,
+  	"./__utils__/convertPathToUrl": 234,
+  	"./__utils__/convertPathToUrl.js": 234,
+  	"./__utils__/defaultCachebuster": 239,
+  	"./__utils__/defaultCachebuster.js": 239,
+  	"./__utils__/encodeBuffer": 240,
+  	"./__utils__/encodeBuffer.js": 240,
+  	"./__utils__/ensureTrailingSlash": 235,
+  	"./__utils__/ensureTrailingSlash.js": 235,
+  	"./__utils__/exists": 241,
+  	"./__utils__/exists.js": 241,
+  	"./data": 242,
+  	"./data.js": 242,
+  	"./index": 230,
+  	"./index.js": 230,
+  	"./path": 244,
+  	"./path.js": 244,
+  	"./size": 248,
+  	"./size.js": 248,
+  	"./url": 250,
+  	"./url.js": 250
   };
   function webpackContext(req) {
   	return __webpack_require__(webpackContextResolve(req));
@@ -11248,17 +15152,17 @@ module.exports =
   };
   webpackContext.resolve = webpackContextResolve;
   module.exports = webpackContext;
-  webpackContext.id = 186;
+  webpackContext.id = 232;
 
 
 /***/ },
-/* 187 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(188);
-  var ensureTrailingSlash = __webpack_require__(189);
+  var convertPathToUrl = __webpack_require__(234);
+  var ensureTrailingSlash = __webpack_require__(235);
   var path = __webpack_require__(4);
-  var url = __webpack_require__(190);
+  var url = __webpack_require__(236);
   
   module.exports = function (baseUrl, basePath, resolvedPath) {
     var from = ensureTrailingSlash(baseUrl);
@@ -11268,7 +15172,7 @@ module.exports =
 
 
 /***/ },
-/* 188 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
   var sep = __webpack_require__(4).sep;
@@ -11279,12 +15183,12 @@ module.exports =
 
 
 /***/ },
-/* 189 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(188);
+  var convertPathToUrl = __webpack_require__(234);
   var path = __webpack_require__(4);
-  var url = __webpack_require__(190);
+  var url = __webpack_require__(236);
   
   module.exports = function (urlStr) {
     var urlObj = url.parse(urlStr);
@@ -11294,13 +15198,13 @@ module.exports =
 
 
 /***/ },
-/* 190 */
+/* 236 */
 /***/ function(module, exports) {
 
   module.exports = require("url");
 
 /***/ },
-/* 191 */
+/* 237 */
 /***/ function(module, exports) {
 
   module.exports = function (current, addon) {
@@ -11312,10 +15216,10 @@ module.exports =
 
 
 /***/ },
-/* 192 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var convertPathToUrl = __webpack_require__(188);
+  var convertPathToUrl = __webpack_require__(234);
   var path = __webpack_require__(4);
   
   module.exports = function (basePath, relativeTo, resolvedPath) {
@@ -11326,7 +15230,7 @@ module.exports =
 
 
 /***/ },
-/* 193 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
   var fs = __webpack_require__(32);
@@ -11338,7 +15242,7 @@ module.exports =
 
 
 /***/ },
-/* 194 */
+/* 240 */
 /***/ function(module, exports) {
 
   module.exports = function (buffer, mediaType) {
@@ -11350,7 +15254,7 @@ module.exports =
 
 
 /***/ },
-/* 195 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
   var fs = __webpack_require__(32);
@@ -11363,16 +15267,16 @@ module.exports =
 
 
 /***/ },
-/* 196 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var encodeBuffer = __webpack_require__(194);
-  var extend = __webpack_require__(185);
+  var encodeBuffer = __webpack_require__(240);
+  var extend = __webpack_require__(231);
   var fs = __webpack_require__(32);
-  var mime = __webpack_require__(197);
+  var mime = __webpack_require__(243);
   var Promise = __webpack_require__(33);
-  var resolvePath = __webpack_require__(198);
-  var url = __webpack_require__(190);
+  var resolvePath = __webpack_require__(244);
+  var url = __webpack_require__(236);
   
   var preadFile = Promise.promisify(fs.readFile);
   
@@ -11403,20 +15307,20 @@ module.exports =
 
 
 /***/ },
-/* 197 */
+/* 243 */
 /***/ function(module, exports) {
 
   module.exports = require("mime");
 
 /***/ },
-/* 198 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var async = __webpack_require__(199);
-  var exists = __webpack_require__(195);
-  var extend = __webpack_require__(185);
-  var flatten = __webpack_require__(200);
-  var glob = __webpack_require__(201);
+  var async = __webpack_require__(245);
+  var exists = __webpack_require__(241);
+  var extend = __webpack_require__(231);
+  var flatten = __webpack_require__(246);
+  var glob = __webpack_require__(247);
   var path = __webpack_require__(4);
   var Promise = __webpack_require__(33);
   
@@ -11461,30 +15365,30 @@ module.exports =
 
 
 /***/ },
-/* 199 */
+/* 245 */
 /***/ function(module, exports) {
 
   module.exports = require("async");
 
 /***/ },
-/* 200 */
+/* 246 */
 /***/ function(module, exports) {
 
   module.exports = require("lodash/array/flatten");
 
 /***/ },
-/* 201 */
+/* 247 */
 /***/ function(module, exports) {
 
   module.exports = require("glob");
 
 /***/ },
-/* 202 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var calipers = __webpack_require__(203)('webp', 'png', 'jpeg', 'gif', 'svg');
+  var calipers = __webpack_require__(249)('webp', 'png', 'jpeg', 'gif', 'svg');
   var Promise = __webpack_require__(33);
-  var resolvePath = __webpack_require__(198);
+  var resolvePath = __webpack_require__(244);
   
   module.exports = function (to, options, callback) {
     if (typeof options === 'function') {
@@ -11507,22 +15411,22 @@ module.exports =
 
 
 /***/ },
-/* 203 */
+/* 249 */
 /***/ function(module, exports) {
 
   module.exports = require("calipers");
 
 /***/ },
-/* 204 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var composeAbsolutePathname = __webpack_require__(187);
-  var composeQueryString = __webpack_require__(191);
-  var composeRelativePathname = __webpack_require__(192);
-  var defaultCachebuster = __webpack_require__(193);
-  var extend = __webpack_require__(185);
-  var resolvePath = __webpack_require__(198);
-  var url = __webpack_require__(190);
+  var composeAbsolutePathname = __webpack_require__(233);
+  var composeQueryString = __webpack_require__(237);
+  var composeRelativePathname = __webpack_require__(238);
+  var defaultCachebuster = __webpack_require__(239);
+  var extend = __webpack_require__(231);
+  var resolvePath = __webpack_require__(244);
+  var url = __webpack_require__(236);
   
   module.exports = function (to, options, callback) {
     if (typeof options === 'function') {
@@ -11572,22 +15476,22 @@ module.exports =
 
 
 /***/ },
-/* 205 */
+/* 251 */
 /***/ function(module, exports) {
 
   module.exports = require("mongodb");
 
 /***/ },
-/* 206 */
+/* 252 */
 /***/ function(module, exports) {
 
   module.exports = require("express-session");
 
 /***/ },
-/* 207 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var jade = __webpack_require__(208);
+  var jade = __webpack_require__(254);
   
   module.exports = function template(locals) {
   var jade_debug = [ new jade.DebugItem( 1, "C:\\dtsolutions\\bmfApp\\src\\views\\index.jade" ) ];
@@ -11690,7 +15594,7 @@ module.exports =
   }
 
 /***/ },
-/* 208 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
   'use strict';
@@ -11942,10 +15846,10 @@ module.exports =
 
 
 /***/ },
-/* 209 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
-  var jade = __webpack_require__(208);
+  var jade = __webpack_require__(254);
   
   module.exports = function template(locals) {
   var jade_debug = [ new jade.DebugItem( 1, "C:\\dtsolutions\\bmfApp\\src\\views\\error.jade" ) ];

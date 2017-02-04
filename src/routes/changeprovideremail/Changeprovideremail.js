@@ -50,10 +50,10 @@ function Changeprovideremail({email, passCode, sessionid}, context) {
             </button>
            
               <input   
-              id="code"
+              id="email"
               type="hidden"
-              name="code"
-              value = {passCode}
+              name="email"
+              value = {email}
               />
           </div>
           <script>

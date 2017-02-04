@@ -34,8 +34,10 @@ import managebooking from './managebooking';
 import providerhome from './providerhome';
 import providerlogout from './providerlogout';
 import changeprovideremail from './changeprovideremail';
+import changeproviderphone from './changeproviderphone';
 import updateprovideremail from './updateprovideremail';
-
+import updateproviderphone from './updateproviderphone';
+import confirmOTP from './confirmOTP';
 
 export default {
 
@@ -59,9 +61,12 @@ export default {
     providerforgotpass,
     providerchangepassword,
     changeprovideremail,
+    changeproviderphone,
     updatepass,
     updateproviderpass,
     updateprovideremail,
+    confirmOTP,
+    updateproviderphone,
     register,
     savecustomer,
     serviceprovider,    

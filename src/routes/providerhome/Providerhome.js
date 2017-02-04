@@ -22,7 +22,7 @@ function Providerhome({ sessionid,  bookinglist, email, provider }, context) {
  // context.getUser('user');
   var logoutlink = "/providerlogout?sessionid="+sessionid;
   var updateEmail = "/changeprovideremail?sessionid="+sessionid+"&email="+email;
-  var updatePhone = "/updateproviderphone?sessionid="+sessionid+"&email="+email;
+  var updatePhone = "/changeproviderphone?sessionid="+sessionid+"&email="+email;
   var bookingdata = JSON.parse(bookinglist);
   var size = bookingdata.length;
   console.log("Size of the booking List: "+size);

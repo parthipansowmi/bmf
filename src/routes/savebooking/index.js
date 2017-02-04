@@ -88,7 +88,7 @@ return new Promise(function(resolve, reject) {
    });
 }
 
-async function sendSMS() {
+function sendSMS() {
   console.log('calling API - sendSMS method');
   
   var url = `http://${apihost}/sendSMS?authkey=`+ smsAPIKey+'&mobiles='+ phone +'&message='+SMSmessage+'&sender=DTSBMF&route=4&country=91';
