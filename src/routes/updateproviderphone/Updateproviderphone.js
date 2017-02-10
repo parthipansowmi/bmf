@@ -3,7 +3,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Updateproviderphone.css';
 //import Link from '../../components/Link'
 
-const title = 'Update Provider Password';
+const title = 'Update Provider Moblie';
 
 function Updateproviderphone({message, message1, redirectlink}, context) {
   context.setTitle(title);

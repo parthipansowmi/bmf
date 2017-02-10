@@ -22,6 +22,7 @@ function Home({ sessionid, email, bookinglist }, context) {
  // context.getUser('user');
   var logoutlink = "/logout?sessionid="+sessionid;
   var bookinglink = "/booking?sessionid="+sessionid+"&email="+email;
+  var cateringbookinglink = "/cateringbooking?sessionid="+sessionid+"&email="+email;
   var bookingdata = JSON.parse(bookinglist);
   var size = bookingdata.length;
   console.log("Size of the booking List: "+size);
@@ -73,7 +74,7 @@ function Home({ sessionid, email, bookinglist }, context) {
      <br/>
       <Link className={s.link } to="/">Marriage Services</Link>
       
-      <Link className={s.link} to="/register">Catering</Link>
+      <Link className={s.link} to={cateringbookinglink}>Catering</Link>
       <br/>
       <Link className={s.link} to={logoutlink} >Logout</Link>
             

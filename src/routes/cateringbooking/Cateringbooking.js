@@ -1,7 +1,7 @@
 
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Booking.css';
+import s from './Cateringbooking.css';
 
 const title = 'New Event Booking';
 
@@ -12,7 +12,7 @@ var year = date.getFullYear();
 var currentdate = day + '/' + month + '/' + year;
 
 
-function Booking({sessionid, bookingid, email, phone}, context) {
+function Cateringbooking({sessionid, bookingid, email, phone}, context) {
   context.setTitle(title);
   return (
     <div className={s.root}>
@@ -68,42 +68,22 @@ function Booking({sessionid, bookingid, email, phone}, context) {
               name="mobile"
               value={phone}
               readOnly
-              />
+                />
           </div>
-
-          <div className={s.formGroup} >
-            <label className={s.label} htmlFor="catering">
-              Need Catering:
-            </label>
-            <input
-              className={s.squaredOne}
-              id="catering"
-              type="checkbox"
-              name="catering"
-                           
-              />
-            <br/>
-            <label className={s.label} htmlFor="Travel">
-              Need Travel Arrangment:
-            </label>
-            <input
-              className={s.squaredOne}
-              id="travel"
-              type="checkbox"
-              name="travel"
-              
-              />
-          </div>
+          <br/>
+          
           <div>
             <label className={s.label} htmlFor="Function" >
-              <span>Function: </span>
+              <span>Service: </span>
             </label>
-            <select name="eventtype">
-              <option value="House Warming">House Warming</option>
-              <option value="Ayush  Homam">Ayush  Homam</option>
-              <option value="60th Birthday">60th Birthday</option>
-              <option value="80th Birthday">80th Birthday</option>
-            </select>
+            <input
+              className={s.input}
+              id="eventtype"
+              type="text"
+              name="eventtype"
+              value="Catering"
+              readOnly
+              />
             <input
               id="sessionid"
               type="hidden"
@@ -116,11 +96,11 @@ function Booking({sessionid, bookingid, email, phone}, context) {
               name="bookingid"
               value={bookingid}
               />
-               <input
+              <input
               id="bookingtype"
               type="hidden"
               name="bookingtype"
-              value="Pooja"
+              value="Catering"
               />
           </div>
           <div className={s.formGroup}>
@@ -136,6 +116,6 @@ function Booking({sessionid, bookingid, email, phone}, context) {
   );
 }
 
-Booking.contextTypes = { setTitle: PropTypes.func.isRequired };
+Cateringbooking.contextTypes = { setTitle: PropTypes.func.isRequired };
 
-export default withStyles(s)(Booking);
+export default withStyles(s)(Cateringbooking);

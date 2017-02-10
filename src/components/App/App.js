@@ -50,7 +50,8 @@ class App extends Component {
   }
 
   render() {
-    
+
+    //console.log( "this.props: "+this.props);
     return !this.props.error ? (
       <div>
         <Header />

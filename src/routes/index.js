@@ -38,6 +38,7 @@ import changeproviderphone from './changeproviderphone';
 import updateprovideremail from './updateprovideremail';
 import updateproviderphone from './updateproviderphone';
 import confirmOTP from './confirmOTP';
+import cateringbooking from './cateringbooking';
 
 export default {
 
@@ -78,6 +79,7 @@ export default {
     providerlist,
     savebooking,
     linkprovider,
+    cateringbooking,
     content,
     error,
 

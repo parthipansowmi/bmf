@@ -14,6 +14,7 @@ var phone;
 var bookingid;
 var providerlist;
 var sessionid;
+var bookingtype;
 
 export default {
 
@@ -23,6 +24,8 @@ path: '/savebooking',
     console.log("Query String - index.js - Savebooking: " + JSON.stringify(query));
     phone = query.mobile;
     email = query.email;
+    bookingtype = query.bookingtype;
+    console.log("Bookingtype: "+bookingtype);
     console.log("Email: "+email);
     sessionid = query.sessionid;
     bookingid=query.bookingid;
@@ -64,7 +67,7 @@ function SavebookingData(data) {
   console.log('calling API - SavebookingData method');
   var url = `http://${apihost}/newBooking`;
   console.log("URL: " + url);
-
+  delete data.bookingtype;
 return new Promise(function(resolve, reject) {
   request.post(url, { form: data }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
@@ -153,7 +156,7 @@ function getProviderData() {
   var request = require('request');
  
   console.log('calling API');
-  var url = `http://${apihost}/searchByType?servicetype=Pooja`;
+  var url = `http://${apihost}/searchByType?servicetype=`+bookingtype;
   console.log("URL: " + url);
   return new Promise(function(resolve, reject) {
     request(url,  function (error, response, body) {

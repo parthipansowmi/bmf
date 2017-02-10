@@ -23,8 +23,9 @@ export default {
 
  async action({query}, {path}) {
 
-    console.log("inside the verifypass");
-    //console.log(JSON.stringify(query));
+    console.log("inside the Verifyproviderlogin");
+    console.log(JSON.stringify(query));
+   //console.log("Request query: "+query);
     userEmail = query.email;
     password = query.password;
     sessionid = query.sessionid;
@@ -33,10 +34,10 @@ export default {
     console.log("Session Id: "+sessionid);
    
     console.log('calling checkLogin');
-    var body = await checklogin();
+    var query = await checklogin();
     console.log("Result from API call: "+validLogin)
      if (validLogin == 'true') {
-      var body = await SaveSessionData();
+      var query = await SaveSessionData();
       console.log(" Going to Provider Home Page");
       var bookinglist = await getBookingData();
       return <Providerhome sessionid={sessionid} email={userEmail} bookinglist={bookinglist} />;
@@ -44,7 +45,7 @@ export default {
 
     else {
       console.log(" Invalid Credential return to Login Page");
-      return  <Providerlogin />;
+      return  <Providerlogin sessionid={sessionid} />;
     } 
 
   }
@@ -58,11 +59,11 @@ function checklogin()
     console.log("API Endpoing - checklogin : "+url);
   
    return new Promise(function(resolve, reject) {
-   var results = request(url, function (error, response, body) {
+   var results = request(url, function (error, response, query) {
         if (!error && response.statusCode == 200) {
-          console.log('Response from API - checklogin ' + body)
-          validLogin = body;
-          resolve(body);
+          console.log('Response from API - checklogin ' + query)
+          validLogin = query;
+          resolve(query);
         }
         else {
           console.log("Server not responding - checklogin");
@@ -88,13 +89,13 @@ function SaveSessionData() {
 };
 console.log("Data: "+data);
 return new Promise(function(resolve, reject) {
-  request.post(url, { form: data }, function (error, response, body) {
+  request.post(url, { form: data }, function (error, response, query) {
     if (!error && response.statusCode == 200) {
-      console.log('Inside SaveSessionData Response from API (body)' + body);
+      console.log('Inside SaveSessionData Response from API (query)' + query);
 
-      if (body == 'true')
+      if (query == 'true')
         //status = true;
-        resolve(body);
+        resolve(query);
       
     }
     if (error) {
@@ -116,10 +117,10 @@ function getBookingData() {
   var url = `http://${apihost}/getbookingrecbyprovider?email=`+userEmail;
   console.log("URL: " + url);
   return new Promise(function(resolve, reject) {
-    request(url,  function (error, response, body) {
+    request(url,  function (error, response, query) {
     if (!error && response.statusCode == 200) {
-      console.log('Inside getBookingData Response from API (body)' + body);
-      resolve(body);    
+      console.log('Inside getBookingData Response from API (query)' + query);
+      resolve(query);    
     }
     else
     {
