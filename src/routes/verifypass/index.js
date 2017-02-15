@@ -23,7 +23,7 @@ export default {
   async action({query}, {path} ) {
 
     console.log("inside the verifypass");
-   console.log(JSON.stringify(query));
+   
     userEmail = query.usernameOrEmail;
     password = query.password;
     sessionid = query.sessionid;

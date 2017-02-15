@@ -27,7 +27,8 @@ var serve;*/
 var email;
 var message = 'Sucessfully Registered. '
 var href =  `http://${host}/providerlogin`;
-var message1= 'Click here to login'
+var message1= 'Click here to login';
+var password;
 
 export default {
 
@@ -48,10 +49,11 @@ export default {
     console.log("Status -- SaveproviderData: "+status);
     if ( status )
      {
-        var password = await getPassword();
+        password = await getPassword();
         console.log("Status -- getPassword: "+status);
         if (status)
           var savelogin = await saveLogin(password);
+          var emailstatus = sendEmail();
      }
     if (!status) {
       message = 'Error in Provider Data';
@@ -133,4 +135,38 @@ function saveLogin(password) {
     }
   });
   });
+}
+
+function sendEmail() {
+  console.log('calling API - sendEmail');
+  var url = `http://${apihost}/sendmail`;
+  console.log("URL: " + url);
+
+  var subject = "Your Registration for our service";
+  var message = "<b>Thank you for Register. </b> <br> <b> Assuring best service. Your password for login is: "+password+"<b> ";
+  var formdata = { 
+  tomail: email, 
+  subject: subject, 
+  message: message
+};
+  
+  //data = JSON.stringify('{\"tomail\": \"'+email+'\", \"subject\": '+subject+'\", \"message\": \" '+message+'\"}');
+  console.log("Data: "+formdata);
+  return new Promise(function(resolve, reject) {
+  request.post(url, { form: formdata }, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log('Inside sendEmail - Response from API (body)' + body);
+
+      if (body == 'true')
+        resolve(body)
+        status = true;
+    }
+    if (error) {
+      console.log("Error in Sending Mail");
+      status = false;
+      return reject(error);
+    }
+
+  });
+   });
 }

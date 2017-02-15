@@ -21,11 +21,11 @@ export default {
 
   path: '/verifyproviderlogin',
 
- async action({query}, {path}) {
+ async action({query}, {path} ) {
 
     console.log("inside the Verifyproviderlogin");
     console.log(JSON.stringify(query));
-   //console.log("Request query: "+query);
+    console.log("Request query: "+query);
     userEmail = query.email;
     password = query.password;
     sessionid = query.sessionid;
@@ -34,10 +34,10 @@ export default {
     console.log("Session Id: "+sessionid);
    
     console.log('calling checkLogin');
-    var query = await checklogin();
+    var validlogin = await checklogin();
     console.log("Result from API call: "+validLogin)
      if (validLogin == 'true') {
-      var query = await SaveSessionData();
+      var sessiondatastatus = await SaveSessionData();
       console.log(" Going to Provider Home Page");
       var bookinglist = await getBookingData();
       return <Providerhome sessionid={sessionid} email={userEmail} bookinglist={bookinglist} />;
@@ -45,7 +45,7 @@ export default {
 
     else {
       console.log(" Invalid Credential return to Login Page");
-      return  <Providerlogin sessionid={sessionid} />;
+      return  <Providerlogin />;
     } 
 
   }
