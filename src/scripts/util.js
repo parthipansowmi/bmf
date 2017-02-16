@@ -1,3 +1,4 @@
+import { host, apihost, smsAPIKey } from '../config';
 export function randomPassword(length) {
     var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890";
     var pass = "";
@@ -25,7 +26,7 @@ export function getConnection(url) {
     });
 }
 
-function getSessionid() {
+export function getSessionid() {
   var request = require('request');
   console.log('genSessionid - calling API');
   var url = `http://${apihost}/genSessionid`;
@@ -35,7 +36,7 @@ function getSessionid() {
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       console.log('genSessionid - Response from API' + body);
-      sessionid = body;
+     // sessionid = body;
       resolve(body);
     }
     else {

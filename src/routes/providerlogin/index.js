@@ -1,6 +1,7 @@
 import React from 'react';
 import Providerlogin from './providerlogin';
-import { apihost } from '../../config';
+import {getSessionid} from '../../scripts/util';
+var sessionid='';
 
 export default {
 
@@ -8,35 +9,12 @@ export default {
 
  async action() {
 
-    var sessionid = await getSessionid();
+    sessionid = await getSessionid();
+    var message = ' ';
     console.log("SessionId-Login: "+sessionid);
-    return <Providerlogin sessionid = {sessionid}/>;
+    return <Providerlogin sessionid = {sessionid} message={message} />;
    
   },
 
 };
 
-function getSessionid() {
-  var request = require('request');
-  console.log('genSessionid - calling API');
-  var url = `http://${apihost}/genSessionid`;
-  console.log("getSeesionid - URL: " + url);
-  
-  return new Promise(function(resolve, reject) {
-  request(url, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      console.log('genSessionid - Response from API' + body);
-      //sessionid = body;
-      resolve(body);
-    }
-    else {
-      
-      console.log("genSessionid -API Server not running: "+error);
-      return reject(error);
-    }
-    console.log("getSessionid - Returning from API call")
-  });
-
- });
- 
-}

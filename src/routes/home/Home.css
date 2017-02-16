@@ -115,6 +115,10 @@ th, td {
     text-align: left;
 }
 
+.p {
+  color: red;
+}
+
 button {
   
   box-sizing: border-box;

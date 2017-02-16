@@ -5,6 +5,7 @@ import Login from '../login/Login';
 import ErrorPage from '../error/ErrorPage';
 import Home from'../home/Home';
 import { apihost, host } from '../../config';
+import {getSessionid} from '../../scripts/util';
 
 var request = require('request');
 
@@ -30,6 +31,12 @@ export default {
     console.log(userEmail);
     console.log(password);
     console.log("SessionId: ")+sessionid;
+    if ( sessionid === undefined || sessionid == '')
+       {
+         var sessionbody = await getSessionid();
+         return <Login sessionid = {sessionbody}/>
+       }
+
     url = `http://${apihost}/checklogin?usernameOrEmail=` + userEmail + '&password=' + password;
     
     validLogin = await verifylogin(url);
@@ -42,8 +49,9 @@ export default {
     }
 
     else {
+      var message = "Invalid username or passowrd";
       console.log(" Invalid Credential return to Login Page");
-      return  <Login />;
+      return  <Login sessionid={sessionid} message={message}/>;
     } 
 
   }

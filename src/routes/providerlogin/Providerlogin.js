@@ -8,7 +8,7 @@ import Link from '../../components/Link'
 
 const title = 'Entering Credentials';
 
-function Providerlogin({sessionid}, context) {
+function Providerlogin({sessionid, message}, context) {
   console.log("ProviderLogin.js-SessionId: "+sessionid);
   context.setTitle(title);
   
@@ -43,6 +43,7 @@ function Providerlogin({sessionid}, context) {
               name="password"
               required="required"
               />
+              <p className={s.p}><b> {message}</b> </p>
               <input
               id="sessionid"
               type="hidden"

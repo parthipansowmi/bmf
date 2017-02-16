@@ -3,6 +3,8 @@ import Managebooking from './Managebooking';
 import Login from '../login/Login';
 import Cancelbooking from '../cancelbooking/Cancelbooking';
 import { host, apihost, smsAPIKey } from '../../config';
+import {getSessionid} from '../../scripts/util';
+
 var request = require('request');
 
 var message = 'Booking done Sucessfully  '
@@ -194,7 +196,7 @@ function sendEmail() {
 }
 
 
-function getSessionid() {
+/*function getSessionid() {
   var request = require('request');
   console.log('genSessionid - calling API');
   var url = `http://${apihost}/genSessionid`;
@@ -217,7 +219,7 @@ function getSessionid() {
 
  });
  
-}
+}*/
 
 function getBookingRecord() {
   var request = require('request');

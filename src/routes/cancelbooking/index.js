@@ -1,9 +1,10 @@
 import React from 'react';
 import Cancelbooking from './Cancelbooking';
 import bookinglist from '../bookinglist/bookinglist';
-import Login from '../login/Login';
-import { host, apihost, smsAPIKey } from '../../config';
-var request = require('request');
+import {getSessionid} from '../../scripts/util';
+import { host, apihost } from '../../config';
+var sessionid='';
+
 
 var message = 'Booking done Sucessfully  '
 var href = `http://${host}/`;
@@ -23,9 +24,10 @@ path: '/cancelbooking',
  async action({query}, {path}) {
     console.log("Query String - index.js - Cancelbooking: " + JSON.stringify(query));
     message = 'Sucessfully canceled  the Event';
-      href = href=`http://${host}/home?sessionid=`+sessionid+'&email='+email;
-      message1 = 'Click here to Home Page.';
-     return <Cancelbooking message={message} redirectlink={href} message1={message1} sessionid = {sessionid} />;
+    sessionid = query.sessionid;
+    href = href=`http://${host}/home?sessionid=`+sessionid+'&email='+email;
+    message1 = 'Click here to Home Page.';
+    return <Cancelbooking message={message} redirectlink={href} message1={message1} sessionid = {sessionid} />;
    
   },
 

@@ -21,6 +21,10 @@
   margin-bottom: 15px;
 }
 
+.p {
+  color: red;
+}
+
 .label {
   display: inline-block;
   margin-bottom: 5px;

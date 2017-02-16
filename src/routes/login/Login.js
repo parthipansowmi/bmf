@@ -11,7 +11,7 @@ import Formsy from 'formsy-react';
 const title = 'Entering Credentials';
 //var classNames = require('classnames');
 
-function Login( {sessionid}, context ) {
+function Login( {sessionid, message}, context ) {
   context.setTitle(title);
   console.log("Login.js-SessionId: "+sessionid);
   return (
@@ -107,7 +107,7 @@ function Login( {sessionid}, context ) {
               name="password"
               required="required"
               />
-
+            <p className={s.p}><b> {message}</b> </p>
           </div>
           <div className={s.formGroup}>
             <button className={s.button1}   type="submit" >

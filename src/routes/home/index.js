@@ -3,8 +3,8 @@ import React from 'react';
 import Home from './Home';
 import Login from '../login/Login'
 import { apihost } from '../../config';
-
-var sessionid;
+import {getSessionid} from '../../scripts/util';
+var sessionid='';
 var email;
 
 export default {
@@ -29,7 +29,7 @@ export default {
 
 };
 
-function getSessionid() {
+/*function getSessionid() {
   var request = require('request');
   console.log('Home - genSessionid - calling API');
   var url = `http://${apihost}/genSessionid`;
@@ -52,7 +52,7 @@ function getSessionid() {
 
  });
  
-}
+}*/
 
 function getBookingData() {
   var request = require('request');
