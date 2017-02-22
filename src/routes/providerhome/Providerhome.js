@@ -26,6 +26,82 @@ function Providerhome({ sessionid,  bookinglist, email, provider }, context) {
   var bookingdata = JSON.parse(bookinglist);
   var size = bookingdata.length;
   console.log("Size of the booking List: "+size);
+  if ( size == 0)
+  {
+  return (
+  <div className={s.cards} >
+     <div className={s.card} >
+      <header>
+        <h2>Search Provider</h2>
+      </header>
+      <br/>
+      <br/>
+       <form name="searchform" method="get" action="searchprovider" >
+      <input type="text" id="category" name="category" />
+      
+      <br/>
+      <br/>
+      <input type="radio" name="searchterm" value="pincode" />Pincode
+      <br/>
+      <input type="radio" name="searchterm" value="city" />City
+      <br/>
+      <button className={s.button}    value="Search" type="submit" >
+              Search
+            </button>
+       <input id="sessionid"
+              type="hidden"
+              name="sessionid"
+              value={sessionid}
+              />
+             < input
+              id="email"
+              type="hidden"
+              name="email"
+              value={email}
+              />
+     </form>         
+    </div>
+
+    <div className={s.card}>
+    <header>
+        <h2>Service Booking</h2>
+      </header>
+      <Link className={s.link} to={updateEmail}>Change E-mail</Link>
+      <Link className={s.link} to={updatePhone}>Change Mobile No</Link>
+      <Link className={s.link} to="/contact">Add New Service</Link>
+     <br/>
+            <Link className={s.link} to={logoutlink} >Logout</Link>
+            
+      <input
+              id="sessionid"
+              type="hidden"
+              name="sessionid"
+              value={sessionid}
+              />
+      <input
+              id="email"
+              type="hidden"
+              name="email"
+              value={email}
+              />
+    </div>
+    
+    <div className={s.card}>
+    <header>
+        <h2>Booking History</h2>
+      </header>
+      <div> 
+      <p className={s.p}><b> No booking history available</b> </p>
+    </div>
+      
+       </div> 
+    
+     </div>
+         
+  );
+  }
+  else
+  {
   return (
     //<div className={s.root}>
      //<div className={s.container}>
@@ -145,6 +221,7 @@ function Providerhome({ sessionid,  bookinglist, email, provider }, context) {
      </div>
          
   );
+  }
 }
 
 Providerhome.contextTypes = { setTitle: PropTypes.func.isRequired, setUser: PropTypes.func.isRequired };

@@ -15,7 +15,7 @@ function VerifyPass({message, sessionid}, props, context) {
       <div className={s.container}>
         <h1>{title}</h1>
         <p>{message}</p>
-           <a href={redirectlink}>Click Here to Login </a>    
+               
            <input
               id="sessionid"
               type="hidden"

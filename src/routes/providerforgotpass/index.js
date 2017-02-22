@@ -1,5 +1,5 @@
 import React from 'react';
-import Provideforgotpass from './Providerforgotpass';
+import Providerforgotpass from './Providerforgotpass';
 import Providerlogin from '../providerlogin/Providerlogin'
 import { apihost, host } from '../../config';
 var request = require('request');
@@ -20,7 +20,7 @@ export default {
    // console.log("User: "+user);
 
     if (typeof email === 'undefined')
-      return <Provideforgotpass />;
+      return <Providerforgotpass />;
     else {
 
         var  validlogin = await checkLogin(email);

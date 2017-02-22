@@ -91,7 +91,7 @@ path: '/managebooking',
         message = 'Sucessfully canceled  the booking';
       else
          message = 'Sucessfully closed the booking';
-      if ( typeof provider != undefined)
+      if ( provider != undefined)
        href = href=`http://${host}/providerhome?sessionid=`+sessionid+'&email='+email;
       else 
        href = href=`http://${host}/home?sessionid=`+sessionid+'&email='+email;

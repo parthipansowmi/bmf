@@ -18,6 +18,11 @@ function Searchprovider({providerlist, customeremail, sessionid}, props, context
   //context.setTitle(title);
   
    var providerdata = JSON.parse(providerlist);
+   var size = providerdata.length;
+   console.log("No. of providers: "+size);
+   var message = ' ';
+   if ( size == 0 )
+     message = "No provervider for this search Criteria";
 
    console.log("Provider Data: "+providerdata);
     return (
@@ -26,7 +31,7 @@ function Searchprovider({providerlist, customeremail, sessionid}, props, context
         <h1>Service Provider Search</h1>
         
         <div>
-        <form name="form1" method="put"  action="linkprovider" >
+        <form name="form1" method="put"  action="home" >
           <div className={s.formGroup}>
         <table>
         <caption>Service Providers</caption>
@@ -51,9 +56,12 @@ function Searchprovider({providerlist, customeremail, sessionid}, props, context
             
          <div >
          <br></br>
-         <input type="hidden" name="customeremail"  value={customeremail} />
+         <input type="hidden" name="email"  value={customeremail} />
          <input type="hidden" name="sessionid"  value={sessionid} />
-                
+          <p>{message}</p>
+          <button className={s.button}  value="submit" type="submit" >
+              Home Page
+            </button>
         </div>
          </form>
         </div>

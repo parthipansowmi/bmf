@@ -4,6 +4,7 @@ import Searchprovider from './Searchprovider';
 import { host, apihost } from '../../config';
 import Providerlist from '../providerlist/Providerlist';
 import Login from '../login/Login';
+import Home from '../home/Home';
 
  var providerlist;
  var sessionid;
@@ -31,10 +32,13 @@ export default {
       providerlist = await getProviderDataByPincode(category);
    else
      providerlist = await getProviderDataByCity(category);
-   console.log("Body: "+body);
+  // console.log("Body: "+providerlist);
    
-   console.log("customer Email: "+customeremail);
+  console.log("customer Email: "+customeremail);
+  //console.log("Size:"+providerlist.length);
+
   return <Searchprovider providerlist={providerlist} customeremail={customeremail} sessionid = {sessionid} />;
+
  
   },
 
